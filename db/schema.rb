@@ -44,19 +44,21 @@ ActiveRecord::Schema.define(version: 20171121180414) do
     t.index ["title"], name: "index_news_articles_on_title", unique: true
   end
 
-  create_table "shares", force: :cascade do |t|
+  create_table "stocks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "company_id", null: false
     t.integer "num_shares", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_shares_on_company_id"
-    t.index ["user_id"], name: "index_shares_on_user_id"
+    t.index ["company_id"], name: "index_stocks_on_company_id"
+    t.index ["user_id"], name: "index_stocks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.string "session_token", null: false
     t.string "password_digest", null: false
     t.string "contact_number"
@@ -70,13 +72,13 @@ ActiveRecord::Schema.define(version: 20171121180414) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "watchlists", force: :cascade do |t|
+  create_table "watchlist_items", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_watchlists_on_company_id"
-    t.index ["user_id"], name: "index_watchlists_on_user_id"
+    t.index ["company_id"], name: "index_watchlist_items_on_company_id"
+    t.index ["user_id"], name: "index_watchlist_items_on_user_id"
   end
 
 end

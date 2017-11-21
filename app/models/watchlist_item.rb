@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: watchlists
+# Table name: watchlist_items
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
@@ -9,5 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class Watchlist < ApplicationRecord
+class WatchlistItem < ApplicationRecord
+  belongs_to :user
+  belongs_to :company
 end

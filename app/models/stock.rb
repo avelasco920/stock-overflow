@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: shares
+# Table name: stocks
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
@@ -10,5 +10,10 @@
 #  updated_at :datetime         not null
 #
 
-class Share < ApplicationRecord
+class Stock < ApplicationRecord
+  validates :user_id, :company_id, :num_shares, presence: true
+  validates :num_shares, numericality: { greater_than: 0 }
+
+  belongs_to :company
+  belongs_to :user
 end
