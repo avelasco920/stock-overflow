@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: companies
+#
+#  id            :integer          not null, primary key
+#  name          :string           not null
+#  symbol        :string           not null
+#  market_price  :integer
+#  biography     :text
+#  ceo           :string
+#  founding_year :integer
+#  employees     :integer
+#  location      :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  symbol: MyString
+  market_price: 1
+  biography: MyText
+  ceo: MyString
+  founding_year: 1
+  employees: 1
+  location: MyString
+
+two:
+  name: MyString
+  symbol: MyString
+  market_price: 1
+  biography: MyText
+  ceo: MyString
+  founding_year: 1
+  employees: 1
+  location: MyString
