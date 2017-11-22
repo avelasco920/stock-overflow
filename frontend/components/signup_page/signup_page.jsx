@@ -12,9 +12,9 @@ class SignupPage extends React.Component {
       <div className="signup">
         <div className="signup-header">
           <div className="signup-header-text">
-            <image
+            <img
               src="https://d2ue93q3u507c2.cloudfront.net/assets/robinhood/images/logo.png"
-              className="green-logo-large"/>
+              id="green-logo-large"/>
             <h1>Let's get Started</h1>
           </div>
         </div>

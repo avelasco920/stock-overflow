@@ -28,6 +28,8 @@ html,body { height:100%; }
   position: absolute;
   bottom: 0;
   margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
 }
 
 .signup-form-box {
@@ -133,4 +135,10 @@ html,body { height:100%; }
   color: $light-gray;
   margin-top: 30px;
   text-align: center;
+}
+
+#green-logo-large {
+  width: 28px;
+  height: 39px;
+  padding-right: 10px;
 }

@@ -23,7 +23,7 @@ class UserForm extends React.Component {
   signinDemo(event) {
     event.preventDefault();
     this.state = {
-      username: 'investor_user',
+      username: 'smelly_cat',
       password: 'hello123'
     };
     const user = this.state;
@@ -52,7 +52,7 @@ class UserForm extends React.Component {
   }
 
   render() {
-    const isEnabled = this.state.email.length > 0 && this.state.password.length > 0;
+    const isEnabled = this.state.email.length > 5 && this.state.password.length > 6;
     return (
       <div className="full-height">
         <form onSubmit={this.handleSubmit} className="signup-form-box">

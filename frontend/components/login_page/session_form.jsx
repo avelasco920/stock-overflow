@@ -11,6 +11,17 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.signinDemo = this.signinDemo.bind(this);
+  }
+
+  signinDemo(event) {
+    event.preventDefault();
+    this.state = {
+      username: 'smelly_cat',
+      password: 'hello123'
+    };
+    const user = this.state;
+    this.props.login({user});
   }
 
   handleSubmit(event) {
@@ -54,7 +65,11 @@ class SessionForm extends React.Component {
           <AuthRoute path="/signup" component={SignupPage} />
           <div className="session-buttons">
             <input type="submit" value="Sign In" className="signin-button"/>
-            <input type="button" value="Demo" className="demo-button"/>
+            <input
+              type="button"
+              value="Demo"
+              onClick={this.signinDemo}
+              className="demo-button"/>
           </div>
         </form>
       </div>

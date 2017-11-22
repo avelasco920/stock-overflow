@@ -16,7 +16,7 @@ WatchlistItem.destroy_all
 #------------ User -------------#
 #-------------------------------#
 
-demo = User.create(
+phoebe = User.create(
   first_name: "Phoebe",
   last_name: "Buffet",
   username: "smelly_cat",
@@ -118,7 +118,7 @@ amazon = Company.create(
 Stock.create(
   user_id: phoebe.id,
   company_id: google.id,
-  num_shares: 18
+  num_shares: 2
 )
 Stock.create(
   user_id: phoebe.id,
