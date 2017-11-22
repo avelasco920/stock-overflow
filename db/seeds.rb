@@ -16,6 +16,16 @@ WatchlistItem.destroy_all
 #------------ User -------------#
 #-------------------------------#
 
+demo = User.create(
+  first_name: "Phoebe",
+  last_name: "Buffet",
+  username: "smelly_cat",
+  email: "phoebe@gmail.com",
+  password: "hello123",
+  contact_number: "415-555-5555",
+  cash_value: 2387
+)
+
 angel = User.create(
   first_name: "Angel",
   last_name: "Velasco",
@@ -60,16 +70,44 @@ maxine = User.create(
 #----------- Company -----------#
 #-------------------------------#
 
+google = Company.create(
+  name: "Google", symbol: "GOOGL", market_price: 1051.92
+)
+
+netflix = Company.create(
+  name: "Netflix", symbol: "NFLX", market_price: 196.02
+)
+
+snap = Company.create(
+  name: "Snap", symbol: "SNAP", market_price: 12.50
+)
+
+nvidia = Company.create(
+  name: "Nvidia", symbol: "NVDA", market_price: 214.85
+)
+
+tesla = Company.create(
+  name: "Tesla", symbol: "TSLA", market_price: 312.19
+)
+
+facebook = Company.create(
+  name: "Facebook", symbol: "FB", market_price: 180.65
+)
+
+amd = Company.create(
+  name: "Advanced Micro Devices", symbol: "AMD", market_price: 11.37
+)
+
 apple = Company.create(
-  name: "Apple", symbol: "AAPL", market_price: 170
+  name: "Apple", symbol: "AAPL", market_price: 174.83
 )
 
 square = Company.create(
-  name: "Square", symbol: "SQ", market_price: 47
+  name: "Square", symbol: "SQ", market_price: 48.72
 )
 
 amazon = Company.create(
-  name: "Amazon", symbol: "AMZN", market_price: 1140
+  name: "Amazon", symbol: "AMZN", market_price: 1157.69
 )
 
 
@@ -77,48 +115,136 @@ amazon = Company.create(
 #------------ Stock ------------#
 #-------------------------------#
 
-shares_angel_apple = {
-  user_id: angel.id, company_id: apple.id, num_shares: 18
-}
-shares_angel_square = {
-  user_id: angel.id, company_id: square.id, num_shares: 4
-}
-shares_angel_amazon = {
-  user_id: angel.id, company_id: amazon.id, num_shares: 3
-}
+Stock.create(
+  user_id: phoebe.id,
+  company_id: google.id,
+  num_shares: 18
+)
+Stock.create(
+  user_id: phoebe.id,
+  company_id: netflix.id,
+  num_shares: 4
+)
+Stock.create(
+  user_id: phoebe.id,
+  company_id: snap.id,
+  num_shares: 4
+)
+Stock.create(
+  user_id: phoebe.id,
+  company_id: tesla.id,
+  num_shares: 8
+)
+Stock.create(
+  user_id: phoebe.id,
+  company_id: nvidia.id,
+  num_shares: 6
+)
+Stock.create(
+  user_id: phoebe.id,
+  company_id: amazon.id,
+  num_shares: 1
+)
 
-Stock.create(shares_angel_apple)
-Stock.create(shares_angel_square)
-Stock.create(shares_angel_amazon)
 
-shares_kyle_apple = {
-  user_id: kyle.id, company_id: apple.id, num_shares: 6
-}
-shares_kyle_square = {
-  user_id: kyle.id, company_id: square.id, num_shares: 16
-}
+Stock.create(
+  user_id: angel.id,
+  company_id: apple.id,
+  num_shares: 18
+)
+Stock.create(
+  user_id: angel.id,
+  company_id: square.id,
+  num_shares: 4
+)
+Stock.create(
+  user_id: angel.id,
+  company_id: amazon.id,
+  num_shares: 3
+)
 
-Stock.create(shares_kyle_apple)
-Stock.create(shares_kyle_square)
 
-shares_truong_apple = {
-  user_id: truong.id, company_id: apple.id, num_shares: 6
-}
-shares_truong_square = {
-  user_id: truong.id, company_id: square.id, num_shares: 2
-}
+Stock.create(
+  user_id: kyle.id,
+  company_id: apple.id,
+  num_shares: 6
+)
+Stock.create(
+  user_id: kyle.id,
+  company_id: square.id,
+  num_shares: 16
+)
 
-Stock.create(shares_truong_apple)
-Stock.create(shares_truong_square)
+
+Stock.create(
+  user_id: truong.id,
+  company_id: apple.id,
+  num_shares: 6
+)
+Stock.create(
+  user_id: truong.id,
+  company_id: square.id,
+  num_shares: 2
+)
+
 
 #-------------------------------#
 #-------- WatchListItem --------#
 #-------------------------------#
 
-wlist_kyle_apple = { user_id: kyle.id, company_id: apple.id }
-wlist_angel_amazon = { user_id: angel.id, company_id: amazon.id }
-wlist_angel_sq = { user_id: angel.id, company_id: square.id }
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: apple.id
+)
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: amazon.id
+)
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: square.id
+)
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: tesla.id
+)
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: apple.id
+)
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: netflix.id
+)
 
-WatchlistItem.create(wlist_kyle_apple)
-WatchlistItem.create(wlist_angel_amazon)
-WatchlistItem.create(wlist_angel_sq)
+
+WatchlistItem.create(
+  user_id: phoebe.id,
+  company_id: amd.id
+)
+WatchlistItem.create(
+  user_id: phoebe.id,
+  company_id: square.id
+)
+WatchlistItem.create(
+  user_id: phoebe.id,
+  company_id: apple.id
+)
+WatchlistItem.create(
+  user_id: phoebe.id,
+  company_id: facebook.id
+)
+
+
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: square.id
+)
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: square.id
+)
+WatchlistItem.create(
+  user_id: angel.id,
+  company_id: square.id
+)

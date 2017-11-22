@@ -1,3 +1,9 @@
+html,body { height:100%; }
+
+.full-height {
+  height: 100%;
+}
+
 .signup {
   width: 900px;
   margin: auto;
@@ -8,20 +14,25 @@
 
 .signup-header {
   height: 160px;
+  flex: 1;
   position: relative;
+}
+
+
+
+.user-form-container {
+  flex: 4;
 }
 
 .signup-header-text {
   position: absolute;
   bottom: 0;
-}
-
-.user-form-container {
-  flex: 1;
+  margin-bottom: 20px;
 }
 
 .signup-form-box {
   display: flex;
+  height: 100%;
 }
 
 .signup-right-sidebar {
@@ -38,6 +49,20 @@
 
 .signup-left-sidebar {
   flex: 2;
+  position: relative;
+  height: 100%;
+}
+
+.disclaimer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: $light-gray;
+  padding: 20px;
+  border-top: 1px solid $light-gray;
+  line-height: 16px;
+  letter-spacing: 1px;
+  font-family: $roboto;
 }
 
 .name-input-fields {
@@ -51,13 +76,27 @@
 }
 
 #username {
-  padding-top: 20px;
+  margin-top: 40px;
 }
+
+#cash-value {
+  margin-top: 40px;
+}
+
 
 .faq-spread {
   justify-content: space-between;
   display: flex;
   align-items: center;
+}
+
+.faq-spread:hover {
+  color: black;
+}
+
+.faq-spread:hover #chevron-down {
+  transform: scale(2);
+  transition: all .2s ease-in-out;
 }
 
 .signup-input:focus {
@@ -76,4 +115,22 @@
   padding: 20px;
   box-sizing: border-box;
   color: $light-gray;
+}
+
+.faq-text {
+  font-size: 16px;
+  font-weight: lighter;
+  width: 180px;
+}
+
+#faq-answer {
+  margin-top: 30px;
+  display: none;
+}
+
+.login-link {
+  font-size: 14px;
+  color: $light-gray;
+  margin-top: 30px;
+  text-align: center;
 }

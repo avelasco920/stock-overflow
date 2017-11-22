@@ -28,7 +28,8 @@ class User < ApplicationRecord
             :first_name,
             :last_name,
             presence: true
-  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password, length: { minimum: 8, allow_nil: true }
+  validates :cash_value, numericality: { greater_than: 0 }
 
   attr_reader :password
   after_initialize :ensure_session_token, :calculate_portfolio_value

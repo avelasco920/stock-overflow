@@ -41,7 +41,7 @@ label {
 
 span {
   font-family: $roboto;
-  font-size: 12px;
+  font-size: 14px;
   text-align: left;
   margin-top: 14px;
 }
@@ -49,6 +49,14 @@ span {
 strong {
   color: $green;
   font-weight: 500;
+  letter-spacing: 1px;
+}
+
+a {
+  font-family: $roboto;
+  color: $green;
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 .gray-input {
@@ -86,8 +94,12 @@ strong {
   border-radius: 4px;
   transition: border-color 200ms;
   letter-spacing: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   width: 100%;
+}
+
+.white-input::placeholder {
+  color: $light-gray;
 }
 
 .white-input:focus, .white-input:focus {
@@ -110,4 +122,9 @@ input[type="submit"], input[type="button"] {
 input[type="submit"]:hover, input[type="button"]:hover {
   background-color: $light-green;
   border: 0px;
+}
+
+input[type="submit"]:disabled, input[type="button"] {
+  border: 0px;
+  background-color: $green;
 }
