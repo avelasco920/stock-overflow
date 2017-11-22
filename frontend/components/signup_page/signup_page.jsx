@@ -1,4 +1,5 @@
 import React from 'react';
+import UserFormContainer from './user_form_container';
 import { Link, withRouter } from 'react-router-dom';
 
 class SignupPage extends React.Component {
@@ -9,7 +10,14 @@ class SignupPage extends React.Component {
   render() {
     return (
       <div className="signup">
-        <h1>Sign Up</h1>
+        <div className="signup-header">
+          <div className="signup-header-text">
+            <h1>Let's get Started</h1>
+          </div>
+        </div>
+        <div className="user-form-container">
+          <UserFormContainer />
+      </div>
       </div>
     );
   }

@@ -1,9 +1,15 @@
 h1 {
-
+  font-family: $thin;
+  font-size: 48px;
+	text-align: left;
+  margin-top: 30px;
+	margin-bottom: 20px;
+	font-weight: lighter;
+  letter-spacing: 1px;
 }
 
 h2 {
-  font-family: $roboto-condensed;
+  font-family: $roboto;
   font-size: 30px;
 	text-align: left;
   margin-top: 30px;
@@ -45,12 +51,13 @@ strong {
   font-weight: 500;
 }
 
-input[type="text"], input[type="password"] {
+.gray-input {
   border: 1px solid transparent;
   background-color: $lightest-gray;
-  padding: 12px;
+  padding: 16px;
+  box-sizing: border-box;
   font-size: 16px;
-  font-family: $roboto-condensed;
+  font-family: $roboto;
   font-weight: lighter;
   border-radius: 4px;
   transition: border-color 200ms;
@@ -58,19 +65,40 @@ input[type="text"], input[type="password"] {
   margin-bottom: 10px;
 }
 
-input[type="text"]:hover, input[type="password"]:hover {
+.gray-input:hover {
   border: 1px solid $light-gray;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
+.gray-input:focus, .gray-input:focus {
+  border: 1px solid $green;
+  background-color: white;
+}
+
+.white-input {
+  border: 1px solid $light-gray;
+  background-color: white;
+  padding: 16px;
+  color: $light-gray;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: $roboto;
+  font-weight: lighter;
+  border-radius: 4px;
+  transition: border-color 200ms;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.white-input:focus, .white-input:focus {
   border: 1px solid $green;
   background-color: white;
 }
 
 input[type="submit"], input[type="button"] {
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: $green;
-  padding: 12px;
+  padding: 16px;
   font-size: 16px;
   font-family: $roboto-condensed;
   letter-spacing: 1px;

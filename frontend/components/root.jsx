@@ -10,12 +10,14 @@ import {
 //containers
 import App from './app';
 import LoginPage from './login_page/login_page';
+import SignupPage from './signup_page/signup_page';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
       <Switch>
         <AuthRoute path="/login" component={LoginPage} />
+        <AuthRoute path="/signup" component={SignupPage} />
         <ProtectedRoute path="/" component={App} />
       </Switch>
     </HashRouter>

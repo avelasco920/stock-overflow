@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { signup } from '../../actions/session_actions';
-import SignupPage from './signup_page';
+import UserForm from './user_form';
 
 const mapStateToProps = (state) => {
   return {
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignupPage);
+)(UserForm);
