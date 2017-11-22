@@ -22,7 +22,6 @@ class User < ApplicationRecord
   validates :username, :email, presence: true, uniqueness: true
   validates :session_token,
             :password_digest,
-            :contact_number,
             :stocks_value,
             :cash_value,
             :portfolio_value,
@@ -49,14 +48,14 @@ class User < ApplicationRecord
   end
 
   def valid_password?(password)
-    BCrypt::Password.new(password_diget).is_password?(password)
+    BCrypt::Password.new(password_digest).is_password?(password)
   end
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
 
-  def reset_session_token!
+  def reset_session_token
     self.session_token = SecureRandom.urlsafe_base64(16)
     self.save
     self.session_token
