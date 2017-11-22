@@ -5,7 +5,7 @@ import {
   signup,
   login,
   logout
-} from './util/session_api_util';
+} from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-  
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   const root = document.getElementById('root');

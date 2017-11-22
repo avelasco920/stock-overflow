@@ -38,7 +38,7 @@ class User < ApplicationRecord
   has_many :invested_companies,
             through: :shares,
             source: :company
-  has_many :watched_companies,
+  has_many :companies_watching,
             through: :watchlist_items,
             source: :company
 
