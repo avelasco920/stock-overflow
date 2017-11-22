@@ -9,13 +9,13 @@ import {
 
 //containers
 import App from './app';
-import LoginPageContainer from './login_page/login_page_container';
+import LoginPage from './login_page/login_page';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
       <Switch>
-        <AuthRoute path="/login" component={LoginPageContainer} />
+        <AuthRoute path="/login" component={LoginPage} />
         <ProtectedRoute path="/" component={App} />
       </Switch>
     </HashRouter>

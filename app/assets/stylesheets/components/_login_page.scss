@@ -1,0 +1,42 @@
+.login {
+  display: flex;
+  align-items: center;
+}
+
+.cover-image {
+  background-image: url(https://d2ue93q3u507c2.cloudfront.net/assets/generated_assets/94977d34f99015525dcd0fc9987fcbe6.png);
+  background-color: blue;
+  flex: 1;
+  height: 100vh;
+}
+
+.form-container {
+  display: flex;
+  flex: 1;
+  height: 100vh;
+  align-items: center;
+}
+
+.login-form-box {
+  height: auto;
+  width: 400px;
+  position: relative;
+  left: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.session-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.signin-button {
+  flex: 2;
+  margin-right: 4px;
+}
+
+.demo-button {
+  flex: 1;
+}
