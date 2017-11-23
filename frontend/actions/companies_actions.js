@@ -24,7 +24,7 @@ export const fetchCompanies = () => dispatch => (
 export const fetchCompany = id => dispatch => (
   APIUtil.fetchCompany(id)
     .then(company => (
-      dispatch(receiveCompanies(company))
+      dispatch(receiveCompany(company))
     )
   )
 );

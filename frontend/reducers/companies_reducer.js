@@ -1,4 +1,4 @@
-import merge from 'loadsh/merge';
+import merge from 'lodash/merge';
 
 import {
   RECEIVE_COMPANIES,
@@ -8,13 +8,15 @@ import {
 const companiesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
-    switch(action.type) {
-      case RECEIVE_COMPANIES:
-        merge({}, state, {[entitites]: action.companies})
-      case RECEIVE_COMPANY:
-
-      default:
-        return state;
-    }
+    case RECEIVE_COMPANIES:
+      return merge({}, action.companies);
+    case RECEIVE_COMPANY:
+      const companies = merge({}, state);
+      const company = action.company;
+      return merge({}, companies, company);
+    default:
+      return state;
   }
-}
+};
+
+export default companiesReducer;

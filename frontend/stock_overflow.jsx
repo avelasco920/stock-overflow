@@ -7,6 +7,7 @@ import {
   login,
   logout
 } from './actions/session_actions';
+import { fetchCompanies, fetchCompany } from './actions/companies_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -14,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
+  window.fetchCompanies = fetchCompanies;
+  window.fetchCompany = fetchCompany;
   //
 
   let store;
