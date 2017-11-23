@@ -21,19 +21,13 @@ class UserForm extends React.Component {
 
     Hide.bind(this);
     this.removeRedBorder = this.removeRedBorder.bind(this);
-    // this.confirmPw = this.confirmPw.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearErrors([]);
   }
 
-  componentDidMount() {
-    // $("#username").on("click", () => $("#username").removeClass("red-border"));
-  }
-
   renderErrors() {
-
     return(
       <ul className="errors-index">
         {this.props.errors.map((error, i) => (
@@ -116,12 +110,6 @@ class UserForm extends React.Component {
   removeRedBorder(event) {
     $(event.target).removeClass("red-border");
   }
-
-  // removeRedBorder(propName) {
-  //   let htmlId = propName.replace(/_|-|\./g, '');
-  //   htmlId = "#" + htmlId;
-  //   $(htmlId).removeClass("red-border");
-  // }
 
   render() {
     const isEnabled = this.state.password.length > 6;
@@ -247,6 +235,3 @@ class UserForm extends React.Component {
 }
 
 export default UserForm;
-//
-// <span id="collapse" display="true" className="faq-text">
-// </span>

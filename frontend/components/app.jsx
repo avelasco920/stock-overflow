@@ -9,10 +9,14 @@ import {
 } from 'react-router-dom';
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import Navbar from './navbar/navbar';
 
 const App = () => (
   <div>
-    <NavBar />
+    <Navbar />
+    <Switch>
+    </Switch>
+    <div className="body-test"></div>
   </div>
 );
 
