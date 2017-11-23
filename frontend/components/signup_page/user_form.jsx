@@ -18,6 +18,29 @@ class UserForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signinDemo = this.signinDemo.bind(this);
     this.toggleHide = this.toggleHide.bind(this);
+    this.removeRedBorder = this.removeRedBorder.bind(this);
+    // this.confirmPw = this.confirmPw.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors([]);
+  }
+
+  componentDidMount() {
+    $("#username").on("click", () => $("#username").removeClass("red-border"));
+  }
+
+  renderErrors() {
+
+    return(
+      <ul className="errors-index">
+        {this.props.errors.map((error, i) => (
+          <li className="errors-list-item" key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   signinDemo(event) {
@@ -37,6 +60,7 @@ class UserForm extends React.Component {
   }
 
   update(field) {
+    this.confirmPassword();
     return e => this.setState({
       [field]: e.currentTarget.value
     });
@@ -51,8 +75,58 @@ class UserForm extends React.Component {
     }
   }
 
+  // confirmPw() {
+  //   const pwConf = document.getElementById("pw-conf");
+  //   if (this.state.password.length === 0) {
+  //       pwConf.style.border = "1px solid $light-gray";
+  //   } else if (this.state.password === this.state.password_confirmation) {
+  //       pwConf.style.border = "1px solid red";
+  //   } else {
+  //     pwConf.style.border = "1px solid $green";
+  //   }
+  // }
+
+  confirmPassword() {
+    return () => {
+      const pwConf = document.getElementById("pw-conf");
+      debugger;
+      if (this.state.password.length === 0) {
+        pwConf.style.border = "1px solid $light-gray";
+      } else if (this.state.password === this.state.password_confirmation) {
+        pwConf.style.border = "1px solid red";
+      } else {
+        pwConf.style.border = "1px solid $green";
+      }
+    };
+  }
+
+  addRedBorder() {
+    this.props.errors.forEach((err) => {
+      if (err.includes("can't be blank")) {
+        let strSplit = err.split(" can't be blank");
+        let inputValue = strSplit[0].toLowerCase();
+        inputValue = "#" + inputValue.replace(/\s/g,'');
+        $(inputValue).addClass("red-border");
+      }
+    });
+  }
+
+  removeRedBorder(event) {
+    $(event.target).removeClass("red-border");
+  }
+  //
+  // removeRedBorder(propName) {
+  //   let htmlId = propName.replace(/_|-|\./g, '');
+  //   htmlId = "#" + htmlId;
+  //   $(htmlId).removeClass("red-border");
+  // }
+
   render() {
-    const isEnabled = this.state.email.length > 5 && this.state.password.length > 6;
+    const isEnabled = this.state.password.length > 6;
+      // this.state.email.includes("@") &&
+      // this.state.password === this.state.password_confirmation &&
+
+    this.addRedBorder();
     return (
       <div className="full-height">
         <form onSubmit={this.handleSubmit} className="signup-form-box">
@@ -64,19 +138,24 @@ class UserForm extends React.Component {
                 value={this.state.first_name.trim()}
                 placeholder="First Name"
                 onChange={this.update('first_name')}
+                onClick={(e) => this.removeRedBorder(e)}
                 className="white-input"
+                id="firstname"
               />
               <input type="text"
                 value={this.state.last_name.trim()}
                 placeholder="Last Name"
                 onChange={this.update('last_name')}
+                onClick={(e) => this.removeRedBorder(e)}
                 className="white-input"
+                id="lastname"
               />
             </div>
             <input type="text"
               value={this.state.email}
               placeholder="Email Address"
               onChange={this.update('email')}
+              onClick={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="email"
             />
@@ -84,6 +163,7 @@ class UserForm extends React.Component {
               value={this.state.username}
               placeholder="Robinhood Username"
               onChange={this.update('username')}
+              onClick={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="username"
             />
@@ -91,6 +171,7 @@ class UserForm extends React.Component {
               value={this.state.password}
               placeholder="Password (min. 8 characters)"
               onChange={this.update('password')}
+              onClick={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="password"
             />
@@ -98,13 +179,15 @@ class UserForm extends React.Component {
               value={this.state.password_confirmation}
               placeholder="Confirm Password"
               onChange={this.update('password_confirmation')}
+              onClick={(e) => this.removeRedBorder(e)}
               className="white-input"
-              id="password"
+              id="pw-conf"
             />
             <input type="text"
               value={this.state.cash_value}
               placeholder="How much would you like to start investing with?"
               onChange={this.update('cash_value')}
+              onClick={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="cash-value"
             />
@@ -116,12 +199,7 @@ class UserForm extends React.Component {
               Nam tempor consequat massa id luctus. Proin in fermentum
               diam, ut volutpat risus. Mauris quis odio nec ex semper
               molestie. Proin aliquet lorem sapien, molestie aliquet
-              massa accumsan a. Suspendisse a euismod lorem, gravida
-              pharetra libero. Etiam feugiat quis lectus bibendum
-              laoreet. Mauris feugiat elementum volutpat. Proin id
-              justo varius, vehicula nibh ut, tincidunt erat. Aenean
-              blandit lacus venenatis, lobortis orci ut, commodo dui.
-              Aenean eu rutrum ex, non fringilla odio.
+              massa accumsan a.
             </span>
 
           </div>
@@ -131,7 +209,8 @@ class UserForm extends React.Component {
               value="Sign Up"
               className="signup-button"
               disabled={!isEnabled}/>
-            <div className="signup-faq">
+
+              <div className="signup-faq">
                 <div className="faq-spread" onClick={this.toggleHide}>
                   <span className="faq-text" onClick={this.toggleHide}>
                     Is there a way to access the site without signing up?
@@ -155,6 +234,7 @@ class UserForm extends React.Component {
                 </Link>
                 <AuthRoute path="/login" component={LoginPage} />
               </span>
+              {this.renderErrors()}
             </div>
 
 

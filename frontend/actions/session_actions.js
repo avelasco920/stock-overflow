@@ -13,6 +13,10 @@ export const receiveErrors = errors => ({
   errors
 });
 
+export const clearErrors = errors => dispatch => (
+  dispatch(receiveErrors(errors))
+);
+
 export const signup = user => dispatch => (
   APIUtil.signup(user)
     .then(newUser => (

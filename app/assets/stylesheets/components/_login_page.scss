@@ -28,7 +28,6 @@
 .session-buttons {
   display: flex;
   align-items: center;
-  margin-top: 80px;
 }
 
 .signin-button {
@@ -38,4 +37,27 @@
 
 .demo-button {
   flex: 1;
+}
+
+.errors-index-login {
+  height: 80px;
+  position: relative;
+}
+
+.errors-list-item {
+  font-family: $roboto;
+  color: red;
+  font-size: 16px;
+  text-decoration: bold;
+}
+
+#login-error {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
+#login-to-signup {
+  margin-top: 14px;
 }

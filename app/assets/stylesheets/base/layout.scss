@@ -43,7 +43,6 @@ span {
   font-family: $roboto;
   font-size: 14px;
   text-align: left;
-  margin-top: 14px;
 }
 
 strong {
@@ -102,7 +101,7 @@ a {
   color: $light-gray;
 }
 
-.white-input:focus, .white-input:focus {
+.white-input:focus {
   border: 1px solid $green;
   background-color: white;
 }

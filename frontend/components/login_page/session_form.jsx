@@ -14,6 +14,24 @@ class SessionForm extends React.Component {
     this.signinDemo = this.signinDemo.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors([]);
+  }
+
+  renderErrors() {
+    return(
+      <ul className="errors-index-login">
+        {this.props.errors.map((error, i) => (
+          <li className="errors-list-item"
+            key={`error-${i}`}
+            id="login-error">
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   signinDemo(event) {
     event.preventDefault();
     this.state = {
@@ -56,11 +74,12 @@ class SessionForm extends React.Component {
             className="gray-input"
           />
 
-          <span>Not a member?
+          <span id="login-to-signup">Not a member?
             <Link to="/signup" className="header-link">
               <strong> Let's get you signed up.</strong>
             </Link>
           </span>
+          {this.renderErrors()}
 
           <AuthRoute path="/signup" component={SignupPage} />
           <div className="session-buttons">
