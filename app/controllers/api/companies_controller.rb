@@ -8,6 +8,7 @@ class Api::CompaniesController < ApplicationController
     watchlist = current_user.companies_watching
     invested = current_user.invested_companies
     @companies = (watchlist + invested).uniq
+    @user = current_user
   end
 
   def update

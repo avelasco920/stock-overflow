@@ -17,7 +17,9 @@ class UserForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signinDemo = this.signinDemo.bind(this);
-    this.toggleHide = this.toggleHide.bind(this);
+    this.toggleHide = this.
+
+    Hide.bind(this);
     this.removeRedBorder = this.removeRedBorder.bind(this);
     // this.confirmPw = this.confirmPw.bind(this);
   }
@@ -27,7 +29,7 @@ class UserForm extends React.Component {
   }
 
   componentDidMount() {
-    $("#username").on("click", () => $("#username").removeClass("red-border"));
+    // $("#username").on("click", () => $("#username").removeClass("red-border"));
   }
 
   renderErrors() {
@@ -114,7 +116,7 @@ class UserForm extends React.Component {
   removeRedBorder(event) {
     $(event.target).removeClass("red-border");
   }
-  //
+
   // removeRedBorder(propName) {
   //   let htmlId = propName.replace(/_|-|\./g, '');
   //   htmlId = "#" + htmlId;
