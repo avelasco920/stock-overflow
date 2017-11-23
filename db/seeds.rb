@@ -194,10 +194,6 @@ Stock.create(
 
 WatchlistItem.create(
   user_id: angel.id,
-  company_id: apple.id
-)
-WatchlistItem.create(
-  user_id: angel.id,
   company_id: amazon.id
 )
 WatchlistItem.create(
@@ -233,18 +229,4 @@ WatchlistItem.create(
 WatchlistItem.create(
   user_id: phoebe.id,
   company_id: facebook.id
-)
-
-
-WatchlistItem.create(
-  user_id: angel.id,
-  company_id: square.id
-)
-WatchlistItem.create(
-  user_id: angel.id,
-  company_id: square.id
-)
-WatchlistItem.create(
-  user_id: angel.id,
-  company_id: square.id
 )
