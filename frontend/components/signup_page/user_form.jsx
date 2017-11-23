@@ -184,7 +184,7 @@ class UserForm extends React.Component {
               id="pw-conf"
             />
             <input type="text"
-              value={this.state.cash_value}
+              value={this.state.cash_value.replace(/[^0-9]/g,'')}
               placeholder="How much would you like to start investing with?"
               onChange={this.update('cash_value')}
               onClick={(e) => this.removeRedBorder(e)}

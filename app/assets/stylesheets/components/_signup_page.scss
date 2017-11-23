@@ -7,7 +7,7 @@ html,body { height:100%; }
 .signup {
   width: 900px;
   margin: auto;
-  height: 100vh;
+  height: 1050px;
   display: flex;
   flex-direction: column;
 }
@@ -17,8 +17,6 @@ html,body { height:100%; }
   flex: 1;
   position: relative;
 }
-
-
 
 .user-form-container {
   flex: 4;
@@ -85,7 +83,6 @@ html,body { height:100%; }
   margin-top: 40px;
 }
 
-
 .faq-spread {
   justify-content: space-between;
   display: flex;
@@ -98,6 +95,7 @@ html,body { height:100%; }
 
 .faq-spread:hover #chevron-down {
   transform: scale(2);
+  // transform: rotate(180deg);
   transition: all .2s ease-in-out;
 }
 
