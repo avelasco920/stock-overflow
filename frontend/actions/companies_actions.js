@@ -2,7 +2,6 @@ import * as APIUtil from '../util/companies_api_util';
 
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
-export const RECEIVE_COMPANIES_ERRORS = 'RECEIVE_ERRORS';
 
 export const receiveCompanies = companies => ({
   type: RECEIVE_COMPANIES,
