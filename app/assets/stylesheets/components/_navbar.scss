@@ -20,6 +20,7 @@ body > #navbar-container{
   z-index: 1000;
   overflow: auto;
   transition: all 0.5s linear;
+  background-color: white;
 }
 
 #navbar-container.active {

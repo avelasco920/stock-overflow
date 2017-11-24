@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import HomePage from './home_page/home_page.jsx';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import {
   Route,
   Redirect,
@@ -9,8 +9,8 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Navbar from './navbar/navbar';
+import HomePage from './home_page/home_page.jsx';
 
 const App = () => (
   <div className="app-body">
