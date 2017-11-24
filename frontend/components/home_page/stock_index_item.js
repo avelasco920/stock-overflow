@@ -8,7 +8,10 @@ const StockIndexItem = ({ company }) => (
       <h4 className="stock-symbol">{company.symbol}</h4>
     <span className="stock-num-shares">{company.num_shares} Shares</span>
     </div>
-      <span className="stock-price">{company.market_price}</span>
+    <img
+      src="https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/Screen%20Shot%202017-11-24%20at%203.30.55%20PM.png?raw=true"
+      className="chart-thumb"/>
+    <span className="stock-price">${company.market_price}</span>
   </li>
 );
 

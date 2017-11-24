@@ -34,8 +34,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  border-bottom: 1px solid $light-gray;
+  height: 70px;
 }
 
 .stock-index-item div {
@@ -48,10 +47,15 @@
   padding-top: 6px;
 }
 
+.chart-thumb {
+  width: 40%;
+  height: auto;
+}
+
 .stock-price {
-  background-color: $lightest-gray;
   align-items: center;
   text-align: center;
   width: 20%;
   line-height: 30px;
+  font-size: 18px;
 }

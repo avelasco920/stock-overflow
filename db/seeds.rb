@@ -23,7 +23,7 @@ phoebe = User.create(
   email: "phoebe@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 2387
+  cash_value: 2387.56
 )
 
 angel = User.create(
@@ -33,7 +33,7 @@ angel = User.create(
   email: "angel@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 200
+  cash_value: 200.78
 )
 
 kyle = User.create(
@@ -43,7 +43,7 @@ kyle = User.create(
   email: "kyle@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 2000
+  cash_value: 2046.14
 )
 
 truong = User.create(
@@ -53,7 +53,7 @@ truong = User.create(
   email: "truong@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 10000
+  cash_value: 10460.97
 )
 
 maxine = User.create(
@@ -63,7 +63,7 @@ maxine = User.create(
   email: "maxine@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 4000
+  cash_value: 4493.32
 )
 
 #-------------------------------#
