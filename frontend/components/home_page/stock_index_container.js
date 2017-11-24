@@ -7,10 +7,11 @@ import {
   selectWatchingCompanies
 } from '../../reducers/selectors';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     companiesInvested: selectInvestedCompanies(state),
     companiesWatching: selectWatchingCompanies(state),
+    loading: state.ui.loading.indexLoading
   };
 };
 

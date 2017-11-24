@@ -25,7 +25,33 @@
 }
 
 .sidebar-header {
-  padding-bottom: 18px;
+  padding: 18px 0;
   border-bottom: 1px solid $lightest-gray;
   justify-content: space-between;
+}
+
+.stock-index-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  border-bottom: 1px solid $light-gray;
+}
+
+.stock-index-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.stock-num-shares {
+  color: $light-gray;
+  padding-top: 6px;
+}
+
+.stock-price {
+  background-color: $lightest-gray;
+  align-items: center;
+  text-align: center;
+  width: 20%;
+  line-height: 30px;
 }

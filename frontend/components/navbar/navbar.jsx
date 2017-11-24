@@ -25,7 +25,7 @@ class Navbar extends React.Component {
       <div className="navbar" id="navbar-container">
         <div className="navbar-left">
           <img
-            src="https://d2ue93q3u507c2.cloudfront.net/assets/robinhood/images/logo.png"
+            src="https://raw.githubusercontent.com/avelasco920/stocks-overflow/master/app/assets/images/robinhood%20black%20logo.png"
             id="black-logo-small"/>
           <SearchBarContainer className="white-input" id="search-bar"/>
         </div>
