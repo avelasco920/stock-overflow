@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import HomePage from './home_page/home_page.jsx';
 import {
   Route,
   Redirect,
@@ -12,10 +13,12 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Navbar from './navbar/navbar';
 
 const App = () => (
-  <div>
+  <div className="app-body">
     <Navbar />
-    <Switch>
-    </Switch>
+    <div className="app-main">
+      <HomePage />
+      <ProtectedRoute path="/home" component={HomePage} />
+    </div>
     <div className="body-test"></div>
   </div>
 );
