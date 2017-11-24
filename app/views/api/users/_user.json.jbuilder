@@ -7,6 +7,10 @@ json.companies_watching do
   json.array! user.companies_watching.pluck(:id)
 end
 
+json.companies_invested do
+  json.array! user.invested_companies.pluck(:id)
+end
+
 json.stocks do
   user.stocks.each do |stock|
     json.set! stock.company_id, stock.num_shares

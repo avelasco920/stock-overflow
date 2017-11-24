@@ -7,7 +7,7 @@ import {
   login,
   logout
 } from './actions/session_actions';
-import selectInvestedCompanies from './reducers/selectors'
+import selectInvestedCompanies from './reducers/selectors';
 import { fetchCompanies, fetchCompany } from './actions/companies_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
