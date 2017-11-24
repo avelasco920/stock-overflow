@@ -17,9 +17,7 @@ class UserForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.signinDemo = this.signinDemo.bind(this);
-    this.toggleHide = this.
-
-    Hide.bind(this);
+    this.toggleHide = this.toggleHide.bind(this);
     this.removeRedBorder = this.removeRedBorder.bind(this);
   }
 
