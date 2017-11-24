@@ -4,14 +4,12 @@
   width: 80%;
   left: calc(10%);
   top: 100px;
-  // border: 1px solid;
   display: flex;
   justify-content: space-between;
 }
 
 .home-main-content {
   flex: 5;
-  // background-color: blue;
   margin-right: 6%;
   box-sizing: border-box;
 }
@@ -23,5 +21,11 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   border-radius: 6px;
   border: 1px solid white;
-  padding: 0 30px;
+  padding: 10px 20px;
+}
+
+.sidebar-header {
+  padding-bottom: 18px;
+  border-bottom: 1px solid $lightest-gray;
+  justify-content: space-between;
 }

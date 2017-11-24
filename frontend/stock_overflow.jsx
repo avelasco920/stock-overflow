@@ -7,6 +7,7 @@ import {
   login,
   logout
 } from './actions/session_actions';
+import selectInvestedCompanies from './reducers/selectors'
 import { fetchCompanies, fetchCompany } from './actions/companies_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logout = logout;
   window.fetchCompanies = fetchCompanies;
   window.fetchCompany = fetchCompany;
+  window.selectInvestedCompanies = selectInvestedCompanies;
   //
 
   let store;

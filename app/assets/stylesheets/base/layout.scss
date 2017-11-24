@@ -20,14 +20,19 @@ h2 {
 
 
 h3 {
-  font-family: $sans-serif;
+  font-family: $roboto;
   text-align: left;
 	margin-bottom: 20px;
 	font-weight: 200;
+  letter-spacing: 1px;
 }
 
 h4 {
-
+  font-family: $roboto;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 1px;
+	font-weight: bold;
 }
 
 label {
