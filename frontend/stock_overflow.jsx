@@ -7,7 +7,7 @@ import {
   login,
   logout
 } from './actions/session_actions';
-import selectInvestedCompanies from './reducers/selectors';
+import { selectInvestedCompanies, selectWatchingCompanies } from './reducers/selectors';
 import { fetchCompanies, fetchCompany } from './actions/companies_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchCompanies = fetchCompanies;
   window.fetchCompany = fetchCompany;
   window.selectInvestedCompanies = selectInvestedCompanies;
+  window.selectWatchingCompanies = selectWatchingCompanies;
   //
 
   let store;

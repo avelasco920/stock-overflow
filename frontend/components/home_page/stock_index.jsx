@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 
-import StockIndexContainer from './stock_index_container';
+import StockIndexItem from './stock_index_item';
 
 class StockIndex extends React.Component {
   componentWillMount() {
@@ -15,6 +15,7 @@ class StockIndex extends React.Component {
         <h4 className="sidebar-header">
           Stocks
         </h4>
+        <StockIndexItem />
       </div>
     );
   }
