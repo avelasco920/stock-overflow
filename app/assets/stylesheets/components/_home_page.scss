@@ -35,6 +35,8 @@
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .stock-index-item div {
@@ -42,20 +44,31 @@
   flex-direction: column;
 }
 
+
 .stock-num-shares {
   color: $light-gray;
   padding-top: 6px;
+  font-size: 10px;
 }
 
 .chart-thumb {
-  width: 40%;
+  width: 30%;
   height: auto;
 }
 
 .stock-price {
   align-items: center;
   text-align: center;
-  width: 20%;
+  width: 30%;
   line-height: 30px;
   font-size: 18px;
+}
+
+
+@media only screen and (max-width: 1300px)  {
+  .home-sidebar { width: 35%; }
+}
+
+@media only screen and (min-width: 1300px)  {
+  .stock-price { width: 25%; }
 }
