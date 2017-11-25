@@ -11,13 +11,16 @@ import {
 
 import Navbar from './navbar/navbar';
 import HomePage from './home_page/home_page.jsx';
+import CompanyPage from './company_page/company_page.jsx';
 
 const App = () => (
   <div className="app-body">
     <Navbar />
     <div className="app-main">
-      <HomePage />
-      <ProtectedRoute path="/home" component={HomePage} />
+      <Switch>
+        <ProtectedRoute path="/company/:id" component={CompanyPage} />
+        <ProtectedRoute path="/" component={HomePage} />
+    </Switch>
     </div>
   </div>
 );

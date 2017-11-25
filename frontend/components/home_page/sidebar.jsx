@@ -8,7 +8,7 @@ import WatchlistContainer from './watchlist_index_container';
 class SideBar extends React.Component {
   render() {
     return (
-      <div className="home-sidebar">
+      <div className="sidebar">
         <StockIndexContainer />
         <WatchlistContainer />
       </div>

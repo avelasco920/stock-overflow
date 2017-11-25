@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 class MainContent extends React.Component {
   render() {
     return (
-      <div className="home-main-content">
+      <div className="main-content">
 
       </div>
     );
