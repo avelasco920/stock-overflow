@@ -1,5 +1,3 @@
-@newsarticles.each do |newsarticle|
-  json.set! newsarticle.id do
-    json.partial! 'api/newsarticles/newsarticle', newsarticle: newsarticle
-  end
+json.array!(@newsarticles) do |newsarticle|
+  json.partial! 'api/newsarticles/newsarticle', newsarticle: newsarticle
 end
