@@ -8,10 +8,16 @@ import {
   START_LOADING_SINGLE_COMPANY
 } from '../actions/companies_actions';
 
+import {
+  RECEIVE_NEWS_ARTICLES,
+  START_LOADING_NEWS_ARTICLES,
+} from '../actions/news_articles_actions';
+
 const initialState = {
   indexLoading: true,
   detailLoading: true,
-  stockIndexLoading: true,
+  // stockIndexLoading: true,
+  articlesLoading: true,
 };
 
 const loadingReducer = (state = initialState, action) => {
@@ -27,6 +33,10 @@ const loadingReducer = (state = initialState, action) => {
       return merge({}, state, { indexLoading: true });
     case START_LOADING_SINGLE_COMPANY:
       return merge({}, state, { detailLoading: true });
+    case RECEIVE_NEWS_ARTICLES:
+      return merge({}, state, { indexLoading: false });
+    case START_LOADING_NEWS_ARTICLES:
+      return merge({}, state, { articlesLoading: true });
     default:
       return state;
   }
