@@ -15,7 +15,7 @@ class SignupPage extends React.Component {
             <img
               src="https://d2ue93q3u507c2.cloudfront.net/assets/robinhood/images/logo.png"
               id="green-logo-large"/>
-            <h1>Let's get Started</h1>
+            <h1 id="signup-page-title">Let's get Started</h1>
           </div>
         </div>
         <div className="user-form-container">

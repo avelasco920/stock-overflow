@@ -1,11 +1,59 @@
 .chart {
-  border: 1px solid black;
+  border-bottom: 3px solid $lightest-gray;
   height: 500px;
   width: 100%;
+  position: relative;
 }
 
 @media only screen and (max-width: 1900px)  {
   .chart {
     height: 400px;
   }
+}
+
+.account-info h2 {
+  margin-bottom: 8px;
+}
+
+.delta {
+  display: flex;
+}
+
+.delta span {
+  color: $light-gray;
+}
+
+.chart-overlay {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20px;
+  align-content: space-between;
+  height: 100%;
+  z-index: 300;
+  position: absolute;
+}
+
+.chart-history {
+  padding-bottom: 10px;
+}
+
+.chart-history a {
+  margin-right: 30px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+.chart-history a:hover {
+  color: $green;
+  cursor: pointer;
+  border-bottom: 3px solid $green;
+}
+
+.chart-placeholder {
+  position: absolute;
+  z-index: 100;
+  top: 100px
 }

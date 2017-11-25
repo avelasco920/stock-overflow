@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
-import { stringifyIntegerNoCommas } from '../../util/data_to_ui';
+import { stringifyIntegerNoCommas } from '../../util/parsing_functions';
 
 const StockIndexItem = ({ company }) => {
   return (
