@@ -10,9 +10,9 @@
 #  session_token   :string           not null
 #  password_digest :string           not null
 #  contact_number  :string
-#  stocks_value    :integer          not null
-#  cash_value      :integer          not null
-#  portfolio_value :integer          not null
+#  stocks_value    :float            not null
+#  cash_value      :float            not null
+#  portfolio_value :float            not null
 #  img_url         :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

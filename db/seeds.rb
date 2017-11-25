@@ -236,293 +236,80 @@ WatchlistItem.create(
 #-------------------------------#
 
 NewsArticle.create(
-  publisher: Forbes,
+  publisher: "Forbes",
   title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  source: "https://www.forbes.com/sites/chuckjones/2017/11/24/iphone-x-supply-quickly-catching-up-to-demand/#155672de7c21",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-NewsArticle.create(
-  publisher: Forbes,
-  title: "Walmart Online Can Be A Legitimate Challenge To Amazon",
+  company_id: apple.id,
   date: Date.new(2017, 11, 24),
   img_url: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  source: "https://www.forbes.com/sites/chuckjones/2017/11/24/iphone-x-supply-quickly-catching-up-to-demand/#155672de7c21",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
+  source: "https://www.forbes.com/sites/chuckjones/2017/11/24/iphone-x-supply-quickly-catching-up-to-demand/#1cf44f787c21",
+  body: "Apple decreased the lead-time for the iPhone X from 2 to
+        3 weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
         iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
         8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
+        disappeared I believe it is worthwhile to follow the iPhone 8’s
+        and X’s and compare them to some of the earlier models,
         especially the iPhone 6 since it saw such strong demand."
 )
 
 NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
+  publisher: "Forbes",
+  title: "The Tiger Of Silicon Valley: Glen Kacher's Sizzling Hedge Fund",
+  date: Date.new(2017, 11, 21),
+  img_url: "https://blogs-images.forbes.com/nathanvardi/files/2017/11/1106_inv-light-street-light-street-glen-kacher_1200x675-1200x675.jpg?width=960",
+  source: "https://www.forbes.com/sites/nathanvardi/2017/11/21/the-tiger-of-silicon-valley-glen-kachers-sizzling-hedge-fund/#50e233992904",
+  body: "When you live and work in a town where the median home costs
+        $2.7 million and hobnob with the executives of billionaire
+        factories like Facebook and Tesla, it's easy to see why you
+        might think technology stocks are invincible. So far in 2017,
+        the Nasdaq Composite index has gained 25%.
+
+        Light Street Capital, based in Palo Alto, California, is
+        up 52.7% net of fees in the first 10 months of 2017, making
+        it the top-performing hedge fund this year. Its baby-faced
+        boss, Glen Kacher, is pounding the table, saying tech stocks
+        have room to run.
+
+        \"The idea that this is a bubble is a joke,\" says
+        Kacher, 46. \"I don't think people are looking at the
+        fundamentals.\"
+
+        Since its inception in 2010, Kacher's $1.1 billion
+        tech-focused hedge fund has delivered annualized net
+        returns of 19.8%. More than anything, he has been in the
+        right place at the right time. By parking himself in Silicon
+        Valley instead of New York and spending time with VCs and
+        entrepreneurs rather than Wall Street's sell-side analysts,
+        Kacher has gained the equivalent of first-mover advantage
+        among hedge funds."
 )
 
 NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
+  publisher: "Forbes",
+  title: "Three Stock Picks From A Manager Who's Beaten The Roaring
+          S&P 500 By Playing Defense",
+  date: Date.new(2017, 11, 21),
+  img_url: "https://specials-images.forbesimg.com/imageserve/875048394/960x0.jpg?fit=scale",
+  source: "https://www.forbes.com/sites/antoinegara/2017/11/21/three-stock-picks-from-a-manager-whos-beat-the-roaring-sp-500-by-playing-defense/#4a6f36bf2348",
+  body: "Investment out-performance is a rare commodity on Wall Street
+        due to a roaring bull market that's left most active managers
+        in the dust. For those who are beating the market, having a
+        good defensive plan for the inevitable downturn is paramount.
 
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
+        Take Adam Abelson, portfolio manager of the $136 million
+        Stralem Equity Fund. He runs a stock-only portfolio that
+        acts more like a balanced fund that holds an allocation to
+        the safety of bonds. Abelson avoids bonds for the favor of
+        stocks, but his twist is to split Stralem's portfolio into
+        what he calls \"up market stocks,\" growth companies that should
+        outperform in bull markets, and \"down market stocks\" like
+        utilities and consumer staples that preserve capital during
+        bear markets.
 
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
-)
-
-
-NewsArticle.create(
-  publisher: Investopedia,
-  title: "iPhone X Supply Quickly Catching Up To Demand",
-  date: Date.new(2017, 12, 24),
-  img_url: snap.id,
-  source: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
-  body: "Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now
-        the 8 and X. While I didn’t follow all of them until the
-        lead-times disappeared I believe it is worthwhile to follow
-        the iPhone 8’s and X’s and compare them to some of the earlier
-        models, especially the iPhone 6 since it saw such strong demand.
-        Apple decreased the lead-time for the iPhone X from 2 to 3
-        weeks to 1 to 2 weeks on Thanksgiving Day. I have tracked
-        iPhone lead-times for the 4S, 5, 5c, 5s, 6, 6s, 7 and now the
-        8 and X. While I didn’t follow all of them until the lead-times
-        disappeared I believe it is worthwhile to follow the iPhone
-        8’s and X’s and compare them to some of the earlier models,
-        especially the iPhone 6 since it saw such strong demand."
+        This common sense strategy, a bedrock of family-owned Stralem
+        & Co, has yielded impressive results. Not only has Abelson's
+        Equity Fund outperformed balanced funds, it's also beaten the
+        soaring S&P 500 over the long haul. Net of fees, Stralem's
+        Equity Fund has returned 11.3% annually over five years, 9.4%
+        over ten years and 10.8% over twenty years, beating the S&P 500
+        by between 2% and 2.8% a year. Having a good defense is valuable."
 )

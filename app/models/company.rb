@@ -5,7 +5,7 @@
 #  id            :integer          not null, primary key
 #  name          :string           not null
 #  symbol        :string           not null
-#  market_price  :integer
+#  market_price  :float
 #  biography     :text
 #  ceo           :string
 #  founding_year :integer
