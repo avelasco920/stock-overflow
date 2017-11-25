@@ -16,7 +16,6 @@ import {
 const initialState = {
   indexLoading: true,
   detailLoading: true,
-  // stockIndexLoading: true,
   articlesLoading: true,
 };
 
@@ -34,7 +33,7 @@ const loadingReducer = (state = initialState, action) => {
     case START_LOADING_SINGLE_COMPANY:
       return merge({}, state, { detailLoading: true });
     case RECEIVE_NEWS_ARTICLES:
-      return merge({}, state, { indexLoading: false });
+      return merge({}, state, { articlesLoading: false });
     case START_LOADING_NEWS_ARTICLES:
       return merge({}, state, { articlesLoading: true });
     default:

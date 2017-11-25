@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 import LoadingIcon from '../loading_icon';
+import NewsArticleIndexItem from './news_article_index_item';
 
 class NewsIndex extends React.Component {
   componentWillMount() {
@@ -15,7 +16,7 @@ class NewsIndex extends React.Component {
       <LoadingIcon /> :
       <ul className="news-articles-index">
         {newsArticles.map(newsArticle =>
-          <StockIndexItem
+          <NewsArticleIndexItem
             key={newsArticle.id}
             newsArticle={newsArticle} />
         )}

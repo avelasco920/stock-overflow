@@ -33,7 +33,6 @@ class WatchlistIndex extends React.Component {
   // }
 
   render() {
-    let ul = $("#sidebar-ul");
     const {companiesWatching, loading } = this.props;
     return (
       loading ?
