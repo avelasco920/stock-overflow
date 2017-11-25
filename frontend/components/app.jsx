@@ -20,7 +20,7 @@ const App = () => (
       <Switch>
         <ProtectedRoute path="/company/:id" component={CompanyPage} />
         <ProtectedRoute path="/" component={HomePage} />
-    </Switch>
+      </Switch>
     </div>
   </div>
 );

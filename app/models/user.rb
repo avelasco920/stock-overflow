@@ -77,7 +77,7 @@ class User < ApplicationRecord
     self.stocks.each do |stock|
       stocks_value += individual_stock_value(stock.company, stock.num_shares)
     end
-    self.stocks_value = stocks_value
+    self.stocks_value = stocks_value.round(2)
     self.save
     self.stocks_value
   end

@@ -30,7 +30,7 @@ class Navbar extends React.Component {
           <SearchBarContainer className="white-input" id="search-bar"/>
         </div>
         <div className="navbar-right">
-          <Link to="/home" className="nav-link">Home</Link>
+          <Link to="/" className="nav-link">Home</Link>
           <Link to="/account" className="nav-link">Account</Link>
         </div>
       </div>
@@ -39,6 +39,3 @@ class Navbar extends React.Component {
 }
 
 export default withRouter(Navbar);
-
-
-{/* <ProtectedRoute path="/home" component={HomeContainer} /> */}

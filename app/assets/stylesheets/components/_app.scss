@@ -8,3 +8,48 @@
   justify-content: center;
   min-height: 1200px;
 }
+
+.page {
+  position: absolute;
+  width: 80%;
+  left: 10%; // (100% - width) / 2
+  top: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 1900px)  {
+  .page {
+    width: 60%;
+    left: 20%;
+  }
+}
+
+.main-content {
+  flex: 5;
+  margin-right: 6%;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 25%;
+  min-height: 400px;
+  height: auto;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  border: 1px solid white;
+  padding: 10px 20px;
+}
+
+@media only screen and (max-width: 1900px)  {
+  .sidebar { width: 30%; }
+}
+
+
+.sidebar-header {
+  padding: 18px 0;
+  border-bottom: 1px solid $lightest-gray;
+  justify-content: space-between;
+}

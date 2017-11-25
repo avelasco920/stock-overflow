@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 
-import NewsIndex from './news_index';
+import Chart from './chart';
 
 const mapStateToProps = state => {
   return {
+    user: state.session.currentUser
   };
 };
 
@@ -13,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewsIndex);
+)(Chart);
