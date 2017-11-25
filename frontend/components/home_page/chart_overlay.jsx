@@ -16,7 +16,7 @@ class ChartOverlay extends React.Component {
         <div className="account-info">
           <h2>{stringifyInteger(user.stocks_value)}</h2>
           <div className="delta">
-            <h4>+$7.01(+0.70%)</h4><span>Today</span>
+            <h4>+$7.01(+0.70%)</h4> <span>Today</span>
           </div>
         </div>
         <div className="chart-history">

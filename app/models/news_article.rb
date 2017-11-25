@@ -14,4 +14,5 @@
 #
 
 class NewsArticle < ApplicationRecord
+  validates :publisher, :title, :body, :date, :img_url, :source, presence: true
 end
