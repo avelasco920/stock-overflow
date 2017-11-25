@@ -1,30 +1,24 @@
 import { connect } from 'react-redux';
 
+import { fetchCompanies } from '../../actions/companies_actions';
+import WatchlistIndex from './watchlist_index';
 import {
-  fetchCompanies,
-  // stockIndexHasMounted
-} from '../../actions/companies_actions';
-
-import StockIndex from './stock_index';
-import {
-  selectInvestedCompanies,
   selectWatchingCompanies
 } from '../../reducers/selectors';
 
 const mapStateToProps = state => {
   return {
-    companiesInvested: selectInvestedCompanies(state),
+    companiesWatching: selectWatchingCompanies(state),
     loading: state.ui.loading.indexLoading,
     // stockIndexLoading: state.ui.loading.stockIndexLoading
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchCompanies: () => dispatch(fetchCompanies()),
-  // stockIndexHasMounted: () => dispatch(stockIndexHasMounted())
+  fetchCompanies: () => dispatch(fetchCompanies())
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(StockIndex);
+)(WatchlistIndex);

@@ -2,10 +2,10 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 
-import StockIndexItem from './stock_index_item';
+import WatchlistIndexItem from './watchlist_index_item';
 import LoadingIcon from '../loading_icon';
 
-class StockIndex extends React.Component {
+class WatchlistIndex extends React.Component {
   // constructor() {
   //   super();
   //   this.addingStocks = false;
@@ -14,16 +14,12 @@ class StockIndex extends React.Component {
   //   };
   // }
 
-  componentWillMount() {
-    this.props.fetchCompanies();
-  }
-
   // componentWillReceiveProps(newProps) {
-  //   if (!newProps.loading
-  //     && newProps.companiesInvested[0]
+  //   if (!newProps.loadingData
+  //     && newProps.companiesWatching[0]
   //     && this.addingStocks === false) {
   //     this.addingStocks = true;
-  //     this.addStock(newProps.companiesInvested);
+  //     this.addStock(newProps.companiesWatching);
   //   }
   // }
   //
@@ -36,24 +32,19 @@ class StockIndex extends React.Component {
   //   }
   // }
 
-  // addStockTimedCorrectly(allStocks) {
-  //   return () => this.addStock(allStocks).
-  //     then(this.props.stockIndexHasMounted());
-  // }
-
-
   render() {
-    const {companiesInvested, loading } = this.props;
+    let ul = $("#sidebar-ul");
+    const {companiesWatching, loading } = this.props;
     return (
       loading ?
       <LoadingIcon /> :
       <div className="stock-index">
         <h4 className="sidebar-header">
-          Stocks
+          Watchlist
         </h4>
-        <ul>
-          {companiesInvested.map(company =>
-            <StockIndexItem
+        <ul id="sidebar-ul">
+          {companiesWatching.map(company =>
+            <WatchlistIndexItem
               key={company.id}
               company={company} />
           )}
@@ -63,4 +54,4 @@ class StockIndex extends React.Component {
   }
 }
 
-export default StockIndex;
+export default WatchlistIndex;

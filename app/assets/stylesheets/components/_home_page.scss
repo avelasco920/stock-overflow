@@ -1,6 +1,5 @@
 .home-page {
   position: absolute;
-  height: 1200px;
   width: 80%;
   left: calc(10%);
   top: 100px;
@@ -16,6 +15,8 @@
 
 .home-sidebar {
   width: 25%;
+  min-height: 400px;
+  height: auto;
   background-color: white;
   box-sizing: border-box;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -44,7 +45,6 @@
   flex-direction: column;
 }
 
-
 .stock-num-shares {
   color: $light-gray;
   padding-top: 6px;
@@ -59,16 +59,12 @@
 .stock-price {
   align-items: center;
   text-align: center;
-  width: 30%;
+  width: 90px;
   line-height: 30px;
   font-size: 18px;
 }
 
 
-@media only screen and (max-width: 1300px)  {
+@media only screen and (max-width: 1400px)  {
   .home-sidebar { width: 35%; }
-}
-
-@media only screen and (min-width: 1300px)  {
-  .stock-price { width: 25%; }
 }

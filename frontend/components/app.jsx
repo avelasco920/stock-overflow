@@ -19,7 +19,6 @@ const App = () => (
       <HomePage />
       <ProtectedRoute path="/home" component={HomePage} />
     </div>
-    <div className="body-test"></div>
   </div>
 );
 

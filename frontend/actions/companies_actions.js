@@ -1,9 +1,14 @@
 import * as APIUtil from '../util/companies_api_util';
 
+// export const STOCK_INDEX_HAS_MOUNTED = 'STOCK_INDEX_HAS_MOUNTED';
 export const START_LOADING_ALL_COMPANIES = 'START_LOADING_ALL_COMPANIES';
 export const START_LOADING_SINGLE_COMPANY = 'START_LOADING_SINGLE_COMPANY';
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
+
+// export const stockIndexHasMounted = () => ({
+//   type: STOCK_INDEX_HAS_MOUNTED
+// });
 
 export const startLoadingAllCompanies = () => ({
   type: START_LOADING_ALL_COMPANIES
@@ -22,6 +27,10 @@ export const receiveCompany = company => ({
   type: RECEIVE_COMPANY,
   company
 });
+
+// export const toggleIndexLoading = dispatch => {
+//   dispatch(stockIndexHasMounted());
+// };
 
 export const fetchCompanies = () => dispatch => {
   dispatch(startLoadingAllCompanies());
