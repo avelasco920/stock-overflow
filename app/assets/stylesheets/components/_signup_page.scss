@@ -126,6 +126,8 @@ html,body { height:100%; }
 #faq-answer {
   margin-top: 30px;
   display: none;
+  text-decoration: underline;
+  color: $green;
 }
 
 .login-link {

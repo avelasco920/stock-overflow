@@ -10,16 +10,18 @@ class NewsIndex extends React.Component {
   }
 
   render() {
-    const { newsArticles, loading, incrementCount } = this.props;
+    const { newsArticles, loading, companies, companiesLoading } = this.props;
+    // console.log(`companies: ${companiesLoading}`);
+    // console.log(`articles: ${loading}`);
     return (
-      loading ?
+      loading && companiesLoading ?
       <LoadingIcon /> :
         <ul className="news-articles-index">
         {newsArticles.map(newsArticle =>
           <NewsArticleIndexItem
             key={newsArticle.id}
             newsArticle={newsArticle}
-            incrementCount={incrementCount}/>
+            companyName={companies[newsArticle.company_id].name}/>
         )}
       </ul>
     );

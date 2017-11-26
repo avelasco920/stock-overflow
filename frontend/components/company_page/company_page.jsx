@@ -10,6 +10,7 @@ class CompanyPage extends React.Component {
     return (
       <div className="page">
         <MainContent />
+        <h2>CompanyPage</h2>
         <SideBar />
       </div>
     );

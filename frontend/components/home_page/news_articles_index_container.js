@@ -10,6 +10,8 @@ const mapStateToProps = state => {
   return {
     newsArticles: selectNewsArticles(state),
     loading: state.ui.loading.articlesLoading,
+    companiesLoading: state.ui.loading.indexLoading,
+    companies: state.entities.companies,
   };
 };
 

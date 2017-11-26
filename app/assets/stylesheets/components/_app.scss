@@ -19,7 +19,7 @@
   margin-bottom: 45px;
 }
 
-@media only screen and (min-width: 1650px)  {
+@media only screen and (min-width: 1500px)  {
   .page {
     width: 60%;
     left: 20%;
@@ -33,7 +33,7 @@
 }
 
 .sidebar-container {
-  width: 25%;
+  width: 28%;
 }
 
 .sidebar {
@@ -41,14 +41,8 @@
   box-sizing: border-box;
   box-shadow: 0 0 30px rgba(0,0,0,0.1);
   border-radius: 6px;
-  // border: 1px solid transparent;
-  // padding: 10px 20px;
+  min-height: 400px;
 }
-
-@media only screen and (max-width: 1650px)  {
-  .sidebar { width: 30%; }
-}
-
 
 .sidebar-header {
   padding: 18px 20px;
