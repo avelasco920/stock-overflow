@@ -240,6 +240,7 @@ NewsArticle.create(
   title: "iPhone X Supply Quickly Catching Up To Demand",
   company_id: apple.id,
   date: Date.new(2017, 11, 24),
+  views: 19,
   img_url: "https://specials-images.forbesimg.com/dam/imageserve/869824584/960x0.jpg?fit=scale",
   source: "https://www.forbes.com/sites/chuckjones/2017/11/24/iphone-x-supply-quickly-catching-up-to-demand/#1cf44f787c21",
   body: "Apple decreased the lead-time for the iPhone X from 2 to
@@ -253,13 +254,15 @@ NewsArticle.create(
 
 NewsArticle.create(
   publisher: "Forbes",
-  title: "The Tiger Of Silicon Valley: Glen Kacher's Sizzling Hedge Fund",
+  title: "The Tiger Of Silicon Valley: Glen Kacher\'s Sizzling Hedge Fund",
   date: Date.new(2017, 11, 21),
+  company_id: snap.id,
+  views: 23,
   img_url: "https://blogs-images.forbes.com/nathanvardi/files/2017/11/1106_inv-light-street-light-street-glen-kacher_1200x675-1200x675.jpg?width=960",
   source: "https://www.forbes.com/sites/nathanvardi/2017/11/21/the-tiger-of-silicon-valley-glen-kachers-sizzling-hedge-fund/#50e233992904",
   body: "When you live and work in a town where the median home costs
         $2.7 million and hobnob with the executives of billionaire
-        factories like Facebook and Tesla, it's easy to see why you
+        factories like Facebook and Tesla, it\'s easy to see why you
         might think technology stocks are invincible. So far in 2017,
         the Nasdaq Composite index has gained 25%.
 
@@ -285,9 +288,11 @@ NewsArticle.create(
 
 NewsArticle.create(
   publisher: "Forbes",
-  title: "Three Stock Picks From A Manager Who's Beaten The Roaring
+  title: "Three Stock Picks From A Manager Who\'s Beaten The Roaring
           S&P 500 By Playing Defense",
   date: Date.new(2017, 11, 21),
+  company_id: square.id,
+  views: 38,
   img_url: "https://specials-images.forbesimg.com/imageserve/875048394/960x0.jpg?fit=scale",
   source: "https://www.forbes.com/sites/antoinegara/2017/11/21/three-stock-picks-from-a-manager-whos-beat-the-roaring-sp-500-by-playing-defense/#4a6f36bf2348",
   body: "Investment out-performance is a rare commodity on Wall Street
@@ -299,7 +304,7 @@ NewsArticle.create(
         Stralem Equity Fund. He runs a stock-only portfolio that
         acts more like a balanced fund that holds an allocation to
         the safety of bonds. Abelson avoids bonds for the favor of
-        stocks, but his twist is to split Stralem's portfolio into
+        stocks, but his twist is to split Stralem\'s portfolio into
         what he calls \"up market stocks,\" growth companies that should
         outperform in bull markets, and \"down market stocks\" like
         utilities and consumer staples that preserve capital during

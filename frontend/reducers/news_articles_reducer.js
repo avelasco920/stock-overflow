@@ -5,15 +5,15 @@ import {
   RECEIVE_NEWS_ARTICLE,
 } from '../actions/news_articles_actions';
 
-const newsArticlesReducer = (state = [], action) => {
+const newsArticlesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_NEWS_ARTICLES:
-      return merge([], action.newsArticles);
+      return merge({}, action.newsArticles);
     case RECEIVE_NEWS_ARTICLE:
-      const newsArticles = merge({}, state);
+      let newsArticles = merge({}, state);
       const newsArticle = action.newsArticle;
-      return merge([], newsArticles, newsArticle);
+      return merge({}, newsArticles, {[newsArticle.id]: newsArticle});
     default:
       return state;
   }

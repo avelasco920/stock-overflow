@@ -14,7 +14,7 @@ class NewsIndex extends React.Component {
     return (
       loading ?
       <LoadingIcon /> :
-      <ul className="news-articles-index">
+        <ul className="news-articles-index">
         {newsArticles.map(newsArticle =>
           <NewsArticleIndexItem
             key={newsArticle.id}

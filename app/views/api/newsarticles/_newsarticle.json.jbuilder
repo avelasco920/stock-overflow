@@ -1,2 +1,2 @@
-json.extract! newsarticle, :id, :company_id, :publisher, :title,
-                          :date, :img_url, :source, :body
+json.extract! news_article, :id, :company_id, :publisher, :title,
+                          :date, :img_url, :source, :body, :views

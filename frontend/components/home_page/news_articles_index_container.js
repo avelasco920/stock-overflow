@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { fetchNewsArticles } from '../../actions/news_articles_actions';
+import { selectNewsArticles } from '../../reducers/selectors';
 import NewsArticlesIndex from './news_articles_index';
 
 const mapStateToProps = state => {
   return {
-    newsArticles: state.entities.newsArticles,
-    loading: state.ui.loading.indexLoading,
+    newsArticles: selectNewsArticles(state),
+    loading: state.ui.loading.articlesLoading,
   };
 };
 

@@ -4,3 +4,10 @@ export const fetchNewsArticles = () => (
     url: '/api/newsarticles'
   })
 );
+
+export const incrementCount = id => (
+  $.ajax({
+    method: 'PATCH',
+    url: `/api/newsarticles/${id}`
+  })
+);

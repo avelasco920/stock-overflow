@@ -12,10 +12,18 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  company_id :integer
+#  views      :integer
 #
 
 class NewsArticle < ApplicationRecord
-  validates :publisher, :title, :body, :date, :img_url, :source, presence: true
+  validates :publisher, :title, :body, :date, :img_url,
+            :source, :views, presence: true
 
   belongs_to :company
+
+  def increment_view
+    self.views += 1
+    self.save
+    self.views
+  end
 end

@@ -19,3 +19,8 @@ export const selectWatchingCompanies = (state) => {
 export const selectCurrentCompany = (state, id) => {
   return state.entities.companies[id];
 };
+
+export const selectNewsArticles = (state) => {
+  const newsArticles = state.entities.newsArticles;
+  return Object.keys(newsArticles).map((id) => newsArticles[id]);
+};
