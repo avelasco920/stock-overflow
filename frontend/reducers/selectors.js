@@ -24,3 +24,7 @@ export const selectNewsArticles = (state) => {
   const newsArticles = state.entities.newsArticles;
   return Object.keys(newsArticles).map((id) => newsArticles[id]);
 };
+
+export const selectCompany = (state, id) => {
+  return state.eneities.companies[id];
+};

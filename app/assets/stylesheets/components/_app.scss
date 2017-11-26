@@ -6,7 +6,7 @@
 
 .app-main {
   justify-content: center;
-  min-height: 1200px;
+  height: 120%;
 }
 
 .page {
@@ -16,6 +16,7 @@
   top: 100px;
   display: flex;
   justify-content: space-between;
+  height: 130%;
 }
 
 @media only screen and (min-width: 1900px)  {
@@ -34,13 +35,13 @@
 .sidebar {
   width: 25%;
   min-height: 400px;
-  height: auto;
   background-color: white;
   box-sizing: border-box;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   border-radius: 6px;
   border: 1px solid white;
   padding: 10px 20px;
+  overflow: visible;
 }
 
 @media only screen and (max-width: 1900px)  {

@@ -10,7 +10,7 @@ class NewsIndex extends React.Component {
   }
 
   render() {
-    const { newsArticles, loading } = this.props;
+    const { newsArticles, loading, incrementCount } = this.props;
     return (
       loading ?
       <LoadingIcon /> :
@@ -18,7 +18,8 @@ class NewsIndex extends React.Component {
         {newsArticles.map(newsArticle =>
           <NewsArticleIndexItem
             key={newsArticle.id}
-            newsArticle={newsArticle} />
+            newsArticle={newsArticle}
+            incrementCount={incrementCount}/>
         )}
       </ul>
     );
