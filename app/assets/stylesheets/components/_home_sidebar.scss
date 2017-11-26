@@ -5,6 +5,12 @@
   height: 70px;
   box-sizing: border-box;
   width: 100%;
+  padding: 20px;
+  transition: background-color 400ms;
+}
+
+.stock-index-item:hover {
+  background-color: $lightest-gray;
 }
 
 .stock-index-item div {
