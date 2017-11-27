@@ -6,7 +6,7 @@
 #  name          :string           not null
 #  symbol        :string           not null
 #  market_price  :float
-#  biography     :text
+#  biography     :string
 #  ceo           :string
 #  founding_year :integer
 #  employees     :integer

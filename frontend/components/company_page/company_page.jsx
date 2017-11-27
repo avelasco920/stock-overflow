@@ -8,9 +8,6 @@ import SideBar from './sidebar';
 class CompanyPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      company: {},
-    };
   }
 
   componentWillMount() {
@@ -21,11 +18,10 @@ class CompanyPage extends React.Component {
   }
 
   render() {
-    const company = this.state.company;
     return (
       <div className="page">
-        <MainContent company={company}/>
-        <SideBar company={company}/>
+        <MainContent />
+        <SideBar />
       </div>
     );
   }

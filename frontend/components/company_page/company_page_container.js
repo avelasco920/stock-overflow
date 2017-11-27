@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CompanyPage from './company_page';
 import { fetchCompany } from '../../actions/companies_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     companies: state.entities.companies,
   };

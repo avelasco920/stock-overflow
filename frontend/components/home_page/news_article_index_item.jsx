@@ -41,7 +41,3 @@ class NewsArticleIndexItem extends React.Component {
 }
 
 export default NewsArticleIndexItem;
-
-//
-// <h4>{newsArticle.publisher} on <span className="news-company">{companyName}</span></h4>
-//

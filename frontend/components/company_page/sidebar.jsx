@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 
-import StockFormContainer from './stock_form';
+import StockFormContainer from './stock_form_container';
 
 class SideBar extends React.Component {
   render() {

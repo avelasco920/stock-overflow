@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-import Chart from './chart';
+import StockForm from './stock_form';
+import { selectCurrentCompany } from '../../reducers/selectors';
 
-const mapStateToProps = state => {
+const mapStateToProps = ( state ) => {
   return {
     user: state.session.currentUser,
+    company: selectCurrentCompany(state),
+    loading: state.ui.loading.detailLoading,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Chart);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(StockForm)
+);

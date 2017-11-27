@@ -69,6 +69,10 @@ a {
   // text-decoration: underline;
 }
 
+button {
+  font-family: $roboto;
+}
+
 .gray-input {
   border: 1px solid transparent;
   background-color: $lightest-gray;

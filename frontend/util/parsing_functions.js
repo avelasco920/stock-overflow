@@ -15,7 +15,7 @@ const addCommas = (num) => {
   let wholeNumsReversed = num.split("").reverse();
   let wholeNumsWithCommas = [];
   wholeNumsReversed.forEach((n, i) => {
-    if ((i + 1) % 3 === 0) {
+    if ((i + 1) % 3 === 0 && wholeNumsReversed[i + 1]) {
       wholeNumsWithCommas += n + ",";
     } else {
       wholeNumsWithCommas += n;

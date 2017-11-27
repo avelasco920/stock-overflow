@@ -16,7 +16,7 @@ class ChartOverlay extends React.Component {
     return (
       <div className="chart-overlay">
         <div className="company-info">
-          <h2>{company.name} Inc</h2>
+          <h2>{company.name}</h2>
           <h1>{stringifyInteger(company.market_price)}</h1>
           <div className="delta">
             <h4>+$7.01(+0.70%)</h4> <span>Today</span>
