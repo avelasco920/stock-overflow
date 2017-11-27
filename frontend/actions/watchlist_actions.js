@@ -1,22 +1,18 @@
 import * as APIUtil from '../util/watchlist_api_util';
 
-export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
-export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
+export const RECEIVE_WATCHLIST_ITEM = 'RECEIVE_WATCHLIST_ITEM';
+export const REMOVE_WATCHLIST_ITEM = 'REMOVE_WATCHLIST_ITEM';
 
-export const receiveCompanies = companies => ({
-  type: RECEIVE_COMPANIES,
-  companies
-});
-
-export const receiveCompany = company => ({
-  type: RECEIVE_COMPANY,
+export const receiveWatchlistItem = (company, watching) => ({
+  type: RECEIVE_WATCHLIST_ITEM,
+  watching,
   company
 });
 
 export const watchCompany = id => dispatch => {
   return APIUtil.watchCompany(id)
-    .then(companies => (
-      dispatch(receiveCompanies(companies))
+    .then((company) => (
+      dispatch(receiveWatchlistItem(company, true))
     )
   );
 };
@@ -24,7 +20,7 @@ export const watchCompany = id => dispatch => {
 export const unwatchCompany = id => dispatch => {
   return APIUtil.unwatchCompany(id)
     .then(company => (
-      dispatch(receiveCompany(company))
+      dispatch(receiveWatchlistItem(company, false))
     )
   );
 };
