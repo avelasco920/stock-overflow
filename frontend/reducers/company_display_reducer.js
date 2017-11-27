@@ -2,7 +2,11 @@ import {
   RECEIVE_COMPANY
 } from '../actions/companies_actions';
 
-const companyDisplayReducer = (state = null, action) => {
+const defaultState = Object.freeze(
+  null
+);
+
+const companyDisplayReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {

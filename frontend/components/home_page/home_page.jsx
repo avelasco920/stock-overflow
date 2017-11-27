@@ -1,5 +1,4 @@
 import React from 'react';
-import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 
 import MainContent from './main_content';

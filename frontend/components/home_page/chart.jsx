@@ -5,9 +5,6 @@ import { Link, withRouter } from 'react-router-dom';
 import ChartOverlay from './chart_overlay';
 
 class Chart extends React.Component {
-  componentWillMount() {
-  }
-
   render() {
     const { user } = this.props;
     return (

@@ -32,7 +32,7 @@ class Navbar extends React.Component {
           <SearchBarContainer className="white-input" id="search-bar"/>
         </div>
         <div className="navbar-right">
-          <NavLink to="/home" className="nav-link" activeClassName="nav-link-selected">Home</NavLink>
+          <NavLink to="/" className="nav-link" activeClassName="nav-link-selected">Home</NavLink>
           <NavLink to="/account" className="nav-link" activeClassName="nav-link-selected">Account</NavLink>
         </div>
       </div>

@@ -111,8 +111,6 @@ class UserForm extends React.Component {
 
   render() {
     const isEnabled = this.state.password.length > 6;
-      // this.state.email.includes("@") &&
-      // this.state.password === this.state.password_confirmation &&
 
     this.addRedBorder();
     return (
@@ -127,6 +125,7 @@ class UserForm extends React.Component {
                 placeholder="First Name"
                 onChange={this.update('first_name')}
                 onClick={(e) => this.removeRedBorder(e)}
+                onKeyUp={(e) => this.removeRedBorder(e)}
                 className="white-input"
                 id="firstname"
               />
@@ -135,6 +134,7 @@ class UserForm extends React.Component {
                 placeholder="Last Name"
                 onChange={this.update('last_name')}
                 onClick={(e) => this.removeRedBorder(e)}
+                onKeyUp={(e) => this.removeRedBorder(e)}
                 className="white-input"
                 id="lastname"
               />
@@ -144,6 +144,7 @@ class UserForm extends React.Component {
               placeholder="Email Address"
               onChange={this.update('email')}
               onClick={(e) => this.removeRedBorder(e)}
+              onKeyUp={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="email"
             />
@@ -152,6 +153,7 @@ class UserForm extends React.Component {
               placeholder="Robinhood Username"
               onChange={this.update('username')}
               onClick={(e) => this.removeRedBorder(e)}
+              onKeyUp={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="username"
             />
@@ -160,6 +162,7 @@ class UserForm extends React.Component {
               placeholder="Password (min. 8 characters)"
               onChange={this.update('password')}
               onClick={(e) => this.removeRedBorder(e)}
+              onKeyUp={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="password"
             />
@@ -168,6 +171,7 @@ class UserForm extends React.Component {
               placeholder="Confirm Password"
               onChange={this.update('password_confirmation')}
               onClick={(e) => this.removeRedBorder(e)}
+              onKeyUp={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="pw-conf"
             />
@@ -176,6 +180,7 @@ class UserForm extends React.Component {
               placeholder="How much would you like to start investing with?"
               onChange={this.update('cash_value')}
               onClick={(e) => this.removeRedBorder(e)}
+              onKeyUp={(e) => this.removeRedBorder(e)}
               className="white-input"
               id="cash-value"
             />

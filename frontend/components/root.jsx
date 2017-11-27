@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 
 //containers
-import App from './app';
+import AppContainer from './app_container';
 import LoginPage from './login_page/login_page';
 import SignupPage from './signup_page/signup_page';
 
@@ -18,7 +18,7 @@ const Root = ({ store }) => (
       <Switch>
         <AuthRoute path="/login" component={LoginPage} />
         <AuthRoute path="/signup" component={SignupPage} />
-        <ProtectedRoute path="/" component={App} />
+        <ProtectedRoute path="/" component={AppContainer} />
       </Switch>
     </HashRouter>
   </Provider>

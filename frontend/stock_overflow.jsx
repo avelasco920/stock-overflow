@@ -7,7 +7,12 @@ import {
   login,
   logout
 } from './actions/session_actions';
-import { selectInvestedCompanies, selectWatchingCompanies, selectNewsArticles } from './reducers/selectors';
+import {
+  selectCurrentCompany,
+  selectInvestedCompanies,
+  selectWatchingCompanies,
+  selectNewsArticles
+} from './reducers/selectors';
 import { fetchCompanies, fetchCompany } from './actions/companies_actions';
 import { fetchNewsArticles, incrementCount } from './actions/news_articles_actions';
 
@@ -24,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchNewsArticles = fetchNewsArticles;
   window.incrementCount = incrementCount;
   window.selectNewsArticles = selectNewsArticles;
+  window.selectCurrentCompany = selectCurrentCompany;
   //
 
   let store;

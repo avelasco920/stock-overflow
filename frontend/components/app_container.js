@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import Chart from './chart';
-import selectCurrentCompany from '../../reducers/selectors';
+import App from './app';
+import { fetchCompanies } from '../actions/companies_actions';
 
 const mapStateToProps = ( state, ownProps ) => {
   return {
-    user: state.session.currentUser,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
+  fetchCompanies: () => dispatch(fetchCompanies()),
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Chart)
+  connect(mapStateToProps, mapDispatchToProps)(App)
 );

@@ -6,6 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 class Chart extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   componentWillMount() {
