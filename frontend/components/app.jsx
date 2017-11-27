@@ -19,7 +19,7 @@ const App = () => (
     <div className="app-main">
       <Switch>
         <ProtectedRoute path="/company/:symbol" component={CompanyPage} />
-        <ProtectedRoute path="/" component={HomePage} />
+        <ProtectedRoute path="/home" component={HomePage} />
       </Switch>
     </div>
   </div>

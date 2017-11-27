@@ -10,6 +10,7 @@ class NewsArticleIndexItem extends React.Component {
   render() {
     const { newsArticle, companyName } = this.props;
     const articleId = newsArticle.id;
+    const companyUrl = `/company/${newsArticle.company_symbol}`;
     return (
       <li className="news-article-index-item">
         <a href={newsArticle.source}
@@ -18,7 +19,7 @@ class NewsArticleIndexItem extends React.Component {
           <img src={newsArticle.img_url}/>
         </a>
         <div className="news-text-area">
-          <h4>{newsArticle.publisher} on <span className="news-company">{companyName}</span></h4>
+          <h4>{newsArticle.publisher} on <Link to={companyUrl} className="news-company">{companyName}</Link></h4>
           <a
             href={newsArticle.source}
             className="news-title"
@@ -40,3 +41,7 @@ class NewsArticleIndexItem extends React.Component {
 }
 
 export default NewsArticleIndexItem;
+
+//
+// <h4>{newsArticle.publisher} on <span className="news-company">{companyName}</span></h4>
+//

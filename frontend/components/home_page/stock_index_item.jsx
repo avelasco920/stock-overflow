@@ -34,5 +34,3 @@ const StockIndexItem = ({ company, fetchCompany }) => {
 };
 
 export default StockIndexItem;
-//
-// <ProtectedRoute path={companyUrl} component={CompanyPage} />

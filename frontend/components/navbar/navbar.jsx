@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBarContainer from './searchbar_container';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 
 
@@ -32,8 +32,8 @@ class Navbar extends React.Component {
           <SearchBarContainer className="white-input" id="search-bar"/>
         </div>
         <div className="navbar-right">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/account" className="nav-link">Account</Link>
+          <NavLink to="/home" className="nav-link" activeClassName="nav-link-selected">Home</NavLink>
+          <NavLink to="/account" className="nav-link" activeClassName="nav-link-selected">Account</NavLink>
         </div>
       </div>
     );

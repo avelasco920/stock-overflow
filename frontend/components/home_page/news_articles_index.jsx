@@ -11,20 +11,20 @@ class NewsIndex extends React.Component {
 
   render() {
     const { newsArticles, loading } = this.props;
-      return (
-        loading ?
-        <LoadingIcon /> :
-          <ul className="news-articles-index">
-            {newsArticles.map(newsArticle =>
-              <NewsArticleIndexItem
-                key={newsArticle.id}
-                newsArticle={newsArticle}
-                companyName={newsArticle.company_name}
-              />
-          )}
-        </ul>
-      );
-    }
+    return (
+      loading ?
+      <LoadingIcon /> :
+        <ul className="news-articles-index">
+          {newsArticles.map(newsArticle =>
+            <NewsArticleIndexItem
+              key={newsArticle.id}
+              newsArticle={newsArticle}
+              companyName={newsArticle.company_name}
+            />
+        )}
+      </ul>
+    );
+  }
 }
 
 
