@@ -10,17 +10,18 @@ import {
 } from 'react-router-dom';
 
 import Navbar from './navbar/navbar';
+import LoadingIcon from './loading_icon';
 import HomePage from './home_page/home_page';
 import CompanyPageContainer from './company_page/company_page_container';
 
 class App extends React.Component {
   componentWillMount() {
-    this.props.fetchCompanies();
+    setTimeout(() => this.props.fetchCompanies(), 900);
   }
 
   render() {
     if (Object.values(this.props.companies).length === 0) {
-      return null;
+      return (<LoadingIcon />);
     } else {
       return (
         <div className="app-body">

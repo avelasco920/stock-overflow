@@ -1,6 +1,5 @@
 import React from 'react';
 import SearchBarContainer from './searchbar_container';
-import LoadingIcon from '../loading_icon';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 
@@ -30,7 +29,6 @@ class Navbar extends React.Component {
               src="https://raw.githubusercontent.com/avelasco920/stocks-overflow/master/app/assets/images/robinhood%20black%20logo.png"
               id="black-logo-small"/>
           </Link>
-          <LoadingIcon />
           <SearchBarContainer className="white-input" id="search-bar"/>
         </div>
         <div className="navbar-right">

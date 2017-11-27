@@ -2,12 +2,16 @@
   margin: 100px auto 0;
   width: 70px;
   text-align: center;
+  z-index: 2000;
+  position: fixed;
+  left: calc(50% - 27px);
+  bottom: calc(50% - 9px);
 }
 
 .spinner > div {
   width: 18px;
   height: 18px;
-  background-color: #000000;
+  background-color: $light-green;
 
   border-radius: 100%;
   display: inline-block;
@@ -38,4 +42,12 @@
     -webkit-transform: scale(1.0);
     transform: scale(1.0);
   }
+}
+
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  z-index: 1200;
+  position: fixed;
 }
