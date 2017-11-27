@@ -1,15 +1,17 @@
-const APIUtil = {
-  watchCompany: id => APIUtil.changeWatchStatus(id, 'POST'),
-
-  unwatchCompany: id => APIUtil.changeWatchStatus(id, 'DELETE'),
-
-  changeWatchStatus: (id, method) => (
+export const watchCompany = id => {
+  return (
     $.ajax({
-      url: `/companies/${id}/watchlist_item`,
-      dataType: 'json',
-      method
+    method: 'POST',
+    url: `/api/companies/${id}/watchlist_item`,
     })
-  ),
+  );
 };
 
-module.exports = APIUtil;
+export const unwatchCompany = id => {
+  return (
+    $.ajax({
+    method: 'DELETE',
+    url: `/api/companies/${id}/watchlist_item`,
+    })
+  );
+};

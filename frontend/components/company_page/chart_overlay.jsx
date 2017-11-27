@@ -9,6 +9,17 @@ class ChartOverlay extends React.Component {
     super(props);
   }
 
+  button () {
+    // if this.props.user_watching?
+    // return one type of button:
+      // ex: will have "Add to Watch List" and onClick of watchCompany().
+      // watch Company will POST watch. then ((id) => dispatch(receiveWatch(id, true)))
+    // otherwise render other one
+    return (
+      <button className="follow follow-button">Follow Company</button>
+    );
+  }
+
   render() {
     const { company } = this.props;
     const companyUrl = `/company/${company.symbol};`;
@@ -22,6 +33,7 @@ class ChartOverlay extends React.Component {
             <h4>+$7.01(+0.70%)</h4> <span>Today</span>
           </div>
         </div>
+        {this.button()}
         <div className="chart-history-container">
           <div className="chart-history">
             <a>Today</a>

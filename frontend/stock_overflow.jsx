@@ -7,14 +7,22 @@ import {
   login,
   logout
 } from './actions/session_actions';
+
 import {
   selectCurrentCompany,
   selectInvestedCompanies,
   selectWatchingCompanies,
   selectNewsArticles,
 } from './reducers/selectors';
+
 import { fetchCompanies, fetchCompany } from './actions/companies_actions';
-import { fetchNewsArticles, incrementCount } from './actions/news_articles_actions';
+
+import {
+  fetchNewsArticles,
+  incrementCount
+} from './actions/news_articles_actions';
+
+import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -30,6 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.incrementCount = incrementCount;
   window.selectNewsArticles = selectNewsArticles;
   window.selectCurrentCompany = selectCurrentCompany;
+  window.watchCompany = watchCompany;
+  window.unwatchCompany = unwatchCompany;
   //
 
   let store;
