@@ -20,6 +20,12 @@ class AboutCompany extends React.Component {
             <button className="company-tag">Internet</button>
           </div>
           <span className="company-bio">{company.biography}</span>
+          <div className="company-facts-container">
+            <div className="company-fact"><h4>CEO</h4><span>{company.ceo}</span></div>
+            <div className="company-fact"><h4>Founded</h4><span>{company.founding_year}</span></div>
+            <div className="company-fact"><h4>Employees</h4><span>{company.employees}</span></div>
+            <div className="company-fact"><h4>Headquarters</h4><span>{company.location}</span></div>
+          </div>
         </div>
       );
     }

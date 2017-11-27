@@ -9,7 +9,7 @@ class StockIndex extends React.Component {
   render() {
     const {companiesInvested, loading } = this.props;
     if (loading) {
-      return (<div></div>);
+      return (<LoadingIcon />);
     } else {
       return (
         <div className="stock-index">

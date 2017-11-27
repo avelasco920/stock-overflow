@@ -43,3 +43,18 @@
   text-overflow: ellipsis;
   margin-top: 3px;
 }
+
+.company-facts-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-fact {
+  width: 100px;
+}
+
+.company-fact h4 {
+  font-weight: bold;
+  line-height: 24px;
+}
