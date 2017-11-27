@@ -15,8 +15,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchCompanies: () => dispatch(fetchCompanies()),
-  fetchCompany: id => dispatch(fetchCompany(id)),
 });
 
 export default connect(

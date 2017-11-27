@@ -6,6 +6,7 @@ import { fetchCompanies } from '../actions/companies_actions';
 
 const mapStateToProps = ( state, ownProps ) => {
   return {
+    companies: state.entities.companies,
   };
 };
 

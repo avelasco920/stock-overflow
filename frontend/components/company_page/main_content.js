@@ -10,10 +10,9 @@ class MainContent extends React.Component {
   }
 
   render() {
-    const { companySymbol } = this.props;
     return (
       <div className="main-content">
-        <ChartContainer companySymbol={companySymbol} />
+        <ChartContainer />
       </div>
     );
   }

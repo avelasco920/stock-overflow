@@ -19,17 +19,21 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div className="app-body">
-        <Navbar />
-        <div className="app-main">
-          <Switch>
+    if (Object.values(this.props.companies).length === 0) {
+      return null;
+    } else {
+      return (
+        <div className="app-body">
+          <Navbar />
+          <div className="app-main">
+            <Switch>
             <ProtectedRoute exact path="/company/:symbol" component={CompanyPageContainer} />
             <ProtectedRoute path="/" component={HomePage} />
-          </Switch>
+            </Switch>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

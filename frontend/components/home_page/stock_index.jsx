@@ -7,8 +7,8 @@ import LoadingIcon from '../loading_icon';
 
 class StockIndex extends React.Component {
   render() {
-    const {companiesInvested, loading, fetchCompany } = this.props;
-    if (!companiesInvested[0]) {
+    const {companiesInvested, loading } = this.props;
+    if (loading) {
       return (<div></div>);
     } else {
       return (
@@ -19,7 +19,7 @@ class StockIndex extends React.Component {
               <StockIndexItem
                 key={company.id}
                 company={company}
-                fetchCompany={fetchCompany}/>
+              />
             )}
           </ul>
         </div>

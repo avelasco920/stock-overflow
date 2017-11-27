@@ -11,7 +11,7 @@ import {
   selectCurrentCompany,
   selectInvestedCompanies,
   selectWatchingCompanies,
-  selectNewsArticles
+  selectNewsArticles,
 } from './reducers/selectors';
 import { fetchCompanies, fetchCompany } from './actions/companies_actions';
 import { fetchNewsArticles, incrementCount } from './actions/news_articles_actions';

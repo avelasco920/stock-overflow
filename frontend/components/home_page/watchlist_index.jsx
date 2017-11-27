@@ -33,23 +33,28 @@ class WatchlistIndex extends React.Component {
   // }
 
   render() {
-    const {companiesWatching, loading, fetchCompany } = this.props;
-    return (
-      loading ?
-      <LoadingIcon /> :
-      <div className="stock-index">
-        <h4 className="sidebar-header">
-          Watchlist
-        </h4>
-        <ul id="sidebar-ul">
-          {companiesWatching.map(company =>
-            <WatchlistIndexItem
-              key={company.id}
-              company={company} />
-          )}
-        </ul>
-      </div>
-    );
+    const {companiesWatching, loading } = this.props;
+    if (loading) {
+      return (<div></div>);
+    } else {
+      return (
+        loading ?
+        <LoadingIcon /> :
+        <div className="stock-index">
+          <h4 className="sidebar-header">
+            Watchlist
+          </h4>
+          <ul id="sidebar-ul">
+            {companiesWatching.map(company =>
+              <WatchlistIndexItem
+                key={company.id}
+                company={company}
+              />
+            )}
+          </ul>
+        </div>
+      );
+    }
   }
 }
 

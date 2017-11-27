@@ -1,19 +1,17 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {
-  fetchCompanies,
-} from '../../actions/companies_actions';
-
 import CompanyPage from './company_page';
+import { fetchCompany } from '../../actions/companies_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
+    companies: state.entities.companies,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchCompanies: () => dispatch(fetchCompanies()),
+  fetchCompany: (id) => dispatch(fetchCompany(id)),
 });
 
 export default withRouter(connect(
