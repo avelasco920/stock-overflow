@@ -62,6 +62,7 @@
 
 .nav-link:hover {
   color: $green;
+  -webkit-transition: 300ms ease;
 }
 
 .nav-link-selected {

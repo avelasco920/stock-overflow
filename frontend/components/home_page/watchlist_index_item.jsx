@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 import { stringifyIntegerNoCommas } from '../../util/parsing_functions';
+import CompanyPageContainer from '../company_page/company_page_container';
 
 const WatchlistIndexItem = ({ company }) => {
   const graphUrl = [
@@ -13,7 +14,7 @@ const WatchlistIndexItem = ({ company }) => {
     "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/red3.png?raw=true",
   ];
   const randGraph = graphUrl[Math.floor(Math.random() * graphUrl.length)];
-  const companyUrl = `/company/${ company.id }`;
+  const companyUrl = `/company/${ company.symbol }`;
   return (
     <Link to={companyUrl} >
       <li className="stock-index-item">
@@ -27,6 +28,7 @@ const WatchlistIndexItem = ({ company }) => {
           ${stringifyIntegerNoCommas(company.market_price)}
         </span>
       </li>
+      <ProtectedRoute exact path={companyUrl} component={CompanyPageContainer} />
     </Link>
   );
 };

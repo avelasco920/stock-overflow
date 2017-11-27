@@ -1,8 +1,9 @@
 import React from 'react';
 import CompanyPage from '../company_page/company_page';
-import { AuthRoute, ProtectedRoute } from '../../util/route_util';
+import { ProtectedRoute } from '../../util/route_util';
 import { Link } from 'react-router-dom';
 import { stringifyIntegerNoCommas } from '../../util/parsing_functions';
+import CompanyPageContainer from '../company_page/company_page_container';
 
 const StockIndexItem = ({ company }) => {
   const graphUrl = [
@@ -29,6 +30,7 @@ const StockIndexItem = ({ company }) => {
           ${stringifyIntegerNoCommas(company.market_price)}
         </span>
       </li>
+      <ProtectedRoute exact path={companyUrl} component={CompanyPageContainer} />
     </Link>
   );
 };

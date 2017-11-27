@@ -32,8 +32,8 @@ class Navbar extends React.Component {
           <SearchBarContainer className="white-input" id="search-bar"/>
         </div>
         <div className="navbar-right">
-          <NavLink to="/" className="nav-link" activeClassName="nav-link-selected">Home</NavLink>
-          <NavLink to="/account" className="nav-link" activeClassName="nav-link-selected">Account</NavLink>
+          <NavLink exact to="/" className="nav-link" activeClassName="nav-link-selected">Home</NavLink>
+          <NavLink exact to="/account" className="nav-link" activeClassName="nav-link-selected">Account</NavLink>
         </div>
       </div>
     );

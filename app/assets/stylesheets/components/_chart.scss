@@ -12,8 +12,24 @@
 }
 
 .account-info h2 {
+  margin-top: 0;
   margin-bottom: 8px;
   font-size: 36px;
+}
+
+.company-info h2 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 36px;
+}
+
+.company-info h1 {
+  margin: 0;
+  letter-spacing: 0;
+  font-size: 40px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  text-indent: -4px;
 }
 
 .delta {
@@ -27,27 +43,38 @@
 .chart-overlay {
   display: flex;
   flex-wrap: wrap;
-  width: 20px;
+  width: 90%;
   align-content: space-between;
   height: 100%;
   z-index: 300;
   position: absolute;
 }
 
+.chart-history-container {
+  position: relative;
+  width: 100%;
+}
+
 .chart-history {
   padding-bottom: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .chart-history a {
   margin-right: 30px;
   padding-bottom: 10px;
   border-bottom: 3px solid transparent;
+  width: 0;
   text-decoration: none;
   color: black;
   font-size: 14px;
+  -webkit-transition: 300ms ease;
 }
 
 .chart-history a:hover {
+  width: 100%;
   color: $green;
   cursor: pointer;
   border-bottom: 3px solid $green;
@@ -56,5 +83,18 @@
 .chart-placeholder {
   position: absolute;
   z-index: 100;
-  top: 135px
+  top: 120px
+}
+
+
+.slider {
+    position: absolute;
+    display:block;
+    left: 0;
+    top:90%;
+    margin:0 auto;
+    height: 2px;
+    background-color: #000;
+    width: 0%;
+    transition: width 1s;
 }
