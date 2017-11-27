@@ -33,7 +33,7 @@ class WatchlistIndex extends React.Component {
   // }
 
   render() {
-    const {companiesWatching, loading } = this.props;
+    const {companiesWatching, loading, fetchCompany } = this.props;
     return (
       loading ?
       <LoadingIcon /> :

@@ -10,12 +10,11 @@ class NewsArticleIndexItem extends React.Component {
   render() {
     const { newsArticle, companyName } = this.props;
     const articleId = newsArticle.id;
-    console.log(companyName);
     return (
       <li className="news-article-index-item">
         <a href={newsArticle.source}
           target="_blank"
-          onClick={() => this.props.incrementCount(articleId)}>
+          onClick={(articleId) => this.props.incrementCount(articleId)}>
           <img src={newsArticle.img_url}/>
         </a>
         <div className="news-text-area">
@@ -24,7 +23,7 @@ class NewsArticleIndexItem extends React.Component {
             href={newsArticle.source}
             className="news-title"
             target="_blank"
-            onClick={() => this.props.incrementCount(articleId)}>
+            onClick={(articleId) => this.props.incrementCount(articleId)}>
             {newsArticle.title}
           </a>
           <div className="news-body-box">

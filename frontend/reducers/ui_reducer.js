@@ -8,4 +8,5 @@ import companyDisplay from './company_display_reducer';
 export default combineReducers({
   errors,
   loading,
+  companyDisplay
 });

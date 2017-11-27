@@ -7,7 +7,7 @@ const companyDisplayReducer = (state = null, action) => {
 
   switch (action.type) {
     case RECEIVE_COMPANY:
-      return action.payload.company.id;
+      return action.company.id;
     default:
       return state;
   }

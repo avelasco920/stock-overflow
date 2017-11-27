@@ -16,8 +16,10 @@ export const selectWatchingCompanies = (state) => {
   return filteredWatchlist.map((id) => companies[id]);
 };
 
-export const selectCurrentCompany = (state, id) => {
-  return state.entities.companies[id];
+export const selectCurrentCompany = (state, sym) => {
+  let companies = state.entities.companies;
+  companies = Object.values(companies);
+  companies.find(company => company.symbol === sym);
 };
 
 export const selectNewsArticles = (state) => {

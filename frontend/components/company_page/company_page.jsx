@@ -6,15 +6,26 @@ import MainContent from './main_content';
 import SideBar from './sidebar';
 
 class CompanyPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
+  componentWillMount() {
+  }
+
   render() {
     return (
       <div className="page">
-        <MainContent />
-        <h2>CompanyPage</h2>
-        <SideBar />
+        <MainContent props={this.props} />
+        <SideBar props={this.props} />
       </div>
     );
   }
+
 }
+
 
 export default CompanyPage;

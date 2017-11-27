@@ -10,22 +10,22 @@ class NewsIndex extends React.Component {
   }
 
   render() {
-    const { newsArticles, loading, companies, companiesLoading } = this.props;
-    // console.log(`companies: ${companiesLoading}`);
-    // console.log(`articles: ${loading}`);
-    return (
-      loading && companiesLoading ?
-      <LoadingIcon /> :
-        <ul className="news-articles-index">
-        {newsArticles.map(newsArticle =>
-          <NewsArticleIndexItem
-            key={newsArticle.id}
-            newsArticle={newsArticle}
-            companyName={companies[newsArticle.company_id].name}/>
-        )}
-      </ul>
-    );
-  }
+    const { newsArticles, loading } = this.props;
+      return (
+        loading ?
+        <LoadingIcon /> :
+          <ul className="news-articles-index">
+            {newsArticles.map(newsArticle =>
+              <NewsArticleIndexItem
+                key={newsArticle.id}
+                newsArticle={newsArticle}
+                companyName={newsArticle.company_name}
+              />
+          )}
+        </ul>
+      );
+    }
 }
+
 
 export default NewsIndex;

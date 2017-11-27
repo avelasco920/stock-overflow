@@ -43,23 +43,24 @@ class StockIndex extends React.Component {
 
 
   render() {
-    const {companiesInvested, loading } = this.props;
-    return (
-      loading ?
-      <LoadingIcon /> :
-      <div className="stock-index">
-        <h4 className="sidebar-header">
-          Stocks
-        </h4>
-        <ul>
-          {companiesInvested.map(company =>
-            <StockIndexItem
-              key={company.id}
-              company={company} />
-          )}
-        </ul>
-      </div>
-    );
+    const {companiesInvested, loading, fetchCompany } = this.props;
+    if (!companiesInvested[0]) {
+      return (<div></div>);
+    } else {
+      return (
+        <div className="stock-index">
+          <h4 className="sidebar-header">Stocks</h4>
+          <ul>
+            {companiesInvested.map(company =>
+              <StockIndexItem
+                key={company.id}
+                company={company}
+                fetchCompany={fetchCompany}/>
+            )}
+          </ul>
+        </div>
+      );
+    }
   }
 }
 

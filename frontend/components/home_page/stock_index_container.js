@@ -1,7 +1,9 @@
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
   fetchCompanies,
+  fetchCompany
   // stockIndexHasMounted
 } from '../../actions/companies_actions';
 
@@ -21,10 +23,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   fetchCompanies: () => dispatch(fetchCompanies()),
+  fetchCompany: id => dispatch(fetchCompany(id)),
   // stockIndexHasMounted: () => dispatch(stockIndexHasMounted())
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(StockIndex);
+)(StockIndex));

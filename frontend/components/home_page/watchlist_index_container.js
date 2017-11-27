@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchCompanies } from '../../actions/companies_actions';
+import { fetchCompanies, fetchCompany } from '../../actions/companies_actions';
 import WatchlistIndex from './watchlist_index';
 import {
   selectWatchingCompanies
@@ -15,7 +15,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchCompanies: () => dispatch(fetchCompanies())
+  fetchCompanies: () => dispatch(fetchCompanies()),
+  fetchCompany: id => dispatch(fetchCompany(id)),
 });
 
 export default connect(

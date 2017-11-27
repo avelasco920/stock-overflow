@@ -18,7 +18,7 @@ const App = () => (
     <Navbar />
     <div className="app-main">
       <Switch>
-        <ProtectedRoute path="/company/:id" component={CompanyPage} />
+        <ProtectedRoute path="/company/:symbol" component={CompanyPage} />
         <ProtectedRoute path="/" component={HomePage} />
       </Switch>
     </div>
