@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
-import { stringifyIntegerNoCommas } from '../../util/parsing_functions';
+import { stringifyToFloatNoCommas } from '../../util/parsing_functions';
 import CompanyPageContainer from '../company_page/company_page_container';
 
 const WatchlistIndexItem = ({ company }) => {
@@ -25,7 +25,7 @@ const WatchlistIndexItem = ({ company }) => {
           src={randGraph}
           className="chart-thumb"/>
         <span className="stock-price">
-          ${stringifyIntegerNoCommas(company.market_price)}
+          ${stringifyToFloatNoCommas(company.market_price)}
         </span>
       </li>
       <ProtectedRoute exact path={companyUrl} component={CompanyPageContainer} />

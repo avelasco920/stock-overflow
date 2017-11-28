@@ -1,12 +1,11 @@
 import * as APIUtil from '../util/watchlist_api_util';
 
 export const RECEIVE_WATCHLIST_ITEM = 'RECEIVE_WATCHLIST_ITEM';
-export const REMOVE_WATCHLIST_ITEM = 'REMOVE_WATCHLIST_ITEM';
 
 export const receiveWatchlistItem = (company, watching) => ({
   type: RECEIVE_WATCHLIST_ITEM,
-  watching,
-  company
+  company,
+  watching
 });
 
 export const watchCompany = id => dispatch => {

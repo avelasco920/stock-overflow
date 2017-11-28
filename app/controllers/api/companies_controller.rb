@@ -5,9 +5,7 @@ class Api::CompaniesController < ApplicationController
   end
 
   def index
-    watchlist = current_user.companies_watching
-    invested = current_user.invested_companies
-    @companies = (watchlist + invested).uniq
+    @companies = Company.all
     @user = current_user
   end
 

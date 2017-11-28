@@ -9,6 +9,24 @@
   padding-bottom: 20px;
   border-bottom: 2px solid $lightest-gray;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: flex-end;
+}
+
+.about-header h2 {
+  margin-bottom: 0;
+}
+
+.about-header span {
+  color: $light-gray;
+}
+
+.about-header span:hover {
+  cursor: pointer;
+  color: $green;
+  font-weight: bold;
 }
 
 .company-tag {
@@ -33,7 +51,7 @@
   margin-bottom: 16px;
 }
 
-.company-bio {
+.bio-hidden {
   line-height: 24px;
   font-size: 16px;
   display: -webkit-box;
@@ -43,6 +61,13 @@
   text-overflow: ellipsis;
   margin-top: 3px;
 }
+
+.bio-shown {
+  line-height: 24px;
+  font-size: 16px;
+  margin-top: 3px;
+}
+
 
 .company-facts-container {
   margin-top: 30px;

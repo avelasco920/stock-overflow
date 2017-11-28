@@ -43,7 +43,7 @@
 .chart-overlay {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   align-content: space-between;
   height: 100%;
   z-index: 300;
@@ -88,13 +88,49 @@
 
 
 .slider {
-    position: absolute;
-    display:block;
-    left: 0;
-    top:90%;
-    margin:0 auto;
-    height: 2px;
-    background-color: #000;
-    width: 0%;
-    transition: width 1s;
+  position: absolute;
+  display:block;
+  left: 0;
+  top:90%;
+  margin:0 auto;
+  height: 2px;
+  background-color: #000;
+  width: 0%;
+  transition: width 1s;
+}
+
+.watch-button {
+  position: absolute;
+  right: 0;
+  font-size: 14px;
+  padding: 10px 20px 10px 35px;
+  border-radius: 20px;
+  font-weight: bolder;
+  transition: all 200ms;
+  width: 118px;
+  box-sizing: border-box;
+}
+
+.watch-button:hover {
+  background-color: $light-green;
+  color: white;
+}
+
+.watching {
+  background-color: $green;
+  color: white;
+}
+
+.not-watching {
+  background-color: $lightest-gray;
+  color: black;
+}
+
+.fa-eye {
+  width: 20px;
+  height: 20px;
+  font-size: 30px;
+  position: absolute;
+  left: 15px;
+  top: 11px;
 }

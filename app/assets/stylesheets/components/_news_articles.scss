@@ -69,21 +69,9 @@
   color: black;
 }
 
-.news-views {
-  bottom: 0;
-  color: $light-gray;
-}
-
-.fa-eye {
-  position: absolute;
-  bottom: 0px;
-  font-size: 14px;
-  color: $light-gray;
-}
-
-.news-views span {
-  bottom: 1px;
-  left: 22px;
+.news-date {
   position: absolute;
   font-size: 11px;
+  bottom: 0;
+  color: $light-gray;
 }

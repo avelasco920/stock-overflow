@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 import LoadingIcon from '../loading_icon';
+import { timeAgo } from '../../util/parsing_functions';
 
 class NewsArticleIndexItem extends React.Component {
   constructor(props){
@@ -14,8 +15,7 @@ class NewsArticleIndexItem extends React.Component {
     return (
       <li className="news-article-index-item">
         <a href={newsArticle.source}
-          target="_blank"
-          onClick={(articleId) => this.props.incrementCount(articleId)}>
+          target="_blank">
           <img src={newsArticle.img_url}/>
         </a>
         <div className="news-text-area">
@@ -23,17 +23,13 @@ class NewsArticleIndexItem extends React.Component {
           <a
             href={newsArticle.source}
             className="news-title"
-            target="_blank"
-            onClick={(articleId) => this.props.incrementCount(articleId)}>
+            target="_blank">
             {newsArticle.title}
           </a>
           <div className="news-body-box">
             <span className="news-body">{newsArticle.body}</span>
           </div>
-          <div className="news-views">
-            <i className="fa fa-eye" aria-hidden="true"/>
-            <span> {newsArticle.views}</span>
-          </div>
+          <span className="news-date">{timeAgo(newsArticle.date)}</span>
         </div>
       </li>
     );

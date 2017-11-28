@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 
-import { stringifyInteger } from '../../util/parsing_functions';
+import { stringifyToFloat } from '../../util/parsing_functions';
 
 class ChartOverlay extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class ChartOverlay extends React.Component {
     return (
       <div className="chart-overlay">
         <div className="account-info">
-          <h2>{stringifyInteger(user.stocks_value)}</h2>
+          <h2>${stringifyToFloat(user.stocks_value)}</h2>
           <div className="delta">
             <h4>+$7.01(+0.70%)</h4> <span>Today</span>
           </div>

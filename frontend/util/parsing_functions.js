@@ -1,14 +1,20 @@
-export const stringifyIntegerNoCommas = (num) => {
+export const stringifyToFloatNoCommas = (num) => {
   return parseFloat(Math
     .round(num * 100) / 100)
     .toFixed(2);
   };
 
-export const stringifyInteger = (num) => {
-  let str = stringifyIntegerNoCommas(num);
+export const stringifyToFloat = (num) => {
+  let str = stringifyToFloatNoCommas(num);
   const splitNum = str.split(".");
   const withCommas = addCommas(splitNum[0]);
-  return "$" + withCommas + "." + splitNum[1];
+  return withCommas + "." + splitNum[1];
+};
+
+export const stringifyToInteger = (num) => {
+  let str = stringifyToFloatNoCommas(num);
+  const splitNum = str.split(".");
+  return addCommas(splitNum[0]);
 };
 
 const addCommas = (num) => {
@@ -24,4 +30,9 @@ const addCommas = (num) => {
   return wholeNumsWithCommas.split("").reverse().join("");
 };
 
-stringifyInteger(10269.8);
+export const timeAgo = rubyDate => {
+  const javaDate = new Date(rubyDate);
+  const today = new Date();
+  const numDays = Math.floor((today - javaDate) / (1000*60*60*24)).toString();
+  return numDays + " days ago";
+};

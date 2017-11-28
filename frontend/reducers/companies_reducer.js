@@ -24,7 +24,6 @@ const companiesReducer = (state = {}, action) => {
       let companyId = action.company.company_id;
       companies[companyId].current_user_watching = action.watching;
       return merge({}, companies);
-    case REMOVE_WATCHLIST_ITEM:
     default:
       return state;
   }

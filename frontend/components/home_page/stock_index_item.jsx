@@ -2,7 +2,7 @@ import React from 'react';
 import CompanyPage from '../company_page/company_page';
 import { ProtectedRoute } from '../../util/route_util';
 import { Link } from 'react-router-dom';
-import { stringifyIntegerNoCommas } from '../../util/parsing_functions';
+import { stringifyToFloatNoCommas } from '../../util/parsing_functions';
 import CompanyPageContainer from '../company_page/company_page_container';
 
 const StockIndexItem = ({ company }) => {
@@ -27,7 +27,7 @@ const StockIndexItem = ({ company }) => {
           src={randGraph}
           className="chart-thumb"/>
         <span className="stock-price">
-          ${stringifyIntegerNoCommas(company.market_price)}
+          ${stringifyToFloatNoCommas(company.market_price)}
         </span>
       </li>
       <ProtectedRoute exact path={companyUrl} component={CompanyPageContainer} />
