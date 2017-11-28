@@ -57,9 +57,17 @@ class Portfolio extends React.Component {
         </div>
         <div className="donut-charts">
           <div className="account-chart-container" id="stocks-div">
+            <div className="stocks-detail">
+              <h3>${stringifyToFloat(user.stocks_value)}</h3>
+              <span className="account-text account-title">STOCKS</span>
+            </div>
             <canvas id="stocksChart" className="donut-chart"></canvas>
           </div>
           <div className="account-chart-container" id="cash-div">
+            <div className="stocks-detail">
+              <h3>${stringifyToFloat(user.cash_value)}</h3>
+              <span className="account-text account-title">CASH</span>
+            </div>
             <canvas id="cashChart" className="donut-chart"></canvas>
           </div>
         </div>
@@ -70,11 +78,11 @@ class Portfolio extends React.Component {
         </div>
         <div className="cash-breakdown" id="withdrawable-cash">
           <span className="account-text account-title">WITHDRAWABLE CASH</span>
-          <h3>{user.cash_value}</h3>
+          <h3>${stringifyToFloat(user.cash_value)}</h3>
         </div>
         <div className="cash-breakdown">
           <span className="account-text account-title">BUYING POWER</span>
-          <h3>{user.cash_value}</h3>
+          <h3><strong>${stringifyToFloat(user.cash_value)}</strong></h3>
         </div>
       </div>
     );

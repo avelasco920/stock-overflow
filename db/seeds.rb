@@ -33,7 +33,7 @@ angel = User.create(
   email: "angel@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 200.78
+  cash_value: 200.78,
 )
 
 kyle = User.create(
