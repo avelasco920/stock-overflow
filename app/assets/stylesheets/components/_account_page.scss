@@ -112,10 +112,15 @@
 }
 
 .photo-surround {
-  width: 40%;
-  height: 40%;
+  width: 130px;
+  height: 130px;
   overflow: hidden;
   border-radius: 50%;
+  background-color: $lightest-gray;
+}
+
+.profile-img {
+  object-fit: cover;
 }
 
 .contact-info {

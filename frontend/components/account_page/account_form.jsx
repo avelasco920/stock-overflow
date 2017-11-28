@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 const AccountForm = ({user, logout}) => (
     <div className="account-form">
       <div className="photo-surround">
-        <img src={user.img_url} className="profile-img"/>
+          <img src={user.img_url} className="profile-img"/>
       </div>
       <h4>{user.first_name} {user.last_name}</h4>
       <span>{user.username}</span>

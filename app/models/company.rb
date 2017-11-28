@@ -17,4 +17,9 @@
 
 class Company < ApplicationRecord
   validates :name, :symbol, presence: true, uniqueness: true
+
+  def individual_stock_value(num_shares)
+    self.market_price * num_shares
+  end
+
 end
