@@ -1,6 +1,7 @@
 class AddIndexToWatchListItems < ActiveRecord::Migration[5.1]
   def change
-    add_column :watch_list_items, :user_id, :integer
-    add_index :watch_list_items, :user_id
+    remove_index :watchlist_items, :user_id
+    remove_index :watchlist_items, :company_id
+    add_index :watchlist_items, [:user_id, :company_id], unique: true
   end
 end
