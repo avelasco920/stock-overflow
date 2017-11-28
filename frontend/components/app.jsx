@@ -12,6 +12,7 @@ import {
 import Navbar from './navbar/navbar';
 import LoadingIcon from './loading_icon';
 import HomePage from './home_page/home_page';
+import AccountPage from './account_page/account_page';
 import CompanyPageContainer from './company_page/company_page_container';
 
 class App extends React.Component {
@@ -28,8 +29,9 @@ class App extends React.Component {
           <Navbar />
           <div className="app-main">
             <Switch>
-            <ProtectedRoute exact path="/company/:symbol" component={CompanyPageContainer} />
-            <ProtectedRoute path="/" component={HomePage} />
+              <ProtectedRoute exact path="/company/:symbol" component={CompanyPageContainer} />
+              <ProtectedRoute path="/account" component={AccountPage} />
+              <ProtectedRoute path="/" component={HomePage} />
             </Switch>
           </div>
         </div>
