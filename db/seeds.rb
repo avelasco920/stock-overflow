@@ -18,12 +18,13 @@ WatchlistItem.destroy_all
 
 phoebe = User.create(
   first_name: "Phoebe",
-  last_name: "Buffet",
+  last_name: "Buffay",
   username: "smelly_cat",
   email: "phoebe@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 2387.56
+  cash_value: 2387.56,
+  img_url: "https://media1.popsugar-assets.com/files/thumbor/Jag4QheIiSRDyPige1c7d6J7X68/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/07/25/859/n/1922398/1bb1be5259779df9303e84.02388163_edit_img_image_43785815_1500923262/i/Phoebe-Buffay-Quotes-From-Friends.jpg",
 )
 
 angel = User.create(
@@ -34,6 +35,7 @@ angel = User.create(
   password: "hello123",
   contact_number: "415-555-5555",
   cash_value: 200.78,
+  img_url: "https://scontent-dft4-3.xx.fbcdn.net/v/t1.0-9/10978708_10153614256417782_4766753004612419991_n.jpg?oh=f9f5fb8ea7304ec7df0ae34eab9fa0cc&oe=5A9AB2E1",
 )
 
 kyle = User.create(
@@ -43,7 +45,8 @@ kyle = User.create(
   email: "kyle@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 2046.14
+  cash_value: 2046.14,
+  img_url: "https://scontent-dft4-3.xx.fbcdn.net/v/t31.0-8/1618070_10103188188301906_1360432566_o.jpg?oh=fdce632a8e2a82e91b69e0bc3436d3ff&oe=5A8EA1B5",
 )
 
 truong = User.create(
@@ -53,7 +56,8 @@ truong = User.create(
   email: "truong@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 10460.97
+  cash_value: 10460.97,
+  img_url: "https://scontent-dft4-3.xx.fbcdn.net/v/t1.0-9/12495026_10100619690402705_6496191290963588437_n.jpg?oh=f66a60a78abd24959aa0166c8991a778&oe=5A95067C",
 )
 
 maxine = User.create(
@@ -63,7 +67,8 @@ maxine = User.create(
   email: "maxine@gmail.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 4493.32
+  cash_value: 4493.32,
+  img_url: "https://scontent-dft4-3.xx.fbcdn.net/v/t31.0-8/18836844_10158970912825294_5473833442981876383_o.jpg?oh=6fcbcc876d6a38bae5353a160cccf64e&oe=5A8D0B7B",
 )
 
 #-------------------------------#

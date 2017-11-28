@@ -32,7 +32,7 @@
 .company-tag {
   padding: 15px;
   background-color: $lightest-gray;
-  color: $light-green;
+  color: $green;
   font-weight: bold;
   border-radius: 10px;
   margin-right: 12px;
@@ -42,8 +42,7 @@
 }
 
 .company-tag:hover {
-  background-color: $light-green;
-  color: white;
+  color: $light-green;
 }
 
 .tag-div {

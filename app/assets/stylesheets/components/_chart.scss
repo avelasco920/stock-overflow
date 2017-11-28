@@ -100,15 +100,16 @@
 }
 
 .watch-button {
+  display: flex;
+  justify-content: center;
   position: absolute;
   right: 0;
+  width: 150px;
   font-size: 14px;
-  padding: 10px 20px 10px 35px;
+  padding: 12px 20px 10px 14px;
   border-radius: 20px;
   font-weight: bolder;
   transition: all 200ms;
-  width: 118px;
-  box-sizing: border-box;
 }
 
 .watch-button:hover {
@@ -130,7 +131,4 @@
   width: 20px;
   height: 20px;
   font-size: 30px;
-  position: absolute;
-  left: 15px;
-  top: 11px;
 }
