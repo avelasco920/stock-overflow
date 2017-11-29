@@ -1,16 +1,15 @@
 class Api::TradeEventsController < ApplicationController
   def create
-    @user = current_user
-    @user.trade_events.create!(
+    @trade_event = current_user.trade_events.create!(
       trade_type: trade_event_params[:trade_type],
-      quantity: trade_event_params[:quantity].to_i,
+      num_shares: trade_event_params[:num_shares].to_i,
       company_id: params[:company_id],
     )
 
-    request = TradeEvent.process_stock(
+    request = TradeEvent.process(
       params[:trade_event],
-      @user,
-      params[:company_id],
+      current_user,
+      Company.find(params[:company_id]),
     )
 
     ## delete this? TradeEvent.process_stock is not raising error
@@ -20,12 +19,13 @@ class Api::TradeEventsController < ApplicationController
   end
 
   def index
+    @trade_event = TradeEvent.find(44)
     @trade_events = TradeEvent.all
   end
 
   private
 
   def trade_event_params
-    params.require(:trade_event).permit(:quantity, :trade_type)
+    params.require(:trade_event).permit(:num_shares, :trade_type)
   end
 end

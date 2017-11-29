@@ -17,22 +17,4 @@ class Stock < ApplicationRecord
   belongs_to :company
   belongs_to :user
 
-  def handle_existing(event)
-    trade_type = event[:trade_type]
-    quantity = event[:quantity].to_i
-    if event[:trade_type] == "buy"
-      self.num_shares += quantity
-      self.save
-    elsif trade_type == "sell" && quantity > self.num_shares
-      raise "You don't don't have enough shares to make that sell.
-        You currently have #{self.num_shares} shares
-        of #{self.company.name}"
-    elsif trade_type == "sell" && quantity == self.num_shares
-      self.destroy
-    else
-      self.num_shares -= quantity
-      self.save
-    end
-  end
-
 end
