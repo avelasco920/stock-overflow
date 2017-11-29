@@ -10,7 +10,7 @@ class Chart extends React.Component {
       user: this.props.user,
       company: this.props.company,
       loading: this.props.loading,
-      numShares: ""
+      numShares: this.props.numShares,
     };
     this.buyShares = this.buyShares.bind(this);
     this.sellShares = this.sellShares.bind(this);
@@ -24,6 +24,7 @@ class Chart extends React.Component {
 
   buyShares(e) {
     e.preventDefault();
+    this.props.clearTradeEventErrors();
     const id = this.props.company.id;
     let event = {
       trade_event: {
@@ -36,6 +37,7 @@ class Chart extends React.Component {
 
   sellShares(e) {
     e.preventDefault();
+    this.props.clearTradeEventErrors();
     const id = this.props.company.id;
     let event = {
       trade_event: {
@@ -44,6 +46,20 @@ class Chart extends React.Component {
       }
     };
     this.props.makeTrade(id, event);
+  }
+
+  renderErrors() {
+    return(
+      <ul className="stock-form-errors">
+        {this.props.errors.map((error, i) => (
+          <li className="stock-form-error"
+            key={`error-${i}`}
+            >
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
@@ -76,6 +92,8 @@ class Chart extends React.Component {
               </span>
             </div>
           </div>
+          <div>
+          {this.renderErrors()}
           <div className="buttons">
             <input
               type="button"
@@ -89,6 +107,7 @@ class Chart extends React.Component {
               onClick={this.sellShares}
               className="sell-button"
             />
+          </div>
           </div>
           <span className="user-available-cash">
             <strong>${stringifyToFloat(user.cash_value)}</strong> Available

@@ -14,14 +14,12 @@ class Api::TradeEventsController < ApplicationController
     )
     @user = current_user
     @company = Company.find(params[:company_id])
-    ## delete this? TradeEvent.process_stock is not raising error
     if request != true && request.class == String
-      render json: [request], status: 401
+      render json: request, status: 401
     end
   end
 
   def index
-    @trade_event = TradeEvent.find(44)
     @trade_events = TradeEvent.all
   end
 

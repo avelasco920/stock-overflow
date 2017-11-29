@@ -7,6 +7,9 @@ import {
   login,
   logout
 } from './actions/session_actions';
+import {
+  clearSessionErrors
+} from './actions/errors_actions';
 
 import {
   selectCurrentCompany,
@@ -42,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.watchCompany = watchCompany;
   window.unwatchCompany = unwatchCompany;
   window.makeTrade = makeTrade;
+  window.clearSessionErrors = clearSessionErrors;
   //
 
   let store;

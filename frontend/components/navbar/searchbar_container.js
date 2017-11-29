@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import {
   signup,
-  login,
-  clearErrors
+  login
 } from '../../actions/session_actions';
 
+import clearSessionErrors from '../../actions/session_actions';
 import SearchBar from './searchbar';
 
 const mapStateToProps = (state) => {
