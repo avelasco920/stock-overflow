@@ -36,6 +36,7 @@ class User < ApplicationRecord
 
   has_many :watchlist_items
   has_many :stocks
+  has_many :trade_events
   has_many :invested_companies,
             through: :stocks,
             source: :company
@@ -68,23 +69,6 @@ class User < ApplicationRecord
     return nil unless user && user.valid_password?(password)
     user
   end
-
-  def buy_stock(company, num_shares)
-    stock_value = individual_stock_value(company, num_shares)
-    self.cash_value -= stock_value
-    calculate_portfolio_value
-  end
-
-  def sell_stock(company, num_shares)
-    stock_value = individual_stock_value(company, num_shares)
-    self.cash_value += stock_value
-    calculate_portfolio_value
-  end
-
-  # buy stock
-  # calculate stock value
-  # subtract stock value from cash_value
-
 
   def individual_stock_value(company, num_shares)
     company.market_price * num_shares
