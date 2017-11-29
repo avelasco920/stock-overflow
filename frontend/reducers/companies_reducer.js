@@ -1,10 +1,9 @@
 import merge from 'lodash/merge';
-
+import { RECEIVE_TRADE_EVENT } from '../actions/trade_events_actions';
 import {
   RECEIVE_COMPANIES,
   RECEIVE_COMPANY,
 } from '../actions/companies_actions';
-
 import {
   RECEIVE_WATCHLIST_ITEM,
   REMOVE_WATCHLIST_ITEM,
@@ -17,7 +16,11 @@ const companiesReducer = (state = {}, action) => {
       return merge({}, action.companies);
     case RECEIVE_COMPANY:
       let companies = merge({}, state);
-      const company = {[action.company.id]: action.company};
+      let company = {[action.company.id]: action.company};
+      return merge({}, companies, company);
+    case RECEIVE_TRADE_EVENT:
+      companies = merge({}, state);
+      company = {[action.payload.company.id]: action.payload.company};
       return merge({}, companies, company);
     case RECEIVE_WATCHLIST_ITEM:
       companies = merge({}, state);

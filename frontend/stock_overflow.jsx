@@ -23,6 +23,7 @@ import {
 } from './actions/news_articles_actions';
 
 import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
+import { makeTrade } from './actions/trade_events_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.selectCurrentCompany = selectCurrentCompany;
   window.watchCompany = watchCompany;
   window.unwatchCompany = unwatchCompany;
+  window.makeTrade = makeTrade;
   //
 
   let store;

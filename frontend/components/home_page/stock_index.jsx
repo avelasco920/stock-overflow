@@ -6,8 +6,16 @@ import StockIndexItem from './stock_index_item';
 import LoadingIcon from '../loading_icon';
 
 class StockIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      companiesInvested: this.props.companiesInvested,
+      loading: this.props.loading,
+    };
+  }
+
   render() {
-    const {companiesInvested, loading } = this.props;
+    const { companiesInvested, loading } = this.state;
     if (loading) {
       return (<LoadingIcon />);
     } else {

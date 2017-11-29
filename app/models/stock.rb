@@ -17,4 +17,8 @@ class Stock < ApplicationRecord
   belongs_to :company
   belongs_to :user
 
+  def self.value(company, num_shares)
+    company.market_price * num_shares
+  end
+
 end

@@ -23,19 +23,22 @@ class TradeEvent < ApplicationRecord
   def self.handle_buy(event, user, company)
     num_shares = event[:num_shares].to_i
     stock = Stock.find_by(user_id: user.id, company_id: company.id)
+    stock_value = Stock.value(company, num_shares)
     if stock
+      user.decrease_cash_value(stock_value)
       stock.num_shares += num_shares
       stock.save
-    elsif calc_stock_value(company, num_shares) > user.cash_value
+    elsif stock_value > user.cash_value
       raise "You don't have enough funds for this purchase"
     else
-      user.stocks.create!(company_id: company_id, num_shares: event[:num_shares].to_i)
+      user.stocks.create!(company_id: company.id, num_shares: event[:num_shares].to_i)
     end
   end
 
   def self.handle_sell(event, user, company)
     num_shares = event[:num_shares].to_i
     stock = Stock.find_by(user_id: user.id, company_id: company.id)
+    stock_value = Stock.value(company, num_shares)
     if stock && num_shares > stock.num_shares
       raise "You don't don't have enough shares to make that sell.
       You currently have #{stock.num_shares} shares
@@ -43,12 +46,10 @@ class TradeEvent < ApplicationRecord
     elsif num_shares == stock.num_shares
       stock.destroy
     else
+      user.increase_cash_value(stock_value)
       stock.num_shares -= num_shares
       stock.save
     end
   end
 
-  def calc_stock_value(company, num_shares)
-    company.market_value * num_shares
-  end
 end

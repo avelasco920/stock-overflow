@@ -70,14 +70,22 @@ class User < ApplicationRecord
     user
   end
 
-  def individual_stock_value(company, num_shares)
-    company.market_price * num_shares
+  def increase_cash_value(value)
+    self.cash_value += value
+    self.save
+    self.cash_value
+  end
+
+  def decrease_cash_value(value)
+    self.cash_value -= value
+    self.save
+    self.cash_value
   end
 
   def set_stocks_value
     stocks_value = 0
     self.stocks.each do |stock|
-      stocks_value += individual_stock_value(stock.company, stock.num_shares)
+      stocks_value += Stock.value(stock.company, stock.num_shares)
     end
     self.stocks_value = stocks_value.round(2)
     self.save

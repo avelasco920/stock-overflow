@@ -5,6 +5,7 @@ import {
 } from '../actions/session_actions';
 
 import { RECEIVE_WATCHLIST_ITEM } from '../actions/watchlist_actions';
+import { RECEIVE_TRADE_EVENT } from '../actions/trade_events_actions';
 
 const defaultState = Object.freeze({
   currentUser: null,
@@ -28,6 +29,9 @@ const sessionReducer = (state = defaultState, action) => {
         companiesWatching.splice(index, 1);
       }
       return merge({}, {currentUser: user});
+    case RECEIVE_TRADE_EVENT:
+      currentUser = action.payload.user;
+      return merge({}, {currentUser});
     default:
       return state;
   }
