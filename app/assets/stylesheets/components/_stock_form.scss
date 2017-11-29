@@ -1,0 +1,69 @@
+.stock-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stock-form h4 {
+  padding: 20px;
+  border-bottom: 1px solid $lightest-gray;
+}
+
+.stock-form-detail-container input {
+  height: 100%;
+  width: 30%;
+  margin: 0;
+  padding: 10px;
+  text-align: right;
+  font-size: 14px;
+}
+
+.stock-form-detail-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  align-items: center;
+  height: 50px;
+}
+
+.stock-form-main {
+  margin: 10px 0;
+}
+
+.stock-form-label {
+  color: $light-gray;
+  font-weight: lighter;
+}
+
+#stock-total {
+  font-weight: bold;
+  color: black;
+}
+
+.buttons {
+  padding: 20px 20px;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.buy-button {
+  width: 65%;
+  margin-right: 2px;
+}
+
+.sell-button {
+  width: 35%;
+}
+
+.user-available-cash {
+  text-align: center;
+  color: $light-gray;
+  padding: 10px 0 20px 0;
+}
+
+.user-available-cash strong {
+  color: black;
+}
