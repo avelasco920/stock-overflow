@@ -136,6 +136,7 @@ input[type="submit"], input[type="button"] {
 input[type="submit"]:hover, input[type="button"]:hover {
   background-color: $light-green;
   border: 0px;
+  cursor: pointer;
 }
 
 input[type="submit"]:disabled, input[type="button"] {

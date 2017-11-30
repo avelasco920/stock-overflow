@@ -6,6 +6,13 @@
   margin-bottom: 45px;
 }
 
+@media only screen and (max-width: 1500px)  {
+  .account-page {
+    width: 1000px;
+    left: calc(50% - 500px);
+  }
+}
+
 .portfolio {
   height: 400px;
   width: 65%;

@@ -40,7 +40,7 @@ class UserForm extends React.Component {
   signinDemo(event) {
     event.preventDefault();
     this.state = {
-      username: 'smelly_cat',
+      username: 'the_transponster',
       password: 'hello123'
     };
     const user = this.state;

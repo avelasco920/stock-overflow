@@ -16,22 +16,22 @@ WatchlistItem.destroy_all
 #------------ User -------------#
 #-------------------------------#
 
-phoebe = User.create(
-  first_name: "Phoebe",
-  last_name: "Buffay",
-  username: "smelly_cat",
-  email: "phoebe@gmail.com",
+chandler = User.create(
+  first_name: "Chandler",
+  last_name: "Bing",
+  username: "the_transponster",
+  email: "chandler@stackexchange.com",
   password: "hello123",
   contact_number: "415-555-5555",
   cash_value: 2387.56,
-  img_url: "https://media1.popsugar-assets.com/files/thumbor/Jag4QheIiSRDyPige1c7d6J7X68/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2017/07/25/859/n/1922398/1bb1be5259779df9303e84.02388163_edit_img_image_43785815_1500923262/i/Phoebe-Buffay-Quotes-From-Friends.jpg",
+  img_url: "https://i.pinimg.com/originals/aa/33/90/aa3390865508588b0aeba800ae20ef3a.jpg",
 )
 
 angel = User.create(
   first_name: "Angel",
   last_name: "Velasco",
   username: "angel_investor",
-  email: "angel@gmail.com",
+  email: "angel@stackexchange.com",
   password: "hello123",
   contact_number: "415-555-5555",
   cash_value: 200.78,
@@ -42,7 +42,7 @@ kyle = User.create(
   first_name: "Kyle",
   last_name: "Chen",
   username: "kyle_investor",
-  email: "kyle@gmail.com",
+  email: "kyle@stackexchange.com",
   password: "hello123",
   contact_number: "415-555-5555",
   cash_value: 2046.14,
@@ -53,7 +53,7 @@ truong = User.create(
   first_name: "Truong",
   last_name: "Nguyen",
   username: "truong_investor",
-  email: "truong@gmail.com",
+  email: "truong@stackexchange.com",
   password: "hello123",
   contact_number: "415-555-5555",
   cash_value: 10460.97,
@@ -64,7 +64,7 @@ maxine = User.create(
   first_name: "Maxine",
   last_name: "Chui",
   username: "maxine_investor",
-  email: "maxine@gmail.com",
+  email: "maxine@stackexchange.com",
   password: "hello123",
   contact_number: "415-555-5555",
   cash_value: 4493.32,
@@ -437,32 +437,32 @@ amazon = Company.create(
 #-------------------------------#
 
 Stock.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: google.id,
   num_shares: 2
 )
 Stock.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: netflix.id,
   num_shares: 4
 )
 Stock.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: snap.id,
   num_shares: 4
 )
 Stock.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: tesla.id,
   num_shares: 8
 )
 Stock.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: nvidia.id,
   num_shares: 6
 )
 Stock.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: amazon.id,
   num_shares: 1
 )
@@ -536,19 +536,19 @@ WatchlistItem.create(
 
 
 WatchlistItem.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: amd.id
 )
 WatchlistItem.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: square.id
 )
 WatchlistItem.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: apple.id
 )
 WatchlistItem.create(
-  user_id: phoebe.id,
+  user_id: chandler.id,
   company_id: facebook.id
 )
 

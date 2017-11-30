@@ -12,7 +12,7 @@ class Chart extends React.Component {
       loading: this.props.loading,
       numShares: this.props.numShares,
       status: "initial",
-      lightBox: "",
+      lightBox: ".light-box-hide",
       modalClose: "modal-close-hidden",
       tradeMethod: ""
     };
@@ -83,7 +83,8 @@ class Chart extends React.Component {
     this.setState({
       status: "initial",
       lightBox: "",
-      modalClose: "modal-close-hidden"
+      modalClose: "modal-close-hidden",
+      tradeMethod: ""
     });
   }
 
@@ -94,7 +95,7 @@ class Chart extends React.Component {
           type="button"
           value="Buy"
           onClick={() => this.changeState("buy")}
-          className="buy-button"
+          className="buy-button hvr-sweep-to-right"
         />
         <input
           type="button"
@@ -150,17 +151,18 @@ class Chart extends React.Component {
 
   render() {
     const { loading, company, user } = this.props;
-    const { numShares,lightBox, modalClose } = this.state;
+    const { numShares,lightBox, modalClose, tradeMethod } = this.state;
+    const method = tradeMethod.charAt(0).toUpperCase() + tradeMethod.slice(1);
     if (loading) {
       return (<div></div>);
     } else {
       return (
         <div className="sidebar-container">
-          <div className={ lightBox }/>
+          <div className={ lightBox } onClick={this.closeModal}/>
           <div className="stock-form">
             <div className="stock-form-header">
-              <h4>Buy {company.symbol}</h4>
-            <h4 className={modalClose} onClick={this.closeModal}>&#10006;</h4>
+              <h4>{method} {company.symbol}</h4>
+              <h4 className={modalClose} onClick={this.closeModal}>&#10006;</h4>
             </div>
             <div className="stock-form-main">
               <div className="stock-form-detail-container">
