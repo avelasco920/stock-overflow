@@ -15,6 +15,6 @@ export const clearSessionErrors = errors => dispatch => (
   dispatch(receiveSessionErrors([]))
 );
 
-export const clearTradeEventErrors = errors => dispatch => (
+export const clearTradeEventErrors = () => dispatch => (
   dispatch(receiveTradeEventErrors([]))
 );

@@ -93,6 +93,7 @@ class Chart extends React.Component {
   }
 
   renderInitial() {
+    const isEnabled = this.state.numShares > 0;
     return (
       <div className="buttons">
         <input
@@ -100,12 +101,14 @@ class Chart extends React.Component {
           value="Buy"
           onClick={() => this.changeState("buy")}
           className="buy-button hvr-sweep-to-right"
+          disabled={!isEnabled}
         />
         <input
           type="button"
           value="Sell"
           onClick={() => this.changeState("sell")}
           className="sell-button"
+          disabled={!isEnabled}
         />
       </div>
     );

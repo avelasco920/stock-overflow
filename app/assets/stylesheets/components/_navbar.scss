@@ -100,8 +100,7 @@
   position: absolute;
   width: 100%;
   top: 53px;
-  // box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  border: 1px solid $lightest-gray;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
 }
 
 .search-result-li {

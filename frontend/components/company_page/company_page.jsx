@@ -18,6 +18,15 @@ class CompanyPage extends React.Component {
     this.props.fetchCompany(companyId);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.symbol !== this.props.match.params.symbol) {
+      const companyId = convertCompanySymToId(
+          nextProps.companies, nextProps.match.params.symbol
+      );
+      this.props.fetchCompany(companyId);
+    }
+  }
+
   render() {
     return (
       <div className="outer">
@@ -26,6 +35,8 @@ class CompanyPage extends React.Component {
           <StockFormContainer />
         </div>
         <Footer />
+
+
       </div>
     );
   }

@@ -10,7 +10,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-
     $(window).scroll(function() {
       var scroll = $(window).scrollTop();
       if (scroll > 0) {

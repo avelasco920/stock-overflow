@@ -19,15 +19,16 @@ import {
 } from './reducers/selectors';
 
 import { fetchCompanies, fetchCompany } from './actions/companies_actions';
-
+import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
+import { makeTrade } from './actions/trade_events_actions';
 import {
   fetchNewsArticles,
   incrementCount
 } from './actions/news_articles_actions';
-
-import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
-import { makeTrade } from './actions/trade_events_actions';
-import { searchCompanyDatabase } from './actions/company_search_actions';
+import {
+  searchCompanyDatabase,
+  clearSearchResults
+} from './actions/company_search_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.makeTrade = makeTrade;
   window.clearSessionErrors = clearSessionErrors;
   window.searchCompanyDatabase = searchCompanyDatabase;
+  window.clearSearchResults = clearSearchResults;
   //
 
   let store;
