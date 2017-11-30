@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
   }
 
   clearResults() {
-    setTimeout( ()=> {
+    setTimeout( () => {
       this.props.clearSearchResults();
       this.setState({query: ''});
     }, 300);

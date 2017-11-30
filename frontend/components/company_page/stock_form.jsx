@@ -22,6 +22,21 @@ class Chart extends React.Component {
     this.preventDefaultForScrollKeys = this.preventDefaultForScrollKeys.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearTradeEventErrors();
+  }
+
+  // componentWillReceiveProps(nextProps) {
+  //   debugger;
+  //   if (nextProps.numShares !== this.props.numShares) {
+  //     this.processTrade();
+  //     setTimeout( () => {
+  //       if ( this.props.errors.length === 0 )
+  //         this.props.history.push('/account');
+  //     }, 300);
+  //   }
+  // }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -30,7 +45,6 @@ class Chart extends React.Component {
 
   processTrade(e) {
     e.preventDefault();
-    this.props.clearTradeEventErrors();
     const id = this.props.company.id;
     let event = {
       trade_event: {
@@ -39,7 +53,12 @@ class Chart extends React.Component {
       }
     };
     this.props.makeTrade(id, event);
-    this.props.history.push('/account');
+    this.props.clearTradeEventErrors();
+    setTimeout( () => {
+      if ( this.props.errors.length === 0 )
+        this.props.history.push('/account');
+    }, 300);
+
   }
 
   renderErrors() {
@@ -83,6 +102,7 @@ class Chart extends React.Component {
   }
 
   closeModal() {
+    this.props.clearTradeEventErrors();
     this.setState({
       status: "initial",
       lightBox: "",
