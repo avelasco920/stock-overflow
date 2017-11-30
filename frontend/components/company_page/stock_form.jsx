@@ -203,7 +203,7 @@ class Chart extends React.Component {
             </div>
             <div className="stock-current">
               <span>Current portfolio</span>
-              <span>{company.num_shares}</span>
+            <span>{company.num_shares} shares</span>
             </div>
             <div className="stock-form-main">
               <div className="stock-form-detail-container">

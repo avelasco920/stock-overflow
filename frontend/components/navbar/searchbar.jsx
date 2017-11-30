@@ -28,6 +28,29 @@ class SearchBar extends React.Component {
           className="white-input"
           id="search"
         />
+        <ul className="search-results">
+          <Link to="/company/AAPL" className="search-result-li">
+            <div className="search-result-company">
+              <span className="search-result-symbol">AAPL</span>
+              <span className="search-result-name">Apple Inc</span>
+            </div>
+            <span className="search-result-marketprice">$35.92</span>
+          </Link>
+          <Link to="/company/AAPL" className="search-result-li">
+            <div className="search-result-company">
+              <span className="search-result-symbol">AAPL</span>
+              <span className="search-result-name">Apple Inc</span>
+            </div>
+            <span className="search-result-marketprice">$35.92</span>
+          </Link>
+          <Link to="/company/AAPL" className="search-result-li">
+            <div className="search-result-company">
+              <span className="search-result-symbol">AAPL</span>
+              <span className="search-result-name">Apple Inc</span>
+            </div>
+            <span className="search-result-marketprice">$35.92</span>
+          </Link>
+        </ul>
       </div>
     );
   }

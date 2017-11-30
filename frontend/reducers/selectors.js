@@ -1,10 +1,10 @@
-export const selectInvestedCompanies = (state) => {
+export const selectInvestedCompanies = state => {
   const companies = state.entities.companies;
   const currentUser = state.session.currentUser;
   return currentUser.companies_invested.map((id) => companies[id]);
 };
 
-export const selectWatchingCompanies = (state) => {
+export const selectWatchingCompanies = state => {
   const currentUser = state.session.currentUser;
   const companies = state.entities.companies;
   let filteredWatchlist = [];
@@ -21,12 +21,17 @@ export const convertCompanySymToId = (companies, sym) => {
   return companies.find(company => company.symbol === sym).id;
 };
 
-export const selectCurrentCompany = (state) => {
+export const selectCurrentCompany = state => {
   const companyId = state.ui.companyDisplay;
   return state.entities.companies[companyId];
 };
 
-export const selectNewsArticles = (state) => {
+export const selectNewsArticles = state => {
   const newsArticles = state.entities.newsArticles;
-  return Object.keys(newsArticles).map((id) => newsArticles[id]);
+  return Object.keys(newsArticles).map(id => newsArticles[id]);
+};
+
+export const selectSearchResults = state => {
+  const companies = state.entities.companySearch;
+  return Object.keys(companies).map(id => companies[id]);
 };

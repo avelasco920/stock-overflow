@@ -20,7 +20,7 @@
   padding: 12px 60px ;
   box-sizing: border-box;
   z-index: 1000;
-  overflow: auto;
+  overflow: visible;
   transition: all 0.5s linear;
   background-color: white;
 }
@@ -94,4 +94,46 @@
 .search-container {
   position: relative;
   height: 100%;
+}
+
+.search-results {
+  position: absolute;
+  width: 100%;
+  top: 53px;
+  // box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  border: 1px solid $lightest-gray;
+}
+
+.search-result-li {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: white;
+  border-bottom: 1px solid $lightest-gray;
+}
+
+.search-result-li:hover {
+  background-color: $lightest-gray;
+  transition: all 0.5s linear;
+}
+
+.search-result-company {
+  display: flex;
+  align-items: baseline;
+}
+
+.search-result-symbol {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.search-results .search-result-li:last-child {
+  border-bottom: 0px;
+}
+
+.search-result-marketprice {
+  font-size: 16px;
 }
