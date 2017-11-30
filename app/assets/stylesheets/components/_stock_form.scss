@@ -1,12 +1,28 @@
 .stock-form {
+  border-radius: 6px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 3000;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0,0,0,0.1);
 }
 
-.stock-form h4 {
+.stock-form-header {
   padding: 20px;
   border-bottom: 1px solid $lightest-gray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-close-hidden {
+  display: none;
+}
+
+.modal-close:hover {
+  color: $light-gray;
+  cursor: pointer;
 }
 
 .stock-form-detail-container input {
@@ -42,7 +58,7 @@
 }
 
 .buttons {
-  padding: 0 20px 20px 20px;
+  padding: 20px;
   width: 100%;
   display: flex;
   box-sizing: border-box;
@@ -58,6 +74,10 @@
   width: 35%;
 }
 
+.button {
+  width: 100%;
+}
+
 .user-available-cash {
   text-align: center;
   color: $light-gray;
@@ -71,11 +91,33 @@
 .stock-form-errors {
   border: 1px solid transparent;
   font-size: 14px;
-  margin: 0 20px 20px 20px;
+  margin: 20px 0;
   align-items: center;
 }
 
 .stock-form-error {
   color: red;
   font-family: $roboto;
+}
+
+.light-box {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.7);;
+  z-index: 1200 !important;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.order-summary {
+  padding: 20px;
+}
+
+.order-summary h4 {
+  padding-bottom: 10px;
+}
+
+.order-summary-text strong {
+  color: black;
 }

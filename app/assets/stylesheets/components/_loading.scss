@@ -2,7 +2,7 @@
   margin: 100px auto 0;
   width: 70px;
   text-align: center;
-  z-index: 2000;
+  z-index: 8000;
   position: fixed;
   left: calc(50% - 27px);
   bottom: calc(50% - 9px);
@@ -48,6 +48,6 @@
   width: 100vw;
   height: 100vh;
   background-color: white;
-  z-index: 1200;
+  z-index: 6000;
   position: fixed;
 }

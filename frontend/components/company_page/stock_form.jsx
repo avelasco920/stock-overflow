@@ -11,9 +11,13 @@ class Chart extends React.Component {
       company: this.props.company,
       loading: this.props.loading,
       numShares: this.props.numShares,
+      status: "initial",
+      lightBox: "",
+      modalClose: "modal-close-hidden",
+      tradeMethod: ""
     };
-    this.buyShares = this.buyShares.bind(this);
-    this.sellShares = this.sellShares.bind(this);
+    this.processTrade = this.processTrade.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   update(field) {
@@ -22,30 +26,18 @@ class Chart extends React.Component {
     });
   }
 
-  buyShares(e) {
+  processTrade(e) {
     e.preventDefault();
     this.props.clearTradeEventErrors();
     const id = this.props.company.id;
     let event = {
       trade_event: {
         num_shares: this.state.numShares,
-        trade_type: "buy"
+        trade_type: this.state.tradeMethod
       }
     };
     this.props.makeTrade(id, event);
-  }
-
-  sellShares(e) {
-    e.preventDefault();
-    this.props.clearTradeEventErrors();
-    const id = this.props.company.id;
-    let event = {
-      trade_event: {
-        num_shares: this.state.numShares,
-        trade_type: "sell"
-      }
-    };
-    this.props.makeTrade(id, event);
+    this.props.history.push('/account');
   }
 
   renderErrors() {
@@ -62,56 +54,140 @@ class Chart extends React.Component {
     );
   }
 
+  renderModal() {
+    if (this.state.status === "initial") {
+      return this.renderInitial();
+    } else if (this.state.status === "review") {
+      return this.renderReview();
+    } else if (this.state.status === "submit") {
+      return this.renderSubmit();
+    }
+  }
+
+  changeState(method) {
+    if (this.state.status === "initial") {
+      this.setState({
+        status: "review",
+        lightBox: "light-box",
+        modalClose: "modal-close",
+        tradeMethod: method
+      });
+    } else if (this.state.status === "review") {
+      this.setState({
+        status: "submit",
+      });
+    }
+  }
+
+  closeModal() {
+    this.setState({
+      status: "initial",
+      lightBox: "",
+      modalClose: "modal-close-hidden"
+    });
+  }
+
+  renderInitial() {
+    return (
+      <div className="buttons">
+        <input
+          type="button"
+          value="Buy"
+          onClick={() => this.changeState("buy")}
+          className="buy-button"
+        />
+        <input
+          type="button"
+          value="Sell"
+          onClick={() => this.changeState("sell")}
+          className="sell-button"
+        />
+      </div>
+    );
+  }
+
+  renderReview() {
+    return (
+      <div>
+        <div className="buttons">
+          <input
+            type="button"
+            value="Review"
+            onClick={() => this.changeState()}
+            className="button"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  renderSubmit() {
+    const { company } = this.props;
+    const shares = `${this.state.numShares}`;
+    const symbol = company.symbol;
+    const marketPrice = company.market_price;
+    const tradeMethod = this.state.tradeMethod;
+    const totalPrice = stringifyToFloat(company.market_price);
+    return (
+      <div className="order-summary">
+        <h4>Order Summary</h4>
+        <span className="order-summary-text">
+          You are about to submit an order for <strong>{shares} shares
+          </strong> to <strong>{ tradeMethod }</strong> <strong>
+          {symbol} </strong> for <strong>${totalPrice}</strong>.
+          This order will execute at the best available price.
+        </span>
+        {this.renderErrors()}
+          <input
+            type="button"
+            value="Submit"
+            onClick={this.processTrade}
+            className="button"
+          />
+      </div>
+    );
+  }
+
   render() {
     const { loading, company, user } = this.props;
-    const { numShares } = this.state;
+    const { numShares,lightBox, modalClose } = this.state;
     if (loading) {
       return (<div></div>);
     } else {
       return (
-        <div className="stock-form">
-          <h4>Buy {company.symbol}</h4>
-          <div className="stock-form-main">
-            <div className="stock-form-detail-container">
-              <span className="stock-form-label">Shares of {company.symbol}</span>
-              <input
-                type="text"
-                value={this.state.numShares.replace(/[^0-9]/g,'')}
-                onChange={this.update('numShares')}
-                className="gray-input"
-              />
+        <div className="sidebar-container">
+          <div className={ lightBox }/>
+          <div className="stock-form">
+            <div className="stock-form-header">
+              <h4>Buy {company.symbol}</h4>
+            <h4 className={modalClose} onClick={this.closeModal}>&#10006;</h4>
             </div>
-            <div className="stock-form-detail-container">
-              <span className="stock-form-label">Market Price</span>
-              <span className="stock-form-detail">${stringifyToFloat(company.market_price)}</span>
+            <div className="stock-form-main">
+              <div className="stock-form-detail-container">
+                <span className="stock-form-label">Shares of {company.symbol}</span>
+                <input
+                  type="text"
+                  value={this.state.numShares.replace(/[^0-9]/g,'')}
+                  onChange={this.update('numShares')}
+                  className="gray-input"
+                />
+              </div>
+              <div className="stock-form-detail-container">
+                <span className="stock-form-label">Market Price</span>
+                <span className="stock-form-detail">${stringifyToFloat(company.market_price)}</span>
+              </div>
+              <div className="stock-form-detail-container">
+                <span className="stock-form-label" id="stock-total">Estimated Cost</span>
+                <span className="stock-form-detail" id="stock-total">
+                  ${stringifyToFloat(numShares * company.market_price)}
+                </span>
+              </div>
             </div>
-            <div className="stock-form-detail-container">
-              <span className="stock-form-label" id="stock-total">Estimated Cost</span>
-              <span className="stock-form-detail" id="stock-total">
-                ${stringifyToFloat(numShares * company.market_price)}
-              </span>
-            </div>
+            {this.renderModal()}
+            <span className="user-available-cash">
+              <strong>${stringifyToFloat(user.cash_value)}</strong> Available
+            </span>
           </div>
-          <div>
-          {this.renderErrors()}
-          <div className="buttons">
-            <input
-              type="button"
-              value="Buy"
-              onClick={this.buyShares}
-              className="buy-button"
-            />
-            <input
-              type="button"
-              value="Sell"
-              onClick={this.sellShares}
-              className="sell-button"
-            />
-          </div>
-          </div>
-          <span className="user-available-cash">
-            <strong>${stringifyToFloat(user.cash_value)}</strong> Available
-          </span>
         </div>
       );
     }
