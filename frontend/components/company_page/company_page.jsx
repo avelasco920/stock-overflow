@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { convertCompanySymToId } from '../../reducers/selectors';
 import MainContent from './main_content';
 import StockFormContainer from './stock_form_container';
+import Footer from '../footer/footer';
 
 class CompanyPage extends React.Component {
   constructor(props) {
@@ -19,9 +20,12 @@ class CompanyPage extends React.Component {
 
   render() {
     return (
-      <div className="page">
-        <MainContent />
-        <StockFormContainer />
+      <div className="outer">
+        <div className="page">
+          <MainContent />
+          <StockFormContainer />
+        </div>
+        <Footer />
       </div>
     );
   }

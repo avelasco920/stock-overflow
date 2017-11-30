@@ -14,10 +14,12 @@ class Chart extends React.Component {
       status: "initial",
       lightBox: ".light-box-hide",
       modalClose: "modal-close-hidden",
-      tradeMethod: ""
+      tradeMethod: "",
+      modalClass: "sidebar",
     };
     this.processTrade = this.processTrade.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.preventDefaultForScrollKeys = this.preventDefaultForScrollKeys.bind(this);
   }
 
   update(field) {
@@ -70,7 +72,8 @@ class Chart extends React.Component {
         status: "review",
         lightBox: "light-box",
         modalClose: "modal-close",
-        tradeMethod: method
+        tradeMethod: method,
+        modalClass: "stock-form"
       });
     } else if (this.state.status === "review") {
       this.setState({
@@ -84,7 +87,8 @@ class Chart extends React.Component {
       status: "initial",
       lightBox: "",
       modalClose: "modal-close-hidden",
-      tradeMethod: ""
+      tradeMethod: "",
+      modalClass: "stock-form"
     });
   }
 
@@ -149,28 +153,61 @@ class Chart extends React.Component {
     );
   }
 
+  preventDefault(e) {
+    e = e || window.event;
+    if (e.preventDefault)
+        e.preventDefault();
+    e.returnValue = false;
+  }
+
+  preventDefaultForScrollKeys(e) {
+    const keys = {37: 1, 38: 1, 39: 1, 40: 1};
+    if (keys[e.keyCode]) {
+        this.preventDefault(e);
+        return false;
+    }
+  }
+
+  disableScroll() {
+    if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', this.preventDefault, false);
+    window.onwheel = this.preventDefault; // modern standard
+    window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
+    window.ontouchmove  = this.preventDefault; // mobile
+    document.onkeydown  = this.preventDefaultForScrollKeys;
+  }
+
+  enableScroll() {
+      if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+      window.onmousewheel = document.onmousewheel = null;
+      window.onwheel = null;
+      window.ontouchmove = null;
+      document.onkeydown = null;
+  }
+
   render() {
     const { loading, company, user } = this.props;
-    const { numShares,lightBox, modalClose, tradeMethod } = this.state;
+    const { numShares,lightBox, modalClose, tradeMethod, modalClass } = this.state;
     const method = tradeMethod.charAt(0).toUpperCase() + tradeMethod.slice(1);
     if (loading) {
       return (<div></div>);
     } else {
       return (
         <div className="sidebar-container">
-          <div className={ lightBox } onClick={this.closeModal}/>
-          <div className="stock-form">
+          <div className={ lightBox } onClick={ this.closeModal }/>
+          <div className={ modalClass }>
             <div className="stock-form-header">
               <h4>{method} {company.symbol}</h4>
-              <h4 className={modalClose} onClick={this.closeModal}>&#10006;</h4>
+              <h4 className={ modalClose } onClick={ this.closeModal }>&#10006;</h4>
             </div>
             <div className="stock-form-main">
               <div className="stock-form-detail-container">
-                <span className="stock-form-label">Shares of {company.symbol}</span>
+                <span className="stock-form-label">Shares of { company.symbol }</span>
                 <input
                   type="text"
-                  value={this.state.numShares.replace(/[^0-9]/g,'')}
-                  onChange={this.update('numShares')}
+                  value={ this.state.numShares.replace(/[^0-9]/g,'') }
+                  onChange={ this.update('numShares') }
                   className="gray-input"
                 />
               </div>

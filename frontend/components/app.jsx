@@ -27,13 +27,11 @@ class App extends React.Component {
       return (
         <div className="app-body">
           <Navbar />
-          <div className="app-main">
-            <Switch>
-              <ProtectedRoute exact path="/company/:symbol" component={CompanyPageContainer} />
-              <ProtectedRoute path="/account" component={AccountPage} />
-              <ProtectedRoute path="/" component={HomePage} />
-            </Switch>
-          </div>
+          <Switch>
+            <ProtectedRoute exact path="/company/:symbol" component={CompanyPageContainer} />
+            <ProtectedRoute path="/account" component={AccountPage} />
+            <ProtectedRoute path="/" component={HomePage} />
+          </Switch>
         </div>
       );
     }

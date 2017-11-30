@@ -1,0 +1,34 @@
+.footer {
+  width: 60%;
+  height: 400px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+@media only screen and (max-width: 1500px)  {
+  .footer {
+    width: 1000px;
+    margin: auto;
+  }
+}
+
+.footer-links {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 40px 0;
+  display: flex;
+  justify-content: right;
+  flex-direction: row-reverse;
+  width: 100%;
+  float: right
+}
+
+.footer-icon {
+  color: $green;
+  margin-left: 30px;
+  float: right;
+}
+
+.footer-icon:hover {
+  color: $light-green
+}

@@ -113,6 +113,8 @@
   bottom: 0;
   right: 0;
   transition: all 400ms;
+  overflow: hidden;
+  position:fixed;
 }
 
 .order-summary {

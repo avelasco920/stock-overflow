@@ -1,17 +1,28 @@
 .account-page {
+  display: flex;
   position: relative;
   width: 60%;
-  left: 20%; // (100% - width) / 2
-  top: 100px;
+  margin: auto;
+  margin-top: 100px;
   margin-bottom: 45px;
 }
 
 @media only screen and (max-width: 1500px)  {
   .account-page {
     width: 1000px;
-    left: calc(50% - 500px);
   }
 }
+
+.page {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 45px;
+  background-color: white;
+}
+
 
 .portfolio {
   height: 400px;
