@@ -2,10 +2,11 @@ export const stringifyToFloatNoCommas = (num) => {
   return parseFloat(Math
     .round(num * 100) / 100)
     .toFixed(2);
-  };
+};
 
 export const stringifyToFloat = (num) => {
   let str = stringifyToFloatNoCommas(num);
+  if (str === "NaN") return "0";
   const splitNum = str.split(".");
   const withCommas = addCommas(splitNum[0]);
   return withCommas + "." + splitNum[1];

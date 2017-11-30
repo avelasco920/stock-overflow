@@ -201,6 +201,10 @@ class Chart extends React.Component {
               <h4>{method} {company.symbol}</h4>
               <h4 className={ modalClose } onClick={ this.closeModal }>&#10006;</h4>
             </div>
+            <div className="stock-current">
+              <span>Current portfolio</span>
+              <span>{company.num_shares}</span>
+            </div>
             <div className="stock-form-main">
               <div className="stock-form-detail-container">
                 <span className="stock-form-label">Shares of { company.symbol }</span>
