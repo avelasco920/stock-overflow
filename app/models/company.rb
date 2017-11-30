@@ -23,4 +23,14 @@ class Company < ApplicationRecord
     self.market_price * num_shares
   end
 
+  def self.top_five_by_name(query_params)
+    param = '%' + query_params.downcase + '%'
+    Company.where('lower(name) LIKE ?', param).limit(5)
+  end
+
+  def self.top_five_by_symbol(query_params)
+    param = '%' + query_params.downcase + '%'
+    Company.where('lower(symbol) LIKE ?', param).limit(5)
+  end
+
 end

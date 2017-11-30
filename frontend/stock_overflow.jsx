@@ -27,6 +27,7 @@ import {
 
 import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
 import { makeTrade } from './actions/trade_events_actions';
+import { searchCompanyDatabase } from './actions/company_search_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.unwatchCompany = unwatchCompany;
   window.makeTrade = makeTrade;
   window.clearSessionErrors = clearSessionErrors;
+  window.searchCompanyDatabase = searchCompanyDatabase;
   //
 
   let store;
