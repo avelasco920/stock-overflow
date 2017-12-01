@@ -5,9 +5,16 @@ class ChartOverlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      watching: this.props.company.current_user_watching
+      watching: this.props.company.current_user_watching,
+      activeId: "1",
     };
   }
+
+  componentDidMount() {
+      const { activeId } = this.state;
+      let initialActive = document.getElementById(activeId);
+      initialActive.classList.add("chart-history-active");
+    }
 
   button () {
     const { company, watching } = this.props;
@@ -32,6 +39,16 @@ class ChartOverlay extends React.Component {
     }
   }
 
+  changeChart(strNum) {
+    this.props.changeActive(strNum);
+    const { activeId } = this.state;
+    let currentlyActive = document.getElementById(activeId);
+    currentlyActive.classList.remove("chart-history-active");
+    let newActive = document.getElementById(strNum);
+    newActive.classList.add("chart-history-active");
+    this.setState({ activeId: strNum });
+  }
+
   render() {
     const { company } = this.props;
     const companyUrl = `/company/${company.symbol};`;
@@ -47,12 +64,12 @@ class ChartOverlay extends React.Component {
         {this.button()}
         <div className="chart-history-container">
           <div className="chart-history">
-            <a>Today</a>
-            <a>1W</a>
-            <a>1M</a>
-            <a>3M</a>
-            <a>1Y</a>
-            <a>5Y</a>
+            <a onClick={() => this.changeChart("1")} id="1">Today</a>
+            <a onClick={() => this.changeChart("2")} id="2">1W</a>
+            <a onClick={() => this.changeChart("3")} id="3">1M</a>
+            <a onClick={() => this.changeChart("4")} id="4">3M</a>
+            <a onClick={() => this.changeChart("5")} id="5">1Y</a>
+            <a onClick={() => this.changeChart("6")} id="6">5Y</a>
           </div>
         </div>
       </div>
