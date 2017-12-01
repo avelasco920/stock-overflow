@@ -11,7 +11,7 @@ class Chart extends React.Component {
       <div className="chart">
         <ChartOverlay user={user}/>
         <img
-          src="https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green1.png?raw=true"
+          src="https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green3.png?raw=true"
           className="chart-placeholder"/>
       </div>
     );
