@@ -12,7 +12,6 @@ const mapStateToProps = state => {
   return {
     user: state.session.currentUser,
     company: selectCurrentCompany(state),
-    // watching: selectCurrentCompany(state).current_user_watching,
     loading: state.ui.loading.detailLoading,
   };
 };

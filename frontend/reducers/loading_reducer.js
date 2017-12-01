@@ -1,7 +1,6 @@
 import merge from 'lodash/merge';
 
 import {
-  // STOCK_INDEX_HAS_MOUNTED,
   RECEIVE_COMPANIES,
   RECEIVE_COMPANY,
   START_LOADING_ALL_COMPANIES,
@@ -22,8 +21,6 @@ const initialState = {
 const loadingReducer = (state = initialState, action) => {
   Object.freeze(state);
   switch(action.type){
-    // case STOCK_INDEX_HAS_MOUNTED:
-    //   return merge({}, state, { stockIndexLoading: false});
     case RECEIVE_COMPANIES:
       return merge({}, state, { indexLoading: false });
     case RECEIVE_COMPANY:

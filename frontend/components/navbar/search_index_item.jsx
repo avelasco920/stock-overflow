@@ -32,18 +32,3 @@ class SearchIndexItem extends React.Component {
 }
 
 export default SearchIndexItem;
-
-// const SearchIndexItem = ({ company }) => {
-//   const companyUrl = `/company/${company.symbol}`;
-//   return (
-//     <Link to={companyUrl} className="search-result-li">
-//       <div className="search-result-company">
-//         <span className="search-result-symbol">{company.symbol}</span>
-//         <span className="search-result-name">{company.name}</span>
-//       </div>
-//       <span className="search-result-marketprice">
-//         ${stringifyToFloat(company.market_price)}
-//       </span>
-//     </Link>
-//   );
-// };

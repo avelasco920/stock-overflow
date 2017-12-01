@@ -10,7 +10,6 @@ const mapStateToProps = state => {
   return {
     companiesWatching: selectWatchingCompanies(state),
     loading: state.ui.loading.indexLoading,
-    // stockIndexLoading: state.ui.loading.stockIndexLoading
   };
 };
 

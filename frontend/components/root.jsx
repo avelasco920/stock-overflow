@@ -7,7 +7,6 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-//containers
 import AppContainer from './app_container';
 import LoginPage from './login_page/login_page';
 import SignupPage from './signup_page/signup_page';

@@ -23,7 +23,6 @@ class UserForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearSessionErrors();
-    // debugger;
   }
 
   renderErrors() {
@@ -73,21 +72,9 @@ class UserForm extends React.Component {
     }
   }
 
-  // confirmPw() {
-  //   const pwConf = document.getElementById("pw-conf");
-  //   if (this.state.password.length === 0) {
-  //       pwConf.style.border = "1px solid $light-gray";
-  //   } else if (this.state.password === this.state.password_confirmation) {
-  //       pwConf.style.border = "1px solid red";
-  //   } else {
-  //     pwConf.style.border = "1px solid $green";
-  //   }
-  // }
-
   confirmPassword() {
     return () => {
       const pwConf = document.getElementById("pw-conf");
-      // debugger;
       if (this.state.password.length === 0) {
         pwConf.style.border = "1px solid $light-gray";
       } else if (this.state.password === this.state.password_confirmation) {

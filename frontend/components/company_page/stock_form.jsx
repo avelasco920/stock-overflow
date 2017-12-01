@@ -49,10 +49,6 @@ class StockForm extends React.Component {
         tradeMethod: method,
         modalClass: "stock-form"
       });
-    // } else if (this.state.status === "review") {
-    //   this.setState({
-    //     status: "submit",
-    //   });
     } else if (this.state.status === "submit") {
       this.props.clearTradeEventErrors();
       this.processing = false;
@@ -86,17 +82,8 @@ class StockForm extends React.Component {
         }
       };
       this.props.makeTrade(id, event)
-        .then(() => this.changeState())
-        .fail(() => console.log("I failed"));
-        // .fail(() => this.setState({status: "submit"}));
+        .then(() => this.changeState());
     }
-    // setTimeout( () => {
-    //   if ( this.props.errors.length === 0 ) {
-    //     this.changeState();
-    //   } else {
-    //     this.setState({status: "submit"});
-    //   }
-    // }, 1000);
   }
 
   renderErrors() {
