@@ -14,7 +14,7 @@ class ChartOverlay extends React.Component {
     return (
       <div className="chart-overlay">
         <div className="account-info">
-          <h2>${stringifyToFloat(user.stocks_value)}</h2>
+          <h2>${stringifyToFloat(user.portfolio_value)}</h2>
           <div className="delta">
             <h4>+$7.01(+0.70%)</h4> <span>Today</span>
           </div>

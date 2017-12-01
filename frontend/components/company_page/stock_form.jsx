@@ -3,7 +3,7 @@ import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 import { stringifyToFloat } from '../../util/parsing_functions';
 
-class Chart extends React.Component {
+class StockForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,75 +13,30 @@ class Chart extends React.Component {
       numShares: this.props.numShares,
       status: "initial",
       lightBox: ".light-box-hide",
-      modalClose: "modal-close-hidden",
+      modalClose: "hidden",
       tradeMethod: "",
       modalClass: "sidebar",
     };
+    this.processing = false;
     this.processTrade = this.processTrade.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.preventDefaultForScrollKeys = this.preventDefaultForScrollKeys.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearTradeEventErrors();
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   debugger;
-  //   if (nextProps.numShares !== this.props.numShares) {
-  //     this.processTrade();
-  //     setTimeout( () => {
-  //       if ( this.props.errors.length === 0 )
-  //         this.props.history.push('/account');
-  //     }, 300);
-  //   }
-  // }
-
-  update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
-  }
-
-  processTrade(e) {
-    e.preventDefault();
-    const id = this.props.company.id;
-    let event = {
-      trade_event: {
-        num_shares: this.state.numShares,
-        trade_type: this.state.tradeMethod
-      }
-    };
-    this.props.makeTrade(id, event);
-    this.props.clearTradeEventErrors();
-    setTimeout( () => {
-      if ( this.props.errors.length === 0 )
-        this.props.history.push('/account');
-    }, 300);
-
-  }
-
-  renderErrors() {
-    return(
-      <ul className="stock-form-errors">
-        {this.props.errors.map((error, i) => (
-          <li className="stock-form-error"
-            key={`error-${i}`}
-            >
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
-  renderModal() {
+  renderReviewProcess() {
     if (this.state.status === "initial") {
       return this.renderInitial();
     } else if (this.state.status === "review") {
       return this.renderReview();
     } else if (this.state.status === "submit") {
       return this.renderSubmit();
+    } else if (this.state.status === "processing") {
+      return this.renderProcessing();
+    } else if (this.state.status === "complete") {
+      return this.renderComplete();
     }
   }
 
@@ -98,18 +53,80 @@ class Chart extends React.Component {
       this.setState({
         status: "submit",
       });
+    } else if (this.state.status === "submit") {
+      this.props.clearTradeEventErrors();
+      this.processing = false;
+      this.setState({
+        status: "processing",
+      });
+    } else if (this.state.status === "processing") {
+      let newStatus = (this.props.errors.length > 0) ? "submit" : "complete";
+      this.setState({
+        status: newStatus
+      });
     }
   }
 
-  closeModal() {
-    this.props.clearTradeEventErrors();
-    this.setState({
-      status: "initial",
-      lightBox: "",
-      modalClose: "modal-close-hidden",
-      tradeMethod: "",
-      modalClass: "stock-form"
+  update(field) {
+    return e => this.setState({
+      [field]: e.currentTarget.value
     });
+  }
+
+  processTrade() {
+    if (this.processing) {
+      return undefined;
+    } else {
+      this.processing = true;
+      const id = this.props.company.id;
+      let event = {
+        trade_event: {
+          num_shares: this.state.numShares,
+          trade_type: this.state.tradeMethod
+        }
+      };
+      this.props.makeTrade(id, event)
+        .then(() => this.changeState())
+        .fail(() => console.log("I failed"));
+        // .fail(() => this.setState({status: "submit"}));
+    }
+    // setTimeout( () => {
+    //   if ( this.props.errors.length === 0 ) {
+    //     this.changeState();
+    //   } else {
+    //     this.setState({status: "submit"});
+    //   }
+    // }, 1000);
+  }
+
+  renderErrors() {
+    return(
+      <ul className="stock-form-errors">
+        {this.props.errors.map((error, i) => (
+          <li className="stock-form-error"
+            key={`error-${i}`}
+            >
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+  closeModal() {
+    if (this.state.status === "processing") {
+      return "";
+    } else {
+      this.props.clearTradeEventErrors();
+      this.processing = false;
+      this.setState({
+        status: "initial",
+        lightBox: "",
+        modalClose: "hidden",
+        tradeMethod: "",
+        modalClass: "stock-form"
+      });
+    }
   }
 
   renderInitial() {
@@ -154,13 +171,20 @@ class Chart extends React.Component {
     const shares = `${this.state.numShares}`;
     const symbol = company.symbol;
     const marketPrice = company.market_price;
-    const tradeMethod = this.state.tradeMethod;
-    const totalPrice = stringifyToFloat(company.market_price);
+    const { tradeMethod, numShares } = this.state;
+    const totalPrice = stringifyToFloat(numShares * company.market_price);
+    let shareDesc;
+    if (this.state.numShares === 1) {
+      shareDesc = "share";
+    } else {
+      shareDesc = "shares";
+    }
     return (
       <div className="order-summary">
         <h4>Order Summary</h4>
         <span className="order-summary-text">
-          You are about to submit an order for <strong>{shares} shares
+          You are about to
+          submit an order for <strong>{shares} {shareDesc}
           </strong> to <strong>{ tradeMethod }</strong> <strong>
           {symbol} </strong> for <strong>${totalPrice}</strong>.
           This order will execute at the best available price.
@@ -169,44 +193,76 @@ class Chart extends React.Component {
           <input
             type="button"
             value="Submit"
-            onClick={this.processTrade}
+            onClick={() => this.changeState()}
             className="button"
           />
       </div>
     );
   }
 
-  preventDefault(e) {
-    e = e || window.event;
-    if (e.preventDefault)
-        e.preventDefault();
-    e.returnValue = false;
+  renderProcessing() {
+    window.setTimeout(() => this.processTrade(), 300);
+    return(
+      <div className="stock-form-processing">
+        <div className="stock-processing-icon">Processing...</div>
+        <h4>Processing...</h4>
+      </div>
+    );
   }
 
-  preventDefaultForScrollKeys(e) {
-    const keys = {37: 1, 38: 1, 39: 1, 40: 1};
-    if (keys[e.keyCode]) {
-        this.preventDefault(e);
-        return false;
+  renderComplete() {
+    let method;
+    let methodSummary;
+    if (this.state.tradeMethod === "buy") {
+      method = "SHARES BOUGHT";
+      methodSummary = "bought";
+    } else if (this.state.tradeMethod === "sell") {
+      method = "SHARES SOLD";
+      methodSummary = "sold";
     }
-  }
 
-  disableScroll() {
-    if (window.addEventListener) // older FF
-      window.addEventListener('DOMMouseScroll', this.preventDefault, false);
-    window.onwheel = this.preventDefault; // modern standard
-    window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
-    window.ontouchmove  = this.preventDefault; // mobile
-    document.onkeydown  = this.preventDefaultForScrollKeys;
-  }
-
-  enableScroll() {
-      if (window.removeEventListener)
-        window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
-      window.onmousewheel = document.onmousewheel = null;
-      window.onwheel = null;
-      window.ontouchmove = null;
-      document.onkeydown = null;
+    const { company } = this.props;
+    const { numShares } = this.state;
+    const totalCost = stringifyToFloat(numShares * company.market_price);
+    let shareDesc;
+    if (company.num_shares === 1) {
+      shareDesc = "share";
+    } else {
+      shareDesc = "shares";
+    }
+    const totalCostInt = totalCost.split('.')[0];
+    const totalCostDec = totalCost.split('.')[1];
+    return (
+      <div className="stock-form-complete">
+        <h4 className="completed-header">Trade Complete!</h4>
+        <div className="completed-stats-summary">
+          <div className="completed-stats">
+            <h1>{numShares}</h1>
+            <span className="completed-desc">{method}</span>
+          </div>
+          <div className="completed-stats">
+            <div>
+              <span className="small">$</span>
+              <h1>{totalCostInt}</h1>
+              <span className="small">.{totalCostDec}</span>
+            </div>
+            <span className="completed-desc">TOTAL COST</span>
+          </div>
+        </div>
+        <div className="completed-bottom">
+          <div className="completed-stocks-update">
+            <span>You now have {company.num_shares} {shareDesc} of {company.symbol}.</span>
+          </div>
+          <Link to='/account'>
+            <input
+              type="button"
+              value="OK"
+              className="button"
+            />
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -216,17 +272,23 @@ class Chart extends React.Component {
     if (loading) {
       return (<div></div>);
     } else {
+      let shareDesc;
+      if (company.num_shares === 1) {
+        shareDesc = "share";
+      } else {
+        shareDesc = "shares";
+      }
       return (
         <div className="sidebar-container">
           <div className={ lightBox } onClick={ this.closeModal }/>
           <div className={ modalClass }>
             <div className="stock-form-header">
-              <h4>{method} {company.symbol}</h4>
+              <h4>{ method } {company.symbol}</h4>
               <h4 className={ modalClose } onClick={ this.closeModal }>&#10006;</h4>
             </div>
             <div className="stock-current">
               <span>Current portfolio</span>
-            <span>{company.num_shares} shares</span>
+              <span>{company.num_shares} {shareDesc}</span>
             </div>
             <div className="stock-form-main">
               <div className="stock-form-detail-container">
@@ -249,7 +311,7 @@ class Chart extends React.Component {
                 </span>
               </div>
             </div>
-            {this.renderModal()}
+            {this.renderReviewProcess()}
             <span className="user-available-cash">
               <strong>${stringifyToFloat(user.cash_value)}</strong> Available
             </span>
@@ -260,4 +322,4 @@ class Chart extends React.Component {
   }
 }
 
-export default Chart;
+export default StockForm;

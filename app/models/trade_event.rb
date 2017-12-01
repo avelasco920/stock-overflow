@@ -34,6 +34,7 @@ class TradeEvent < ApplicationRecord
       stock.num_shares += num_shares
       stock.save
     else
+      user.decrease_cash_value(stock_value)
       user.stocks.create!(company_id: company.id, num_shares: event[:num_shares].to_i)
     end
   end
@@ -42,9 +43,12 @@ class TradeEvent < ApplicationRecord
     num_shares = event[:num_shares].to_i
     stock = Stock.find_by(user_id: user.id, company_id: company.id)
     stock_value = Stock.value(company, num_shares)
-    if stock && num_shares > stock.num_shares
-      return "You don't don't have enough shares to make that sale."
+    if !stock
+      return "You have no stock in this company to sell."
+    elsif num_shares > stock.num_shares
+      return "You don't have enough shares to make that sale."
     elsif num_shares == stock.num_shares
+      user.increase_cash_value(stock_value)
       stock.destroy
     else
       user.increase_cash_value(stock_value)
