@@ -86,10 +86,12 @@ html,body { height:100%; }
   justify-content: space-between;
   display: flex;
   align-items: center;
+  background-color: white;
 }
 
 .faq-spread:hover {
   color: black;
+  cursor: pointer;
 }
 
 .faq-spread:hover #chevron-down {
@@ -119,6 +121,10 @@ html,body { height:100%; }
   font-size: 16px;
   font-weight: lighter;
   width: 180px;
+}
+
+.faq-text:hover {
+  cursor: pointer;
 }
 
 #faq-answer {
