@@ -10,8 +10,16 @@ const StockIndexItem = ({ company }) => {
     "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green1.png?raw=true",
     "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green2.png?raw=true",
     "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green3.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green4.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green5.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green6.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green7.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green8.png?raw=true",
     "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/red1.png?raw=true",
     "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/red2.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/red3.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/red4.png?raw=true",
+    "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/red5.png?raw=true",
   ];
   const randGraph = graphUrl[Math.floor(Math.random() * graphUrl.length)];
   const companyUrl = `/company/${ company.symbol }`;

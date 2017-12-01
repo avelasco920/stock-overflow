@@ -43,16 +43,16 @@ class StockForm extends React.Component {
   changeState(method) {
     if (this.state.status === "initial") {
       this.setState({
-        status: "review",
+        status: "submit",
         lightBox: "light-box",
         modalClose: "modal-close",
         tradeMethod: method,
         modalClass: "stock-form"
       });
-    } else if (this.state.status === "review") {
-      this.setState({
-        status: "submit",
-      });
+    // } else if (this.state.status === "review") {
+    //   this.setState({
+    //     status: "submit",
+    //   });
     } else if (this.state.status === "submit") {
       this.props.clearTradeEventErrors();
       this.processing = false;
