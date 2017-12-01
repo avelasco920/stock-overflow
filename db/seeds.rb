@@ -23,7 +23,7 @@ chandler = User.create(
   email: "chandler@stackexchange.com",
   password: "hello123",
   contact_number: "415-555-5555",
-  cash_value: 2387.56,
+  cash_value: 16387.56,
   img_url: "https://i.pinimg.com/originals/aa/33/90/aa3390865508588b0aeba800ae20ef3a.jpg",
 )
 
@@ -75,6 +75,43 @@ maxine = User.create(
 #----------- Company -----------#
 #-------------------------------#
 
+
+twitter = Company.create(
+  name: "Twitter INC",
+  symbol: "TWTR",
+  market_price: 20.58,
+  ceo: "Jack Dorsey",
+  founding_year: 2006,
+  employees: 3583,
+  location: "San Francisco, CA",
+  biography: "Twitter is an online news and social networking service
+            where users post and interact with messages,
+            called \"tweets.\" These messages were originally restricted
+            to 140 characters, but on November 7, 2017, the limit was
+            doubled to 280 characters for all languages except Japanese,
+            Korean and Chinese. Registered users can post tweets, but
+            those who are unregistered can only read them. Users access
+            Twitter through its website interface, Short Message Service
+            (SMS) or mobile device application software (\"app\").
+            Twitter, Inc. is based in San Francisco, California,
+            United States, and has more than 25 offices around
+            the world.
+
+            Twitter was created in March 2006 by Jack Dorsey, Noah
+            Glass, Biz Stone, and Evan Williams and launched in July
+            of that year. The service rapidly gained worldwide
+            popularity. In 2012, more than 100 million users posted
+            340 million tweets a day,[13] and the service handled an
+            average of 1.6 billion search queries per day. In 2013,
+            it was one of the ten most-visited websites and has been
+            described as \"the SMS of the Internet\". As of 2016,
+            Twitter had more than 319 million monthly active users.
+            On the day of the 2016 U.S. presidential election, Twitter
+            proved to be the largest source of breaking news, with 40
+            million election-related tweets sent by 10 p.m.
+            (Eastern Time) that day."
+);
+
 google = Company.create(
   name: "Google LLC",
   symbol: "GOOGL",
@@ -103,8 +140,7 @@ google = Company.create(
               completion of the restructure, Sundar Pichai was
               appointed CEO of Google; he replaced Larry Page,
               who became CEO of Alphabet.",
-
-)
+);
 
 netflix = Company.create(
   name: "Netflix",
@@ -141,7 +177,7 @@ netflix = Company.create(
               television. Netflix released an estimated 126
               original series or films in 2016, more than any other
               network or cable channel."
-)
+);
 
 snap = Company.create(
   name: "Snap INC",
@@ -159,7 +195,7 @@ snap = Company.create(
               upon its inception, but it was rebranded on September 24,
               2016 as Snap Inc. in order to include the Spectacles
               product under a single company."
-)
+);
 
 nvidia = Company.create(
   name: "Nvidia CORP",
@@ -198,7 +234,7 @@ nvidia = Company.create(
               addition to AMD, its competitors include Intel, Qualcomm
               and Arm (e.g., because of Denver, while Nvidia also
               licenses Arm's designs)."
-)
+);
 
 tesla = Company.create(
   name: "Tesla INC",
@@ -239,7 +275,7 @@ tesla = Company.create(
               California. The Gigafactory primarily produces batteries
               and battery packs for Tesla vehicles and energy storage
               products."
-)
+);
 
 facebook = Company.create(
   name: "Facebook",
@@ -281,7 +317,7 @@ facebook = Company.create(
             Facebook classifies users from the ages of 13 to 18 as
             minors and therefore sets their profiles to share content
             with friends only."
-)
+);
 
 amd = Company.create(
   name: "Advanced Micro Devices INC",
@@ -307,7 +343,7 @@ amd = Company.create(
               rival to Intel in the market for x86-based microprocessors.
               Since acquiring ATI in 2006, AMD and its competitor Nvidia
               have dominated the discrete Graphics Processing Unit (GPU) market."
-)
+);
 
 apple = Company.create(
   name: "Apple",
@@ -349,7 +385,7 @@ apple = Company.create(
               significant criticism regarding the labor practices of
               its contractors and its environmental and business
               practices, including the origins of source materials."
-)
+);
 
 square = Company.create(
   name: "Square INC",
@@ -383,7 +419,7 @@ square = Company.create(
               and Contactless Reader. On the iPad version of the Square
               Register app, the interface resembles a traditional
               cash register."
-)
+);
 
 amazon = Company.create(
   name: "Amazon INC",
@@ -411,14 +447,6 @@ amazon = Company.create(
             sells certain low-end products like USB cables under
             its in-house brand AmazonBasics.
             \n
-            \nAmazon has separate retail websites for the United States,
-            the United Kingdom and Ireland, France, Canada, Germany,
-            Italy, Spain, Netherlands, Australia, Brazil, Japan, China,
-            India, and Mexico. In 2016, Dutch, Polish, and Turkish
-            language versions of the German Amazon website were also
-            launched. Amazon also offers international shipping to
-            certain other countries for some of its products.
-            \n
             \nIn 2015, Amazon surpassed Walmart as the most valuable
             retailer in the United States by market capitalization.
             Amazon is the fourth most valuable public company in the
@@ -429,7 +457,406 @@ amazon = Company.create(
             physical retailer. The acquisition was interpreted by
             some as a direct attempt to challenge Walmart as a
             physical store."
-)
+);
+
+microsoft = Company.create(
+  name: "Microsoft CORP",
+  symbol: "MSFT",
+  market_price: 84.17,
+  ceo: "Satya Nadella",
+  founding_year: 2014,
+  employees: 124000,
+  location: "Redmond, WA",
+  biography: "Microsoft Corporation is an American multinational
+            technology company with headquarters in Redmond, Washington.
+            It develops, manufactures, licenses, supports and sells
+            computer software, consumer electronics, personal computers,
+            and services. Its best known software products are the
+            Microsoft Windows line of operating systems, the Microsoft
+            Office suite, and the Internet Explorer and Edge web
+            browsers. Its flagship hardware products are the Xbox video
+            game consoles and the Microsoft Surface tablet lineup.
+            As of 2016, it is the world's largest software maker by
+            revenue, and one of the world's most valuable
+            companies. The word \"Microsoft\" is a portmanteau
+            of \"microcomputer\" and \"software\"."
+);
+
+qualcomm = Company.create(
+  name: "Qualcomm",
+  symbol: "QCOM",
+  market_price: 66.34,
+  ceo: "Steven Mollenkopf",
+  founding_year: 1985,
+  employees: 33500,
+  location: "San Diego, CA",
+  biography: "Qualcomm is an American multinational semiconductor
+            and telecommunications equipment company that designs and markets
+            wireless telecommunications products and services. It derives most
+            of its revenue from chipmaking and the bulk of its profit from
+            patent licensing businesses. The company headquarters
+            is located in San Diego, California, United States, and
+            has 224 worldwide locations. The parent company is
+            Qualcomm Incorporated (Qualcomm), which includes the
+            Qualcomm Technology Licensing Division (QTL). Qualcomm's
+            wholly owned subsidiary, Qualcomm Technologies, Inc. (QTI),
+            operates substantially all of Qualcomm's R&D activities,
+            as well as its product and services businesses, including
+            its semiconductor business, Qualcomm CDMA Technologies."
+);
+
+chase = Company.create(
+  name: "JPMorgan Chase & CO",
+  symbol: "JPM",
+  market_price: 105.54,
+  ceo: "James Dimon",
+  founding_year: 1968,
+  employees: 251503,
+  location: "New York City, NY",
+  biography: "JPMorgan Chase & Co. is an American multinational
+            banking and financial services holding company headquartered
+            in New York City. It is the largest bank in the United
+            States, the world's sixth largest bank by total assets,
+            with total assets of US$2.5 trillion, and the world's
+            second most valuable bank by market capitalization,
+            after the Industrial and Commercial Bank of China. It
+            is a major provider of financial services, and according
+            to Forbes magazine is the world's fourth largest public
+            company based upon a composite ranking. The hedge fund
+            unit of JPMorgan Chase is the second largest hedge fund
+            in the United States. The company was formed in 2000,
+            when Chase Manhattan Corporation merged with J.P. Morgan & Co."
+);
+
+comcast = Company.create(
+  name: "Comcast CORP",
+  symbol: "CMCSA",
+  market_price: 37.54,
+  ceo: "Brian L. Roberts",
+  founding_year: 1963,
+  employees: 153000,
+  location: "Philadelphia, PA",
+  biography: "Comcast Corporation is an American global
+            telecommunications conglomerate that is the largest
+            broadcasting and cable television company in the world
+            by revenue. It is the second-largest pay-TV company after
+            AT&T, largest cable TV company and largest home Internet
+            service provider in the United States, and the nation's
+            third-largest home telephone service provider. Comcast
+            services U.S. residential and commercial customers in 40
+            states and in the District of Columbia. The company's
+            headquarters are located in Philadelphia, Pennsylvania.
+            As the owner of the international media company NBCUniversal
+            since 2011, Comcast is a producer of feature films and
+            television programs intended for theatrical exhibition
+            and over-the-air and cable television broadcast."
+);
+
+cisco = Company.create(
+  name: "Cisco INC",
+  symbol: "CSCO",
+  market_price: 37.30,
+  ceo: "Chuck Robbins",
+  founding_year: 1984,
+  employees: 73711,
+  location: "San Jose, CA",
+  biography: "Cisco Systems, Inc. is an American multinational
+              technology conglomerate headquartered in San Jose,
+              California, in the center of Silicon Valley, that
+              develops, manufactures and sells networking hardware,
+              telecommunications equipment and other high-technology
+              services and products. Through its numerous acquired
+              subsidiaries, such as OpenDNS, WebEx, Jabber and Jasper,
+              Cisco specializes into specific tech markets, such as
+              Internet of Things (IoT), domain security and
+              energy management."
+);
+
+zendesk = Company.create(
+  name: "Zendesk INC",
+  symbol: "ZEN",
+  market_price: 33.61,
+  ceo: "Mikkel Svane",
+  founding_year: 2007,
+  employees: 2000,
+  location: "San Francisco, CA",
+  biography: "Zendesk Inc. is a global customer service software
+            company headquartered in San Francisco, California,USA.
+            It is listed on the New York Stock Exchange with the symbol
+            ZEN and is a constituent of the Russell 2000 Index.
+            Founded in 2007, the company now has over 2,000
+            employees and serves 114,000 paid customers in 150
+            countries and territories."
+);
+
+target = Company.create(
+  name: "Target CORP",
+  symbol: "TGT",
+  market_price: 59.90,
+  ceo: "Brian Cornell",
+  founding_year: 1902,
+  employees: 341000,
+  location: "Minneapolis, MN",
+  biography: "Target Corporation is the second-largest discount store
+            retailer in the United States, behind Walmart, and a
+            component of the S&P 500 Index. Founded by George Dayton
+            and headquartered in Minneapolis, Minnesota, the company
+            was originally named Goodfellow Dry Goods in June 1902
+            before being renamed the Dayton's Dry Goods Company in
+            1903 and later the Dayton Company in 1910. The first
+            Target store opened in Roseville, Minnesota in 1962 while
+            the parent company was renamed the Dayton Corporation in
+            1967. It became the Dayton-Hudson Corporation after
+            merging with the J.L. Hudson Company in 1969 and held
+            ownership of several department store chains including
+            Dayton's, Hudson's, Marshall Field's, and Mervyn's."
+);
+
+target = Company.create(
+  name: "Starbucks CORP",
+  symbol: "SBUX",
+  market_price: 57.82,
+  ceo: "Kevin Johnson",
+  founding_year: 1971,
+  employees: 254000,
+  location: "Seattle, WA",
+  biography: "Starbucks Corporation is an American coffee company and
+            coffeehouse chain. Starbucks was founded in Seattle,
+            Washington in 1971. As of November 2016, it operates
+            23,768 locations worldwide.
+
+            Starbucks is considered the main representative of
+            \"second wave coffee\", initially distinguishing itself
+            from other coffee-serving venues in the US by taste,
+            quality, and customer experience while popularizing
+            darkly roasted coffee.[4] Since the 2000s, third wave
+            coffee makers have targeted quality-minded coffee drinkers
+            with hand-made coffee based on lighter roasts, while
+            Starbucks nowadays uses automated espresso machines for
+            efficiency and safety reasons."
+);
+
+nike = Company.create(
+  name: "Nike INC",
+  symbol: "NKE",
+  market_price: 60.42,
+  ceo: "Mark Parker",
+  founding_year: 1964,
+  employees: 62600,
+  location: "Beaverton, OR",
+  biography: "Nike, Inc. is an American multinational corporation that
+            is engaged in the design, development, manufacturing,
+            and worldwide marketing and sales of footwear, apparel,
+            equipment, accessories, and services. The company is
+            headquartered near Beaverton, Oregon, in the Portland
+            metropolitan area. It is the world's largest supplier of
+            athletic shoes and apparel and a major manufacturer of
+            sports equipment, with revenue in excess of US$24.1
+            billion in its fiscal year 2012 (ending May 31, 2012).
+            As of 2012, it employed more than 44,000 people worldwide.
+            In 2014 the brand alone was valued at $19 billion, making
+            it the most valuable brand among sports businesses. As of
+            2017, the Nike brand is valued at $29.6 billion."
+);
+
+disney = Company.create(
+  name: "Walt Disney",
+  symbol: "DIS",
+  market_price: 104.82,
+  ceo: "Bob Iger",
+  founding_year: 1923,
+  employees: 195000,
+  location: "Burbank, CA",
+  biography: "The Walt Disney Company, commonly known as Disney, is
+            an American diversified multinational mass media and
+            entertainment conglomerate, headquartered at the Walt
+            Disney Studios in Burbank, California. It is the world's
+            second largest media conglomerate in terms of revenue,
+            after Comcast. Disney was founded on October 16, 1923 – by
+            brothers Walt Disney and Roy O. Disney – as the Disney
+            Brothers Cartoon Studio, and established itself as a
+            leader in the American animation industry before
+            diversifying into live-action film production, television,
+            and theme parks. The company also operated under the names
+            The Walt Disney Studio and then Walt Disney Productions.
+            Taking on its current name in 1986, it expanded its
+            existing operations and also started divisions focused
+            upon theater, radio, music, publishing, and online media."
+);
+
+vodafone = Company.create(
+  name: "Vodafone Group",
+  symbol: "VOD",
+  market_price: 30.78,
+  ceo: "Vittorio Colao",
+  founding_year: 1991,
+  employees: 111556,
+  location: "London, UK",
+  biography: "Vodafone Group is a British multinational
+            telecommunications company, with headquarters in London.
+            It predominantly operates services in the regions of Asia,
+            Africa, Europe, and Oceania. Among mobile operator groups
+            globally, Vodafone ranked fifth by revenue and second
+            (behind China Mobile) in the number of connections
+            (469.7 million) as of 2016.
+
+            Vodafone owns and operates networks in 26 countries
+            and has partner networks in over 50 additional countries.
+            Its Vodafone Global Enterprise division provides
+            telecommunications and IT services to corporate clients in
+            150 countries."
+);
+
+paypal = Company.create(
+  name: "Paypal",
+  symbol: "PYPL",
+  market_price: 75.73,
+  ceo: "Daniel Schulman",
+  founding_year: 1998,
+  employees: 18100,
+  location: "San Jose, CA",
+  biography: "PayPal Holdings, Inc. is an American company operating a
+            worldwide online payments system that supports online
+            money transfers and serves as an electronic alternative to
+            traditional paper methods like checks and money orders.
+            PayPal is one of the world's largest Internet payment
+            companies. The company operates as a payment processor for
+            online vendors, auction sites and other commercial users,
+            for which it charges a fee."
+);
+
+lending_club = Company.create(
+  name: "Lending Club",
+  symbol: "LC",
+  market_price: 4.37,
+  ceo: "Scott Sanborn",
+  founding_year: 2006,
+  employees: 1530,
+  location: "San Francisco, CA",
+  biography: "LendingClub is a US peer-to-peer lending company,
+            headquartered in San Francisco, California. It was the
+            first peer-to-peer lender to register its offerings as
+            securities with the Securities and Exchange Commission
+            (SEC), and to offer loan trading on a secondary market.
+            Lending Club operates an online lending platform that
+            enables borrowers to obtain a loan, and investors to
+            purchase notes backed by payments made on loans. Lending
+            Club is the world's largest peer-to-peer lending platform.
+            The company claims that $15.98 billion in loans had
+            been originated through its platform up to December 31, 2015."
+);
+
+gopro = Company.create(
+  name: "GoPro",
+  symbol: "GPRO",
+  market_price: 8.54,
+  ceo: "Nick Woodman",
+  founding_year: 2002,
+  employees: 1483,
+  location: "San Mateo, CA",
+  biography: "GoPro, Inc. is an American technology company founded in
+            2002 by Nick Woodman. It manufactures eponymous action
+            cameras and develops its own mobile apps and video-editing software.
+
+            Founded as Woodman Labs, Inc, the company eventually
+            focused on the connected sports genre, developing its
+            line of action cameras and, later, video editing software.
+            It also developed a quadcopter drone, Karma, released in
+            October 2016."
+);
+
+sony = Company.create(
+  name: "Sony CORP",
+  symbol: "NE",
+  market_price: 46.80,
+  ceo: "Kaz Hirai",
+  founding_year: 1946,
+  employees: 146300,
+  location: "Minato, Tokyo, Japan",
+  biography: "Sony Corporation is a Japanese multinational conglomerate
+            corporation headquartered in Kōnan, Minato, Tokyo. Its
+            diversified business includes consumer and professional
+            electronics, gaming, entertainment and financial services.
+            The company is one of the leading manufacturers of electronic
+            products for the consumer and professional markets. Sony
+            was ranked 105th on the 2017 list of Fortune Global 500."
+);
+
+western_digital = Company.create(
+  name: "Western Digital",
+  symbol: "WDC",
+  market_price: 78.86,
+  ceo: "Stephen D Milligan",
+  founding_year: 1970,
+  employees: 76449,
+  location: "San Jose, CA",
+  biography: "Western Digital Corporation (commonly referred to as
+            Western Digital and often abbreviated as WDC or WD) is an
+            American computer data storage company and one of the
+            largest computer hard disk drive manufacturers in the
+            world, along with its main competitor Seagate Technology.
+
+            Western Digital Corporation has a long history in the
+            electronics industry as an integrated circuit maker and
+            a storage products company. Western Digital was founded
+            on April 23, 1970, by Alvin B. Phillips, a Motorola employee,
+            as General Digital, initially (and briefly) a manufacturer
+            of MOS test equipment. It rapidly became a speciality
+            semiconductor maker, with start-up capital provided by
+            several individual investors and industrial giant Emerson
+            Electric. Around July 1971, it adopted its current name
+            and soon introduced its first product, the WD1402A UART."
+);
+
+expedia = Company.create(
+  name: "Expedia INC",
+  symbol: "EXPE",
+  market_price: 122.5,
+  ceo: "Mark D. Okerstrom",
+  founding_year: 1996,
+  employees: 20000,
+  location: "Bellevue, WA",
+  biography: "Expedia, Inc. is an American travel company that owns
+            and operates several international global online travel
+            brands, primarily travel fare aggregator websites and
+            travel metasearch engines including Expedia.com, Hotels.com,
+            Hotwire.com, trivago, Venere.com, Travelocity, Orbitz,
+            and HomeAway.
+
+            The company operates about 200 travel booking websites in
+            about 75 countries, and has listings for about 350,000
+            hotels and 500 airlines.
+
+            According to Rich Barton, the first CEO, the word
+            \"Expedia\" is derived from a combination of
+            exploration and speed."
+);
+
+alibaba = Company.create(
+  name: "Alibaba Group",
+  symbol: "BABA",
+  market_price: 177.08,
+  ceo: "Daniel Zhang",
+  founding_year: 1999,
+  employees: 50092,
+  location: "Hangzhou, China",
+  biography: "Alibaba Group Holding Limited is a Chinese e-commerce
+            conglomerate that provides consumer-to-consumer,
+            business-to-consumer and business-to-business sales
+            services via web portals. It also provides electronic
+            payment services, a shopping search engine and data-centric
+            cloud computing services. The group began in 1999 when Jack
+            Ma founded the website Alibaba.com, a business-to-business
+            portal to connect Chinese manufacturers with overseas
+            buyers. In 2012, two of Alibaba's portals handled 1.1
+            trillion yuan ($170 billion) in sales. Suppliers
+            from other countries are supported (with more stringent
+            checks than for Chinese companies), but the company
+            primarily operates in the People's Republic of China
+            (PRC). At closing time on the date of its initial
+            public offering (IPO), 19 September 2014, Alibaba's market
+            value was US$231 billion."
+);
 
 
 #-------------------------------#
@@ -557,6 +984,58 @@ WatchlistItem.create(
 #-------------------------------#
 
 NewsArticle.create(
+  publisher: "Market Watch",
+  title: "Twitter quietly outpacing Facebook and other social media stocks",
+  company_id: twitter.id,
+  date: Date.new(2017, 11, 29),
+  views: 219,
+  img_url: "https://investorplace.com/wp-content/uploads/2017/04/twitter-inc-twtr-ipsize-768x384.jpg",
+  source: "https://www.marketwatch.com/story/twitter-quietly-outpacing-facebook-and-other-social-media-stocks-2017-11-29",
+  body: "Facebook may be getting all the attention on Wall Street, as
+        it is the fifth-largest company in the U.S. stock market and due to
+        its vaunted position as the F in the closely watched FAANG group of
+        stocks, but its primary rival in the social media space has been
+        performing much better of late."
+)
+
+NewsArticle.create(
+  publisher: "Motley Fool",
+  title: "Is Netflix, Inc. a Buy?",
+  company_id: netflix.id,
+  date: Date.new(2017, 11, 26),
+  views: 319,
+  img_url: "https://i.amz.mshcdn.com/LWRrA7B2yTQxFTlc_4eb1Mao2DM=/1200x630/2017%2F05%2F16%2F8d%2Fa90b60e1a7b645f5b90067584ab381d3.e786a.jpg",
+  source: "https://www.fool.com/investing/2017/11/26/is-netflix-inc-a-buy.aspx",
+  body: "As of this writing, shares of Netflix (NASDAQ:NFLX) have
+        gained a market-stomping 66% over the last 52 weeks. Can the
+        stock run any higher, or are we looking at peak Netflix right
+        now? Using traditional market-value estimates, Netflix comes
+        out looking pricey every time. The stock is trading for 199
+        times trailing earnings and 86 times forward estimates. You
+        can't measure it against free cash flow because those are
+        negative. And even if you account for Netflix's rampant growth
+        rates, the PEG ratio lands at a nosebleed-inducing 3.2."
+)
+
+NewsArticle.create(
+  publisher: "Zacks",
+  title: "Is Square (SQ) a Great Growth Stock?",
+  company_id: square.id,
+  date: Date.new(2017, 10, 24),
+  views: 418,
+  img_url: "https://staticx-tuner.zacks.com/images/articles/main/1e/1508862852.jpg",
+  source: "https://www.zacks.com/stock/news/279991/is-square-sq-a-great-growth-stock",
+  body: "Growth stocks can be some of the most exciting picks in
+          the market. Not only do these types of stocks
+          captivate investors’ attention, but they’re
+          known for producing big gains as well. However,
+          growth stocks can also lose momentum when a growth
+          story ends, so it’s vital to find companies still
+          experiencing strong growth prospects in their business."
+)
+
+
+NewsArticle.create(
   publisher: "Forbes",
   title: "iPhone X Supply Quickly Catching Up To Demand",
   company_id: apple.id,
@@ -577,7 +1056,7 @@ NewsArticle.create(
   publisher: "Forbes",
   title: "The Tiger Of Silicon Valley: Glen Kacher\'s Sizzling Hedge Fund",
   date: Date.new(2017, 11, 21),
-  company_id: snap.id,
+  company_id: amd.id,
   views: 23,
   img_url: "https://blogs-images.forbes.com/nathanvardi/files/2017/11/1106_inv-light-street-light-street-glen-kacher_1200x675-1200x675.jpg?width=960",
   source: "https://www.forbes.com/sites/nathanvardi/2017/11/21/the-tiger-of-silicon-valley-glen-kachers-sizzling-hedge-fund/#50e233992904",

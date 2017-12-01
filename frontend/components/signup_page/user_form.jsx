@@ -49,6 +49,10 @@ class UserForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    // debugger;
+    if (!this.state.cash_value) {
+      this.state.cash_value = "4000";
+    }
     const user = this.state;
     this.props.signup({user});
   }
@@ -110,9 +114,9 @@ class UserForm extends React.Component {
   }
 
   render() {
-    const isEnabled = this.state.password.length > 6;
+    // const isEnabled = this.state.password.length > 6;
 
-    this.addRedBorder();
+
     return (
       <div className="full-height">
         <form onSubmit={this.handleSubmit} className="signup-form-box">
@@ -201,7 +205,7 @@ class UserForm extends React.Component {
             <input type="submit"
               value="Sign Up"
               className="signup-button"
-              disabled={!isEnabled}/>
+            />
 
               <div className="signup-faq">
                 <div className="faq-spread" onClick={this.toggleHide}>
