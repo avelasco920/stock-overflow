@@ -3,6 +3,7 @@ import { RECEIVE_TRADE_EVENT } from '../actions/trade_events_actions';
 import {
   RECEIVE_COMPANIES,
   RECEIVE_COMPANY,
+  RECEIVE_REALTIME_DATA
 } from '../actions/companies_actions';
 import {
   RECEIVE_WATCHLIST_ITEM,
@@ -18,6 +19,8 @@ const companiesReducer = (state = {}, action) => {
       let companies = merge({}, state);
       let company = {[action.company.id]: action.company};
       return merge({}, companies, company);
+    case RECEIVE_REALTIME_DATA:
+      debugger;
     case RECEIVE_TRADE_EVENT:
       companies = merge({}, state);
       company = {[action.payload.company.id]: action.payload.company};

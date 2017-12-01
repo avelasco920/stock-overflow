@@ -18,7 +18,11 @@ import {
   selectNewsArticles,
 } from './reducers/selectors';
 
-import { fetchCompanies, fetchCompany } from './actions/companies_actions';
+import {
+  fetchRealtimeData,
+  fetchCompanies,
+  fetchCompany
+} from './actions/companies_actions';
 import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
 import { makeTrade } from './actions/trade_events_actions';
 import {
@@ -38,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logout = logout;
   window.fetchCompanies = fetchCompanies;
   window.fetchCompany = fetchCompany;
+  window.fetchRealtimeData = fetchRealtimeData;
   window.selectInvestedCompanies = selectInvestedCompanies;
   window.selectWatchingCompanies = selectWatchingCompanies;
   window.fetchNewsArticles = fetchNewsArticles;

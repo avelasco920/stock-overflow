@@ -4,6 +4,7 @@ export const START_LOADING_ALL_COMPANIES = 'START_LOADING_ALL_COMPANIES';
 export const START_LOADING_SINGLE_COMPANY = 'START_LOADING_SINGLE_COMPANY';
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
+export const RECEIVE_REALTIME_DATA = 'RECEIVE_REALTIME_DATA';
 
 export const startLoadingAllCompanies = () => ({
   type: START_LOADING_ALL_COMPANIES
@@ -23,6 +24,11 @@ export const receiveCompany = company => ({
   company
 });
 
+export const receiveRealtimeData = data => ({
+  type: RECEIVE_REALTIME_DATA,
+  data
+});
+
 export const fetchCompanies = () => dispatch => {
   dispatch(startLoadingAllCompanies());
   return APIUtil.fetchCompanies()
@@ -37,6 +43,14 @@ export const fetchCompany = id => dispatch => {
   return APIUtil.fetchCompany(id)
     .then(company => (
       dispatch(receiveCompany(company))
+    )
+  );
+};
+
+export const fetchRealtimeData = sym => dispatch => {
+  return APIUtil.fetchRealtimeData(sym)
+    .then(data => (
+      dispatch(receiveRealtimeData(data))
     )
   );
 };
