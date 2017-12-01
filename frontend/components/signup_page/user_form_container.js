@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import clearSessionErrors from '../../actions/errors_actions';
+import { clearSessionErrors } from '../../actions/errors_actions';
 import UserForm from './user_form';
 import {
   signup,

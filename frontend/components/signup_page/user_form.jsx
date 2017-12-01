@@ -23,6 +23,7 @@ class UserForm extends React.Component {
 
   componentWillUnmount() {
     this.props.clearSessionErrors();
+    // debugger;
   }
 
   renderErrors() {
@@ -49,9 +50,8 @@ class UserForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // debugger;
     if (!this.state.cash_value) {
-      this.state.cash_value = "4000";
+      this.state.cash_value = "5000";
     }
     const user = this.state;
     this.props.signup({user});
@@ -87,7 +87,7 @@ class UserForm extends React.Component {
   confirmPassword() {
     return () => {
       const pwConf = document.getElementById("pw-conf");
-      debugger;
+      // debugger;
       if (this.state.password.length === 0) {
         pwConf.style.border = "1px solid $light-gray";
       } else if (this.state.password === this.state.password_confirmation) {
@@ -114,9 +114,7 @@ class UserForm extends React.Component {
   }
 
   render() {
-    // const isEnabled = this.state.password.length > 6;
-
-
+    const cash_value = this.state.cash_value.replace(/[^0-9]/g,'');
     return (
       <div className="full-height">
         <form onSubmit={this.handleSubmit} className="signup-form-box">
@@ -180,7 +178,7 @@ class UserForm extends React.Component {
               id="pw-conf"
             />
             <input type="text"
-              value={this.state.cash_value.replace(/[^0-9]/g,'')}
+              value={cash_value}
               placeholder="How much would you like to start investing with?"
               onChange={this.update('cash_value')}
               onClick={(e) => this.removeRedBorder(e)}
@@ -205,7 +203,7 @@ class UserForm extends React.Component {
             <input type="submit"
               value="Sign Up"
               className="signup-button"
-            />
+              />
 
               <div className="signup-faq">
                 <div className="faq-spread" onClick={this.toggleHide}>
