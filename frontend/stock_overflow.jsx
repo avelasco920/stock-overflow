@@ -19,10 +19,11 @@ import {
 } from './reducers/selectors';
 
 import {
-  fetchRealtimeData,
   fetchCompanies,
-  fetchCompany
+  fetchCompany,
+  fetchRealtimeData
 } from './actions/companies_actions';
+// import { fetchRealtimeData } from './util/companies_api_util';
 import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
 import { makeTrade } from './actions/trade_events_actions';
 import {
