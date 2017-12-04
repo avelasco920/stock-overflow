@@ -20,6 +20,9 @@ Users Graph
 - [ ] The graph will be based off of realtime data with an API request
 
 ### Wireframes 
+Company Page
+![Company Page](https://github.com/avelasco920/stock-overflow/blob/datavis/wireframes/Wireframes%20Graph.jpg?raw=true)
+![Zoomed In](https://github.com/avelasco920/stock-overflow/blob/datavis/wireframes/Wireframes%20Graph2.jpg?raw=true)
 
 ### Architecture and Technologies
 This project will be implemented with the following technologies:
@@ -38,10 +41,11 @@ This project will be implemented with the following technologies:
 **Day 1:** Focus on data retrieval
 - [ ] Create API function calls for the different time frames.
 - [ ] Parse through the received data split the data into two arrays, share prices and time.
+- [ ] Make function calls for various time ranges
 
 **Day 2** 
-- [ ] Make function calls for various time ranges
-- [ ] Create functions to calculate portfolio value based on logic above
+![Portfolio Value](https://github.com/avelasco920/stock-overflow/blob/datavis/wireframes/Wireframes%20Graph3.jpg?raw=true)
+- [ ] Create functions to calculate portfolio value based on logic above. Above graphics are used only as a representation to communicate logic, not literal aesthetic/layout.
 - [ ] Integrate api calls with the different specific time functions
 
 **Day 3** Begin working with ChartJS
