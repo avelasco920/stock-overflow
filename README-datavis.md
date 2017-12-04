@@ -44,11 +44,11 @@ This project will be implemented with the following technologies:
 - [ ] Create functions to calculate portfolio value based on logic above
 - [ ] Integrate api calls with the different specific time functions
 
-** Day 3** Begin working with ChartJS
+**Day 3** Begin working with ChartJS
 - [ ] Setup chart with fake datapoints to format chart fitting on screen
 - [ ] Make time-range toggles functional
 
-** Day 4** Styling
+**Day 4** Styling
 - [ ] Create hover effects to display changes
 - [ ] Style to match rest of page
 - [ ] Add smoot transitions and loading while data is fetching
