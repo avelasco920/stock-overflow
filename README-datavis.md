@@ -45,7 +45,7 @@ This project will be implemented with the following technologies:
 
 **Day 2** 
 ![Portfolio Value](https://github.com/avelasco920/stock-overflow/blob/datavis/wireframes/Wireframes%20Graph3.jpg?raw=true)
-- [ ] Create functions to calculate portfolio value based on logic above. Above graphics are used only as a representation to communicate logic, not literal aesthetic/layout.
+- [ ] Create functions to calculate portfolio value based on logic above. Above graphics are used only as a representation of logic, not aesthetic/layout.
 - [ ] Integrate api calls with the different specific time functions
 
 **Day 3** Begin working with ChartJS
