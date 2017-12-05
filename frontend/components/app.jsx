@@ -17,13 +17,6 @@ import CompanyPageContainer from './company_page/company_page_container';
 import { fetchRealtimeData } from '../actions/companies_actions';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      arrivedCompanies: []
-    };
-  }
-
   componentWillMount() {
     this.props.fetchCompanies();
     this.props.symbols.forEach(symbol => fetchRealtimeData(symbol));
@@ -32,24 +25,16 @@ class App extends React.Component {
   componentWillUnmount() {
     this.props.clearCompanies();
     this.props.clearRealtimeData();
-    console.log("unmounting");
-  }
-
-  arrivedData(chartData) {
-    const symbols = Object.keys(chartData);
-    const companies = symbols.filter(symbol => (
-      Object.values(chartData[symbol]).length === 2
-    ));
-    this.state = {
-      arrivedCompanies: companies
-    };
   }
 
   render() {
-    const { symbols, chartData, companies } = this.props;
-    console.log(this.state.arrivedCompanies);
-    this.arrivedData(chartData);
-    if (this.state.arrivedCompanies.length < symbols.length) {
+    const { symbols, dataForChart, companies } = this.props;
+    const investedCompanies = Object.keys(dataForChart);
+    const filteredCompanies = investedCompanies.filter(symbol => (
+      dataForChart[symbol]["intraday"]
+    ));
+    console.log(filteredCompanies);
+    if (filteredCompanies.length < symbols.length) {
       return (<LoadingIcon />);
     } else if (Object.values(companies).length === 0) {
       return (<LoadingIcon />);

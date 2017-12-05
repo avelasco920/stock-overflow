@@ -8,11 +8,6 @@ class LoginPage extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-    console.log("loginpage mounting");
-    clearCompanies();
-  }
-
   render() {
     return (
       <div className="login">
