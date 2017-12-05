@@ -4,7 +4,8 @@ export const START_LOADING_ALL_COMPANIES = 'START_LOADING_ALL_COMPANIES';
 export const START_LOADING_SINGLE_COMPANY = 'START_LOADING_SINGLE_COMPANY';
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
-export const RECEIVE_REALTIME_DATA = 'RECEIVE_REALTIME_DATA';
+export const RECEIVE_MINUTE_DATA = 'RECEIVE_MINUTE_DATA';
+export const RECEIVE_DAILY_DATA = 'RECEIVE_DAILY_DATA';
 
 export const startLoadingAllCompanies = () => ({
   type: START_LOADING_ALL_COMPANIES
@@ -24,8 +25,13 @@ export const receiveCompany = company => ({
   company
 });
 
-export const receiveRealtimeData = data => ({
-  type: RECEIVE_REALTIME_DATA,
+export const receiveMinuteData = data => ({
+  type: RECEIVE_MINUTE_DATA,
+  data
+});
+
+export const receiveDailyData = data => ({
+  type: RECEIVE_DAILY_DATA,
   data
 });
 
@@ -47,10 +53,18 @@ export const fetchCompany = id => dispatch => {
   );
 };
 
-export const fetchRealtimeData = sym => dispatch => {
-  return APIUtil.fetchRealtimeData(sym)
+export const fetchRealtimeIntradayData = sym => dispatch => {
+  return APIUtil.fetchRealtimeIntradayData(sym)
     .then(data => (
-      dispatch(receiveRealtimeData(data))
+      dispatch(receiveMinuteData(data))
+    )
+  );
+};
+
+export const fetchRealtimeDailyData = sym => dispatch => {
+  return APIUtil.fetchRealtimeDailyData(sym)
+    .then(data => (
+      dispatch(receiveDailyData(data))
     )
   );
 };

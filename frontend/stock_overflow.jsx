@@ -21,9 +21,10 @@ import {
 import {
   fetchCompanies,
   fetchCompany,
-  fetchRealtimeData
+  fetchRealtimeIntradayData,
+  fetchRealtimeDailyData
 } from './actions/companies_actions';
-// import { fetchRealtimeData } from './util/companies_api_util';
+import { parseRealData } from './util/parsing_functions';
 import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
 import { makeTrade } from './actions/trade_events_actions';
 import {
@@ -43,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logout = logout;
   window.fetchCompanies = fetchCompanies;
   window.fetchCompany = fetchCompany;
-  window.fetchRealtimeData = fetchRealtimeData;
+  window.fetchRealtimeIntradayData = fetchRealtimeIntradayData;
+  window.fetchRealtimeDailyData = fetchRealtimeDailyData;
   window.selectInvestedCompanies = selectInvestedCompanies;
   window.selectWatchingCompanies = selectWatchingCompanies;
   window.fetchNewsArticles = fetchNewsArticles;
@@ -56,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.clearSessionErrors = clearSessionErrors;
   window.searchCompanyDatabase = searchCompanyDatabase;
   window.clearSearchResults = clearSearchResults;
+  window.parseRealData = parseRealData;
   //
 
   let store;

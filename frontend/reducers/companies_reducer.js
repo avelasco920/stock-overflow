@@ -20,8 +20,7 @@ const companiesReducer = (state = {}, action) => {
       let company = {[action.company.id]: action.company};
       return merge({}, companies, company);
     case RECEIVE_REALTIME_DATA:
-      debugger;
-      break;
+      return state;
     case RECEIVE_TRADE_EVENT:
       companies = merge({}, state);
       company = {[action.payload.company.id]: action.payload.company};

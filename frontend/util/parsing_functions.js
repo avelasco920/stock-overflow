@@ -37,3 +37,27 @@ export const timeAgo = rubyDate => {
   const numDays = Math.floor((today - javaDate) / (1000*60*60*24)).toString();
   return numDays + " days ago";
 };
+
+const getSymbol = data => (
+  data["Meta Data"]["2. Symbol"]
+);
+
+const getTime = (data, timeSeries) => {
+  const series = `Time Series (${timeSeries})`;
+  return Object.keys(data[series]);
+};
+
+const getPrices = (data, timeSeries) => {
+  const series = `Time Series (${timeSeries})`;
+  const seriesObjects = Object.values(data[series]);
+  return seriesObjects.map(obj => obj["4. close"]);
+};
+
+export const parseRealData = (data, timeSeries) => {
+  const symbol = getSymbol(data);
+  const time = getTime(data, timeSeries);
+  const prices = getPrices(data, timeSeries);
+  let series;
+  series = timeSeries === "Daily" ? "daily" : "intraday";
+  return {[symbol]: { [series]: { time, prices }}};
+};

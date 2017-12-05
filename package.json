@@ -38,6 +38,7 @@
     "hover.css": "^2.2.1",
     "infinite-scroll": "^3.0.2",
     "lodash": "^4.17.4",
+    "object.pluck": "^0.1.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
