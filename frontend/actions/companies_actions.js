@@ -6,6 +6,7 @@ export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const RECEIVE_MINUTE_DATA = 'RECEIVE_MINUTE_DATA';
 export const RECEIVE_DAILY_DATA = 'RECEIVE_DAILY_DATA';
+export const RECEIVE_NO_DATA = 'RECEIVE_NO_DATA';
 
 export const startLoadingAllCompanies = () => ({
   type: START_LOADING_ALL_COMPANIES
@@ -34,6 +35,14 @@ export const receiveDailyData = data => ({
   type: RECEIVE_DAILY_DATA,
   data
 });
+
+export const receiveNoData = () => ({
+  type: RECEIVE_NO_DATA,
+});
+
+export const clearCompanies = () => dispatch => (
+  dispatch(receiveCompanies({}))
+);
 
 export const fetchCompanies = () => dispatch => {
   dispatch(startLoadingAllCompanies());
@@ -72,4 +81,8 @@ export const fetchRealtimeDailyData = sym => dispatch => {
 export const fetchRealtimeData = sym => {
   dispatch(fetchRealtimeDailyData(sym));
   dispatch(fetchRealtimeIntradayData(sym));
+};
+
+export const clearRealtimeData = () => dispatch => {
+  dispatch(receiveNoData());
 };

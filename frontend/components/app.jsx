@@ -29,6 +29,12 @@ class App extends React.Component {
     this.props.symbols.forEach(symbol => fetchRealtimeData(symbol));
   }
 
+  componentWillUnmount() {
+    this.props.clearCompanies();
+    this.props.clearRealtimeData();
+    console.log("unmounting");
+  }
+
   arrivedData(chartData) {
     const symbols = Object.keys(chartData);
     const companies = symbols.filter(symbol => (
@@ -40,9 +46,12 @@ class App extends React.Component {
   }
 
   render() {
-    const { symbols, chartData } = this.props;
+    const { symbols, chartData, companies } = this.props;
+    console.log(this.state.arrivedCompanies);
     this.arrivedData(chartData);
     if (this.state.arrivedCompanies.length < symbols.length) {
+      return (<LoadingIcon />);
+    } else if (Object.values(companies).length === 0) {
       return (<LoadingIcon />);
     } else {
       return (

@@ -2,7 +2,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import App from './app';
-import { fetchCompanies } from '../actions/companies_actions';
+import {
+  fetchCompanies,
+  clearCompanies,
+  clearRealtimeData
+} from '../actions/companies_actions';
 import { getSymbols } from '../reducers/selectors';
 
 const mapStateToProps = ( state, ownProps ) => {
@@ -16,6 +20,8 @@ const mapStateToProps = ( state, ownProps ) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchCompanies: () => dispatch(fetchCompanies()),
+  clearCompanies: () => dispatch(clearCompanies()),
+  clearRealtimeData: () => dispatch(clearRealtimeData()),
 });
 
 export default withRouter(

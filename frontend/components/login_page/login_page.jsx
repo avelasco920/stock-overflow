@@ -1,10 +1,16 @@
 import React from 'react';
 import SessionFormContainer from './session_form_container';
 import { Link, withRouter } from 'react-router-dom';
+import { clearCompanies } from '../../actions/companies_actions';
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    console.log("loginpage mounting");
+    clearCompanies();
   }
 
   render() {

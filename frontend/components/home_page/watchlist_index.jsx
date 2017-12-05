@@ -13,7 +13,7 @@ class WatchlistIndex extends React.Component {
     } else {
       return (
         loading ?
-        <LoadingIcon /> :
+        <div></div> :
         <div className="stock-index">
           <h4 className="sidebar-header">
             Watchlist
