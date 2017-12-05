@@ -68,3 +68,8 @@ export const fetchRealtimeDailyData = sym => dispatch => {
     )
   );
 };
+
+export const fetchRealtimeData = sym => {
+  dispatch(fetchRealtimeDailyData(sym));
+  dispatch(fetchRealtimeIntradayData(sym));
+};

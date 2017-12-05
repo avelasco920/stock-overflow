@@ -22,7 +22,8 @@ import {
   fetchCompanies,
   fetchCompany,
   fetchRealtimeIntradayData,
-  fetchRealtimeDailyData
+  fetchRealtimeDailyData,
+  fetchRealtimeData,
 } from './actions/companies_actions';
 import { parseRealData } from './util/parsing_functions';
 import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchCompany = fetchCompany;
   window.fetchRealtimeIntradayData = fetchRealtimeIntradayData;
   window.fetchRealtimeDailyData = fetchRealtimeDailyData;
+  window.fetchRealtimeData = fetchRealtimeData;
   window.selectInvestedCompanies = selectInvestedCompanies;
   window.selectWatchingCompanies = selectWatchingCompanies;
   window.fetchNewsArticles = fetchNewsArticles;

@@ -3,10 +3,14 @@ import { withRouter } from 'react-router-dom';
 
 import App from './app';
 import { fetchCompanies } from '../actions/companies_actions';
+import { getSymbols } from '../reducers/selectors';
 
 const mapStateToProps = ( state, ownProps ) => {
   return {
     companies: state.entities.companies,
+    user: state.session.currentUser,
+    symbols: getSymbols(state),
+    chartData: state.entities.chart
   };
 };
 

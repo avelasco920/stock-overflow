@@ -14,14 +14,35 @@ import LoadingIcon from './loading_icon';
 import HomePage from './home_page/home_page';
 import AccountPage from './account_page/account_page';
 import CompanyPageContainer from './company_page/company_page_container';
+import { fetchRealtimeData } from '../actions/companies_actions';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      arrivedCompanies: []
+    };
+  }
+
   componentWillMount() {
-    setTimeout(() => this.props.fetchCompanies(), 900);
+    this.props.fetchCompanies();
+    this.props.symbols.forEach(symbol => fetchRealtimeData(symbol));
+  }
+
+  arrivedData(chartData) {
+    const symbols = Object.keys(chartData);
+    const companies = symbols.filter(symbol => (
+      Object.values(chartData[symbol]).length === 2
+    ));
+    this.state = {
+      arrivedCompanies: companies
+    };
   }
 
   render() {
-    if (Object.values(this.props.companies).length === 0) {
+    const { symbols, chartData } = this.props;
+    this.arrivedData(chartData);
+    if (this.state.arrivedCompanies.length < symbols.length) {
       return (<LoadingIcon />);
     } else {
       return (

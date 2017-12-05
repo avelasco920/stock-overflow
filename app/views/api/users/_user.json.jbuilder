@@ -16,3 +16,9 @@ json.stocks do
     json.set! stock.company_id, stock.num_shares
   end
 end
+
+json.stocks_by_sym do
+  user.stocks.each do |stock|
+    json.set! stock.company.symbol, stock.num_shares
+  end
+end

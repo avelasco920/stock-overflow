@@ -35,3 +35,7 @@ export const selectSearchResults = state => {
   const companies = state.entities.companySearch;
   return Object.keys(companies).map(id => companies[id]);
 };
+
+export const getSymbols = state => (
+  Object.keys(state.session.currentUser.stocks_by_sym)
+);
