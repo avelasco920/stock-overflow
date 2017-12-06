@@ -46,7 +46,7 @@
   width: 100%;
   align-content: space-between;
   height: 520px;
-  z-index: 300;
+  // z-index: 300;
   position: absolute;
 }
 
@@ -139,4 +139,5 @@
   width: 100%;
   position: absolute;
   top: 120px;
+  z-index: 300;
 }
