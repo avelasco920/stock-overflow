@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+// import { fetchRealtimeData } from '../../actions/companies_actions';
 import { convertCompanySymToId } from '../../reducers/selectors';
 import MainContent from './main_content';
 import StockFormContainer from './stock_form_container';
@@ -12,10 +12,12 @@ class CompanyPage extends React.Component {
   }
 
   componentWillMount() {
+    const { symbol } = this.props.match.params;
     const companyId = convertCompanySymToId(
-        this.props.companies, this.props.match.params.symbol
+        this.props.companies, symbol
     );
     this.props.fetchCompany(companyId);
+
   }
 
   componentWillReceiveProps(nextProps) {

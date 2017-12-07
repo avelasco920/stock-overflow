@@ -2,6 +2,7 @@ import * as APIUtil from '../util/companies_api_util';
 
 export const START_LOADING_ALL_COMPANIES = 'START_LOADING_ALL_COMPANIES';
 export const START_LOADING_SINGLE_COMPANY = 'START_LOADING_SINGLE_COMPANY';
+export const START_LOADING_MINUTE_API = 'START_LOADING_MINUTE_API';
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const RECEIVE_MINUTE_DATA = 'RECEIVE_MINUTE_DATA';
@@ -14,6 +15,10 @@ export const startLoadingAllCompanies = () => ({
 
 export const startLoadingSingleCompany = () => ({
   type: START_LOADING_SINGLE_COMPANY
+});
+
+export const startLoadingMinuteApi = () => ({
+  type: START_LOADING_MINUTE_API
 });
 
 export const receiveCompanies = companies => ({
@@ -63,6 +68,7 @@ export const fetchCompany = id => dispatch => {
 };
 
 export const fetchRealtimeIntradayData = sym => dispatch => {
+  dispatch(startLoadingMinuteApi());
   return APIUtil.fetchRealtimeIntradayData(sym)
     .then(data => (
       dispatch(receiveMinuteData(data))
@@ -78,7 +84,7 @@ export const fetchRealtimeDailyData = sym => dispatch => {
   );
 };
 
-export const fetchRealtimeData = sym => {
+export const fetchRealtimeData = sym => dispatch => {
   dispatch(fetchRealtimeDailyData(sym));
   dispatch(fetchRealtimeIntradayData(sym));
 };

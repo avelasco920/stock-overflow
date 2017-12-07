@@ -29,35 +29,32 @@ class ChartComponent extends React.Component {
       intradayTimePoints: intradayTimePoints,
       dailyPricePoints: dailyPricePoints,
       dailyTimePoints: dailyTimePoints,
-      graphLastClosingPrice: [],
       idxRange: idxRange,
       graphTimePoints: this.timesWithinRange(intradayTimePoints, thisMorning),
       graphPricePoints: this.pricesWithinRange(intradayPricePoints, idxRange),
+      lastClosingPrice: "",
       minDate: moment().transform('09:30:00.000').format("YYYY-MM-DD hh:mm:ss"),
     };
     this.changeActive = this.changeActive.bind(this);
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A")); // Day
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A, MMM D")); // Week
     // console.log(moment("2017-12-05 14:12:00").format("MMM D")); // Month
-    console.log(
-      // moment().transform('YYYY-MM--01 16:00:00.000').format("YYYY-MM-DD HH:mm:ss")
-      this.findLastClosingPrice()
-    );
+    console.log("-----this is working-----");
+    console.log(this.props.symbol);
+    console.log(this.props.chartData);
   }
 
-  findLastClosingPrice() {
+  closingPrice() {
     const closingTime = moment().transform('YYYY-MM--01 16:00:00.000').format("YYYY-MM-DD HH:mm:ss");
     const idx = this.state.intradayTimePoints.indexOf(closingTime);
-    return this.state.intradayPricePoints[idx];
+    const closingPrice = this.state.intradayPricePoints[idx];
+    return closingPrice;
   }
 
-  setClosingArr(labels) {
-    const closingPrice = this.findLastClosingPrice();
+  setClosingArr(closingPrice, labels) {
     let blankArr = new Array(labels.length);
     return blankArr.fill(closingPrice);
   }
-
-
 
   idxRange(timeArr, minDate) {
     const idxRange = [];
@@ -89,40 +86,20 @@ class ChartComponent extends React.Component {
     });
   }
 
-  //
-  // setGraphPoints(timeArr, minDate, prices) {
-  //   const idxRange = [];
-  //   const now = new Date;
-  //   const prevDate = new Date(minDate);
-  //   const graphTimePoints = timeArr.filter((dateStr, idx) => {
-  //     const date = new Date(dateStr);
-  //     if (date > prevDate && date < now) {
-  //       idxRange.push(idx);
-  //       return date;
-  //     }
-  //   });
-  //   this.setState({graphTimePoints, idxRange});
-  //   this.setPricesWithinRange(prices, idxRange);
-  // }
-
   turnToDateObjs(dateStrArr) {
     return dateStrArr.map(point => new Date(point));
   }
 
-  // setPricesWithinRange(prices, range) {
-  //   const graphPricePoints = prices.filter( (price, idx) => {
-  //     if (range.includes(idx)) return price;
-  //   });
-  //   this.setState({graphPricePoints});
-  // }
-
   componentDidUpdate() {
     const { loading } = this.props;
-    const { graphPricePoints, graphTimePoints } = this.state;
+    const { graphPricePoints, graphTimePoints, intradayPricePoints } = this.state;
+    const closingPrice = this.closingPrice();
+    const latestPrice = intradayPricePoints[intradayPricePoints.length - 1];
+    let graphColor;
+    graphColor = (latestPrice > closingPrice) ? "#08d093" : "#f45531";
     if ( loading ) {
       return null;
     } else {
-      console.log(this.state);
       let stocksCtx = document.getElementById("companyChart");
       new Chart(stocksCtx, {
         type: 'line',
@@ -130,8 +107,8 @@ class ChartComponent extends React.Component {
             datasets: [
               {
                 fill: false,
-                lineTension: 0.2,
-                borderColor: "#08d093",
+                lineTension: 0.3,
+                borderColor: graphColor,
                 borderWidth: 2,
                 pointRadius: 1,
                 pointStyle: "line",
@@ -144,7 +121,7 @@ class ChartComponent extends React.Component {
                 pointRadius: 0,
                 borderDash: [5, 5],
                 pointStyle: "line",
-                data: this.setClosingArr(graphTimePoints)
+                data: this.setClosingArr(closingPrice, graphTimePoints)
               },
             ],
             labels: graphTimePoints,
@@ -174,8 +151,6 @@ class ChartComponent extends React.Component {
   }
 
   changeActive(strNum) {
-    // const url = `https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/green${strNum}.png?raw=true`;
-    // this.setState({ imgUrl: url, activeId: strNum });
     const now = new Date();
     let minDate;
     let timeArr;
@@ -219,9 +194,6 @@ class ChartComponent extends React.Component {
       graphPricePoints: pricesWithinRange,
       idxRange: idxRange
     });
-
-    // this.setGraphPoints(timeArr, minDate, prices);
-    // this.setPricesWithinRange(prices, this.state.idxRange);
   }
 
   render() {
@@ -230,15 +202,13 @@ class ChartComponent extends React.Component {
     if (loading) {
       return (<div></div>);
     } else {
+      console.log(this.props.chartData);
       return (
         <div className="chart">
           <div className="line-chart-container">
             <canvas id="companyChart" className="line-chart"></canvas>
           </div>
           <ChartOverlayContainer changeActive={this.changeActive}/>
-          {/* <img
-            src={imgUrl}
-            className="chart-placeholder"/> */}
         </div>
       );
     }
