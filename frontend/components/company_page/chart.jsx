@@ -81,7 +81,8 @@ class ChartComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.companyStockData && nextProps.companyStockData.intraday && nextProps.companyStockData.daily) {
+    console.log("receiving props");
+    if (nextProps.companyStockData && nextProps.companyStockData.intraday && nextProps.companyStockData.daily && !nextProps.companyLoading) {
       const firstMin = this.firstMin();
       const intradayPrices = nextProps.companyStockData.intraday.prices;
       const intradayTime = nextProps.companyStockData.intraday.time;
@@ -107,9 +108,35 @@ class ChartComponent extends React.Component {
 
   componentWillMount() {
     const { symbol } = this.props.match.params;
-    this.props.fetchRealtimeIntradayData(symbol);
-    this.props.fetchRealtimeDailyData(symbol);
+    const { companyStockData } = this.props;
+    if (!companyStockData) {
+      this.props.fetchRealtimeIntradayData(symbol);
+      this.props.fetchRealtimeDailyData(symbol);
+    }
   }
+
+  // componentDidMount() {
+  //   console.log("mounted");
+  //   const { symbol } = this.props.match.params;
+  //   const { companyStockData } = this.props;
+  //   if (companyStockData) {
+  //     const firstMin = this.firstMin();
+  //     const intradayPrices = companyStockData.intraday.prices;
+  //     const intradayTime = companyStockData.intraday.time;
+  //     const dailyPrices = companyStockData.daily.prices;
+  //     const dailyTime = companyStockData.daily.time;
+  //     const idxRange = this.idxRange(intradayTime, firstMin);
+  //     this.setState({
+  //       intradayPricePoints: intradayPrices,
+  //       intradayTimePoints: intradayTime,
+  //       dailyPricePoints: dailyPrices,
+  //       dailyTimePoints: dailyTime,
+  //       graphTimePoints: this.timesWithinRange(intradayTime, firstMin),
+  //       graphPricePoints: this.pricesWithinRange(intradayPrices, idxRange),
+  //       numRenders: this.state.numRenders + 1
+  //     }, () => this.renderChart());
+  //   }
+  // }
 
   renderChart() {
     const { companyLoading } = this.props;
@@ -118,58 +145,55 @@ class ChartComponent extends React.Component {
     const latestPrice = intradayPricePoints[intradayPricePoints.length - 1];
     let graphColor;
     graphColor = (latestPrice > closingPrice) ? "#08d093" : "#f45531";
-    // if ( companyLoading ) {
-    //   return null;
-    // } else {
-      let stocksCtx = document.getElementById("companyChart");
-      console.log("stocksCtx",stocksCtx);
-      new Chart(stocksCtx, {
-        type: 'line',
-        data: {
-            datasets: [
-              {
-                fill: false,
-                lineTension: 0.3,
-                borderColor: graphColor,
-                borderWidth: 2,
-                pointRadius: 1,
-                pointStyle: "circle",
-                data: graphPricePoints,
-              }, {
-                fill: false,
-                lineTension: .1,
-                borderColor: "#b1bfc4",
-                borderWidth: 1,
-                pointRadius: 0,
-                borderDash: [5, 5],
-                pointStyle: "line",
-                data: this.setClosingArr(closingPrice, graphTimePoints)
-              },
-            ],
-            labels: graphTimePoints,
+    let stocksCtx = document.getElementById("companyChart");
+    console.log("stocksCtx",stocksCtx);
+    new Chart(stocksCtx, {
+      type: 'line',
+      data: {
+          datasets: [
+            {
+              fill: false,
+              lineTension: 0.3,
+              borderColor: graphColor,
+              borderWidth: 2,
+              pointRadius: .5,
+              pointStyle: "circle",
+              data: graphPricePoints,
+            }, {
+              fill: false,
+              lineTension: .1,
+              borderColor: "#b1bfc4",
+              borderWidth: 1,
+              pointRadius: 0,
+              borderDash: [5, 5],
+              pointStyle: "line",
+              data: this.setClosingArr(closingPrice, graphTimePoints)
+            },
+          ],
+          labels: graphTimePoints,
+      },
+      options: {
+        legend: {
+          display: false,
         },
-        options: {
-          legend: {
+        tooltips: {
+          // mode: "x-axis"
+          // intersect: false,
+        },
+        scales: {
+          xAxes: [{
             display: false,
-          },
-          tooltips: {
-            // mode: "x-axis"
-            // intersect: false,
-          },
-          scales: {
-            xAxes: [{
-              display: false,
-            }],
-            yAxes: [{
-                  display: false,
-                  gridLines : {
-                      display : false
-                  }
-              }]
+          }],
+          yAxes: [{
+                display: false,
+                gridLines : {
+                    display : false
+                }
+            }]
           },
         }
-      });
-    // }
+      }
+    );
   }
 
   changeActive(strNum) {
