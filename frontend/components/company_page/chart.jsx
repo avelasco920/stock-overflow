@@ -18,6 +18,7 @@ class ChartComponent extends React.Component {
       dailyTimePoints: [],
       graphTimePoints: [],
       graphPricePoints: [],
+      numRenders: 0,
     };
     this.changeActive = this.changeActive.bind(this);
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A")); // Day
@@ -28,7 +29,7 @@ class ChartComponent extends React.Component {
 
   firstMin() {
     const midnight = moment().transform('00:00:00.000').format("YYYY-MM-DD HH:mm:ss");
-    const marketOpen = moment().transform('09:30:00.000').format("YYYY-MM-DD HH:mm:ss");
+    const marketOpen = moment().transform('10:00:00.000').format("YYYY-MM-DD HH:mm:ss");
     const now = moment().format("YYYY-MM-DD HH:mm:ss");
     if (midnight < now && now < marketOpen ) {
       return moment().subtract(1, 'days').format("YYYY-MM-DD HH:mm:ss");
@@ -94,6 +95,12 @@ class ChartComponent extends React.Component {
         dailyTimePoints: dailyTime,
         graphTimePoints: this.timesWithinRange(intradayTime, firstMin),
         graphPricePoints: this.pricesWithinRange(intradayPrices, idxRange),
+        numRenders: this.state.numRenders + 1,
+      }, () => {
+        console.log(this.state.numRenders);
+        if (this.state.numRenders === 1) {
+          this.renderChart();
+        }
       });
     }
   }
@@ -104,17 +111,18 @@ class ChartComponent extends React.Component {
     this.props.fetchRealtimeDailyData(symbol);
   }
 
-  componentDidUpdate() {
+  renderChart() {
     const { companyLoading } = this.props;
     const { graphPricePoints, graphTimePoints, intradayPricePoints } = this.state;
     const closingPrice = this.closingPrice();
     const latestPrice = intradayPricePoints[intradayPricePoints.length - 1];
     let graphColor;
     graphColor = (latestPrice > closingPrice) ? "#08d093" : "#f45531";
-    if ( companyLoading ) {
-      return null;
-    } else {
+    // if ( companyLoading ) {
+    //   return null;
+    // } else {
       let stocksCtx = document.getElementById("companyChart");
+      console.log("stocksCtx",stocksCtx);
       new Chart(stocksCtx, {
         type: 'line',
         data: {
@@ -125,7 +133,7 @@ class ChartComponent extends React.Component {
                 borderColor: graphColor,
                 borderWidth: 2,
                 pointRadius: 1,
-                pointStyle: "line",
+                pointStyle: "circle",
                 data: graphPricePoints,
               }, {
                 fill: false,
@@ -161,7 +169,7 @@ class ChartComponent extends React.Component {
           },
         }
       });
-    }
+    // }
   }
 
   changeActive(strNum) {
@@ -207,14 +215,23 @@ class ChartComponent extends React.Component {
       graphTimePoints: timesWithinRange,
       graphPricePoints: pricesWithinRange,
       idxRange: idxRange
+    }, () => {
+      this.renderChart();
     });
   }
 
   render() {
     const { companyLoading, intradayApiLoading, dailyApiLoading } = this.props;
     const { imgUrl } = this.state;
+    let canvasContainer = (
+      <div className="line-chart-container">
+        <canvas id="companyChart" className="line-chart"></canvas>
+      </div>
+    );
     if (companyLoading) {
-      return (<div></div>);
+      return (
+        canvasContainer
+      );
     } else {
       let canvas;
       if (intradayApiLoading && dailyApiLoading) {
@@ -237,11 +254,7 @@ class ChartComponent extends React.Component {
           </div>
         );
       } else {
-        canvas = (
-          <div className="line-chart-container">
-            <canvas id="companyChart" className="line-chart"></canvas>
-          </div>
-        );
+        canvas = canvasContainer;
       }
       return (
         <div className="chart">
