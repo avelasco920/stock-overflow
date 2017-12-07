@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { fetchRealtimeIntradayData } from '../../actions/companies_actions';
+import {
+  fetchRealtimeIntradayData,
+  fetchRealtimeDailyData,
+} from '../../actions/companies_actions';
 import ChartComponent from './chart';
 import {
   watchCompany,
@@ -8,18 +11,18 @@ import {
 } from '../../actions/watchlist_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  const symbol = ownProps.match.params.symbol;
   return {
-    symbol: ownProps.match.params.symbol,
-    chartData: state.entities.chart,
+    companyStockData: state.entities.chart[symbol],
     loading: state.ui.loading.detailLoading,
-    // chartData: state.entities.chart,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   watchCompany: id => dispatch(watchCompany(id)),
   unwatchCompany: id => dispatch(unwatchCompany(id)),
-  fetchRealtimeIntradayData: sym => dispatch(fetchRealtimeIntradayData(sym))
+  fetchRealtimeIntradayData: sym => dispatch(fetchRealtimeIntradayData(sym)),
+  fetchRealtimeDailyData: sym => dispatch(fetchRealtimeDailyData(sym))
 });
 
 export default withRouter(
