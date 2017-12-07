@@ -14,7 +14,9 @@ const mapStateToProps = (state, ownProps) => {
   const symbol = ownProps.match.params.symbol;
   return {
     companyStockData: state.entities.chart[symbol],
-    loading: state.ui.loading.detailLoading,
+    companyLoading: state.ui.loading.detailLoading,
+    intradayApiLoading: state.ui.loading.intradayApiLoading,
+    dailyApiLoading: state.ui.loading.dailyApiLoading,
   };
 };
 

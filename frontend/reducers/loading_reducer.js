@@ -3,10 +3,12 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_COMPANIES,
   RECEIVE_COMPANY,
+  RECEIVE_INTRADAY_DATA,
+  RECEIVE_DAILY_DATA,
   START_LOADING_ALL_COMPANIES,
   START_LOADING_SINGLE_COMPANY,
-  START_LOADING_MINUTE_API,
-  RECEIVE_MINUTE_DATA,
+  START_LOADING_INTRADAY_PRICES,
+  START_LOADING_DAILY_PRICES,
 } from '../actions/companies_actions';
 
 import {
@@ -18,7 +20,8 @@ const initialState = {
   indexLoading: true,
   detailLoading: true,
   articlesLoading: true,
-  minuteApiLoading: true,
+  intradayApiLoading: true,
+  dailyApiLoading: true,
 };
 
 const loadingReducer = (state = initialState, action) => {
@@ -36,10 +39,14 @@ const loadingReducer = (state = initialState, action) => {
       return merge({}, state, { articlesLoading: false });
     case START_LOADING_NEWS_ARTICLES:
       return merge({}, state, { articlesLoading: true });
-    case START_LOADING_MINUTE_API:
-      return merge({}, state, { minuteApiLoading: true });
-    case RECEIVE_MINUTE_DATA:
-      return merge({}, state, { minuteApiLoading: false });
+    case START_LOADING_INTRADAY_PRICES:
+      return merge({}, state, { intradayApiLoading: true });
+    case RECEIVE_INTRADAY_DATA:
+      return merge({}, state, { intradayApiLoading: false });
+    case START_LOADING_DAILY_PRICES:
+      return merge({}, state, { dailyApiLoading: true });
+    case RECEIVE_DAILY_DATA:
+      return merge({}, state, { dailyApiLoading: false });
     default:
       return state;
   }

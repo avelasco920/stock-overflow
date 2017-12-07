@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-// import { fetchRealtimeData } from '../../actions/companies_actions';
 import { convertCompanySymToId } from '../../reducers/selectors';
 import MainContent from './main_content';
 import StockFormContainer from './stock_form_container';

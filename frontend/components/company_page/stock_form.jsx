@@ -253,6 +253,7 @@ class StockForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const { loading, company, user } = this.props;
     const { numShares,lightBox, modalClose, tradeMethod, modalClass } = this.state;
     const method = tradeMethod.charAt(0).toUpperCase() + tradeMethod.slice(1);
