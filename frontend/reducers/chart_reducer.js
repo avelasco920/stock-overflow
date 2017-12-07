@@ -11,7 +11,7 @@ const chartReducer = (state = {}, action) => {
   let parsedData;
   switch(action.type) {
     case RECEIVE_MINUTE_DATA:
-      parsedData = parseRealData(action.data, "1min");
+      parsedData = parseRealData(action.data, "5min");
       return merge({}, state, parsedData);
     case RECEIVE_DAILY_DATA:
       parsedData = parseRealData(action.data, "Daily");

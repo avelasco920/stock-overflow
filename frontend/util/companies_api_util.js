@@ -14,7 +14,7 @@ export const fetchCompany = id => (
 
 export const fetchRealtimeIntradayData = sym => (
   $.ajax({
-    url: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${sym}&outputsize=compact&apikey=ZFC6ELK98CG1MD7Q&interval=1min`,
+    url: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${sym}&outputsize=compact&apikey=ZFC6ELK98CG1MD7Q&interval=5min`,
     type: "GET",
     dataType: "JSON",
     success: (resp) => {

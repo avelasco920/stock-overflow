@@ -39,6 +39,7 @@
     "infinite-scroll": "^3.0.2",
     "lodash": "^4.17.4",
     "moment": "^2.19.3",
+    "moment-transform": "^1.0.1",
     "object.pluck": "^0.1.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

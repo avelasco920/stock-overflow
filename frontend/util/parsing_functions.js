@@ -44,12 +44,12 @@ const getSymbol = data => (
 
 const getTime = (data, timeSeries) => {
   const series = `Time Series (${timeSeries})`;
-  return Object.keys(data[series]);
+  return Object.keys(data[series]).reverse();
 };
 
 const getPrices = (data, timeSeries) => {
   const series = `Time Series (${timeSeries})`;
-  const seriesObjects = Object.values(data[series]);
+  const seriesObjects = Object.values(data[series]).reverse();
   return seriesObjects.map(obj => obj["4. close"]);
 };
 

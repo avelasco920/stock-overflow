@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import ChartComponent from './chart';
-import { selectCurrentCompany } from '../../reducers/selectors';
 import {
   watchCompany,
   unwatchCompany
@@ -10,10 +9,9 @@ import {
 
 const mapStateToProps = state => {
   return {
-    user: state.session.currentUser,
-    company: selectCurrentCompany(state),
+    // user: state.session.currentUser,
     loading: state.ui.loading.detailLoading,
-    chartData: state.entities.chart,
+    // chartData: state.entities.chart,
   };
 };
 
