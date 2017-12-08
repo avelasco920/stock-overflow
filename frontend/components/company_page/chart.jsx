@@ -24,10 +24,15 @@ class ChartComponent extends React.Component {
       numRenders: 0,
     };
     this.changeActive = this.changeActive.bind(this);
+    this.renderChart = this.renderChart.bind(this);
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A")); // Day
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A, MMM D")); // Week
     // console.log(moment("2017-12-05 14:12:00").format("MMM D")); // Month
     // console.log(this.state.intradayPricePoints);
+  }
+
+  componentWillUnmount() {
+    console.log("unmounting");
   }
 
   firstMin() {
@@ -89,11 +94,13 @@ class ChartComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("nextProps symbol", nextProps.match.params.symbol);
+    console.log("this.props symbol", this.props.match.params.symbol);
     if (
-      nextProps.companyStockData &&
+      ( nextProps.companyStockData &&
       nextProps.companyStockData.intraday &&
       nextProps.companyStockData.daily &&
-      !nextProps.companyLoading
+      !nextProps.companyLoading )
     ) {
       const firstMin = this.firstMin();
       const intradayPrices = nextProps.companyStockData.intraday.prices;
@@ -114,10 +121,23 @@ class ChartComponent extends React.Component {
           this.renderChart();
         }
       });
+    } else if
+    (nextProps.match.params.symbol !== this.props.match.params.symbol)
+    {
+      const { symbol } = nextProps.match.params;
+      if (!nextProps.companyStockData) {
+        this.props.fetchRealtimeIntradayData(symbol)
+          .then(() => this.renderChart());
+        this.props.fetchRealtimeDailyData(symbol);
+      }
     }
   }
 
   componentWillMount() {
+    this.fetchRealtimePrices();
+  }
+
+  fetchRealtimePrices() {
     const { symbol } = this.props.match.params;
     const { companyStockData } = this.props;
     if (!companyStockData) {
@@ -142,13 +162,12 @@ class ChartComponent extends React.Component {
   }
 
   renderChart() {
-    const { companyLoading } = this.props;
     const { graphPricePoints, graphTimePoints } = this.state;
     const closingPrice = this.closingPrice();
     let graphColor;
     graphColor = (this.compareHistoricalPrices() > 0) ? "#08d093" : "#f45531";
     let stocksCtx = document.getElementById("companyChart");
-    new Chart(stocksCtx, {
+    return new Chart(stocksCtx, {
       type: 'line',
       data: {
           datasets: [
@@ -176,10 +195,6 @@ class ChartComponent extends React.Component {
       options: {
         legend: {
           display: false,
-        },
-        tooltips: {
-          // mode: "x-axis"
-          // intersect: false,
         },
         scales: {
           xAxes: [{

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { stringifyToFloat } from '../../util/parsing_functions';
+import { ProtectedRoute } from '../../util/route_util';
+import CompanyPageContainer from '../company_page/company_page_container';
 
 class SearchIndexItem extends React.Component {
   constructor(props) {

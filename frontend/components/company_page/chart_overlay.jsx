@@ -115,17 +115,10 @@ class ChartOverlay extends React.Component {
     } = this.props;
     const { timeSeries } = this.state;
     const companyUrl = `/company/${company.symbol};`;
-    const seedPrice = company.market_price;
     const priceChange = this.stringifyPriceChange(historicalPriceDelta);
     const percChange = this.stringifyPercentageChange(historicalPercDelta);
     let marketPrice;
-    if (intradayLoading) {
-      marketPrice = company.market_price;
-    } else {
-      const intradayPrices = chartData[company.symbol].intraday.prices;
-      marketPrice = intradayPrices[intradayPrices.length - 1];
-    }
-    marketPrice = `${stringifyToFloat(marketPrice)}`;
+    marketPrice = `${stringifyToFloat(company.market_price)}`;
     return (
       <div className="chart-overlay">
         <div className="company-info">

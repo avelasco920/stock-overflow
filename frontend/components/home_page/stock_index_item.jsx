@@ -22,7 +22,7 @@ const StockIndexItem = ({ company }) => {
     "https://github.com/avelasco920/stocks-overflow/blob/master/app/assets/images/chart%20thumbnail/red5.png?raw=true",
   ];
   const randGraph = graphUrl[Math.floor(Math.random() * graphUrl.length)];
-  const companyUrl = `/company/${ company.symbol }`;
+  const companyUrl = `/company/${company.symbol}`;
   return (
     <Link to={companyUrl}>
       <li className="stock-index-item">

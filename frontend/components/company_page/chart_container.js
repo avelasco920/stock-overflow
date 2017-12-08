@@ -11,9 +11,9 @@ import {
 } from '../../actions/watchlist_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const symbol = ownProps.match.params.symbol;
+  // const symbol = ownProps.match.params.symbol;
   return {
-    companyStockData: state.entities.chart[symbol],
+    companyStockData: state.entities.chart[ownProps.match.params.symbol],
     companyLoading: state.ui.loading.detailLoading,
     intradayApiLoading: state.ui.loading.intradayApiLoading,
     dailyApiLoading: state.ui.loading.dailyApiLoading,

@@ -12,11 +12,11 @@ class CompanyPage extends React.Component {
 
   componentWillMount() {
     const { symbol } = this.props.match.params;
+    console.log("companies", this.props.companies);
     const companyId = convertCompanySymToId(
         this.props.companies, symbol
     );
     this.props.fetchCompany(companyId);
-
   }
 
   componentWillReceiveProps(nextProps) {

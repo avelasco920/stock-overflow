@@ -18,6 +18,7 @@ export const selectWatchingCompanies = state => {
 
 export const convertCompanySymToId = (companies, sym) => {
   companies = Object.values(companies);
+  console.log("symbol", sym);
   return companies.find(company => company.symbol === sym).id;
 };
 
