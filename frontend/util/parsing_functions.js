@@ -1,11 +1,11 @@
-export const stringifyToFloatNoCommas = (num) => {
+export const stringifyToFloatNoCommas = (num, places) => {
   return parseFloat(Math
     .round(num * 100) / 100)
-    .toFixed(2);
+    .toFixed(places);
 };
 
 export const stringifyToFloat = (num) => {
-  let str = stringifyToFloatNoCommas(num);
+  let str = stringifyToFloatNoCommas(num, 2);
   if (str === "NaN") return "0";
   const splitNum = str.split(".");
   const withCommas = addCommas(splitNum[0]);
@@ -13,7 +13,7 @@ export const stringifyToFloat = (num) => {
 };
 
 export const stringifyToInteger = (num) => {
-  let str = stringifyToFloatNoCommas(num);
+  let str = stringifyToFloatNoCommas(num, 2);
   const splitNum = str.split(".");
   return addCommas(splitNum[0]);
 };

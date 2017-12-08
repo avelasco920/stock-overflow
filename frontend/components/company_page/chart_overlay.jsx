@@ -1,5 +1,8 @@
 import React from 'react';
-import { stringifyToFloat } from '../../util/parsing_functions';
+import {
+  stringifyToFloat,
+  stringifyToFloatNoCommas
+} from '../../util/parsing_functions';
 
 class ChartOverlay extends React.Component {
   constructor(props) {
@@ -7,7 +10,9 @@ class ChartOverlay extends React.Component {
     this.state = {
       watching: this.props.company.current_user_watching,
       activeId: "1",
+      timeSeries: "Today",
     };
+    console.log("this props", this.props);
   }
 
   componentDidMount() {
@@ -46,19 +51,91 @@ class ChartOverlay extends React.Component {
     currentlyActive.classList.remove("chart-history-active");
     let newActive = document.getElementById(strNum);
     newActive.classList.add("chart-history-active");
-    this.setState({ activeId: strNum });
+    let timeSeries;
+    switch(strNum) {
+    case "1":
+        timeSeries = "Today";
+        break;
+    case "2":
+        timeSeries = "This Week";
+        break;
+    case "3":
+        timeSeries = "This Month";
+        break;
+    case "4":
+        timeSeries = "Last 3 Months";
+        break;
+    case "5":
+        timeSeries = "Last Year";
+        break;
+    case "6":
+        timeSeries = "Last 5 Years";
+        break;
+    }
+    this.setState({ activeId: strNum, timeSeries });
+  }
+
+  stringifyPriceChange(historicalPriceDelta) {
+    let priceChange;
+    if (this.state.intradayLoading) {
+      priceChange = "$0.00";
+    } else {
+      priceChange = parseFloat(Math
+                            .round(historicalPriceDelta * 100) / 100)
+                            .toFixed(2);
+      if (priceChange[0] === "-") {
+        priceChange = priceChange.replace("-", "-$");
+      } else {
+        priceChange = "+$" + priceChange;
+      }
+    }
+    return priceChange;
+  }
+
+  stringifyPercentageChange(historicalPercDelta) {
+    let percChange;
+    if (this.state.intradayLoading) {
+      percChange = "(0.00%)";
+    } else {
+      percChange = parseFloat(Math
+                            .round(historicalPercDelta * 100) / 100)
+                            .toFixed(2);
+      if (percChange[0] === "-") {
+        percChange = `(${percChange}%)`;
+      } else {
+        percChange = `(+${percChange}%)`;
+      }
+    }
+    return percChange;
   }
 
   render() {
-    const { company } = this.props;
+    const {
+      company, chartData, intradayLoading,
+      historicalPriceDelta, historicalPercDelta
+    } = this.props;
+    const { timeSeries } = this.state;
     const companyUrl = `/company/${company.symbol};`;
+    const seedPrice = company.market_price;
+    const priceChange = this.stringifyPriceChange(historicalPriceDelta);
+    const percChange = this.stringifyPercentageChange(historicalPercDelta);
+    console.log("historicalPercDelta", historicalPercDelta);
+    console.log("percChange", percChange);
+    let marketPrice;
+    if (intradayLoading) {
+      marketPrice = company.market_price;
+    } else {
+      const intradayPrices = chartData[company.symbol].intraday.prices;
+      marketPrice = intradayPrices[intradayPrices.length - 1];
+    }
+    marketPrice = `${stringifyToFloat(marketPrice)}`;
     return (
       <div className="chart-overlay">
         <div className="company-info">
           <h2>{company.name}</h2>
-          <h1>${stringifyToFloat(company.market_price)}</h1>
+          <h1 className="odometer">${marketPrice}</h1>
           <div className="delta">
-            <h4>+$7.01(+0.70%)</h4> <span>Today</span>
+            <h4>{priceChange}{percChange}</h4> <span>{timeSeries}</span>
           </div>
         </div>
         {this.button()}

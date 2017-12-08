@@ -8,12 +8,16 @@ import {
 } from '../../actions/watchlist_actions';
 import { selectCurrentCompany } from '../../reducers/selectors';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     user: state.session.currentUser,
     company: selectCurrentCompany(state),
     watching: selectCurrentCompany(state).current_user_watching,
-    loading: state.ui.loading.detailLoading,
+    chartData: state.entities.chart,
+    historicalPercDelta: ownProps.historicalPercDelta,
+    historicalPriceDelta: ownProps.historicalPriceDelta,
+    companyLoading: state.ui.loading.detailLoading,
+    intradayLoading: state.ui.loading.intradayApiLoading,
   };
 };
 

@@ -18,6 +18,8 @@ class ChartComponent extends React.Component {
       dailyTimePoints: [],
       graphTimePoints: [],
       graphPricePoints: [],
+      historicalPercDelta: "",
+      historicalPriceDelta: "",
       numRenders: 0,
     };
     this.changeActive = this.changeActive.bind(this);
@@ -75,14 +77,23 @@ class ChartComponent extends React.Component {
   }
 
   pricesWithinRange(prices, range) {
-    return prices.filter( (price, idx) => {
-      if (range.includes(idx)) return price;
+    // return prices.filter( (price, idx) => {
+    //   if (range.includes(idx)) return price;
+    // });
+    const pricesInRange = [];
+    range.forEach (idx => {
+      pricesInRange.push(prices[idx]);
     });
+    return pricesInRange;
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("receiving props");
-    if (nextProps.companyStockData && nextProps.companyStockData.intraday && nextProps.companyStockData.daily && !nextProps.companyLoading) {
+    if (
+      nextProps.companyStockData &&
+      nextProps.companyStockData.intraday &&
+      nextProps.companyStockData.daily &&
+      !nextProps.companyLoading
+    ) {
       const firstMin = this.firstMin();
       const intradayPrices = nextProps.companyStockData.intraday.prices;
       const intradayTime = nextProps.companyStockData.intraday.time;
@@ -98,7 +109,6 @@ class ChartComponent extends React.Component {
         graphPricePoints: this.pricesWithinRange(intradayPrices, idxRange),
         numRenders: this.state.numRenders + 1,
       }, () => {
-        console.log(this.state.numRenders);
         if (this.state.numRenders === 1) {
           this.renderChart();
         }
@@ -115,38 +125,28 @@ class ChartComponent extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   console.log("mounted");
-  //   const { symbol } = this.props.match.params;
-  //   const { companyStockData } = this.props;
-  //   if (companyStockData) {
-  //     const firstMin = this.firstMin();
-  //     const intradayPrices = companyStockData.intraday.prices;
-  //     const intradayTime = companyStockData.intraday.time;
-  //     const dailyPrices = companyStockData.daily.prices;
-  //     const dailyTime = companyStockData.daily.time;
-  //     const idxRange = this.idxRange(intradayTime, firstMin);
-  //     this.setState({
-  //       intradayPricePoints: intradayPrices,
-  //       intradayTimePoints: intradayTime,
-  //       dailyPricePoints: dailyPrices,
-  //       dailyTimePoints: dailyTime,
-  //       graphTimePoints: this.timesWithinRange(intradayTime, firstMin),
-  //       graphPricePoints: this.pricesWithinRange(intradayPrices, idxRange),
-  //       numRenders: this.state.numRenders + 1
-  //     }, () => this.renderChart());
-  //   }
-  // }
+  compareHistoricalPrices() {
+    const {
+      graphPricePoints,
+      intradayPricePoints,
+      timeSeries
+    } = this.state;
+    const closingPrice = this.closingPrice();
+    const lastPrice = (timeSeries === "today") ? closingPrice : graphPricePoints[0];
+    const latestPrice = intradayPricePoints[intradayPricePoints.length - 1];
+    const priceDiff = parseFloat(latestPrice) - parseFloat(lastPrice);
+    const percDiff = (priceDiff / parseFloat(lastPrice)) * 100;
+    this.setState({historicalPriceDelta: priceDiff, historicalPercDelta: percDiff});
+    return priceDiff;
+  }
 
   renderChart() {
     const { companyLoading } = this.props;
-    const { graphPricePoints, graphTimePoints, intradayPricePoints } = this.state;
+    const { graphPricePoints, graphTimePoints } = this.state;
     const closingPrice = this.closingPrice();
-    const latestPrice = intradayPricePoints[intradayPricePoints.length - 1];
     let graphColor;
-    graphColor = (latestPrice > closingPrice) ? "#08d093" : "#f45531";
+    graphColor = (this.compareHistoricalPrices() > 0) ? "#08d093" : "#f45531";
     let stocksCtx = document.getElementById("companyChart");
-    console.log("stocksCtx",stocksCtx);
     new Chart(stocksCtx, {
       type: 'line',
       data: {
@@ -156,7 +156,7 @@ class ChartComponent extends React.Component {
               lineTension: 0.3,
               borderColor: graphColor,
               borderWidth: 2,
-              pointRadius: .5,
+              pointRadius: .1,
               pointStyle: "circle",
               data: graphPricePoints,
             }, {
@@ -166,7 +166,7 @@ class ChartComponent extends React.Component {
               borderWidth: 1,
               pointRadius: 0,
               borderDash: [5, 5],
-              pointStyle: "line",
+              pointStyle: "circle",
               data: this.setClosingArr(closingPrice, graphTimePoints)
             },
           ],
@@ -198,39 +198,43 @@ class ChartComponent extends React.Component {
 
   changeActive(strNum) {
     const now = new Date();
-    let minDate;
-    let timeArr;
-    let prices;
+    let minDate, timeArr, prices, timeSeries;
     if (strNum === "1") {
       // Today
       minDate = this.firstMin();
       timeArr = this.state.intradayTimePoints;
       prices = this.state.intradayPricePoints;
+      timeSeries = "today";
     } else if (strNum === "2") {
       // 1W
       minDate = moment(now).subtract(1, 'weeks').format("YYYY-MM-DD HH:mm:ss");
       timeArr = this.state.intradayTimePoints;
       prices = this.state.intradayPricePoints;
+      timeSeries = "1W";
     } else if (strNum === "3") {
       // 1M
       minDate = moment(now).subtract(1, 'months').format("YYYY-MM-DD");
       timeArr = this.state.dailyTimePoints;
       prices = this.state.dailyPricePoints;
+      timeSeries = "1M";
     } else if (strNum === "4") {
       // 3M
       minDate = moment(now).subtract(3, 'months').format("YYYY-MM-DD");
       timeArr = this.state.dailyTimePoints;
       prices = this.state.dailyPricePoints;
+      timeSeries = "3M";
     } else if (strNum === "5") {
       // 1Y
       minDate = moment(now).subtract(1, 'years').format("YYYY-MM-DD");
       timeArr = this.state.dailyTimePoints;
       prices = this.state.dailyPricePoints;
+      timeSeries = "1Y";
     } else if (strNum === "6") {
       // 5Y
       minDate = moment(now).subtract(5, 'years').format("YYYY-MM-DD");
       timeArr = this.state.dailyTimePoints;
       prices = this.state.dailyPricePoints;
+      timeSeries = "5Y";
     }
     const idxRange = this.idxRange(timeArr, minDate);
     const timesWithinRange = this.timesWithinRange(timeArr, minDate);
@@ -238,7 +242,8 @@ class ChartComponent extends React.Component {
     this.setState({
       graphTimePoints: timesWithinRange,
       graphPricePoints: pricesWithinRange,
-      idxRange: idxRange
+      idxRange: idxRange,
+      timeSeries,
     }, () => {
       this.renderChart();
     });
@@ -283,7 +288,11 @@ class ChartComponent extends React.Component {
       return (
         <div className="chart">
           {canvas}
-          <ChartOverlayContainer changeActive={this.changeActive}/>
+          <ChartOverlayContainer
+            changeActive={this.changeActive}
+            historicalPriceDelta={this.state.historicalPriceDelta}
+            historicalPercDelta={this.state.historicalPercDelta}
+          />
         </div>
       );
     }
