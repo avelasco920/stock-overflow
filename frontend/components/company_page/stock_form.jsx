@@ -28,7 +28,6 @@ class StockForm extends React.Component {
       this.setState({
         currentPrice: nextProps.company.market_price,
       });
-      console.log(this.state);
     }
     if (nextProps.companyStockData && nextProps.companyStockData.intraday) {
       const prices = nextProps.companyStockData.intraday.prices;

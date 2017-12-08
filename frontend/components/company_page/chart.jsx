@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import Chart from 'chart.js';
 import moment from 'moment';
 import transform from 'moment-transform';
+import { isEqual } from 'lodash';
 
 import ChartOverlayContainer from './chart_overlay_container';
 
@@ -88,6 +89,8 @@ class ChartComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    console.log("nextProps and oldProps", isEqual(this.props, nextProps));
     if (
       nextProps.companyStockData &&
       nextProps.companyStockData.intraday &&
@@ -263,7 +266,9 @@ class ChartComponent extends React.Component {
       );
     } else {
       let canvas;
-      if (intradayApiLoading && dailyApiLoading) {
+      if (!intradayApiLoading && !dailyApiLoading) {
+        canvas = canvasContainer;
+      } else {
         canvas = (
           <div className="spinner-chart-container">
             <div className="sk-circle">
@@ -282,8 +287,6 @@ class ChartComponent extends React.Component {
             </div>
           </div>
         );
-      } else {
-        canvas = canvasContainer;
       }
       return (
         <div className="chart">
