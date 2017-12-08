@@ -11,6 +11,12 @@
   }
 }
 
+@media only screen and (max-width: 1650px)  {
+  .chart-home {
+    height: 470px;
+  }
+}
+
 .account-info h2 {
   margin-top: 0;
   margin-bottom: 8px;
@@ -46,7 +52,15 @@
   width: 100%;
   align-content: space-between;
   height: 520px;
-  // z-index: 300;
+  position: absolute;
+}
+
+.chart-overlay-home {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-content: space-between;
+  height: 470px;
   position: absolute;
 }
 
@@ -139,6 +153,13 @@
   width: 100%;
   position: absolute;
   top: 120px;
+  z-index: 300;
+}
+
+.line-chart-container-home {
+  width: 100%;
+  position: absolute;
+  top: 70px;
   z-index: 300;
 }
 
