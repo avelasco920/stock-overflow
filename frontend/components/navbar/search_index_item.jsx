@@ -8,7 +8,6 @@ class SearchIndexItem extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { company } = this.props;
     if ( !company ) {
       return (<div></div>);

@@ -295,3 +295,21 @@
 .completed-header {
   flex: 1;
 }
+
+.completed-buttons {
+  width: 100%;
+  display: flex;
+}
+
+.completed-home-button {
+  flex: 1;
+  margin-right: 2px;
+}
+
+.completed-account-button {
+  flex: 2;
+}
+
+.completed-stocks-update{
+  text-align: center;
+}

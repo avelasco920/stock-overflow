@@ -251,13 +251,22 @@ class StockForm extends React.Component {
           <div className="completed-stocks-update">
             <span>You now have {company.num_shares} {shareDesc} of {company.symbol}.</span>
           </div>
-          <Link to='/'>
-            <input
-              type="button"
-              value="OK"
-              className="button"
-            />
-          </Link>
+          <div className="completed-buttons">
+            <Link to='/' className="completed-home-button">
+              <input
+                type="button"
+                value="OK"
+                className="button"
+              />
+            </Link>
+            <Link to='/account' className="completed-account-button">
+              <input
+                type="button"
+                value="Account"
+                className="button"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     );
