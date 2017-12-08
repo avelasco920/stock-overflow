@@ -18,7 +18,7 @@ import { fetchRealtimeData } from '../actions/companies_actions';
 
 class App extends React.Component {
   componentWillMount() {
-    this.props.fetchCompanies();
+    setTimeout(() => this.props.fetchCompanies(), 900);
     // this.props.symbols.forEach(symbol => this.props.fetchRealtimeIntradayData(symbol));
   }
 

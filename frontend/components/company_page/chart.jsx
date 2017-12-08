@@ -41,8 +41,6 @@ class ChartComponent extends React.Component {
 
   closingPrice() {
     const closingTime = moment().transform('YYYY-MM--01 16:00:00.000').format("YYYY-MM-DD HH:mm:ss");
-    console.log(closingTime);
-    console.log(this.state.intradayTimePoints);
     const idx = this.state.intradayTimePoints.indexOf(closingTime);
     const closingPrice = this.state.intradayPricePoints[idx];
     return closingPrice;
@@ -101,10 +99,6 @@ class ChartComponent extends React.Component {
       const dailyPrices = nextProps.companyStockData.daily.prices;
       const dailyTime = nextProps.companyStockData.daily.time;
       const idxRange = this.idxRange(intradayTime, firstMin);
-      console.log("intradayPrices", intradayPrices);
-      console.log("intradayTime", intradayTime);
-      console.log("dailyPrices", dailyPrices);
-      console.log("dailyTime", dailyTime);
       this.setState({
         intradayPricePoints: intradayPrices,
         intradayTimePoints: intradayTime,
@@ -170,7 +164,7 @@ class ChartComponent extends React.Component {
           datasets: [
             {
               fill: false,
-              lineTension: 0.3,
+              lineTension: 0.1,
               borderColor: graphColor,
               borderWidth: 2,
               pointRadius: .1,

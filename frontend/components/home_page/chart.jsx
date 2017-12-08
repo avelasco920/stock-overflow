@@ -68,7 +68,7 @@ class ChartComponent extends React.Component {
           datasets: [
             {
               fill: false,
-              lineTension: 0.3,
+              lineTension: 0.1,
               borderColor: graphColor,
               borderWidth: 2,
               pointRadius: 0,
