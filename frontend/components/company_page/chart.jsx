@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import Chart from 'chart.js';
 import moment from 'moment';
 import transform from 'moment-transform';
@@ -19,6 +19,7 @@ class ChartComponent extends React.Component {
       historicalPercDelta: "",
       historicalPriceDelta: "",
       numRenders: 0,
+      chart: '',
     };
     this.changeActive = this.changeActive.bind(this);
     this.renderChart = this.renderChart.bind(this);
@@ -26,6 +27,7 @@ class ChartComponent extends React.Component {
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A, MMM D")); // Week
     // console.log(moment("2017-12-05 14:12:00").format("MMM D")); // Month
     // console.log(this.state.intradayPricePoints);
+    console.log(moment().transform('YYYY-MM-DD 09:30:00.000').format("YYYY-MM-DD HH:mm:ss"));
   }
 
   firstMin() {
@@ -40,9 +42,9 @@ class ChartComponent extends React.Component {
   }
 
   closingPrice() {
-    const closingTime = moment().transform('YYYY-MM--01 16:00:00.000').format("YYYY-MM-DD HH:mm:ss");
+    const closingTime = moment().transform('YYYY-MM-DD 09:30:00.000').format("YYYY-MM-DD HH:mm:ss");
     const idx = this.state.intradayTimePoints.indexOf(closingTime);
-    const closingPrice = this.state.intradayPricePoints[idx];
+    const closingPrice = this.state.intradayPricePoints[idx - 1];
     return closingPrice;
   }
 
@@ -158,7 +160,7 @@ class ChartComponent extends React.Component {
     let graphColor;
     graphColor = (this.compareHistoricalPrices() > 0) ? "#08d093" : "#f45531";
     let stocksCtx = document.getElementById("companyChart");
-    return new Chart(stocksCtx, {
+    new Chart(stocksCtx, {
       type: 'line',
       data: {
           datasets: [
