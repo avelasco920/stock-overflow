@@ -89,8 +89,6 @@ class ChartComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    console.log("nextProps and oldProps", isEqual(this.props, nextProps));
     if (
       nextProps.companyStockData &&
       nextProps.companyStockData.intraday &&

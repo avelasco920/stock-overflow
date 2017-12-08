@@ -5,13 +5,11 @@ import { stringifyToFloat } from '../../util/parsing_functions';
 class SearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      company: this.props.company
-    };
   }
 
   render() {
-    const { company } = this.state;
+    console.log(this.props);
+    const { company } = this.props;
     if ( !company ) {
       return (<div></div>);
     } else {

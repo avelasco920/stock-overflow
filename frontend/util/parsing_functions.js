@@ -38,7 +38,7 @@ export const timeAgo = rubyDate => {
   return numDays + " days ago";
 };
 
-const getSymbol = data => (
+export const getSymbol = data => (
   data["Meta Data"]["2. Symbol"]
 );
 
@@ -47,7 +47,7 @@ const getTime = (data, timeSeries) => {
   return Object.keys(data[series]).reverse();
 };
 
-const getPrices = (data, timeSeries) => {
+export const getPrices = (data, timeSeries) => {
   const series = `Time Series (${timeSeries})`;
   const seriesObjects = Object.values(data[series]).reverse();
   return seriesObjects.map(obj => obj["4. close"]);
