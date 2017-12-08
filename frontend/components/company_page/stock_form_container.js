@@ -5,12 +5,14 @@ import { makeTrade } from '../../actions/trade_events_actions';
 import { clearTradeEventErrors } from '../../actions/errors_actions';
 import StockForm from './stock_form';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const symbol = ownProps.match.params.symbol;
   return {
     user: state.session.currentUser,
     company: selectCurrentCompany(state),
-    loading: state.ui.loading.detailLoading,
-    numShares: '',
+    companyStockData: state.entities.chart[symbol],
+    companyLoading: state.ui.loading.detailLoading,
+    intradayLoading: state.ui.loading.intradayApiLoading,
     errors: state.errors.tradeEvent
   };
 };

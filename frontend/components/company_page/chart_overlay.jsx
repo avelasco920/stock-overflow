@@ -12,7 +12,6 @@ class ChartOverlay extends React.Component {
       activeId: "1",
       timeSeries: "Today",
     };
-    console.log("this props", this.props);
   }
 
   componentDidMount() {
@@ -119,8 +118,6 @@ class ChartOverlay extends React.Component {
     const seedPrice = company.market_price;
     const priceChange = this.stringifyPriceChange(historicalPriceDelta);
     const percChange = this.stringifyPercentageChange(historicalPercDelta);
-    console.log("historicalPercDelta", historicalPercDelta);
-    console.log("percChange", percChange);
     let marketPrice;
     if (intradayLoading) {
       marketPrice = company.market_price;

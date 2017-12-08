@@ -17,12 +17,6 @@ export const fetchRealtimeIntradayData = sym => (
     url: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${sym}&outputsize=full&apikey=ZFC6ELK98CG1MD7Q&interval=5min`,
     type: "GET",
     dataType: "JSON",
-    // success: (resp) => {
-    //   console.log(resp);
-    // },
-    // error (resp) {
-    //   console.log(resp);
-    // }
   })
 );
 
@@ -31,11 +25,5 @@ export const fetchRealtimeDailyData = sym => (
     url: `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${sym}&outputsize=full&apikey=ZFC6ELK98CG1MD7Q`,
     type: "GET",
     dataType: "JSON",
-    // success: (resp) => {
-    //   console.log(resp);
-    // },
-    // error (resp) {
-    //   console.log(resp);
-    // }
   })
 );
