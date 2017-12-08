@@ -1,10 +1,7 @@
 import React from 'react';
-import { AuthRoute, ProtectedRoute } from '../../util/route_util';
-import { Link, withRouter } from 'react-router-dom';
 import Chart from 'chart.js';
 import moment from 'moment';
 import transform from 'moment-transform';
-import { isEqual } from 'lodash';
 
 import ChartOverlayContainer from './chart_overlay_container';
 
@@ -31,10 +28,6 @@ class ChartComponent extends React.Component {
     // console.log(this.state.intradayPricePoints);
   }
 
-  componentWillUnmount() {
-    console.log("unmounting");
-  }
-
   firstMin() {
     const midnight = moment().transform('00:00:00.000').format("YYYY-MM-DD HH:mm:ss");
     const marketOpen = moment().transform('10:00:00.000').format("YYYY-MM-DD HH:mm:ss");
@@ -48,6 +41,8 @@ class ChartComponent extends React.Component {
 
   closingPrice() {
     const closingTime = moment().transform('YYYY-MM--01 16:00:00.000').format("YYYY-MM-DD HH:mm:ss");
+    console.log(closingTime);
+    console.log(this.state.intradayTimePoints);
     const idx = this.state.intradayTimePoints.indexOf(closingTime);
     const closingPrice = this.state.intradayPricePoints[idx];
     return closingPrice;
@@ -94,8 +89,6 @@ class ChartComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("nextProps symbol", nextProps.match.params.symbol);
-    console.log("this.props symbol", this.props.match.params.symbol);
     if (
       ( nextProps.companyStockData &&
       nextProps.companyStockData.intraday &&
@@ -108,6 +101,10 @@ class ChartComponent extends React.Component {
       const dailyPrices = nextProps.companyStockData.daily.prices;
       const dailyTime = nextProps.companyStockData.daily.time;
       const idxRange = this.idxRange(intradayTime, firstMin);
+      console.log("intradayPrices", intradayPrices);
+      console.log("intradayTime", intradayTime);
+      console.log("dailyPrices", dailyPrices);
+      console.log("dailyTime", dailyTime);
       this.setState({
         intradayPricePoints: intradayPrices,
         intradayTimePoints: intradayTime,
