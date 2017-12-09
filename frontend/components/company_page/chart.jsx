@@ -26,7 +26,6 @@ class ChartComponent extends React.Component {
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A")); // Day
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A, MMM D")); // Week
     // console.log(moment("2017-12-05 14:12:00").format("MMM D")); // Month
-    // console.log(this.state.intradayPricePoints);
     console.log(moment().transform('YYYY-MM-DD 09:30:00.000').format("YYYY-MM-DD HH:mm:ss"));
   }
 
@@ -159,7 +158,9 @@ class ChartComponent extends React.Component {
     const closingPrice = this.closingPrice();
     let graphColor;
     graphColor = (this.compareHistoricalPrices() > 0) ? "#08d093" : "#f45531";
-    let stocksCtx = document.getElementById("companyChart");
+    let stocksCanvas = document.getElementById("companyChart");
+    let stocksCtx = stocksCanvas.getContext('2d');
+    stocksCtx.clearRect(0, 0, stocksCanvas.width, stocksCanvas.height);
     new Chart(stocksCtx, {
       type: 'line',
       data: {

@@ -123,7 +123,7 @@ class ChartOverlay extends React.Component {
       <div className="chart-overlay">
         <div className="company-info">
           <h2>{company.name}</h2>
-          <h1 className="odometer">${marketPrice}</h1>
+          <h1>${marketPrice}</h1>
           <div className="delta">
             <h4>{priceChange}{percChange}</h4> <span>{timeSeries}</span>
           </div>
