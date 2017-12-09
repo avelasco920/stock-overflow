@@ -160,6 +160,7 @@ class ChartComponent extends React.Component {
     const { graphPricePoints, graphTimePoints } = this.state;
     const closingPrice = this.closingPrice();
     const lastIdx = graphPricePoints.length - 1;
+    this.compareHistoricalPrices();
     let graphColor;
     if (parseFloat(graphPricePoints[0]) < parseFloat(graphPricePoints[lastIdx])) {
       graphColor = "#08d093";
