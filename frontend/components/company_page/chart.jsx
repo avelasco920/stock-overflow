@@ -40,9 +40,16 @@ class ChartComponent extends React.Component {
   }
 
   closingPrice() {
-    const closingTime = moment().transform('YYYY-MM-DD 09:30:00.000').format("YYYY-MM-DD HH:mm:ss");
-    const idx = this.state.intradayTimePoints.indexOf(closingTime);
+    let closingTime = moment().transform('YYYY-MM-DD 09:30:00.000').format("YYYY-MM-DD HH:mm:ss");
+    let idx = this.state.intradayTimePoints.indexOf(closingTime);
+    if (idx === -1) {
+      closingTime = moment().transform('YYYY-MM-DD 09:35:00.000').format("YYYY-MM-DD HH:mm:ss");
+      idx = this.state.intradayTimePoints.indexOf(closingTime);
+    }
     const closingPrice = this.state.intradayPricePoints[idx - 1];
+    console.log("idx", idx);
+    console.log("closingTime", closingTime);
+    console.log("closingPrice", closingPrice);
     return closingPrice;
   }
 
@@ -155,8 +162,13 @@ class ChartComponent extends React.Component {
   renderChart() {
     const { graphPricePoints, graphTimePoints } = this.state;
     const closingPrice = this.closingPrice();
+    const lastIdx = graphPricePoints.length - 1;
     let graphColor;
-    graphColor = (this.compareHistoricalPrices() > 0) ? "#08d093" : "#f45531";
+    if (parseFloat(graphPricePoints[0]) < parseFloat(graphPricePoints[lastIdx])) {
+      graphColor = "#08d093";
+    } else {
+      graphColor = "#f45531";
+    }
     let stocksCanvas = document.getElementById("companyChart");
     let stocksCtx = stocksCanvas.getContext('2d');
     stocksCtx.clearRect(0, 0, stocksCanvas.width, stocksCanvas.height);
