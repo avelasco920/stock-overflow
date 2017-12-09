@@ -26,7 +26,6 @@ class ChartComponent extends React.Component {
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A")); // Day
     // console.log(moment("2017-12-05 14:12:00").format("h:mm A, MMM D")); // Week
     // console.log(moment("2017-12-05 14:12:00").format("MMM D")); // Month
-    console.log(moment().transform('YYYY-MM-DD 09:30:00.000').format("YYYY-MM-DD HH:mm:ss"));
   }
 
   firstMin() {
