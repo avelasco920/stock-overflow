@@ -47,9 +47,6 @@ class ChartComponent extends React.Component {
       idx = this.state.intradayTimePoints.indexOf(closingTime);
     }
     const closingPrice = this.state.intradayPricePoints[idx - 1];
-    console.log("idx", idx);
-    console.log("closingTime", closingTime);
-    console.log("closingPrice", closingPrice);
     return closingPrice;
   }
 
