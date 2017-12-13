@@ -40,27 +40,9 @@ import {
 document.addEventListener('DOMContentLoaded', () => {
 
   // testing...
-  window.signup = signup;
-  window.login = login;
-  window.logout = logout;
-  window.fetchCompanies = fetchCompanies;
-  window.fetchCompany = fetchCompany;
   window.fetchRealtimeIntradayData = fetchRealtimeIntradayData;
   window.fetchRealtimeDailyData = fetchRealtimeDailyData;
   window.fetchRealtimeData = fetchRealtimeData;
-  window.selectInvestedCompanies = selectInvestedCompanies;
-  window.selectWatchingCompanies = selectWatchingCompanies;
-  window.fetchNewsArticles = fetchNewsArticles;
-  window.incrementCount = incrementCount;
-  window.selectNewsArticles = selectNewsArticles;
-  window.selectCurrentCompany = selectCurrentCompany;
-  window.watchCompany = watchCompany;
-  window.unwatchCompany = unwatchCompany;
-  window.makeTrade = makeTrade;
-  window.clearSessionErrors = clearSessionErrors;
-  window.searchCompanyDatabase = searchCompanyDatabase;
-  window.clearSearchResults = clearSearchResults;
-  window.parseRealData = parseRealData;
   //
 
   let store;
@@ -72,8 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store}/>, root);
 });
