@@ -1,5 +1,6 @@
 import React from 'react';
 import LoginPage from '../login_page/login_page';
+import ReactSVG from 'react-svg';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -176,12 +177,14 @@ class UserForm extends React.Component {
 
 
             <span className="disclaimer">
-              Disclaimer: this website was produced yadiyadiya.
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nam tempor consequat massa id luctus. Proin in fermentum
-              diam, ut volutpat risus. Mauris quis odio nec ex semper
-              molestie. Proin aliquet lorem sapien, molestie aliquet
-              massa accumsan a.
+              Disclaimer: Your "funds" are hypothetical, not using
+              actual funds. How much you decide to start investing
+              with cannot be changed. The only way to increase funds
+              is to make actual trades that change with current
+              market values. The ability to look up stock
+              prices and historical data for the provided companies
+              are valid and are sourced from an API.
+
             </span>
 
           </div>

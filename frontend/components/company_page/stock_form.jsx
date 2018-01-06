@@ -122,7 +122,7 @@ class StockForm extends React.Component {
         lightBox: "",
         modalClose: "hidden",
         tradeMethod: "",
-        modalClass: "stock-form"
+        modalClass: "sidebar"
       });
     }
   }

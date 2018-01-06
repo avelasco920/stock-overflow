@@ -23,7 +23,7 @@
   height: 100%;
   padding-right: 20px;
   position: absolute;
-  clip: rect(0px,100%,100%,0px);
+  object-fit: cover;
 }
 
 .news-article-index-item a {

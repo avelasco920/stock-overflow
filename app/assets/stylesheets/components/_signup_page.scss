@@ -141,10 +141,11 @@ html,body { height:100%; }
   text-align: center;
 }
 
-#green-logo-large {
-  width: 28px;
-  height: 39px;
-  padding-right: 10px;
+.logo-signup {
+  width: 38px;
+  height: 38px;
+  padding-right: 8px;
+  fill: $green;
 }
 
 .errors-index {

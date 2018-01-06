@@ -19,9 +19,20 @@
   box-shadow: 0 0 6px rgba(0,0,0,0.1);
 }
 
-#black-logo-small {
-  width: 24px;
-  height: 33px;
+.logo-navbar {
+  width: 26px;
+  height: 26px;
+  transition: all .2s ease;
+}
+
+.logo-navbar:hover {
+  fill: $green;
+  cursor: pointer;
+}
+
+.logo-navbar:active {
+  fill: $light-green;
+  cursor: pointer;
 }
 
 .navbar-left {
@@ -95,17 +106,21 @@
 
 .search-result-li {
   width: 100%;
-  padding: 10px;
+  padding: 20px 10px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   background-color: white;
-  border-bottom: 1px solid $lightest-gray;
+  // border-bottom: 1px solid $lightest-gray;
 }
 
 .search-result-li:hover {
   background-color: $lightest-gray;
   transition: all 0.5s linear;
+}
+
+.search-result-name {
+  color: $gray;
 }
 
 .search-result-company {
