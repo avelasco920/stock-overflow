@@ -181,7 +181,9 @@ class UserForm extends React.Component {
               actual funds. How much you decide to start investing
               with cannot be changed. The only way to increase funds
               is to make actual trades that change with current
-              market values. The ability to look up stock
+              market values.
+
+              {"\n"}The ability to look up stock
               prices and historical data for the provided companies
               are valid and are sourced from an API.
 
