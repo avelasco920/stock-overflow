@@ -32,8 +32,10 @@ class ChartComponent extends React.Component {
     const midnight = moment().transform('00:00:00.000').format("YYYY-MM-DD HH:mm:ss");
     const marketOpen = moment().transform('10:00:00.000').format("YYYY-MM-DD HH:mm:ss");
     const now = moment().format("YYYY-MM-DD HH:mm:ss");
-    if (moment().isoWeekday() > 5) {
-      return moment().day(5).transform('09:30:00.000').format("YYYY-MM-DD HH:mm:ss");
+    if (moment().isoWeekday() === 6) {
+      return moment().subtract(1, 'days').transform('09:30:00.000').format("YYYY-MM-DD HH:mm:ss");
+    } else if (moment().isoWeekday() === 7) {
+      return moment().subtract(2, 'days').transform('09:30:00.000').format("YYYY-MM-DD HH:mm:ss");
     } else if (midnight < now && now < marketOpen ) {
       return moment().subtract(1, 'days').format("YYYY-MM-DD HH:mm:ss");
     } else {
