@@ -117,6 +117,7 @@ class StockForm extends React.Component {
     } else {
       this.props.clearTradeEventErrors();
       this.processing = false;
+      window.removeEventListener('scroll', this.noscroll);
       this.setState({
         status: "initial",
         lightBox: "",
@@ -164,6 +165,10 @@ class StockForm extends React.Component {
     );
   }
 
+  noscroll() {
+    window.scrollTo( 0, 0 );
+  }
+
   renderSubmit() {
     const { company } = this.props;
     const { currentPrice } = this.state;
@@ -172,6 +177,7 @@ class StockForm extends React.Component {
     const { tradeMethod, numShares } = this.state;
     const totalPrice = stringifyToFloat(numShares * currentPrice);
     let shareDesc;
+    window.addEventListener('scroll', this.noscroll);
     if (this.state.numShares === 1) {
       shareDesc = "share";
     } else {
