@@ -26,7 +26,9 @@ influenced by Robinhood's unreleased desktop web application.
 + SASS
 + Object Oriented Programming
 
-## Data Visualization
+## Demos
+
+### Data Visualization
 
 The graph on the company show page was created using the ChartJS library.
 Once the component begins to mount, an API pull request to AlphaVantage
@@ -40,9 +42,9 @@ prices up to five years.
 + The graph changes color based on whether the company has a positive
   or negative change in price value for the specific time frame
 
-![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)
+[![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/)
 
-## Trading On The Site
+### Trading On The Site
 
 Trading on the site is made easy with a modal created using
 vanilla Javascript. The simple UX/UI encourages users to either buy or
@@ -50,17 +52,17 @@ sell shares of the specific company. Users can easily see how much their
 trade will cost/make them with a responsive calculation. They can easily
 compare the total with their current buying power all in the same form.
 
-![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)
+[![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/)
 
-## Homepage
+### Homepage
 
 The homepage is where users first land after signing in. Their dashboard
 shows their current portfolio value, stocks they own, companies they're
 watching, and news articles based on companies being publicly traded.
 
-![Homepage](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)
+[![Homepage](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/)
 
-## Select Code Snippets
+### Select Code Snippets
 
 **Handle Trade**
 
@@ -115,3 +117,6 @@ end
   user's portfolio history
 
 ![Homepage](https://github.com/avelasco920/stock-overflow/raw/datavis/wireframes/Wireframes%20Graph3.jpg?raw=true)
+
+
+[Link to site](https://stocksoverflow.herokuapp.com/#/)
