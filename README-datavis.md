@@ -2,7 +2,7 @@
 
 ### Background and Overview
 
-Stock-Overflow is a trading application for the web where users can buy and sell stocks. This part of the project concentrates on visually communicating the change in stock prices and the user's portfolio value during a time period by using realtime data. Data will be pulled from an external api source through the company's symbol. 
+Stock-Overflow is a trading application for the web where users can buy and sell stocks. This part of the project concentrates on visually communicating the change in stock prices and the user's portfolio value during a time period by using realtime data. Data will be pulled from an external api source through the company's symbol.
 
 The graph will be tied to a back end server to determine what shares they had at a given time in order to accurately graph the historical changes in their portfolio.
 
@@ -19,7 +19,7 @@ Users Graph
 - [ ] The user can choose to see datapoints betwen 1 Day, 1 Week, 1 Month, 3 Months, 1 Year, and 5 Years.
 - [ ] The graph will be based off of realtime data with an API request
 
-### Wireframes 
+### Wireframes
 Company Page
 ![Company Page](https://github.com/avelasco920/stock-overflow/blob/datavis/wireframes/Wireframes%20Graph.jpg?raw=true)
 ![Zoomed In](https://github.com/avelasco920/stock-overflow/blob/datavis/wireframes/Wireframes%20Graph2.jpg?raw=true)
@@ -29,12 +29,11 @@ This project will be implemented with the following technologies:
 
 * Vanilla JavaScript for overall structure
 * External library called ChartJS to draw graph
-* Web Audio API for sound generation, processing and control. WebAudioAPI allows for simultaneous sounds with more dependable time triggering
 * Webpack to bundle and serve up the various scripts.
 
 ### Implementation Timeline
 
-**Over the weekend:** 
+**Over the weekend:**
 - [x] Research API sources to retrieve realtime data
 - [x] Setup placement of graph and links to toggle between different time ranges
 
@@ -43,7 +42,7 @@ This project will be implemented with the following technologies:
 - [ ] Parse through the received data split the data into two arrays, share prices and time.
 - [ ] Make function calls for various time ranges
 
-**Day 2** 
+**Day 2**
 ![Portfolio Value](https://github.com/avelasco920/stock-overflow/blob/datavis/wireframes/Wireframes%20Graph3.jpg?raw=true)
 - [ ] Create functions to calculate portfolio value based on logic above. Above graphics are used only as a representation of logic, not aesthetic/layout.
 - [ ] Integrate api calls with the different specific time functions
@@ -56,9 +55,3 @@ This project will be implemented with the following technologies:
 - [ ] Create hover effects to display changes
 - [ ] Style to match rest of page
 - [ ] Add smoot transitions and loading while data is fetching
-
-
-
-
-
-

@@ -42,7 +42,7 @@ prices up to five years.
 + The graph changes color based on whether the company has a positive
   or negative change in price value for the specific time frame
 
-[![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/){:target="_blank"}
+![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)
 
 ### Trading On The Site
 
@@ -52,7 +52,7 @@ sell shares of the specific company. Users can easily see how much their
 trade will cost/make them with a responsive calculation. They can easily
 compare the total with their current buying power all in the same form.
 
-[![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/){:target="_blank"}
+![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)
 
 ### Homepage
 
@@ -60,11 +60,11 @@ The homepage is where users first land after signing in. Their dashboard
 shows their current portfolio value, stocks they own, companies they're
 watching, and news articles based on companies being publicly traded.
 
-[![Dashboard](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/){:target="_blank"}
+![Dashboard](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)
 
-### Select Code Snippets
+## Select Code Snippets
 
-**Handle Trade**
+**`TradeEvent`**
 
 To account for the various scenarios a user might encounter when a
 trade is made. These methods belong to the `TradeEvent` class.
