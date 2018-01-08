@@ -54,13 +54,6 @@ compare the total with their current buying power all in the same form.
 
 ![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)
 
-### Homepage
-
-The homepage is where users first land after signing in. Their dashboard
-shows their current portfolio value, stocks they own, companies they're
-watching, and news articles based on companies being publicly traded.
-
-![Dashboard](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)
 
 ## Select Code Snippets
 
