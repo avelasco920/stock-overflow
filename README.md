@@ -2,7 +2,7 @@
 
 [Link to site](https://stocksoverflow.herokuapp.com/#/)
 
-StockOverflow is a full-stack financial trading platform that
+StockOverflow is a full-stack financial trading web application that
 combines realtime data with hypothetical funds allowing users to
 practice day-trading without any financial risk. It was modeled and
 influenced by Robinhood's unreleased desktop web application.
@@ -11,7 +11,7 @@ influenced by Robinhood's unreleased desktop web application.
 
 + Search for companies by ticker symbol or company name
 + Obtain real-time trade price pulled from external API
-+ Visualize historical trading price up to five years
++ Visualize historical stock prices for up to five years
 + Buy and sell company shares based on current market-price
 + Watch companies to add to user's Watchlist
 + See financial portfolio on account page
@@ -50,7 +50,7 @@ Trading on the site is made easy with a modal created using
 vanilla Javascript. The simple UX/UI encourages users to either buy or
 sell shares of the specific company. Users can easily see how much their
 trade will cost/make them with a responsive calculation. They can easily
-compare the total with their current buying power all in the same form.
+compare the total with their current buying power in the same form.
 
 ![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)
 
@@ -71,6 +71,7 @@ def self.handle_buy(event, user, company)
   num_shares = event[:num_shares].to_i
   stock = Stock.find_by(user_id: user.id, company_id: company.id)
   stock_value = Stock.value(company, num_shares)
+
   if stock_value > user.cash_value
     return "You don't have enough funds for this purchase"
   elsif stock
@@ -87,6 +88,7 @@ def self.handle_sell(event, user, company)
   num_shares = event[:num_shares].to_i
   stock = Stock.find_by(user_id: user.id, company_id: company.id)
   stock_value = Stock.value(company, num_shares)
+
   if !stock
     return "You have no stock in this company to sell."
   elsif num_shares > stock.num_shares
@@ -105,7 +107,7 @@ end
 ## Future Development
 
 + Create backend rake task to cache historical stock prices (reduce
-  api loading time)
+  api load time)
 + Implement graph logic below to properly and accurately show
   user's portfolio history
 
