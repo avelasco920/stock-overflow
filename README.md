@@ -13,6 +13,7 @@ influenced by Robinhood's unreleased desktop web application.
 + Obtain real-time trade price pulled from external API
 + Visualize historical trading price up to five years
 + Buy and sell company shares based on current market-price
++ Watch companies to add to user's Watchlist
 + See financial portfolio on account page
 + Read news articles on publicly traded companies
 
@@ -34,11 +35,11 @@ prices up to five years.
 + Users have the ability to toggle over
 various time frames (1 Day, 1 Week, 1 Month, 3 Months, 1 Year, 5 Years)
 The MomentJS Javascript library was utilized to parse the data
-based on specific time frames. 
-+ Users also have the ability to check
+based on specific time frames.
++ Users have the ability to check
 the closing prices for the day/minute as they hover over the graph
-+ The graph also changes color based on whether the company has a positive
-or negative change in value.
++ The graph changes color based on whether the company has a positive
+or negative change in price value for the specific time frame
 
 ![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)
 
@@ -52,4 +53,56 @@ compare the total with their current buying power all in the same form.
 
 ![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)
 
-##
+## Homepage
+
+The homepage is where users first land after signing in. Their dashboard
+shows their current portfolio value, stocks they own, companies they're
+watching, and news articles based on companies being publicly traded.
+
+![Homepage](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)
+
+## Select Code Snippets
+
+**Handle Trade**
+
+To account for the various scenarios a user might encounter when a
+trade is made. These methods belong to the `TradeEvent` class.
+
+When a user buys or sells stock, the action is stored in the database
+as a `TradeEvent`. The `TradeEvent` handles the appropriate
+changes affecting the `User` portfolio and their `Stock` in a company.
+
+`  
+  def self.handle_buy(event, user, company)
+    num_shares = event[:num_shares].to_i
+    stock = Stock.find_by(user_id: user.id, company_id: company.id)
+    stock_value = Stock.value(company, num_shares)
+    if stock_value > user.cash_value
+      return "You don't have enough funds for this purchase"
+    elsif stock
+      user.decrease_cash_value(stock_value)
+      stock.num_shares += num_shares
+      stock.save
+    else
+      user.decrease_cash_value(stock_value)
+      user.stocks.create!(company_id: company.id, num_shares: event[:num_shares].to_i)
+    end
+  end
+
+  def self.handle_sell(event, user, company)
+    num_shares = event[:num_shares].to_i
+    stock = Stock.find_by(user_id: user.id, company_id: company.id)
+    stock_value = Stock.value(company, num_shares)
+    if !stock
+      return "You have no stock in this company to sell."
+    elsif num_shares > stock.num_shares
+      return "You don't have enough shares to make that sale."
+    elsif num_shares == stock.num_shares
+      user.increase_cash_value(stock_value)
+      stock.destroy
+    else
+      user.increase_cash_value(stock_value)
+      stock.num_shares -= num_shares
+      stock.save
+    end
+`
