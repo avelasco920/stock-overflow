@@ -32,14 +32,13 @@ The graph on the company show page was created using the ChartJS library.
 Once the component begins to mount, an API pull request to AlphaVantage
 is made on the frontend to grab real time and historical trading
 prices up to five years.
-+ Users have the ability to toggle over
-various time frames (1 Day, 1 Week, 1 Month, 3 Months, 1 Year, 5 Years)
-The MomentJS Javascript library was utilized to parse the data
-based on specific time frames.
-+ Users have the ability to check
-the closing prices for the day/minute as they hover over the graph
++ Users have the ability to toggle over various time frames (1 Day,
+  1 Week, 1 Month, 3 Months, 1 Year, 5 Years) The MomentJS Javascript
+  library was utilized to parse the data based on specific time frames.
++ Users have the ability to check the closing prices for the day/minute
+  as they hover over the graph
 + The graph changes color based on whether the company has a positive
-or negative change in price value for the specific time frame
+  or negative change in price value for the specific time frame
 
 ![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)
 
@@ -105,4 +104,14 @@ def self.handle_sell(event, user, company)
     stock.num_shares -= num_shares
     stock.save
   end
+end
 ```
+
+## Future Development
+
++ Create backend rake task to cache historical stock prices (reduce
+  api loading time)
++ Implement graph logic below to properly and accurately show
+  user's portfolio history
+
+![Homepage](https://github.com/avelasco920/stock-overflow/raw/datavis/wireframes/Wireframes%20Graph3.jpg?raw=true)
