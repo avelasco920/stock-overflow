@@ -72,35 +72,37 @@ When a user buys or sells stock, the action is stored in the database
 as a `TradeEvent`. The `TradeEvent` handles the appropriate
 changes affecting the `User` portfolio and their `Stock` in a company.
 
-` def self.handle_buy(event, user, company)
-    num_shares = event[:num_shares].to_i
-    stock = Stock.find_by(user_id: user.id, company_id: company.id)
-    stock_value = Stock.value(company, num_shares)
-    if stock_value > user.cash_value
-      return "You don't have enough funds for this purchase"
-    elsif stock
-      user.decrease_cash_value(stock_value)
-      stock.num_shares += num_shares
-      stock.save
-    else
-      user.decrease_cash_value(stock_value)
-      user.stocks.create!(company_id: company.id, num_shares: event[:num_shares].to_i)
-    end
+```
+def self.handle_buy(event, user, company)
+  num_shares = event[:num_shares].to_i
+  stock = Stock.find_by(user_id: user.id, company_id: company.id)
+  stock_value = Stock.value(company, num_shares)
+  if stock_value > user.cash_value
+    return "You don't have enough funds for this purchase"
+  elsif stock
+    user.decrease_cash_value(stock_value)
+    stock.num_shares += num_shares
+    stock.save
+  else
+    user.decrease_cash_value(stock_value)
+    user.stocks.create!(company_id: company.id, num_shares: event[:num_shares].to_i)
   end
+end
 
-  def self.handle_sell(event, user, company)
-    num_shares = event[:num_shares].to_i
-    stock = Stock.find_by(user_id: user.id, company_id: company.id)
-    stock_value = Stock.value(company, num_shares)
-    if !stock
-      return "You have no stock in this company to sell."
-    elsif num_shares > stock.num_shares
-      return "You don't have enough shares to make that sale."
-    elsif num_shares == stock.num_shares
-      user.increase_cash_value(stock_value)
-      stock.destroy
-    else
-      user.increase_cash_value(stock_value)
-      stock.num_shares -= num_shares
-      stock.save
-    end`
+def self.handle_sell(event, user, company)
+  num_shares = event[:num_shares].to_i
+  stock = Stock.find_by(user_id: user.id, company_id: company.id)
+  stock_value = Stock.value(company, num_shares)
+  if !stock
+    return "You have no stock in this company to sell."
+  elsif num_shares > stock.num_shares
+    return "You don't have enough shares to make that sale."
+  elsif num_shares == stock.num_shares
+    user.increase_cash_value(stock_value)
+    stock.destroy
+  else
+    user.increase_cash_value(stock_value)
+    stock.num_shares -= num_shares
+    stock.save
+  end
+```
