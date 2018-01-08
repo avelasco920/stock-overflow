@@ -72,8 +72,7 @@ When a user buys or sells stock, the action is stored in the database
 as a `TradeEvent`. The `TradeEvent` handles the appropriate
 changes affecting the `User` portfolio and their `Stock` in a company.
 
-`  
-  def self.handle_buy(event, user, company)
+` def self.handle_buy(event, user, company)
     num_shares = event[:num_shares].to_i
     stock = Stock.find_by(user_id: user.id, company_id: company.id)
     stock_value = Stock.value(company, num_shares)
@@ -104,5 +103,4 @@ changes affecting the `User` portfolio and their `Stock` in a company.
       user.increase_cash_value(stock_value)
       stock.num_shares -= num_shares
       stock.save
-    end
-`
+    end`
