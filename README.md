@@ -7,7 +7,7 @@ combines realtime data with hypothetical funds allowing users to
 practice day-trading without any financial risk. It was modeled and
 influenced by Robinhood's unreleased desktop web application.
 
-## Features
+### Features
 
 + Search for companies by ticker symbol or company name
 + Obtain real-time trade price pulled from external API
@@ -17,7 +17,7 @@ influenced by Robinhood's unreleased desktop web application.
 + See financial portfolio on account page
 + Read news articles on publicly traded companies
 
-## Technologies
+### Technologies
 
 + Ruby on Rails backend
 + React/Redux frontend
@@ -42,7 +42,7 @@ prices up to five years.
 + The graph changes color based on whether the company has a positive
   or negative change in price value for the specific time frame
 
-[![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/)
+[![Data Visualization](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Chart.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/){:target="_blank"}
 
 ### Trading On The Site
 
@@ -52,7 +52,7 @@ sell shares of the specific company. Users can easily see how much their
 trade will cost/make them with a responsive calculation. They can easily
 compare the total with their current buying power all in the same form.
 
-[![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/)
+[![Trading](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Trade.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/){:target="_blank"}
 
 ### Homepage
 
@@ -60,7 +60,7 @@ The homepage is where users first land after signing in. Their dashboard
 shows their current portfolio value, stocks they own, companies they're
 watching, and news articles based on companies being publicly traded.
 
-[![Homepage](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/)
+[![Dashboard](https://github.com/avelasco920/stock-overflow/blob/master/wireframes/Homepage.gif?raw=true)](https://stocksoverflow.herokuapp.com/#/){:target="_blank"}
 
 ### Select Code Snippets
 
