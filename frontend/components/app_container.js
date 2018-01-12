@@ -12,6 +12,7 @@ import {
 import { getSymbols } from '../reducers/selectors';
 
 const mapStateToProps = ( state, ownProps ) => {
+  // const symbols = getSymbols(state);
   return {
     companies: state.entities.companies,
     user: state.session.currentUser,
