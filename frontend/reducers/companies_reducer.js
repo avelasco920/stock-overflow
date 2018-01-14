@@ -33,14 +33,14 @@ const companiesReducer = (state = {}, action) => {
       let companyId = action.company.company_id;
       companies[companyId].current_user_watching = action.watching;
       return merge({}, companies);
-    case RECEIVE_INTRADAY_DATA:
-      const symbol = getSymbol(action.data);
-      companyId = convertCompanySymToId(state, symbol);
-      const prices = getPrices(action.data, "5min");
-      const currentPrice = parseFloat(prices[prices.length - 1]);
-      const updatedCompany = merge({}, state[companyId]);
-      updatedCompany.market_price = currentPrice;
-      return merge({}, state, {[updatedCompany.id]: updatedCompany});
+    // case RECEIVE_INTRADAY_DATA:
+    //   const symbol = getSymbol(action.data);
+    //   companyId = convertCompanySymToId(state, symbol);
+    //   const prices = getPrices(action.data, "5min");
+    //   const currentPrice = parseFloat(prices[prices.length - 1]);
+    //   const updatedCompany = merge({}, state[companyId]);
+    //   updatedCompany.market_price = currentPrice;
+    //   return merge({}, state, {[updatedCompany.id]: updatedCompany});
     default:
       return state;
   }
