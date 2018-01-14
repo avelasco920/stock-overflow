@@ -1,6 +1,6 @@
 .chart {
   border-bottom: 3px solid $lightest-gray;
-  height: 500px;
+  height: 520px;
   width: 100%;
   position: relative;
 }
@@ -9,13 +9,13 @@
   .chart {
     height: 520px;
   }
-}
-
-@media only screen and (max-width: 1650px)  {
   .chart-home {
     height: 470px;
   }
 }
+
+// @media only screen and (max-width: 1650px)  {
+// }
 
 .account-info h2 {
   margin-top: 0;
