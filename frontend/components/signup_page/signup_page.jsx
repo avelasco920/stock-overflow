@@ -13,9 +13,6 @@ class SignupPage extends React.Component {
       <div className="signup">
         <div className="signup-header">
           <div className="signup-header-text">
-            {/* <img
-              src="https://d2ue93q3u507c2.cloudfront.net/assets/robinhood/images/logo.png"
-            id="green-logo-large"/> */}
             <ReactSVG
               path='/assets/feather.svg'
               className='logo-signup feather-logo'
