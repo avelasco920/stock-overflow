@@ -24,6 +24,13 @@
 
       gtag('config', 'UA-112423825-2');
     </script>
+    <script type="text/javascript">
+      window.API_OPTIONS = {
+        intrinioApiId: "<%=ENV['INTRINIO_API_ID']%>",
+        intrinioApiKey: "<%= ENV['INTRINIO_API_KEY'] %>",
+        alphaVantageApiKey: "<%= ENV['ALPHAVANTAGE_API_KEY'] %>"
+      };
+    </script>
   </head>
 
   <body>

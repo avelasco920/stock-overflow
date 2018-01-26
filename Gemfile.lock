@@ -77,6 +77,8 @@ GEM
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.4.1)
@@ -207,6 +209,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  figaro
   font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
@@ -225,4 +228,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0.pre.3
+   1.16.0
