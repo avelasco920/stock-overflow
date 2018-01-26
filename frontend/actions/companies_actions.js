@@ -41,9 +41,10 @@ export const receiveIntradayData = data => ({
   data
 });
 
-export const receiveDailyData = data => ({
+export const receiveDailyData = (data, symbol) => ({
   type: RECEIVE_DAILY_DATA,
-  data
+  data,
+  symbol
 });
 
 export const receiveNoData = () => ({
@@ -85,7 +86,7 @@ export const fetchRealtimeDailyData = sym => dispatch => {
   dispatch(startLoadingDailyPrices());
   return APIUtil.fetchRealtimeDailyData(sym)
     .then(data => (
-      dispatch(receiveDailyData(data))
+      dispatch(receiveDailyData(data, sym))
     )
   );
 };

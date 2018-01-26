@@ -61,3 +61,9 @@ export const parseRealData = (data, timeSeries) => {
   series = timeSeries === "Daily" ? "daily" : "intraday";
   return {[symbol]: { [series]: { time, prices }}};
 };
+
+export const convertIntrinioResultToArray = (data, symbol)  => {
+  const time = data.map( obj => obj.date );
+  const prices = data.map( obj => obj.value );
+  return {[symbol]: { ["daily"]: { time, prices }}};
+};

@@ -20,9 +20,20 @@ export const fetchRealtimeIntradayData = sym => (
   })
 );
 
+// export const fetchRealtimeDailyData = sym => (
+//   $.ajax({
+//     url: `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${sym}&outputsize=full&apikey=ZFC6ELK98CG1MD7Q`,
+//     type: "GET",
+//     dataType: "JSON",
+//   })
+// );
+
 export const fetchRealtimeDailyData = sym => (
   $.ajax({
-    url: `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${sym}&outputsize=full&apikey=ZFC6ELK98CG1MD7Q`,
+    headers: {
+        "Authorization": "Basic " + new Buffer('27645a3de79ae25d6ce3566f16a46ab1' + ':' + '4230a61efea7488974139274f81bf126').toString('base64')
+    },
+    url: `https://api.intrinio.com/historical_data?identifier=${sym}&item=adj_close_price&page_size=2000`,
     type: "GET",
     dataType: "JSON",
   })
@@ -56,3 +67,4 @@ export const fetchRealtimeNasdaqDaily = sym => (
 
 window.fetchRealtimeNasdaqDaily = fetchRealtimeNasdaqDaily;
 window.fetchRealtimeDailyQuandlData = fetchRealtimeDailyQuandlData;
+// window.fetchRealtimeDailyIntrinioData = fetchRealtimeDailyIntrinioData;

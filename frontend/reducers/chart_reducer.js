@@ -4,19 +4,17 @@ import {
   RECEIVE_DAILY_DATA,
   RECEIVE_NO_DATA,
 } from '../actions/companies_actions';
-import { parseRealData } from '../util/parsing_functions';
+import { parseRealData, convertIntrinioResultToArray } from '../util/parsing_functions';
 
 const chartReducer = (state = {}, action) => {
   Object.freeze(state);
   let parsedData;
   switch(action.type) {
     case RECEIVE_INTRADAY_DATA:
-      // debugger;
       parsedData = parseRealData(action.data, "5min");
       return merge({}, state, parsedData);
     case RECEIVE_DAILY_DATA:
-      // debugger;
-      parsedData = parseRealData(action.data, "Daily");
+      parsedData = convertIntrinioResultToArray(action.data.data, action.symbol);
       return merge({}, state, parsedData);
     case RECEIVE_NO_DATA:
       return {};
