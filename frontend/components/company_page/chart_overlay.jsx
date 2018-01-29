@@ -136,7 +136,7 @@ class ChartOverlay extends React.Component {
             <a onClick={() => this.changeChart("3")} id="3">1M</a>
             <a onClick={() => this.changeChart("4")} id="4">3M</a>
             <a onClick={() => this.changeChart("5")} id="5">1Y</a>
-            <a onClick={() => this.changeChart("6")} id="6">5Y</a>
+            {/* <a onClick={() => this.changeChart("6")} id="6">5Y</a> */}
           </div>
         </div>
       </div>
