@@ -25,7 +25,7 @@ export const fetchRealtimeDailyData = sym => (
     headers: {
         "Authorization": "Basic " + new Buffer(API_OPTIONS.intrinioApiId + ':' + API_OPTIONS.intrinioApiKey).toString('base64')
     },
-    url: `https://api.intrinio.com/historical_data?identifier=${sym}&item=adj_close_price&page_size=2000`,
+    url: `https://api.intrinio.com/historical_data?identifier=${sym}&start_date=2014-02-27&item=adj_close_price&page_size=2000&sort_order=asc`,
     type: "GET",
     dataType: "JSON",
   })
