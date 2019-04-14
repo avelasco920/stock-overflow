@@ -22,10 +22,7 @@ export const fetchRealtimeIntradayData = sym => (
 
 export const fetchRealtimeDailyData = sym => (
   $.ajax({
-    headers: {
-        "Authorization": "Basic " + new Buffer(API_OPTIONS.intrinioApiId + ':' + API_OPTIONS.intrinioApiKey).toString('base64')
-    },
-    url: `https://api.intrinio.com/historical_data?identifier=${sym}&start_date=2014-02-27&item=adj_close_price&page_size=2000&sort_order=asc`,
+    url: `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${sym}&outputsize=full&apikey=${API_OPTIONS.alphaVantageApiKey}`,
     type: "GET",
     dataType: "JSON",
   })
