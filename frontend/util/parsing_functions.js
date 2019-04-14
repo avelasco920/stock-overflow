@@ -38,32 +38,11 @@ export const timeAgo = rubyDate => {
   return numDays + " days ago";
 };
 
-export const getSymbol = data => (
-  data["Meta Data"]["2. Symbol"]
-);
-
-const getTime = (data, timeSeries) => {
-  const series = `Time Series (${timeSeries})`;
-  return Object.keys(data[series]).reverse();
-};
-
-export const getPrices = (data, timeSeries) => {
-  const series = `Time Series (${timeSeries})`;
-  const seriesObjects = Object.values(data[series]).reverse();
-  return seriesObjects.map(obj => obj["4. close"]);
-};
-
-export const parseRealData = (data, timeSeries) => {
-  const symbol = getSymbol(data);
-  const time = getTime(data, timeSeries);
-  const prices = getPrices(data, timeSeries);
+export const parseData = (data, timeSeries) => {
+  const symbol = data["Meta Data"]["2. Symbol"];
+  const time = Object.keys(data[`Time Series (${timeSeries})`]).sort((date1, date2) => Date.parse(date1)-Date.parse(date2))
+  const prices = time.map( date => data[`Time Series (${timeSeries})`][date]['4. close'])
   let series;
   series = timeSeries === "Daily" ? "daily" : "intraday";
   return {[symbol]: { [series]: { time, prices }}};
-};
-
-export const convertIntrinioResultToArray = (data, symbol)  => {
-  const time = Object.keys(data['Time Series (Daily)']).sort(date => Date.parse(date))
-  const prices = time.map( date => data['Time Series (Daily)'][date]['4. close'])
-  return {[symbol]: { ["daily"]: { time, prices }}};
 };
