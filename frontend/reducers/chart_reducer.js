@@ -14,7 +14,7 @@ const chartReducer = (state = {}, action) => {
       parsedData = parseRealData(action.data, "5min");
       return merge({}, state, parsedData);
     case RECEIVE_DAILY_DATA:
-      parsedData = convertIntrinioResultToArray(action.data.data, action.symbol);
+      parsedData = convertIntrinioResultToArray(action.data, action.symbol);
       return merge({}, state, parsedData);
     case RECEIVE_NO_DATA:
       return {};
