@@ -23,9 +23,6 @@ class ChartComponent extends React.Component {
     };
     this.changeActive = this.changeActive.bind(this);
     this.renderChart = this.renderChart.bind(this);
-    // console.log(moment("2017-12-05 14:12:00").format("h:mm A")); // Day
-    // console.log(moment("2017-12-05 14:12:00").format("h:mm A, MMM D")); // Week
-    // console.log(moment("2017-12-05 14:12:00").format("MMM D")); // Month
   }
 
   firstMin() {
@@ -84,9 +81,6 @@ class ChartComponent extends React.Component {
   }
 
   pricesWithinRange(prices, range) {
-    // return prices.filter( (price, idx) => {
-    //   if (range.includes(idx)) return price;
-    // });
     const pricesInRange = [];
     range.forEach (idx => {
       pricesInRange.push(prices[idx]);
@@ -162,6 +156,7 @@ class ChartComponent extends React.Component {
 
   renderChart() {
     const { graphPricePoints, graphTimePoints } = this.state;
+    if (this.state.chart) { this.state.chart.destroy }
     const closingPrice = this.closingPrice();
     const lastIdx = graphPricePoints.length - 1;
     this.compareHistoricalPrices();
@@ -174,7 +169,7 @@ class ChartComponent extends React.Component {
     let stocksCanvas = document.getElementById("companyChart");
     let stocksCtx = stocksCanvas.getContext('2d');
     stocksCtx.clearRect(0, 0, stocksCanvas.width, stocksCanvas.height);
-    new Chart(stocksCtx, {
+    var chart = new Chart(stocksCtx, {
       type: 'line',
       data: {
           datasets: [
@@ -217,6 +212,7 @@ class ChartComponent extends React.Component {
         }
       }
     );
+    this.setState({chart: chart})
   }
 
   changeActive(strNum) {
