@@ -156,7 +156,7 @@ class ChartComponent extends React.Component {
 
   renderChart() {
     const { graphPricePoints, graphTimePoints } = this.state;
-    if (this.state.chart) { this.state.chart.destroy }
+    if (this.state.chart) { this.state.chart.destroy() }
     const closingPrice = this.closingPrice();
     const lastIdx = graphPricePoints.length - 1;
     this.compareHistoricalPrices();
