@@ -41,6 +41,11 @@ class Company < ApplicationRecord
       method: :get,
       url: "https://www.alphavantage.co/query?function=TIME_SERIES_#{time_series.upcase}&symbol=#{self.symbol}&interval=#{interval}&outputsize=full&apikey=#{ENV['ALPHAVANTAGE_API_KEY']}",
     )
-    JSON.parse(response)["Time Series (#{interval.capitalize})"].each { |k, v| self.stock_prices.create!(time: Time.parse(k), price: v['4. close'])}
+
+    JSON.parse(response)["Time Series (#{interval.capitalize})"].each do |time, price_data|
+      adjusted_time = Time.find_zone('EST').parse(time)
+      next if interval == '5min' && adjusted_time < Time.current - 1.week
+      self.stock_prices.create(time: adjusted_time, price: price_data['4. close'])
+    end
   end
 end
