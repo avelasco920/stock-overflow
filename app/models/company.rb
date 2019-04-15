@@ -34,4 +34,13 @@ class Company < ApplicationRecord
     Company.where('lower(symbol) LIKE ?', param).limit(5)
   end
 
+  def update_prices(time_series)
+    return if !['intraday', 'daily'].include?(time_series)
+    interval = time_series == 'intraday' ? '5min' : 'daily'
+    response = RestClient::Request.execute(
+      method: :get,
+      url: "https://www.alphavantage.co/query?function=TIME_SERIES_#{time_series.upcase}&symbol=#{self.symbol}&interval=#{interval}&outputsize=full&apikey=#{ENV['ALPHAVANTAGE_API_KEY']}",
+    )
+    JSON.parse(response)["Time Series (#{interval.capitalize})"].each { |k, v| self.stock_prices.create!(time: Time.parse(k), price: v['4. close'])}
+  end
 end
