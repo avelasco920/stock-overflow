@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20190414230857) do
     t.integer "company_id", null: false
     t.float "price", null: false
     t.datetime "time", null: false
+    t.string "time_series", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_stock_prices_on_company_id"

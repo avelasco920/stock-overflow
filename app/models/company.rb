@@ -34,7 +34,7 @@ class Company < ApplicationRecord
     Company.where('lower(symbol) LIKE ?', param).limit(5)
   end
 
-  def update_prices(time_series)
+  def update_stock_prices(time_series)
     return if !['intraday', 'daily'].include?(time_series)
     interval = time_series == 'intraday' ? '5min' : 'daily'
     response = RestClient::Request.execute(
@@ -44,8 +44,7 @@ class Company < ApplicationRecord
 
     JSON.parse(response)["Time Series (#{interval.capitalize})"].each do |time, price_data|
       adjusted_time = Time.find_zone('EST').parse(time)
-      next if interval == '5min' && adjusted_time < Time.current - 1.week
-      self.stock_prices.create(time: adjusted_time, price: price_data['4. close'])
+      self.stock_prices.create(time: adjusted_time, price: price_data['4. close'], time_series: time_series)
     end
   end
 end
