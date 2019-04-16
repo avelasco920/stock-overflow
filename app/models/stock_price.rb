@@ -8,9 +8,4 @@ class StockPrice < ApplicationRecord
     intraday: "intraday",
     daily: "daily"
   }
-
-  def self.remove_old_data
-    old_prices = self.where('time_series = ? AND time < ?', 'intraday', Time.current - 1.month)
-    old_prices.destroy_all
-  end
 end
