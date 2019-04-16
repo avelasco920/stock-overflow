@@ -40,8 +40,8 @@ class Company < ApplicationRecord
 
   def should_update_stock_prices?
     last_stock_price_pull = self.stock_prices.where(time_series: 'intraday').order(time: :desc).first&.time
-    last_trading_hour = TradingHoursHelper.new.last_trading_hour
-    last_stock_price_pull > (last_trading_hour - 10.minutes)
+    last_trading_hour = TradingHours.new.last_trading_hour
+    last_stock_price_pull < (last_trading_hour - 10.minutes)
   end
 
   def update_stock_prices(time_series)
@@ -56,10 +56,6 @@ class Company < ApplicationRecord
       adjusted_time = Time.find_zone('EST').parse(time)
       self.stock_prices.create(time: adjusted_time, price: price_data['4. close'], time_series: time_series)
     end
-  end
-
-  def prices(time_series)
-    self.stock_prices.where('time_series = ?', time_series)
   end
 
   def clear_old_stock_prices

@@ -1,4 +1,4 @@
-class TradingHoursHelper
+class TradingHours
   def initialize
     @current_time = Time.current.in_time_zone('EST')
   end
@@ -12,6 +12,16 @@ class TradingHoursHelper
       return @current_time.beginning_of_day + 16.hours
     else
       return @current_time
+    end
+  end
+
+  def last_closing_time
+    if weekend_closing_hours?
+      return @current_time.beginning_of_week(:friday)
+    elsif @current_time.on_weekday? && after_market_close?
+      return @current_time.beginning_of_day + 16.hours
+    else
+      return (@current_time - 1.day).beginning_of_day
     end
   end
 
