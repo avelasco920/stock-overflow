@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129075156) do
+ActiveRecord::Schema.define(version: 20190415050149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20171129075156) do
   create_table "companies", force: :cascade do |t|
     t.string "name", null: false
     t.string "symbol", null: false
-    t.float "market_price"
     t.string "biography"
     t.string "ceo"
     t.integer "founding_year"
@@ -44,6 +43,17 @@ ActiveRecord::Schema.define(version: 20171129075156) do
     t.index ["date"], name: "index_news_articles_on_date"
     t.index ["publisher"], name: "index_news_articles_on_publisher"
     t.index ["title"], name: "index_news_articles_on_title", unique: true
+  end
+
+  create_table "stock_prices", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.float "price", null: false
+    t.datetime "time", null: false
+    t.string "time_series", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_stock_prices_on_company_id"
+    t.index ["time"], name: "index_stock_prices_on_time"
   end
 
   create_table "stocks", force: :cascade do |t|

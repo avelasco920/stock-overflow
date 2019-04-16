@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show]
-    resources :companies, only: [:show, :index, :update] do
+    resources :companies, only: [:show, :index] do
+      get 'prices'
       resource :watchlist_item, only: [:create, :destroy]
       resources :trade_events, only: [:create]
     end
@@ -10,6 +11,5 @@ Rails.application.routes.draw do
     resources :newsarticles, only: [:show, :index, :update]
     resource :session, only: [:create, :destroy]
   end
-
   root to: "static_pages#root"
 end
