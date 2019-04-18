@@ -12,18 +12,9 @@ export const fetchCompany = id => (
   })
 );
 
-export const fetchRealtimeIntradayData = sym => (
+export const fetchStockPrices = (sym, time_series) => (
   $.ajax({
-    url: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${sym}&outputsize=full&apikey=${API_OPTIONS.alphaVantageApiKey}&interval=5min`,
-    type: "GET",
-    dataType: "JSON",
-  })
-);
-
-export const fetchRealtimeDailyData = sym => (
-  $.ajax({
-    url: `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${sym}&outputsize=full&apikey=${API_OPTIONS.alphaVantageApiKey}`,
-    type: "GET",
-    dataType: "JSON",
+    method: 'GET',
+    url: `/api/stock_prices/${sym}/?time_series=${time_series}`
   })
 );

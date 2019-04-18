@@ -119,9 +119,9 @@ class ChartComponent extends React.Component {
     {
       const { symbol } = nextProps.match.params;
       if (!nextProps.companyStockData) {
-        this.props.fetchRealtimeIntradayData(symbol)
+        this.props.fetchIntradayStockPrices(symbol)
           .then(() => this.renderChart());
-        this.props.fetchRealtimeDailyData(symbol);
+        this.props.fetchDailyStockPrices(symbol);
       }
     }
   }
@@ -134,8 +134,8 @@ class ChartComponent extends React.Component {
     const { symbol } = this.props.match.params;
     const { companyStockData } = this.props;
     if (!companyStockData) {
-      this.props.fetchRealtimeIntradayData(symbol);
-      this.props.fetchRealtimeDailyData(symbol);
+      this.props.fetchIntradayStockPrices(symbol);
+      this.props.fetchDailyStockPrices(symbol);
     }
   }
 
