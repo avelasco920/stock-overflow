@@ -34,9 +34,9 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token, :calculate_portfolio_value
 
-  has_many :watchlist_items
-  has_many :stocks
-  has_many :trade_events
+  has_many :watchlist_items, dependent: :destroy
+  has_many :stocks, dependent: :destroy
+  has_many :trade_events, dependent: :destroy
   has_many :invested_companies,
             through: :stocks,
             source: :company

@@ -17,8 +17,9 @@
 
 class Company < ApplicationRecord
   validates :name, :symbol, presence: true, uniqueness: true
-  has_many :trade_events
-  has_many :stock_prices
+  has_many :trade_events, dependent: :destroy
+  has_many :stock_prices, dependent: :destroy
+  has_many :stocks, dependent: :destroy
 
   def market_price
     self.stock_prices.order(time: :desc).first&.price
@@ -38,12 +39,6 @@ class Company < ApplicationRecord
     Company.where('lower(symbol) LIKE ?', param).limit(5)
   end
 
-  def should_update_stock_prices?
-    last_stock_price_pull = self.stock_prices.where(time_series: 'intraday').order(time: :desc).first&.time
-    last_trading_hour = TradingHours.new.last_trading_hour
-    last_stock_price_pull < (last_trading_hour - 10.minutes)
-  end
-
   def update_stock_prices(time_series)
     return if !['intraday', 'daily'].include?(time_series)
     interval = time_series == 'intraday' ? '5min' : 'daily'
@@ -54,6 +49,9 @@ class Company < ApplicationRecord
 
     JSON.parse(response)["Time Series (#{interval.capitalize})"].each do |time, price_data|
       adjusted_time = Time.find_zone('EST').parse(time)
+      if time_series == 'intraday' && adjusted_time.hour == 16
+        self.stock_prices.create(time: adjusted_time.beginning_of_day, price: price_data['4. close'], time_series: 'daily')
+      end
       self.stock_prices.create(time: adjusted_time, price: price_data['4. close'], time_series: time_series)
     end
   end
