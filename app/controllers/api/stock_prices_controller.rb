@@ -1,8 +1,8 @@
 class Api::StockPricesController < ApplicationController
   def show
-    return head :bad_request if !['daily', 'intraday'].include?(params[:time_series])
+    render json: { errors: 'Missing time series parameter in request.' } and return if !['daily', 'intraday'].include?(params[:time_series])
     @company = Company.find_by(symbol: params[:company_symbol])
-    render json: { errors: @company.errors.full_messages } and return if !@company
+    render json: { errors: 'Unable to find company with that ticker symbol.' } and return if !@company
 
     if params[:time_series] == 'intraday' && @company.stock_prices.should_update?
       @company.update_stock_prices('intraday')

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create, :show]
     resources :companies, only: [:show, :index] do
-      get 'prices'
       resource :watchlist_item, only: [:create, :destroy]
       resources :trade_events, only: [:create]
     end
