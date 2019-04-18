@@ -100,7 +100,7 @@ class ChartComponent extends React.Component {
              data: this.closingPriceLine()
            },
          ],
-         labels: filteredStockPrices.map(stockPrice => stockPrice.date),
+         labels: filteredStockPrices.map(stockPrice => stockPrice.time),
      },
      options: {
        legend: {
