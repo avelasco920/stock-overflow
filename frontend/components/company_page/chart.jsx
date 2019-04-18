@@ -1,6 +1,5 @@
 import React from 'react';
 import Chart from 'chart.js';
-// import moment from 'moment';
 import moment from 'moment-timezone'
 import isEqual from 'lodash';
 import transform from 'moment-transform';
