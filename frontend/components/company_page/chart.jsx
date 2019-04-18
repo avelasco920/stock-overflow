@@ -20,7 +20,8 @@ class ChartComponent extends React.Component {
  }
 
  componentWillMount() {
-   this.fetchRealtimePrices();
+   const { symbol } = this.props.match.params;
+   this.fetchRealtimePrices(symbol);
  }
 
  componentWillReceiveProps(nextProps) {
@@ -48,9 +49,9 @@ class ChartComponent extends React.Component {
    }
  }
 
- fetchRealtimePrices() {
-   this.props.fetchIntradayStockPrices();
-   this.props.fetchDailyStockPrices();
+ fetchRealtimePrices(symbol) {
+   this.props.fetchIntradayStockPrices(symbol);
+   this.props.fetchDailyStockPrices(symbol);
  }
 
  filterStockPrices(minDate, timeSeries) {
@@ -68,7 +69,7 @@ class ChartComponent extends React.Component {
    const { filteredStockPrices } = this.state;
    if (this.state.chart) { this.state.chart.destroy() }
    let graphColor;
-   if (filteredStockPrices[0].price < filteredStockPrices.slice(-1)[0]) {
+   if (filteredStockPrices[0].price < filteredStockPrices.slice(-1)[0].price) {
      graphColor = "#08d093";
    } else {
      graphColor = "#f45531";

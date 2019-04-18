@@ -20,15 +20,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  const symbol = ownProps.match.params.symbol;
-  return {
-    watchCompany: id => dispatch(watchCompany(id)),
-    unwatchCompany: id => dispatch(unwatchCompany(id)),
-    fetchIntradayStockPrices: () => dispatch(fetchIntradayStockPrices(symbol)),
-    fetchDailyStockPrices: () => dispatch(fetchDailyStockPrices(symbol))
-  }
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  watchCompany: id => dispatch(watchCompany(id)),
+  unwatchCompany: id => dispatch(unwatchCompany(id)),
+  fetchIntradayStockPrices: (symbol) => dispatch(fetchIntradayStockPrices(symbol)),
+  fetchDailyStockPrices: (symbol) => dispatch(fetchDailyStockPrices(symbol))
+});
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(ChartComponent)
