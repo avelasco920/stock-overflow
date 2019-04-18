@@ -6,8 +6,7 @@ export const START_LOADING_INTRADAY_PRICES = 'START_LOADING_INTRADAY_PRICES';
 export const START_LOADING_DAILY_PRICES = 'START_LOADING_DAILY_PRICES';
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
-export const RECEIVE_INTRADAY_DATA = 'RECEIVE_INTRADAY_DATA';
-export const RECEIVE_DAILY_DATA = 'RECEIVE_DAILY_DATA';
+export const RECEIVE_STOCK_PRICES = 'RECEIVE_STOCK_PRICES';
 export const RECEIVE_NO_DATA = 'RECEIVE_NO_DATA';
 
 export const startLoadingAllCompanies = () => ({
@@ -36,15 +35,9 @@ export const receiveCompany = company => ({
   company
 });
 
-export const receiveIntradayData = data => ({
-  type: RECEIVE_INTRADAY_DATA,
+export const receiveStockPrices = data => ({
+  type: RECEIVE_STOCK_PRICES,
   data
-});
-
-export const receiveDailyData = (data, symbol) => ({
-  type: RECEIVE_DAILY_DATA,
-  data,
-  symbol
 });
 
 export const receiveNoData = () => ({
@@ -73,27 +66,22 @@ export const fetchCompany = id => dispatch => {
   );
 };
 
-export const fetchRealtimeIntradayData = sym => dispatch => {
+export const fetchIntradayStockPrices = (sym) => dispatch => {
   dispatch(startLoadingIntradayPrices());
-  return APIUtil.fetchRealtimeIntradayData(sym)
+  return APIUtil.fetchStockPrices(sym, 'intraday')
     .then(data => (
-      dispatch(receiveIntradayData(data))
+      dispatch(receiveStockPrices(data))
     )
   );
 };
 
-export const fetchRealtimeDailyData = sym => dispatch => {
+export const fetchDailyStockPrices = sym => dispatch => {
   dispatch(startLoadingDailyPrices());
-  return APIUtil.fetchRealtimeDailyData(sym)
+  return APIUtil.fetchStockPrices(sym, 'daily')
     .then(data => (
-      dispatch(receiveDailyData(data, sym))
+      dispatch(receiveStockPrices(data, sym))
     )
   );
-};
-
-export const fetchRealtimeData = sym => {
-  dispatch(fetchRealtimeDailyData(sym));
-  dispatch(fetchRealtimeIntradayData(sym));
 };
 
 export const clearRealtimeData = () => dispatch => {

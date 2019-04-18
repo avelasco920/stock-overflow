@@ -1,7 +1,6 @@
 import merge from 'lodash/merge';
 import {
-  RECEIVE_INTRADAY_DATA,
-  RECEIVE_DAILY_DATA,
+  RECEIVE_STOCK_PRICES,
   RECEIVE_NO_DATA,
 } from '../actions/companies_actions';
 import { parseData, parseDailyData } from '../util/parsing_functions';
@@ -10,11 +9,9 @@ const chartReducer = (state = {}, action) => {
   Object.freeze(state);
   let parsedData;
   switch(action.type) {
-    case RECEIVE_INTRADAY_DATA:
-      parsedData = parseData(action.data, '5min');
-      return merge({}, state, parsedData);
-    case RECEIVE_DAILY_DATA:
-      parsedData = parseData(action.data, 'Daily');
+    case RECEIVE_STOCK_PRICES:
+      const { data: { symbol, last_closing_price, time_series, stock_prices } } = action;
+      parsedData = { [symbol]: { [time_series]: stock_prices, last_closing_price } };
       return merge({}, state, parsedData);
     case RECEIVE_NO_DATA:
       return {};

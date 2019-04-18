@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
-  fetchRealtimeIntradayData,
-  fetchRealtimeDailyData,
+  fetchIntradayStockPrices,
+  fetchDailyStockPrices,
 } from '../../actions/companies_actions';
 import ChartComponent from './chart';
 import {
@@ -23,8 +23,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   watchCompany: id => dispatch(watchCompany(id)),
   unwatchCompany: id => dispatch(unwatchCompany(id)),
-  fetchRealtimeIntradayData: sym => dispatch(fetchRealtimeIntradayData(sym)),
-  fetchRealtimeDailyData: sym => dispatch(fetchRealtimeDailyData(sym))
+  fetchIntradayStockPrices: sym => dispatch(fetchIntradayStockPrices(sym)),
+  fetchDailyStockPrices: sym => dispatch(fetchDailyStockPrices(sym))
 });
 
 export default withRouter(
