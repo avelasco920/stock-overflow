@@ -1,7 +1,7 @@
 {
   "name": "StockOverflow",
   "version": "1.0.0",
-  "description": "air bnb for benches!",
+  "description": "robinhood clone",
   "main": "index.js",
   "directories": {
     "lib": "lib",
@@ -36,11 +36,9 @@
     "babel-preset-react": "^6.24.1",
     "chart.js": "^2.7.1",
     "hover.css": "^2.2.1",
-    "infinite-scroll": "^3.0.2",
     "lodash": "^4.17.4",
-    "moment": "^2.19.3",
+    "moment-timezone": "^0.5.24",
     "moment-transform": "^1.0.1",
-    "object.pluck": "^0.1.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-odometerjs": "^2.0.0",

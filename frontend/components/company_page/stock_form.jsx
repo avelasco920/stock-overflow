@@ -30,10 +30,10 @@ class StockForm extends React.Component {
         currentPrice: nextProps.company.market_price,
       });
     }
-    if (nextProps.companyStockData && nextProps.companyStockData.intraday) {
-      const prices = nextProps.companyStockData.intraday.prices;
+    if (nextProps.companyStockPrices && nextProps.companyStockPrices.intraday) {
+      const prices = nextProps.companyStockPrices.intraday;
       this.setState({
-        currentPrice: parseFloat(prices[prices.length - 1]),
+        currentPrice: nextProps.companyStockPrices.intraday.slice(-1)[0].price,
       });
     }
   }
@@ -288,7 +288,7 @@ class StockForm extends React.Component {
   }
 
   render() {
-    const { companyLoading, company, companyStockData, intradayLoading, user } = this.props;
+    const { companyLoading, company, companyStockPrices, intradayLoading, user } = this.props;
     const { numShares,lightBox, modalClose, tradeMethod, modalClass, currentPrice } = this.state;
     const method = tradeMethod.charAt(0).toUpperCase() + tradeMethod.slice(1);
     if (companyLoading) {

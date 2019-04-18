@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     user: state.session.currentUser,
     company: selectCurrentCompany(state),
-    companyStockData: state.entities.chart[symbol],
+    companyStockPrices: state.entities.chart[symbol],
     companyLoading: state.ui.loading.detailLoading,
     intradayLoading: state.ui.loading.intradayApiLoading,
     errors: state.errors.tradeEvent

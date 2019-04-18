@@ -3,7 +3,7 @@ import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 import { stringifyToFloat } from '../../util/parsing_functions';
 import Chart from 'chart.js';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 import ChartOverlay from './chart_overlay';
 
