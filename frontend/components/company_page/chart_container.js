@@ -11,21 +11,24 @@ import {
 } from '../../actions/watchlist_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  // const symbol = ownProps.match.params.symbol;
+  const symbol = ownProps.match.params.symbol;
   return {
-    companyStockData: state.entities.chart[ownProps.match.params.symbol],
+    companyStockPrices: state.entities.chart[symbol],
     companyLoading: state.ui.loading.detailLoading,
     intradayApiLoading: state.ui.loading.intradayApiLoading,
     dailyApiLoading: state.ui.loading.dailyApiLoading,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  watchCompany: id => dispatch(watchCompany(id)),
-  unwatchCompany: id => dispatch(unwatchCompany(id)),
-  fetchIntradayStockPrices: sym => dispatch(fetchIntradayStockPrices(sym)),
-  fetchDailyStockPrices: sym => dispatch(fetchDailyStockPrices(sym))
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const symbol = ownProps.match.params.symbol;
+  return {
+    watchCompany: id => dispatch(watchCompany(id)),
+    unwatchCompany: id => dispatch(unwatchCompany(id)),
+    fetchIntradayStockPrices: () => dispatch(fetchIntradayStockPrices(symbol)),
+    fetchDailyStockPrices: () => dispatch(fetchDailyStockPrices(symbol))
+  }
+};
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(ChartComponent)

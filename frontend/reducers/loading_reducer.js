@@ -3,8 +3,7 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_COMPANIES,
   RECEIVE_COMPANY,
-  RECEIVE_INTRADAY_DATA,
-  RECEIVE_DAILY_DATA,
+  RECEIVE_STOCK_PRICES,
   START_LOADING_ALL_COMPANIES,
   START_LOADING_SINGLE_COMPANY,
   START_LOADING_INTRADAY_PRICES,
@@ -41,12 +40,11 @@ const loadingReducer = (state = initialState, action) => {
       return merge({}, state, { articlesLoading: true });
     case START_LOADING_INTRADAY_PRICES:
       return merge({}, state, { intradayApiLoading: true });
-    case RECEIVE_INTRADAY_DATA:
-      return merge({}, state, { intradayApiLoading: false });
     case START_LOADING_DAILY_PRICES:
       return merge({}, state, { dailyApiLoading: true });
-    case RECEIVE_DAILY_DATA:
-      return merge({}, state, { dailyApiLoading: false });
+    case RECEIVE_STOCK_PRICES:
+      if (action.data.time_series === 'intraday') return merge({}, state, { intradayApiLoading: false });
+      if (action.data.time_series === 'daily') return merge({}, state, { dailyApiLoading: false });
     default:
       return state;
   }

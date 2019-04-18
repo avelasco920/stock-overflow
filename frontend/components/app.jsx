@@ -19,7 +19,6 @@ import { fetchRealtimeData } from '../actions/companies_actions';
 class App extends React.Component {
   componentWillMount() {
     setTimeout(() => this.props.fetchCompanies(), 900);
-    // this.props.symbols.forEach(symbol => this.props.fetchIntradayStockPrices(symbol));
   }
 
   componentWillUnmount() {
@@ -29,13 +28,6 @@ class App extends React.Component {
 
   render() {
     const { symbols, dataForChart, companies } = this.props;
-    // const investedCompanies = Object.keys(dataForChart);
-    // const filteredCompanies = investedCompanies.filter(symbol => (
-    //   dataForChart[symbol]["intraday"]
-    // ));
-    // if (filteredCompanies.length < symbols.length) {
-    //   return (<LoadingIcon />);
-    // } else
     if (Object.values(companies).length === 0) {
       return (<LoadingIcon />);
     } else {
