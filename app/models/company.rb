@@ -17,8 +17,9 @@
 
 class Company < ApplicationRecord
   validates :name, :symbol, presence: true, uniqueness: true
-  has_many :trade_events
-  has_many :stock_prices, :dependent => :destroy
+  has_many :trade_events, dependent: :destroy
+  has_many :stock_prices, dependent: :destroy
+  has_many :stocks, dependent: :destroy
 
   def market_price
     self.stock_prices.order(time: :desc).first&.price
