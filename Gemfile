@@ -32,13 +32,13 @@ gem 'rest-client'
 gem 'font-awesome-sass'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'figaro'
   gem 'pry-rails'
   gem 'selenium-webdriver'
   gem 'spring'
@@ -56,7 +56,6 @@ group :development do
 end
 
 group :production do
-  gem 'figaro'
   gem 'rails_12factor'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

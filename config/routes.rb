@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resource :watchlist_item, only: [:create, :destroy]
       resources :trade_events, only: [:create]
     end
+    resources :stock_prices, only: [:show], param: :company_symbol
     resources :trade_events, only: [:index]
     resources :company_search, only: [:index]
     resources :newsarticles, only: [:show, :index, :update]

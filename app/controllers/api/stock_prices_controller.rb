@@ -1,22 +1,8 @@
-class Api::CompaniesController < ApplicationController
+class Api::StockPricesController < ApplicationController
   def show
-    @company = Company.find(params[:id])
-    @user = current_user
-  end
-
-  def index
-    @companies = Company.all
-    @user = current_user
-  end
-
-  def intraday_prices
-    @company = Company.find(params[:id])
-    @company.stock_prices
-  end
-
-  def prices
     return head :bad_request if !['daily', 'intraday'].include?(params[:time_series])
-    @company = Company.find_by(symbol: params[:symbol])
+    @company = Company.find_by(symbol: params[:company_symbol])
+    render json: { errors: @company.errors.full_messages } and return if !@company
 
     if params[:time_series] == 'intraday' && @company.stock_prices.should_update?
       @company.update_stock_prices('intraday')

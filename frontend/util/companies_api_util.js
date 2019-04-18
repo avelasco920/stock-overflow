@@ -12,6 +12,8 @@ export const fetchCompany = id => (
   })
 );
 
+export const fetchStockPrices = (symbol, )
+
 export const fetchRealtimeIntradayData = sym => (
   $.ajax({
     url: `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${sym}&outputsize=full&apikey=${API_OPTIONS.alphaVantageApiKey}&interval=5min`,
