@@ -12,7 +12,6 @@ class ChartComponent extends React.Component {
    this.state = {
      numRenders: 0,
      timeSeries: 'today',
-     minDate: moment(new Date()).tz('America/New_York').subtract(1, 'days')
    }
    this.changeActive = this.changeActive.bind(this);
    this.renderChart = this.renderChart.bind(this);
@@ -24,17 +23,23 @@ class ChartComponent extends React.Component {
  }
 
  componentWillReceiveProps(nextProps) {
+   const { companyStockPrices, companyLoading } = nextProps;
    if (
-     ( nextProps.companyStockPrices &&
-     nextProps.companyStockPrices.intraday &&
-     nextProps.companyStockPrices.daily &&
-     !nextProps.companyLoading )
+     ( companyStockPrices &&
+     companyStockPrices.intraday &&
+     companyStockPrices.daily &&
+     !companyLoading )
    ) {
+     const mostRecentTime = new Date(companyStockPrices.intraday.slice(-1)[0].time);
+     const minDate = moment(mostRecentTime).tz('America/New_York').subtract(1, 'days').format("YYYY-MM-DD HH:mm:ss");
      this.setState({
-       filteredStockPrices: this.filterStockPrices(this.state.minDate, this.state.timeSeries),
+       filteredStockPrices: this.filterStockPrices(minDate, this.state.timeSeries, companyStockPrices),
+       minDate,
+       mostRecentTime,
        numRenders: this.state.numRenders + 1,
      }, () => {
        if (this.state.numRenders === 1) {
+         this.filterStockPrices(this.state.minDate, this.state.timeSeries);
          this.renderChart();
        }
      });
@@ -53,8 +58,8 @@ class ChartComponent extends React.Component {
    this.props.fetchDailyStockPrices(symbol);
  }
 
- filterStockPrices(minDate, timeSeries) {
-   const { companyStockPrices } = this.props;
+ filterStockPrices(minDate, timeSeries, companyStockPrices) {
+   companyStockPrices = companyStockPrices ? companyStockPrices : this.props.companyStockPrices;
    let stockPrices = ['today', '1W'].includes(timeSeries) ? companyStockPrices.intraday : companyStockPrices.daily;
    return stockPrices.filter(stockPrice => new Date(stockPrice.time) > new Date(minDate))
  }
@@ -123,31 +128,32 @@ class ChartComponent extends React.Component {
  }
 
  changeActive(strNum) {
-   const now = moment(new Date()).tz('America/New_York');
+   const { mostRecentTime } = this.state;
+   const time = moment(mostRecentTime);
    let minDate, timeSeries;
    if (strNum === "1") {
      // Today
-     minDate = now.subtract(1, 'days');
+     minDate = time.subtract(1, 'days');
      timeSeries = "today";
    } else if (strNum === "2") {
      // 1W
-     minDate = now.subtract(1, 'weeks');
+     minDate = time.subtract(1, 'weeks');
      timeSeries = "1W";
    } else if (strNum === "3") {
      // 1M
-     minDate = now.subtract(1, 'months');
+     minDate = time.subtract(1, 'months');
      timeSeries = "1M";
    } else if (strNum === "4") {
      // 3M
-     minDate = now.subtract(3, 'months');
+     minDate = time.subtract(3, 'months');
      timeSeries = "3M";
    } else if (strNum === "5") {
      // 1Y
-     minDate = now.subtract(1, 'years');
+     minDate = time.subtract(1, 'years');
      timeSeries = "1Y";
    } else if (strNum === "6") {
      // 5Y
-     minDate = now.subtract(5, 'years');
+     minDate = time.subtract(5, 'years');
      timeSeries = "5Y";
    }
    this.setState({
