@@ -13,9 +13,9 @@ class StockPrice < ApplicationRecord
   def not_too_far_in_past
     case self.time_series
     when 'intraday'
-      errors.add(:time, 'price too far in past, not needed for charts') if self.time < 1.week.ago
+      errors.add(:time, 'only cache intraday stock price up to 1 week') if self.time < 1.week.ago
     when 'daily'
-      errors.add(:time, 'price too far in past, not needed for charts') if self.time < 1.year.ago
+      errors.add(:time, 'only cache daily stock prices up to 1 year') if self.time < 1.year.ago
     end
   end
 
