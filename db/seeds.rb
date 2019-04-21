@@ -11,6 +11,8 @@ Company.destroy_all
 Stock.destroy_all
 NewsArticle.destroy_all
 WatchlistItem.destroy_all
+StockPrice.destroy_all
+TradeEvent.destroy_all
 
 #-------------------------------#
 #------------ User -------------#
@@ -79,7 +81,6 @@ maxine = User.create(
 twitter = Company.create(
   name: "Twitter INC",
   symbol: "TWTR",
-  market_price: 20.58,
   ceo: "Jack Dorsey",
   founding_year: 2006,
   employees: 3583,
@@ -115,7 +116,6 @@ twitter = Company.create(
 google = Company.create(
   name: "Google LLC",
   symbol: "GOOGL",
-  market_price: 1051.92,
   ceo: "Sundar Pichai",
   founding_year: 1998,
   employees: 73992,
@@ -145,7 +145,6 @@ google = Company.create(
 netflix = Company.create(
   name: "Netflix",
   symbol: "NFLX",
-  market_price: 196.02,
   ceo: "Reed Hastings",
   founding_year: 1997,
   employees: 3500,
@@ -182,7 +181,6 @@ netflix = Company.create(
 snap = Company.create(
   name: "Snap INC",
   symbol: "SNAP",
-  market_price: 12.50,
   ceo: "Evan Spiegel",
   founding_year: 2010,
   employees: 1859,
@@ -200,7 +198,6 @@ snap = Company.create(
 nvidia = Company.create(
   name: "Nvidia CORP",
   symbol: "NVDA",
-  market_price: 214.85,
   ceo: "Jensen Huang",
   founding_year: 1993,
   employees: 10000,
@@ -239,7 +236,6 @@ nvidia = Company.create(
 tesla = Company.create(
   name: "Tesla INC",
   symbol: "TSLA",
-  market_price: 312.19,
   ceo: "Elon Musk",
   founding_year: 2003,
   employees: 33000,
@@ -280,7 +276,6 @@ tesla = Company.create(
 facebook = Company.create(
   name: "Facebook",
   symbol: "FB",
-  market_price: 180.65,
   ceo: "Mark Zuckerberg",
   founding_year: 2004,
   employees: 17000,
@@ -319,36 +314,9 @@ facebook = Company.create(
             with friends only."
 );
 
-amd = Company.create(
-  name: "Advanced Micro Devices INC",
-  symbol: "AMD",
-  market_price: 11.37,
-  ceo: "Lisa T. Su",
-  founding_year: 1969,
-  employees: 9100,
-  location: "Sunnyvale, CA",
-  biography: "Advanced Micro Devices, Inc. (AMD) is an American
-              multinational semiconductor company based in Sunnyvale,
-              California, United States, that develops computer
-              processors and related technologies for business and
-              consumer markets. While initially it manufactured its own
-              processors, the company later outsourced its manufacturing,
-              a practice known as fabless, after GlobalFoundries was
-              spun off in 2009. AMD's main products include
-              microprocessors, motherboard chipsets, embedded processors
-              and graphics processors for servers, workstations and
-              personal computers, and embedded systems applications.
-
-              AMD is the second-largest supplier and only significant
-              rival to Intel in the market for x86-based microprocessors.
-              Since acquiring ATI in 2006, AMD and its competitor Nvidia
-              have dominated the discrete Graphics Processing Unit (GPU) market."
-);
-
 apple = Company.create(
   name: "Apple",
   symbol: "AAPL",
-  market_price: 174.83,
   ceo: "Tim Cook",
   founding_year: 1976,
   employees: 123000,
@@ -390,7 +358,6 @@ apple = Company.create(
 square = Company.create(
   name: "Square INC",
   symbol: "SQ",
-  market_price: 48.72,
   ceo: "Jack Dorsey",
   founding_year: 2009,
   employees: 5000,
@@ -424,7 +391,6 @@ square = Company.create(
 amazon = Company.create(
   name: "Amazon INC",
   symbol: "AMZN",
-  market_price: 1157.69,
   ceo: "Jeff Bezos",
   founding_year: 1994,
   employees: 117300,
@@ -462,7 +428,6 @@ amazon = Company.create(
 microsoft = Company.create(
   name: "Microsoft CORP",
   symbol: "MSFT",
-  market_price: 84.17,
   ceo: "Satya Nadella",
   founding_year: 2014,
   employees: 124000,
@@ -482,80 +447,9 @@ microsoft = Company.create(
             of \"microcomputer\" and \"software\"."
 );
 
-qualcomm = Company.create(
-  name: "Qualcomm",
-  symbol: "QCOM",
-  market_price: 66.34,
-  ceo: "Steven Mollenkopf",
-  founding_year: 1985,
-  employees: 33500,
-  location: "San Diego, CA",
-  biography: "Qualcomm is an American multinational semiconductor
-            and telecommunications equipment company that designs and markets
-            wireless telecommunications products and services. It derives most
-            of its revenue from chipmaking and the bulk of its profit from
-            patent licensing businesses. The company headquarters
-            is located in San Diego, California, United States, and
-            has 224 worldwide locations. The parent company is
-            Qualcomm Incorporated (Qualcomm), which includes the
-            Qualcomm Technology Licensing Division (QTL). Qualcomm's
-            wholly owned subsidiary, Qualcomm Technologies, Inc. (QTI),
-            operates substantially all of Qualcomm's R&D activities,
-            as well as its product and services businesses, including
-            its semiconductor business, Qualcomm CDMA Technologies."
-);
-
-chase = Company.create(
-  name: "JPMorgan Chase & CO",
-  symbol: "JPM",
-  market_price: 105.54,
-  ceo: "James Dimon",
-  founding_year: 1968,
-  employees: 251503,
-  location: "New York City, NY",
-  biography: "JPMorgan Chase & Co. is an American multinational
-            banking and financial services holding company headquartered
-            in New York City. It is the largest bank in the United
-            States, the world's sixth largest bank by total assets,
-            with total assets of US$2.5 trillion, and the world's
-            second most valuable bank by market capitalization,
-            after the Industrial and Commercial Bank of China. It
-            is a major provider of financial services, and according
-            to Forbes magazine is the world's fourth largest public
-            company based upon a composite ranking. The hedge fund
-            unit of JPMorgan Chase is the second largest hedge fund
-            in the United States. The company was formed in 2000,
-            when Chase Manhattan Corporation merged with J.P. Morgan & Co."
-);
-
-comcast = Company.create(
-  name: "Comcast CORP",
-  symbol: "CMCSA",
-  market_price: 37.54,
-  ceo: "Brian L. Roberts",
-  founding_year: 1963,
-  employees: 153000,
-  location: "Philadelphia, PA",
-  biography: "Comcast Corporation is an American global
-            telecommunications conglomerate that is the largest
-            broadcasting and cable television company in the world
-            by revenue. It is the second-largest pay-TV company after
-            AT&T, largest cable TV company and largest home Internet
-            service provider in the United States, and the nation's
-            third-largest home telephone service provider. Comcast
-            services U.S. residential and commercial customers in 40
-            states and in the District of Columbia. The company's
-            headquarters are located in Philadelphia, Pennsylvania.
-            As the owner of the international media company NBCUniversal
-            since 2011, Comcast is a producer of feature films and
-            television programs intended for theatrical exhibition
-            and over-the-air and cable television broadcast."
-);
-
 cisco = Company.create(
   name: "Cisco INC",
   symbol: "CSCO",
-  market_price: 37.30,
   ceo: "Chuck Robbins",
   founding_year: 1984,
   employees: 73711,
@@ -575,7 +469,6 @@ cisco = Company.create(
 zendesk = Company.create(
   name: "Zendesk INC",
   symbol: "ZEN",
-  market_price: 33.61,
   ceo: "Mikkel Svane",
   founding_year: 2007,
   employees: 2000,
@@ -589,57 +482,9 @@ zendesk = Company.create(
             countries and territories."
 );
 
-target = Company.create(
-  name: "Target CORP",
-  symbol: "TGT",
-  market_price: 59.90,
-  ceo: "Brian Cornell",
-  founding_year: 1902,
-  employees: 341000,
-  location: "Minneapolis, MN",
-  biography: "Target Corporation is the second-largest discount store
-            retailer in the United States, behind Walmart, and a
-            component of the S&P 500 Index. Founded by George Dayton
-            and headquartered in Minneapolis, Minnesota, the company
-            was originally named Goodfellow Dry Goods in June 1902
-            before being renamed the Dayton's Dry Goods Company in
-            1903 and later the Dayton Company in 1910. The first
-            Target store opened in Roseville, Minnesota in 1962 while
-            the parent company was renamed the Dayton Corporation in
-            1967. It became the Dayton-Hudson Corporation after
-            merging with the J.L. Hudson Company in 1969 and held
-            ownership of several department store chains including
-            Dayton's, Hudson's, Marshall Field's, and Mervyn's."
-);
-
-target = Company.create(
-  name: "Starbucks CORP",
-  symbol: "SBUX",
-  market_price: 57.82,
-  ceo: "Kevin Johnson",
-  founding_year: 1971,
-  employees: 254000,
-  location: "Seattle, WA",
-  biography: "Starbucks Corporation is an American coffee company and
-            coffeehouse chain. Starbucks was founded in Seattle,
-            Washington in 1971. As of November 2016, it operates
-            23,768 locations worldwide.
-
-            Starbucks is considered the main representative of
-            \"second wave coffee\", initially distinguishing itself
-            from other coffee-serving venues in the US by taste,
-            quality, and customer experience while popularizing
-            darkly roasted coffee.[4] Since the 2000s, third wave
-            coffee makers have targeted quality-minded coffee drinkers
-            with hand-made coffee based on lighter roasts, while
-            Starbucks nowadays uses automated espresso machines for
-            efficiency and safety reasons."
-);
-
 nike = Company.create(
   name: "Nike INC",
   symbol: "NKE",
-  market_price: 60.42,
   ceo: "Mark Parker",
   founding_year: 1964,
   employees: 62600,
@@ -659,58 +504,9 @@ nike = Company.create(
             2017, the Nike brand is valued at $29.6 billion."
 );
 
-disney = Company.create(
-  name: "Walt Disney",
-  symbol: "DIS",
-  market_price: 104.82,
-  ceo: "Bob Iger",
-  founding_year: 1923,
-  employees: 195000,
-  location: "Burbank, CA",
-  biography: "The Walt Disney Company, commonly known as Disney, is
-            an American diversified multinational mass media and
-            entertainment conglomerate, headquartered at the Walt
-            Disney Studios in Burbank, California. It is the world's
-            second largest media conglomerate in terms of revenue,
-            after Comcast. Disney was founded on October 16, 1923 – by
-            brothers Walt Disney and Roy O. Disney – as the Disney
-            Brothers Cartoon Studio, and established itself as a
-            leader in the American animation industry before
-            diversifying into live-action film production, television,
-            and theme parks. The company also operated under the names
-            The Walt Disney Studio and then Walt Disney Productions.
-            Taking on its current name in 1986, it expanded its
-            existing operations and also started divisions focused
-            upon theater, radio, music, publishing, and online media."
-);
-
-vodafone = Company.create(
-  name: "Vodafone Group",
-  symbol: "VOD",
-  market_price: 30.78,
-  ceo: "Vittorio Colao",
-  founding_year: 1991,
-  employees: 111556,
-  location: "London, UK",
-  biography: "Vodafone Group is a British multinational
-            telecommunications company, with headquarters in London.
-            It predominantly operates services in the regions of Asia,
-            Africa, Europe, and Oceania. Among mobile operator groups
-            globally, Vodafone ranked fifth by revenue and second
-            (behind China Mobile) in the number of connections
-            (469.7 million) as of 2016.
-
-            Vodafone owns and operates networks in 26 countries
-            and has partner networks in over 50 additional countries.
-            Its Vodafone Global Enterprise division provides
-            telecommunications and IT services to corporate clients in
-            150 countries."
-);
-
 paypal = Company.create(
   name: "Paypal",
   symbol: "PYPL",
-  market_price: 75.73,
   ceo: "Daniel Schulman",
   founding_year: 1998,
   employees: 18100,
@@ -728,7 +524,6 @@ paypal = Company.create(
 lending_club = Company.create(
   name: "Lending Club",
   symbol: "LC",
-  market_price: 4.37,
   ceo: "Scott Sanborn",
   founding_year: 2006,
   employees: 1530,
@@ -746,96 +541,9 @@ lending_club = Company.create(
             been originated through its platform up to December 31, 2015."
 );
 
-gopro = Company.create(
-  name: "GoPro",
-  symbol: "GPRO",
-  market_price: 8.54,
-  ceo: "Nick Woodman",
-  founding_year: 2002,
-  employees: 1483,
-  location: "San Mateo, CA",
-  biography: "GoPro, Inc. is an American technology company founded in
-            2002 by Nick Woodman. It manufactures eponymous action
-            cameras and develops its own mobile apps and video-editing software.
-
-            Founded as Woodman Labs, Inc, the company eventually
-            focused on the connected sports genre, developing its
-            line of action cameras and, later, video editing software.
-            It also developed a quadcopter drone, Karma, released in
-            October 2016."
-);
-
-sony = Company.create(
-  name: "Sony CORP",
-  symbol: "NE",
-  market_price: 46.80,
-  ceo: "Kaz Hirai",
-  founding_year: 1946,
-  employees: 146300,
-  location: "Minato, Tokyo, Japan",
-  biography: "Sony Corporation is a Japanese multinational conglomerate
-            corporation headquartered in Kōnan, Minato, Tokyo. Its
-            diversified business includes consumer and professional
-            electronics, gaming, entertainment and financial services.
-            The company is one of the leading manufacturers of electronic
-            products for the consumer and professional markets. Sony
-            was ranked 105th on the 2017 list of Fortune Global 500."
-);
-
-western_digital = Company.create(
-  name: "Western Digital",
-  symbol: "WDC",
-  market_price: 78.86,
-  ceo: "Stephen D Milligan",
-  founding_year: 1970,
-  employees: 76449,
-  location: "San Jose, CA",
-  biography: "Western Digital Corporation (commonly referred to as
-            Western Digital and often abbreviated as WDC or WD) is an
-            American computer data storage company and one of the
-            largest computer hard disk drive manufacturers in the
-            world, along with its main competitor Seagate Technology.
-
-            Western Digital Corporation has a long history in the
-            electronics industry as an integrated circuit maker and
-            a storage products company. Western Digital was founded
-            on April 23, 1970, by Alvin B. Phillips, a Motorola employee,
-            as General Digital, initially (and briefly) a manufacturer
-            of MOS test equipment. It rapidly became a speciality
-            semiconductor maker, with start-up capital provided by
-            several individual investors and industrial giant Emerson
-            Electric. Around July 1971, it adopted its current name
-            and soon introduced its first product, the WD1402A UART."
-);
-
-expedia = Company.create(
-  name: "Expedia INC",
-  symbol: "EXPE",
-  market_price: 122.5,
-  ceo: "Mark D. Okerstrom",
-  founding_year: 1996,
-  employees: 20000,
-  location: "Bellevue, WA",
-  biography: "Expedia, Inc. is an American travel company that owns
-            and operates several international global online travel
-            brands, primarily travel fare aggregator websites and
-            travel metasearch engines including Expedia.com, Hotels.com,
-            Hotwire.com, trivago, Venere.com, Travelocity, Orbitz,
-            and HomeAway.
-
-            The company operates about 200 travel booking websites in
-            about 75 countries, and has listings for about 350,000
-            hotels and 500 airlines.
-
-            According to Rich Barton, the first CEO, the word
-            \"Expedia\" is derived from a combination of
-            exploration and speed."
-);
-
 alibaba = Company.create(
   name: "Alibaba Group",
   symbol: "BABA",
-  market_price: 177.08,
   ceo: "Daniel Zhang",
   founding_year: 1999,
   employees: 50092,
@@ -857,7 +565,6 @@ alibaba = Company.create(
             public offering (IPO), 19 September 2014, Alibaba's market
             value was US$231 billion."
 );
-
 
 #-------------------------------#
 #------------ Stock ------------#
