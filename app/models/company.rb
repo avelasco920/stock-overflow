@@ -20,6 +20,8 @@ class Company < ApplicationRecord
   has_many :trade_events, dependent: :destroy
   has_many :stock_prices, dependent: :destroy
   has_many :stocks, dependent: :destroy
+  has_many :watchlist_items, dependent: :destroy
+  has_many :news_articles, dependent: :destroy
 
   def market_price
     self.stock_prices.order(time: :desc).first&.price
