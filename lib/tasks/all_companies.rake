@@ -3,7 +3,7 @@ namespace :all_companies do
   task update_stock_prices: :environment do
     Company.all.each.with_index do |company, count|
       company.stock_prices.clean_up
-      FetchStockPricesJob.set(wait: 1.minute * count).perform_later(company)
+      FetchStockPricesJob.set(wait: 30.seconds * count).perform_later(company)
     end
   end
 
