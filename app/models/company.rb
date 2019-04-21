@@ -50,14 +50,9 @@ class Company < ApplicationRecord
     JSON.parse(response)["Time Series (#{interval.capitalize})"].each do |time, price_data|
       adjusted_time = Time.find_zone('EST').parse(time)
       if time_series == 'intraday' && adjusted_time.hour == 16
-        self.stock_prices.create(time: adjusted_time.beginning_of_day, price: price_data['4. close'], time_series: 'daily')
+        self.stock_prices.find_or_create_by(time: adjusted_time.beginning_of_day, price: price_data['4. close'], time_series: 'daily')
       end
-      self.stock_prices.create(time: adjusted_time, price: price_data['4. close'], time_series: time_series)
+      self.stock_prices.find_or_create_by(time: adjusted_time, price: price_data['4. close'], time_series: time_series)
     end
-  end
-
-  def clear_old_stock_prices
-    old_stock_prices = self.stock_prices.where('time_series = ? AND time < ?', 'intraday', Time.current - 1.week)
-    old_stock_prices.destroy_all
   end
 end
