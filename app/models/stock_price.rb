@@ -21,6 +21,7 @@ class StockPrice < ApplicationRecord
 
   def self.should_update?
     last_stock_price_pull = self.where(time_series: 'intraday').order(time: :desc).first&.time
+    return true unless last_stock_price_pull
     last_trading_hour = TradingHours.last_trading_hour
     last_stock_price_pull < (last_trading_hour - 10.minutes)
   end
