@@ -10,7 +10,6 @@ class CompanyPage extends React.Component {
     super(props);
   }
 
-  
 
   componentWillMount() {
     const { symbol } = this.props.match.params;
