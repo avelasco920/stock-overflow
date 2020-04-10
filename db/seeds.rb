@@ -668,11 +668,6 @@ WatchlistItem.create(
   company_id: netflix.id
 )
 
-
-WatchlistItem.create(
-  user_id: chandler.id,
-  company_id: amd.id
-)
 WatchlistItem.create(
   user_id: chandler.id,
   company_id: square.id
@@ -711,7 +706,7 @@ NewsArticle.create(
   company_id: netflix.id,
   date: Date.new(2017, 11, 26),
   views: 319,
-  img_url: "https://i.amz.mshcdn.com/LWRrA7B2yTQxFTlc_4eb1Mao2DM=/1200x630/2017%2F05%2F16%2F8d%2Fa90b60e1a7b645f5b90067584ab381d3.e786a.jpg",
+  img_url: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1065121660%2F960x0.jpg%3Ffit%3Dscale",
   source: "https://www.fool.com/investing/2017/11/26/is-netflix-inc-a-buy.aspx",
   body: "As of this writing, shares of Netflix (NASDAQ:NFLX) have
         gained a market-stomping 66% over the last 52 weeks. Can the
@@ -730,7 +725,7 @@ NewsArticle.create(
   company_id: square.id,
   date: Date.new(2017, 10, 24),
   views: 418,
-  img_url: "https://staticx-tuner.zacks.com/images/articles/main/1e/1508862852.jpg",
+  img_url: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i97H_SVY6SoQ/v0/1000x-1.jpg",
   source: "https://www.zacks.com/stock/news/279991/is-square-sq-a-great-growth-stock",
   body: "Growth stocks can be some of the most exciting picks in
           the market. Not only do these types of stocks
@@ -757,40 +752,6 @@ NewsArticle.create(
         disappeared I believe it is worthwhile to follow the iPhone 8’s
         and X’s and compare them to some of the earlier models,
         especially the iPhone 6 since it saw such strong demand."
-)
-
-NewsArticle.create(
-  publisher: "Forbes",
-  title: "The Tiger Of Silicon Valley: Glen Kacher\'s Sizzling Hedge Fund",
-  date: Date.new(2017, 11, 21),
-  company_id: amd.id,
-  views: 23,
-  img_url: "https://blogs-images.forbes.com/nathanvardi/files/2017/11/1106_inv-light-street-light-street-glen-kacher_1200x675-1200x675.jpg?width=960",
-  source: "https://www.forbes.com/sites/nathanvardi/2017/11/21/the-tiger-of-silicon-valley-glen-kachers-sizzling-hedge-fund/#50e233992904",
-  body: "When you live and work in a town where the median home costs
-        $2.7 million and hobnob with the executives of billionaire
-        factories like Facebook and Tesla, it\'s easy to see why you
-        might think technology stocks are invincible. So far in 2017,
-        the Nasdaq Composite index has gained 25%.
-
-        Light Street Capital, based in Palo Alto, California, is
-        up 52.7% net of fees in the first 10 months of 2017, making
-        it the top-performing hedge fund this year. Its baby-faced
-        boss, Glen Kacher, is pounding the table, saying tech stocks
-        have room to run.
-
-        \"The idea that this is a bubble is a joke,\" says
-        Kacher, 46. \"I don't think people are looking at the
-        fundamentals.\"
-
-        Since its inception in 2010, Kacher's $1.1 billion
-        tech-focused hedge fund has delivered annualized net
-        returns of 19.8%. More than anything, he has been in the
-        right place at the right time. By parking himself in Silicon
-        Valley instead of New York and spending time with VCs and
-        entrepreneurs rather than Wall Street's sell-side analysts,
-        Kacher has gained the equivalent of first-mover advantage
-        among hedge funds."
 )
 
 NewsArticle.create(

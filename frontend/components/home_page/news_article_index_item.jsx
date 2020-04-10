@@ -2,7 +2,6 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../../util/route_util';
 import { Link, withRouter } from 'react-router-dom';
 import LoadingIcon from '../loading_icon';
-import { timeAgo } from '../../util/parsing_functions';
 
 class NewsArticleIndexItem extends React.Component {
   constructor(props){
@@ -29,7 +28,6 @@ class NewsArticleIndexItem extends React.Component {
           <div className="news-body-box">
             <span className="news-body">{newsArticle.body}</span>
           </div>
-          <span className="news-date">{timeAgo(newsArticle.date)}</span>
         </div>
       </li>
     );
