@@ -15,7 +15,7 @@ class Api::StockPricesController < ApplicationController
       .where('time < ? AND time_series = ?', most_recent_trading_day, 'intraday')
       .order(time: :asc)
       .last
-      .price
+      &.price
 
     @stock_prices_for_one_day = @company
       .stock_prices

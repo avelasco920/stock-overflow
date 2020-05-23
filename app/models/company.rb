@@ -54,6 +54,7 @@ class Company < ApplicationRecord
 
     parsed_response["Time Series (#{interval.capitalize})"].each do |time, price_data|
       adjusted_time = Time.find_zone('EST').parse(time)
+      next if adjusted_time < Time.current.in_time_zone('EST') - 1.year
       if time_series == 'intraday' && adjusted_time.hour == 16
         self.stock_prices.find_or_create_by(time: adjusted_time.beginning_of_day, price: price_data['4. close'], time_series: 'daily')
       end
