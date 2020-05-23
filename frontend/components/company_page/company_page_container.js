@@ -6,6 +6,7 @@ import { fetchCompany } from '../../actions/companies_actions';
 
 const mapStateToProps = state => {
   return {
+    companyLoading: state.ui.loading.detailLoading,
     companies: state.entities.companies,
   };
 };

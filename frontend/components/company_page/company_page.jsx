@@ -4,6 +4,7 @@ import { convertCompanySymToId } from '../../reducers/selectors';
 import MainContent from './main_content';
 import StockFormContainer from './stock_form_container';
 import Footer from '../footer/footer';
+import LoadingIcon from '../loading_icon';
 
 class CompanyPage extends React.Component {
   constructor(props) {
@@ -28,6 +29,8 @@ class CompanyPage extends React.Component {
   }
 
   render() {
+    if (this.props.companyLoading) return <LoadingIcon />;
+
     return (
       <div className="outer">
         <div className="page">

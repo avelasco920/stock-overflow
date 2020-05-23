@@ -37,10 +37,8 @@ class ChartComponent extends React.Component {
    const { companyStockPrices } = nextProps;
    if (nextProps.match.params.symbol !== this.props.match.params.symbol) {
      const { symbol } = nextProps.match.params;
-     if (!nextProps.companyStockPrices) {
-       this.props.fetchStockPrices(symbol)
-         .then(() => this.renderChart());
-     }
+     this.props.fetchStockPrices(symbol)
+       .then(() => this.renderChart());
    }
  }
 

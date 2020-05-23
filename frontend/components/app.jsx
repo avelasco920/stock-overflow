@@ -26,7 +26,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { symbols, dataForChart, companies } = this.props;
+    const { symbols, dataForChart, companies, companyLoading } = this.props;
     if (Object.values(companies).length === 0) {
       return (<LoadingIcon />);
     } else {
