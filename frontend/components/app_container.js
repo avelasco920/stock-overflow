@@ -4,8 +4,7 @@ import { withRouter } from 'react-router-dom';
 import App from './app';
 import {
   fetchCompanies,
-  fetchIntradayStockPrices,
-  fetchDailyStockPrices,
+  fetchStockPrices,
   clearCompanies,
   clearRealtimeData
 } from '../actions/companies_actions';
@@ -23,8 +22,7 @@ const mapStateToProps = ( state, ownProps ) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchCompanies: () => dispatch(fetchCompanies()),
-  fetchIntradayStockPrices: sym => dispatch(fetchIntradayStockPrices(sym)),
-  fetchDailyStockPrices: sym => dispatch(fetchDailyStockPrices(sym)),
+  fetchStockPrices: sym => dispatch(fetchStockPrices(sym)),
   clearCompanies: () => dispatch(clearCompanies()),
   clearRealtimeData: () => dispatch(clearRealtimeData()),
 });

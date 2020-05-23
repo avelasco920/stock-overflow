@@ -48,7 +48,7 @@ class Company < ApplicationRecord
       method: :get,
       url: "https://www.alphavantage.co/query?function=TIME_SERIES_#{time_series.upcase}&symbol=#{self.symbol}&interval=#{interval}&outputsize=full&apikey=#{ENV['ALPHAVANTAGE_API_KEY']}",
     )
-    
+
     parsed_response = JSON.parse(response)
     return if parsed_response['Error Message']
 

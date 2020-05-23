@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     historicalPercDelta: ownProps.historicalPercDelta,
     historicalPriceDelta: ownProps.historicalPriceDelta,
     companyLoading: state.ui.loading.detailLoading,
-    intradayLoading: state.ui.loading.intradayApiLoading,
+    intradayLoading: state.ui.loading.stockPricesLoading,
   };
 };
 

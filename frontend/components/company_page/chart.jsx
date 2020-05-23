@@ -1,16 +1,24 @@
 import React from 'react';
 import Chart from 'chart.js';
 import moment from 'moment-timezone'
-import isEqual from 'lodash';
+import get from 'lodash/get';
 import transform from 'moment-transform';
 
 import ChartOverlayContainer from './chart_overlay_container';
+import LoadingSpinner from '../loading_spinner';
+
+function CanvasContainer() {
+  return (
+    <div className="line-chart-container">
+      <canvas id="companyChart" className="line-chart"></canvas>
+    </div>
+  )
+}
 
 class ChartComponent extends React.Component {
  constructor(props) {
    super(props);
    this.state = {
-     numRenders: 0,
      timeSeries: 'today',
    }
    this.changeActive = this.changeActive.bind(this);
@@ -19,61 +27,55 @@ class ChartComponent extends React.Component {
 
  componentWillMount() {
    const { symbol } = this.props.match.params;
-   this.fetchRealtimePrices(symbol);
+   this.props.fetchStockPrices(symbol);
+ }
+
+ componentDidUpdate(prevProps) {
+   if (prevProps.stockPricesLoading && !this.props.stockPricesLoading) {
+     this.renderChart();
+   }
  }
 
  componentWillReceiveProps(nextProps) {
-   const { companyStockPrices, companyLoading } = nextProps;
-   if (
-     ( companyStockPrices &&
-     companyStockPrices.intraday &&
-     companyStockPrices.daily &&
-     !companyLoading )
-   ) {
-     const mostRecentTime = new Date(companyStockPrices.intraday.slice(-1)[0].time);
-     const minDate = moment(mostRecentTime).tz('America/New_York').subtract(1, 'days').format("YYYY-MM-DD HH:mm:ss");
-     this.setState({
-       filteredStockPrices: this.filterStockPrices(minDate, this.state.timeSeries, companyStockPrices),
-       minDate,
-       mostRecentTime,
-       numRenders: this.state.numRenders + 1,
-     }, () => {
-       if (this.state.numRenders === 1) {
-         this.filterStockPrices(this.state.minDate, this.state.timeSeries);
-         this.renderChart();
-       }
-     });
-   } else if (nextProps.match.params.symbol !== this.props.match.params.symbol) {
+   const { companyStockPrices } = nextProps;
+   if (nextProps.match.params.symbol !== this.props.match.params.symbol) {
      const { symbol } = nextProps.match.params;
      if (!nextProps.companyStockPrices) {
-       this.props.fetchIntradayStockPrices(symbol)
+       this.props.fetchStockPrices(symbol)
          .then(() => this.renderChart());
-       this.props.fetchDailyStockPrices(symbol);
      }
    }
  }
 
- fetchRealtimePrices(symbol) {
-   this.props.fetchIntradayStockPrices(symbol);
-   this.props.fetchDailyStockPrices(symbol);
- }
-
- filterStockPrices(minDate, timeSeries, companyStockPrices) {
-   companyStockPrices = companyStockPrices ? companyStockPrices : this.props.companyStockPrices;
-   let stockPrices = ['today', '1W'].includes(timeSeries) ? companyStockPrices.intraday : companyStockPrices.daily;
-   return stockPrices.filter(stockPrice => new Date(stockPrice.time) > new Date(minDate))
- }
-
  closingPriceLine() {
-   let blankArr = new Array(this.state.filteredStockPrices.length);
-   return blankArr.fill(this.props.companyStockPrices.last_closing_price);
+   const stockPrices = this.getStockPricesForTimeRange();
+   let blankArr = new Array(stockPrices.length);
+   return blankArr.fill(this.props.companyStockPrices.last_closing_price_before_most_recent_trading_day);
+ }
+
+ getStockPricesForTimeRange() {
+   const { companyStockPrices } = this.props;
+   const { timeSeries } = this.state;
+   if (timeSeries === "today") {
+     return companyStockPrices.stock_prices_for_one_day;
+   } else if (timeSeries === "1W") {
+     return companyStockPrices.stock_prices_for_one_week;
+   } else if (timeSeries === "1M") {
+     return companyStockPrices.stock_prices_for_one_month;
+   } else if (timeSeries === "3M") {
+     return companyStockPrices.stock_prices_for_three_months;
+   } else if (timeSeries === "1Y") {
+     return companyStockPrices.stock_prices_for_one_year;
+   }
  }
 
  renderChart() {
-   const { filteredStockPrices } = this.state;
+   const { companyStockPrices } = this.props;
+   const { timeSeries } = this.state;
+   const stockPrices = this.getStockPricesForTimeRange();
    if (this.state.chart) { this.state.chart.destroy() }
    let graphColor;
-   if (filteredStockPrices[0].price < filteredStockPrices.slice(-1)[0].price) {
+   if (stockPrices[0].price < stockPrices.slice(-1)[0].price) {
      graphColor = "#08d093";
    } else {
      graphColor = "#f45531";
@@ -92,7 +94,7 @@ class ChartComponent extends React.Component {
              borderWidth: 2,
              pointRadius: .1,
              pointStyle: "circle",
-             data: filteredStockPrices.map(stockPrice => stockPrice.price),
+             data: stockPrices.map(stockPrice => stockPrice.price),
            }, {
              fill: false,
              lineTension: .1,
@@ -101,10 +103,10 @@ class ChartComponent extends React.Component {
              pointRadius: 0,
              borderDash: [5, 5],
              pointStyle: "circle",
-             data: this.closingPriceLine()
+             data: (timeSeries === 'today') ? this.closingPriceLine() : []
            },
          ],
-         labels: filteredStockPrices.map(stockPrice => stockPrice.time),
+         labels: stockPrices.map(stockPrice => stockPrice.time),
      },
      options: {
        legend: {
@@ -127,91 +129,35 @@ class ChartComponent extends React.Component {
    this.setState({chart: chart})
  }
 
- changeActive(strNum) {
-   const { mostRecentTime } = this.state;
-   const time = moment(mostRecentTime);
-   let minDate, timeSeries;
-   if (strNum === "1") {
-     // Today
-     minDate = time.subtract(1, 'days');
-     timeSeries = "today";
-   } else if (strNum === "2") {
-     // 1W
-     minDate = time.subtract(1, 'weeks');
-     timeSeries = "1W";
-   } else if (strNum === "3") {
-     // 1M
-     minDate = time.subtract(1, 'months');
-     timeSeries = "1M";
-   } else if (strNum === "4") {
-     // 3M
-     minDate = time.subtract(3, 'months');
-     timeSeries = "3M";
-   } else if (strNum === "5") {
-     // 1Y
-     minDate = time.subtract(1, 'years');
-     timeSeries = "1Y";
-   } else if (strNum === "6") {
-     // 5Y
-     minDate = time.subtract(5, 'years');
-     timeSeries = "5Y";
-   }
-   this.setState({
-     minDate: minDate.format("YYYY-MM-DD HH:mm:ss"),
-     filteredStockPrices: this.filterStockPrices(minDate, timeSeries),
-     timeSeries
-   }, () => {
+ changeActive(timeSeries) {
+   this.setState({ timeSeries }, () => {
      this.renderChart();
    });
  }
 
  render() {
-   const { companyLoading, intradayApiLoading, dailyApiLoading } = this.props;
-   let canvasContainer = (
-     <div className="line-chart-container">
-       <canvas id="companyChart" className="line-chart"></canvas>
-     </div>
-   );
-   if (companyLoading) {
-     return (
-       canvasContainer
-     );
-   } else {
-     let canvas;
-     if (!intradayApiLoading && !dailyApiLoading) {
-       canvas = canvasContainer;
-     } else {
-       canvas = (
-         <div className="spinner-chart-container">
-           <div className="sk-circle">
-             <div className="sk-circle1 sk-child"></div>
-             <div className="sk-circle2 sk-child"></div>
-             <div className="sk-circle3 sk-child"></div>
-             <div className="sk-circle4 sk-child"></div>
-             <div className="sk-circle5 sk-child"></div>
-             <div className="sk-circle6 sk-child"></div>
-             <div className="sk-circle7 sk-child"></div>
-             <div className="sk-circle8 sk-child"></div>
-             <div className="sk-circle9 sk-child"></div>
-             <div className="sk-circle10 sk-child"></div>
-             <div className="sk-circle11 sk-child"></div>
-             <div className="sk-circle12 sk-child"></div>
+   const { companyLoading, stockPricesLoading } = this.props;
+   const { chart } = this.state;
+   return (
+     <div className="chart">
+       <div className="line-chart-container">
+         <canvas id="companyChart" className="line-chart"></canvas>
+         {stockPricesLoading && (
+           <div className="spinner-chart-container">
+             <LoadingSpinner />
            </div>
-         </div>
-       );
-     }
-     return (
-       <div className="chart">
-         {canvas}
+         )}
+       </div>
+       {!companyLoading && (
          <ChartOverlayContainer
            changeActive={this.changeActive}
            historicalPriceDelta={'-15'}
            historicalPercDelta={'15%'}
          />
-       </div>
-     );
-   }
- }
+       )}
+     </div>
+   );
+  }
 }
 
 export default ChartComponent;

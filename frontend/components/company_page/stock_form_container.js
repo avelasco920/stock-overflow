@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     company: selectCurrentCompany(state),
     companyStockPrices: state.entities.chart[symbol],
     companyLoading: state.ui.loading.detailLoading,
-    intradayLoading: state.ui.loading.intradayApiLoading,
+    intradayLoading: state.ui.loading.stockPricesLoading,
     errors: state.errors.tradeEvent
   };
 };

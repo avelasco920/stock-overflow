@@ -12,9 +12,9 @@ export const fetchCompany = id => (
   })
 );
 
-export const fetchStockPrices = (sym, time_series) => (
+export const fetchStockPrices = (sym) => (
   $.ajax({
     method: 'GET',
-    url: `/api/stock_prices/${sym}/?time_series=${time_series}`
+    url: `/api/stock_prices/${sym}`
   })
 );

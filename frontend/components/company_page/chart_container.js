@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
-  fetchIntradayStockPrices,
-  fetchDailyStockPrices,
+  fetchStockPrices,
 } from '../../actions/companies_actions';
 import ChartComponent from './chart';
 import {
@@ -15,16 +14,14 @@ const mapStateToProps = (state, ownProps) => {
   return {
     companyStockPrices: state.entities.chart[symbol],
     companyLoading: state.ui.loading.detailLoading,
-    intradayApiLoading: state.ui.loading.intradayApiLoading,
-    dailyApiLoading: state.ui.loading.dailyApiLoading,
+    stockPricesLoading: state.ui.loading.stockPricesLoading,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   watchCompany: id => dispatch(watchCompany(id)),
   unwatchCompany: id => dispatch(unwatchCompany(id)),
-  fetchIntradayStockPrices: (symbol) => dispatch(fetchIntradayStockPrices(symbol)),
-  fetchDailyStockPrices: (symbol) => dispatch(fetchDailyStockPrices(symbol))
+  fetchStockPrices: (symbol) => dispatch(fetchStockPrices(symbol)),
 });
 
 export default withRouter(

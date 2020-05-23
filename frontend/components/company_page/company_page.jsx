@@ -35,8 +35,6 @@ class CompanyPage extends React.Component {
           <StockFormContainer />
         </div>
         <Footer />
-
-
       </div>
     );
   }

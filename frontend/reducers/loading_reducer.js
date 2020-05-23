@@ -6,8 +6,7 @@ import {
   RECEIVE_STOCK_PRICES,
   START_LOADING_ALL_COMPANIES,
   START_LOADING_SINGLE_COMPANY,
-  START_LOADING_INTRADAY_PRICES,
-  START_LOADING_DAILY_PRICES,
+  START_LOADING_STOCK_PRICES,
 } from '../actions/companies_actions';
 
 import {
@@ -19,8 +18,7 @@ const initialState = {
   indexLoading: true,
   detailLoading: true,
   articlesLoading: true,
-  intradayApiLoading: true,
-  dailyApiLoading: true,
+  stockPricesLoading: true,
 };
 
 const loadingReducer = (state = initialState, action) => {
@@ -38,13 +36,10 @@ const loadingReducer = (state = initialState, action) => {
       return merge({}, state, { articlesLoading: false });
     case START_LOADING_NEWS_ARTICLES:
       return merge({}, state, { articlesLoading: true });
-    case START_LOADING_INTRADAY_PRICES:
-      return merge({}, state, { intradayApiLoading: true });
-    case START_LOADING_DAILY_PRICES:
-      return merge({}, state, { dailyApiLoading: true });
+    case START_LOADING_STOCK_PRICES:
+      return merge({}, state, { stockPricesLoading: true });
     case RECEIVE_STOCK_PRICES:
-      if (action.data.time_series === 'intraday') return merge({}, state, { intradayApiLoading: false });
-      if (action.data.time_series === 'daily') return merge({}, state, { dailyApiLoading: false });
+      if (action.data) return merge({}, state, { stockPricesLoading: false });
     default:
       return state;
   }

@@ -2,8 +2,7 @@ import * as APIUtil from '../util/companies_api_util';
 
 export const START_LOADING_ALL_COMPANIES = 'START_LOADING_ALL_COMPANIES';
 export const START_LOADING_SINGLE_COMPANY = 'START_LOADING_SINGLE_COMPANY';
-export const START_LOADING_INTRADAY_PRICES = 'START_LOADING_INTRADAY_PRICES';
-export const START_LOADING_DAILY_PRICES = 'START_LOADING_DAILY_PRICES';
+export const START_LOADING_STOCK_PRICES = 'START_LOADING_STOCK_PRICES';
 export const RECEIVE_COMPANIES = 'RECEIVE_COMPANIES';
 export const RECEIVE_COMPANY = 'RECEIVE_COMPANY';
 export const RECEIVE_STOCK_PRICES = 'RECEIVE_STOCK_PRICES';
@@ -17,12 +16,8 @@ export const startLoadingSingleCompany = () => ({
   type: START_LOADING_SINGLE_COMPANY
 });
 
-export const startLoadingIntradayPrices = () => ({
-  type: START_LOADING_INTRADAY_PRICES
-});
-
-export const startLoadingDailyPrices = () => ({
-  type: START_LOADING_DAILY_PRICES
+export const startLoadingStockPrices = () => ({
+  type: START_LOADING_STOCK_PRICES
 });
 
 export const receiveCompanies = companies => ({
@@ -66,20 +61,11 @@ export const fetchCompany = id => dispatch => {
   );
 };
 
-export const fetchIntradayStockPrices = (sym) => dispatch => {
-  dispatch(startLoadingIntradayPrices());
-  return APIUtil.fetchStockPrices(sym, 'intraday')
+export const fetchStockPrices = (sym) => dispatch => {
+  dispatch(startLoadingStockPrices());
+  return APIUtil.fetchStockPrices(sym)
     .then(data => (
       dispatch(receiveStockPrices(data))
-    )
-  );
-};
-
-export const fetchDailyStockPrices = sym => dispatch => {
-  dispatch(startLoadingDailyPrices());
-  return APIUtil.fetchStockPrices(sym, 'daily')
-    .then(data => (
-      dispatch(receiveStockPrices(data, sym))
     )
   );
 };

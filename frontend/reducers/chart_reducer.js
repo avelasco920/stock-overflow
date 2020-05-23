@@ -9,8 +9,21 @@ const chartReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_STOCK_PRICES:
-      const { data: { symbol, last_closing_price, time_series, stock_prices } } = action;
-      const parsedData = { [symbol]: { [time_series]: stock_prices, last_closing_price } };
+      const { data: {
+        symbol,
+        last_closing_price_before_most_recent_trading_day,
+        stock_prices_for_one_day, stock_prices_for_one_week,
+        stock_prices_for_one_month,
+        stock_prices_for_three_months,
+        stock_prices_for_one_year
+      } } = action;
+      const parsedData = { [symbol]: {
+        last_closing_price_before_most_recent_trading_day,
+        stock_prices_for_one_day, stock_prices_for_one_week,
+        stock_prices_for_one_month,
+        stock_prices_for_three_months,
+        stock_prices_for_one_year
+      }};
       return merge({}, state, parsedData);
     case RECEIVE_NO_DATA:
       return {};

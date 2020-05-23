@@ -21,9 +21,7 @@ import {
 import {
   fetchCompanies,
   fetchCompany,
-  fetchIntradayStockPrices,
-  fetchDailyStockPrices,
-  fetchRealtimeData,
+  fetchStockPrices,
 } from './actions/companies_actions';
 import { parseRealData } from './util/parsing_functions';
 import { watchCompany, unwatchCompany } from './actions/watchlist_actions';
@@ -40,9 +38,7 @@ import {
 document.addEventListener('DOMContentLoaded', () => {
 
   // testing...
-  window.fetchIntradayStockPrices = fetchIntradayStockPrices;
-  window.fetchDailyStockPrices = fetchDailyStockPrices;
-  window.fetchRealtimeData = fetchRealtimeData;
+  window.fetchStockPrices = fetchStockPrices;
   //
 
   let store;

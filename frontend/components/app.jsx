@@ -14,7 +14,6 @@ import LoadingIcon from './loading_icon';
 import HomePage from './home_page/home_page';
 import AccountPage from './account_page/account_page';
 import CompanyPageContainer from './company_page/company_page_container';
-import { fetchRealtimeData } from '../actions/companies_actions';
 
 class App extends React.Component {
   componentWillMount() {

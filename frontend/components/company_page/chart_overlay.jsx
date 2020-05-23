@@ -3,13 +3,14 @@ import {
   stringifyToFloat,
   stringifyToFloatNoCommas
 } from '../../util/parsing_functions';
+import { get } from 'lodash';
 
 class ChartOverlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       watching: this.props.company.current_user_watching,
-      activeId: "1",
+      activeId: "today",
       timeSeries: "Today",
     };
   }
@@ -52,23 +53,20 @@ class ChartOverlay extends React.Component {
     newActive.classList.add("chart-history-active");
     let timeSeries;
     switch(strNum) {
-    case "1":
+    case "today":
         timeSeries = "Today";
         break;
-    case "2":
+    case "1W":
         timeSeries = "This Week";
         break;
-    case "3":
+    case "1M":
         timeSeries = "This Month";
         break;
-    case "4":
+    case "3M":
         timeSeries = "Last 3 Months";
         break;
-    case "5":
+    case "1Y":
         timeSeries = "Last Year";
-        break;
-    case "6":
-        timeSeries = "Last 5 Years";
         break;
     }
     this.setState({ activeId: strNum, timeSeries });
@@ -131,11 +129,11 @@ class ChartOverlay extends React.Component {
         {this.button()}
         <div className="chart-history-container">
           <div className="chart-history">
-            <a onClick={() => this.changeChart("1")} id="1">Today</a>
-            <a onClick={() => this.changeChart("2")} id="2">1W</a>
-            <a onClick={() => this.changeChart("3")} id="3">1M</a>
-            <a onClick={() => this.changeChart("4")} id="4">3M</a>
-            <a onClick={() => this.changeChart("5")} id="5">1Y</a>
+            <a onClick={() => this.changeChart("today")} id="today">Today</a>
+            <a onClick={() => this.changeChart("1W")} id="1W">1W</a>
+            <a onClick={() => this.changeChart("1M")} id="1M">1M</a>
+            <a onClick={() => this.changeChart("3M")} id="3M">3M</a>
+            <a onClick={() => this.changeChart("1Y")} id="1Y">1Y</a>
             {/* <a onClick={() => this.changeChart("6")} id="6">5Y</a> */}
           </div>
         </div>
