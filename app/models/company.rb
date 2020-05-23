@@ -54,6 +54,8 @@ class Company < ApplicationRecord
 
     time_series_data = parsed_response["Time Series (#{interval.capitalize})"]
 
+    time_parse_format = time_series == 'daily' ? '%F' : '%F %T'
+
     times = time_series_data
       .keys
       .map do |time|
@@ -63,7 +65,7 @@ class Company < ApplicationRecord
       .where(company: self, time_series: time_series, time: times)
       .pluck(:time)
       .map do |time|
-        time.in_time_zone('EST').strftime('%F')
+        time.in_time_zone('EST').strftime(time_parse_format)
       end
     new_prices = time_series_data
       .reject do |time, v|
