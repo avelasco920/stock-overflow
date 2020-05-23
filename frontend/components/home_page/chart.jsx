@@ -240,7 +240,7 @@ class ChartComponent extends React.Component {
             </div>
           </div>
           <div className="chart-history">
-            <a onClick={() => this.changeActive("1")} id="1">Today</a>
+            <a onClick={() => this.changeActive("1")} id="1">1D</a>
             <a onClick={() => this.changeActive("2")} id="2">1W</a>
             <a onClick={() => this.changeActive("3")} id="3">1M</a>
             {/* <a onClick={() => this.changeActive("4")} id="4">3M</a> */}

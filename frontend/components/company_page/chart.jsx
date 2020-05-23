@@ -1,8 +1,5 @@
 import React from 'react';
 import Chart from 'chart.js';
-import moment from 'moment-timezone'
-import get from 'lodash/get';
-import transform from 'moment-transform';
 
 import ChartOverlayContainer from './chart_overlay_container';
 import LoadingSpinner from '../loading_spinner';
@@ -19,7 +16,7 @@ class ChartComponent extends React.Component {
  constructor(props) {
    super(props);
    this.state = {
-     timeSeries: 'today',
+     timeSeries: '1D',
    }
    this.changeActive = this.changeActive.bind(this);
    this.renderChart = this.renderChart.bind(this);
@@ -48,34 +45,38 @@ class ChartComponent extends React.Component {
  }
 
  closingPriceLine() {
-   const stockPrices = this.getStockPricesForTimeRange();
+   const { stockPrices } = this.getStockPriceDataForTimeRange();
    let blankArr = new Array(stockPrices.length);
    return blankArr.fill(this.props.companyStockPrices.last_closing_price_before_most_recent_trading_day);
  }
 
- getStockPricesForTimeRange() {
+ getStockPriceDataForTimeRange() {
    const { companyStockPrices } = this.props;
    const { timeSeries } = this.state;
-   if (timeSeries === "today") {
-     return companyStockPrices.stock_prices_for_one_day;
+   let stockPrices;
+   if (timeSeries === "1D") {
+     stockPrices = companyStockPrices.stock_prices_for_one_day;
    } else if (timeSeries === "1W") {
-     return companyStockPrices.stock_prices_for_one_week;
+     stockPrices = companyStockPrices.stock_prices_for_one_week;
    } else if (timeSeries === "1M") {
-     return companyStockPrices.stock_prices_for_one_month;
+     stockPrices = companyStockPrices.stock_prices_for_one_month;
    } else if (timeSeries === "3M") {
-     return companyStockPrices.stock_prices_for_three_months;
+     stockPrices = companyStockPrices.stock_prices_for_three_months;
    } else if (timeSeries === "1Y") {
-     return companyStockPrices.stock_prices_for_one_year;
+     stockPrices = companyStockPrices.stock_prices_for_one_year;
+   }
+   return {
+     stockPrices,
+     startPrice: stockPrices[0].price,
+     endPrice: stockPrices.slice(-1)[0].price
    }
  }
 
  renderChart() {
-   const { companyStockPrices } = this.props;
-   const { timeSeries } = this.state;
-   const stockPrices = this.getStockPricesForTimeRange();
+   const { stockPrices, startPrice, endPrice } = this.getStockPriceDataForTimeRange();
    if (this.state.chart) { this.state.chart.destroy() }
    let graphColor;
-   if (stockPrices[0].price < stockPrices.slice(-1)[0].price) {
+   if (startPrice < endPrice) {
      graphColor = "#08d093";
    } else {
      graphColor = "#f45531";
@@ -103,7 +104,7 @@ class ChartComponent extends React.Component {
              pointRadius: 0,
              borderDash: [5, 5],
              pointStyle: "circle",
-             data: (timeSeries === 'today') ? this.closingPriceLine() : []
+             data: (this.state.timeSeries === '1D') ? this.closingPriceLine() : []
            },
          ],
          labels: stockPrices.map(stockPrice => stockPrice.time),
@@ -136,7 +137,7 @@ class ChartComponent extends React.Component {
  }
 
  render() {
-   const { companyLoading, stockPricesLoading } = this.props;
+   const { companyLoading, stockPricesLoading, companyMarketPrice, companyStockPrices } = this.props;
    const { chart } = this.state;
    return (
      <div className="chart">
@@ -151,8 +152,8 @@ class ChartComponent extends React.Component {
        {!companyLoading && (
          <ChartOverlayContainer
            changeActive={this.changeActive}
-           historicalPriceDelta={'-15'}
-           historicalPercDelta={'15%'}
+           historicalPriceDelta={companyStockPrices ? companyMarketPrice - this.getStockPriceDataForTimeRange().startPrice : 0}
+           historicalPercDelta={companyStockPrices ? companyMarketPrice / this.getStockPriceDataForTimeRange().startPrice : 0}
          />
        )}
      </div>

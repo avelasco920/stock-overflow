@@ -24,20 +24,6 @@ class StockForm extends React.Component {
     this.activateScroll();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.props.companyLoading) {
-      this.setState({
-        currentPrice: nextProps.company.market_price,
-      });
-    }
-    if (nextProps.companyStockPrices && nextProps.companyStockPrices.intraday) {
-      const prices = nextProps.companyStockPrices.intraday;
-      this.setState({
-        currentPrice: nextProps.companyStockPrices.intraday.slice(-1)[0].price,
-      });
-    }
-  }
-
   renderReviewProcess() {
     if (this.state.status === "initial") {
       return this.renderInitial();
@@ -180,11 +166,10 @@ class StockForm extends React.Component {
 
   renderSubmit() {
     const { company } = this.props;
-    const { currentPrice } = this.state;
     const shares = `${this.state.numShares}`;
     const symbol = company.symbol;
     const { tradeMethod, numShares } = this.state;
-    const totalPrice = stringifyToFloat(numShares * currentPrice);
+    const totalPrice = stringifyToFloat(numShares * company.market_price);
     let shareDesc;
     this.disableScroll();
     if (this.state.numShares === 1) {
@@ -235,8 +220,8 @@ class StockForm extends React.Component {
     }
 
     const { company } = this.props;
-    const { numShares, currentPrice } = this.state;
-    const totalCost = stringifyToFloat(numShares * currentPrice);
+    const { numShares } = this.state;
+    const totalCost = stringifyToFloat(numShares * company.market_price);
     let shareDesc;
     if (company.num_shares === 1) {
       shareDesc = "share";
@@ -288,8 +273,8 @@ class StockForm extends React.Component {
   }
 
   render() {
-    const { companyLoading, company, companyStockPrices, intradayLoading, user } = this.props;
-    const { numShares,lightBox, modalClose, tradeMethod, modalClass, currentPrice } = this.state;
+    const { companyLoading, company, companyStockPrices, user } = this.props;
+    const { numShares,lightBox, modalClose, tradeMethod, modalClass } = this.state;
     const method = tradeMethod.charAt(0).toUpperCase() + tradeMethod.slice(1);
     if (companyLoading) {
       return (<div></div>);
@@ -299,12 +284,6 @@ class StockForm extends React.Component {
         shareDesc = "share";
       } else {
         shareDesc = "shares";
-      }
-      let marketPrice;
-      if (intradayLoading) {
-        marketPrice = company.market_price;
-      } else {
-        marketPrice = currentPrice;
       }
       return (
         <div className="sidebar-container">
@@ -330,12 +309,12 @@ class StockForm extends React.Component {
               </div>
               <div className="stock-form-detail-container">
                 <span className="stock-form-label">Market Price</span>
-                <span className="stock-form-detail">${stringifyToFloat(marketPrice)}</span>
+                <span className="stock-form-detail">${stringifyToFloat(this.props.company.market_price)}</span>
               </div>
               <div className="stock-form-detail-container">
                 <span className="stock-form-label" id="stock-total">Estimated Cost</span>
                 <span className="stock-form-detail" id="stock-total">
-                  ${stringifyToFloat(numShares * marketPrice)}
+                  ${stringifyToFloat(numShares * this.props.company.market_price)}
                 </span>
               </div>
             </div>

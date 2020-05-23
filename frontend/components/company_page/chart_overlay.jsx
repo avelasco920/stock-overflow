@@ -10,7 +10,7 @@ class ChartOverlay extends React.Component {
     super(props);
     this.state = {
       watching: this.props.company.current_user_watching,
-      activeId: "today",
+      activeId: "1D",
       timeSeries: "Today",
     };
   }
@@ -21,7 +21,7 @@ class ChartOverlay extends React.Component {
       initialActive.classList.add("chart-history-active");
     }
 
-  button () {
+  watchButton () {
     const { company, watching } = this.props;
     if ( watching ) {
       return (
@@ -53,7 +53,7 @@ class ChartOverlay extends React.Component {
     newActive.classList.add("chart-history-active");
     let timeSeries;
     switch(strNum) {
-    case "today":
+    case "1D":
         timeSeries = "Today";
         break;
     case "1W":
@@ -74,12 +74,12 @@ class ChartOverlay extends React.Component {
 
   stringifyPriceChange(historicalPriceDelta) {
     let priceChange;
-    if (this.state.intradayLoading) {
+    if (this.props.stockPricesLoading) {
       priceChange = "$0.00";
     } else {
       priceChange = parseFloat(Math
-                            .round(historicalPriceDelta * 100) / 100)
-                            .toFixed(2);
+                      .round(historicalPriceDelta * 100) / 100)
+                      .toFixed(2);
       if (priceChange[0] === "-") {
         priceChange = priceChange.replace("-", "-$");
       } else {
@@ -91,14 +91,14 @@ class ChartOverlay extends React.Component {
 
   stringifyPercentageChange(historicalPercDelta) {
     let percChange;
-    if (this.state.intradayLoading) {
+    if (this.props.stockPricesLoading) {
       percChange = "(0.00%)";
     } else {
       percChange = parseFloat(Math
                             .round(historicalPercDelta * 100) / 100)
                             .toFixed(2);
-      if (percChange[0] === "-") {
-        percChange = `(${percChange}%)`;
+      if (this.props.historicalPriceDelta < 0) {
+        percChange = `(-${percChange}%)`;
       } else {
         percChange = `(+${percChange}%)`;
       }
@@ -123,18 +123,17 @@ class ChartOverlay extends React.Component {
           <h2>{company.name}</h2>
           <h1>${marketPrice}</h1>
           <div className="delta">
-            <h4>{priceChange}{percChange}</h4> <span>{timeSeries}</span>
+            <h4>{priceChange}{percChange}</h4> <span style={{ paddingLeft: '.5em' }}>{timeSeries}</span>
           </div>
         </div>
-        {this.button()}
+        {this.watchButton()}
         <div className="chart-history-container">
           <div className="chart-history">
-            <a onClick={() => this.changeChart("today")} id="today">Today</a>
+            <a onClick={() => this.changeChart("1D")} id="1D">1D</a>
             <a onClick={() => this.changeChart("1W")} id="1W">1W</a>
             <a onClick={() => this.changeChart("1M")} id="1M">1M</a>
             <a onClick={() => this.changeChart("3M")} id="3M">3M</a>
             <a onClick={() => this.changeChart("1Y")} id="1Y">1Y</a>
-            {/* <a onClick={() => this.changeChart("6")} id="6">5Y</a> */}
           </div>
         </div>
       </div>

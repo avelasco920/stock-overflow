@@ -20,7 +20,7 @@ class ChartOverlay extends React.Component {
           </div>
         </div>
         <div className="chart-history">
-          <a>Today</a>
+          <a>1D</a>
           <a>1W</a>
           <a>1M</a>
           <a>3M</a>
