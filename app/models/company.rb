@@ -52,15 +52,45 @@ class Company < ApplicationRecord
     parsed_response = JSON.parse(response)
     return if parsed_response['Error Message']
 
-    parsed_response["Time Series (#{interval.capitalize})"].each do |time, price_data|
+    time_series_data = parsed_response["Time Series (#{interval.capitalize})"]
+
+    times = time_series_data
+      .keys
+      .map do |time|
+        time.in_time_zone('EST')
+      end
+    existing_times = StockPrice
+      .where(company: self, time_series: time_series, time: times)
+      .pluck(:time)
+      .map do |time|
+        time.in_time_zone('EST').strftime('%F')
+      end
+    new_prices = time_series_data
+      .reject do |time, v|
+        existing_times.include?(time)
+      end
+
+    new_prices.each do |time, price_data|
       adjusted_time = Time.find_zone('EST').parse(time)
       current_time = Time.current.in_time_zone('EST')
       next if adjusted_time < current_time - 1.year
       next if time_series == 'intraday' && adjusted_time < (current_time - 1.week)
       if time_series == 'intraday' && adjusted_time.hour == 16
-        self.stock_prices.find_or_create_by(time: adjusted_time.beginning_of_day, price: price_data['4. close'], time_series: 'daily')
+        self
+          .stock_prices
+          .find_or_create_by(
+            time: adjusted_time.beginning_of_day,
+            price: price_data['4. close'],
+            time_series: 'daily'
+        )
       end
-      self.stock_prices.find_or_create_by(time: adjusted_time, price: price_data['4. close'], time_series: time_series)
+      self
+        .stock_prices
+        .find_or_create_by(
+          time: adjusted_time,
+          price: price_data['4. close'],
+          time_series: time_series
+      )
     end
   end
 end
