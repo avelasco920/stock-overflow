@@ -5,8 +5,6 @@ namespace :all_companies do
     Company.all.each.with_index do |company, count|
       company.delay(run_at: count.minutes.from_now).update_stock_prices('daily')
       company.delay(run_at: count.minutes.from_now).update_stock_prices('intraday')
-      # FetchStockPricesJob.delay.perform_now(company, 'daily')
-      # FetchStockPricesJob.delay.perform_now(company, 'intraday')
       company.stock_prices.clean_up
     end
   end
