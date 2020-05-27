@@ -35,6 +35,7 @@ gem 'font-awesome-sass'
 # gem 'capistrano-rails', group: :development
 gem 'figaro'
 gem 'dotenv-rails'
+gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
 

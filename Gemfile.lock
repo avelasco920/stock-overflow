@@ -233,6 +233,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   daemons
+  delayed_job
   delayed_job_active_record
   dotenv-rails
   figaro
